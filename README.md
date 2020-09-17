@@ -37,6 +37,6 @@ What versioning statergy are you using for your project, something like [semanti
 
 
 - [ ]  References
-* [Gitlab Markdown Guide](https://docs.gitlab.com/ee/user/markdown.html)
+* [Licence for TeamCity](https://1806094-capstone-project.beta.teamcity.com/acceptTermsOfServices.html?agreement=hosted&proceedUrl=%2Fprofile.html)
 * [Example 1](https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/v2.0.2)
 * [Example 2](https://github.com/erasmus-without-paper/ewp-specs-architecture/tree/v1.10.0)
