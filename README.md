@@ -1,5 +1,7 @@
 ## Work in progress
 
+[![pipeline status](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-james/badges/master/pipeline.svg)](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-james/commits/master)
+
 # Isometric RPG/TBS Game
 A 2D Isometric RPG game made with the power of [MonoGame](https://www.monogame.net).
 
