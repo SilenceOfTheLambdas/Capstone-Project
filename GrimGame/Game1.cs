@@ -58,8 +58,6 @@ namespace MonoGameCross_PlatformDesktopApplication
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
             _mapRenderer.Update(gameTime);
             _camera.LookAt(new Vector2(0, 0));
 
