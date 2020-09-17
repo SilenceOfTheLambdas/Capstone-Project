@@ -1,0 +1,143 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Level1.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3303,
+                "y": 819
+            }
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Level1.tmx#Mushy_floor": {
+            "scaleInDock": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mush_floor2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mushy_flooring.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Test.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Test2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/untitled.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3484,
+                "y": 514
+            }
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/untitled.tmx#Mushy": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/untitled.tmx#TEST": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/GrimGame/Content/Level1.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3412.6666666666665,
+                "y": 546
+            }
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/GrimGame/Content/flooring.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Level1.tmx": {
+            "scale": 0.16907031250000001,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3202.8094820017554,
+                "y": 1588.0966683609809
+            }
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Mushy.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Mushy_flooring.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Test.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/flooring.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/train_539_0000-10.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/Placeholder.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "flooring.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.orientation": null,
+    "map.tileWidth": 64,
+    "openFiles": [
+    ],
+    "project": "MapEditor.tiled-project",
+    "recentFiles": [
+        "Tilesets/Placeholder.tsx",
+        "Level1.tmx",
+        "flooring.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/GrimGame/Content/Level1.tmx",
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Level1.tmx",
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mushy_flooring.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/flooring.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Mushy.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/train_539_0000-10.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Test.tsx",
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Level1.tmx",
+        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mush_floor2.tsx"
+    ],
+    "tileset.embedInMap": false,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 64
+    },
+    "tileset.transparentColor": "#ffffff",
+    "tileset.type": 0,
+    "tileset.useTransparentColor": false
+}
