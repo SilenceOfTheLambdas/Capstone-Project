@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using GrimGame.Engine;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -6,14 +8,14 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.ViewportAdapters;
 
-namespace MonoGameCross_PlatformDesktopApplication
+namespace GrimGame.Game
 {
-    public class Game1 : Game
+    public class Game1 : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private OrthographicCamera _camera;
+        private IsometricCamera _camera;
         private TiledMap _map;
         private TiledMapRenderer _mapRenderer;
         public Game1()
@@ -43,7 +45,10 @@ namespace MonoGameCross_PlatformDesktopApplication
             _mapRenderer = new TiledMapRenderer(GraphicsDevice, _map);
             // If you decided to use the camere, then you could also initialize it here like this
             var viewportadapter = new BoxingViewportAdapter(Window, GraphicsDevice, 800, 600);
-            _camera = new OrthographicCamera(viewportadapter);
+            _camera = new IsometricCamera(viewportadapter);
+            
+            _camera.OrthographicCamera.LookAt(_map.ObjectLayers[0].Objects[0].Position.Rotate(1));
+            Console.WriteLine(_map.ObjectLayers[0].Objects[0].Position);
         }
 
         protected override void LoadContent()
@@ -58,8 +63,28 @@ namespace MonoGameCross_PlatformDesktopApplication
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                _camera.OrthographicCamera.Move(new Vector2(0, -1));
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                _camera.OrthographicCamera.Move(new Vector2(0, 1));
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                _camera.OrthographicCamera.Move(new Vector2(-1, 0));
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                _camera.OrthographicCamera.Move(new Vector2(1, 0));
+            }
+            
             _mapRenderer.Update(gameTime);
-            _camera.LookAt(new Vector2(0, 0));
 
             base.Update(gameTime);
         }
@@ -71,10 +96,10 @@ namespace MonoGameCross_PlatformDesktopApplication
 
             // Transform matrix is only needed if you have a camera
             // Setting the sampler state to `new SamplerState { Filter = TextureFilter.Point }` will reduce gaps and odd artifacts when using animated tiles
-            _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
+            _spriteBatch.Begin(transformMatrix: _camera.OrthographicCamera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
 
             // Then we will render the map
-            _mapRenderer.Draw(_camera.GetViewMatrix());
+            _mapRenderer.Draw(_camera.OrthographicCamera.GetViewMatrix());
 
             // End the sprite batch
             _spriteBatch.End();

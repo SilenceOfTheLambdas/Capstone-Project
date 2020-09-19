@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "TestLevel.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -101,7 +101,23 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "TestLevel.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3218.75,
+                "y": 166.75
+            }
+        },
+        "Tilesets/Mythos_floors1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Tilesets/Placeholder.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/grassland_tiles.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -115,9 +131,15 @@
     "map.orientation": null,
     "map.tileWidth": 64,
     "openFiles": [
+        "TestLevel.tmx",
+        "Tilesets/grassland_tiles.tsx"
     ],
     "project": "MapEditor.tiled-project",
+    "property.type": "float",
     "recentFiles": [
+        "Tilesets/Mythos_floors1.tsx",
+        "Tilesets/grassland_tiles.tsx",
+        "TestLevel.tmx",
         "Tilesets/Placeholder.tsx",
         "Level1.tmx",
         "flooring.tsx",
@@ -126,10 +148,7 @@
         "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mushy_flooring.tsx",
         "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/flooring.tsx",
         "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Mushy.tsx",
-        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/train_539_0000-10.tsx",
-        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Test.tsx",
-        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/Level1.tmx",
-        "/home/csmith/Documents/GameDevelopment/MyGame/Content/Mush_floor2.tsx"
+        "/home/csmith/RiderProjects/MonoGameCross-PlatformDesktopApplication/MonoGameCross-PlatformDesktopApplication/Content/train_539_0000-10.tsx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFormat": "tsx",

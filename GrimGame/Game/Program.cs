@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MonoGameCross_PlatformDesktopApplication
+namespace GrimGame.Game
 {
     public static class Program
     {
