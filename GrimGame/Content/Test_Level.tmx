@@ -318,7 +318,7 @@
    <property name="xPos" type="float" value="1327.33"/>
    <property name="yPos" type="float" value="462"/>
   </properties>
-  <object id="2" name="Player Start Point" x="1327.33" y="462">
+  <object id="2" name="PlayerStart" x="1344" y="448">
    <point/>
   </object>
  </objectgroup>

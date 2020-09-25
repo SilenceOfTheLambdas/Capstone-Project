@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <tileset firstgid="1" source="../Tilesets/wall_stone.tsx"/>
+ <object name="MHA_2D-Iso-Village_walls-misc_01" gid="1" width="512" height="512"/>
+</template>

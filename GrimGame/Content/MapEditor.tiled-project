@@ -2,8 +2,11 @@
     "automappingRulesFile": "",
     "commands": [
     ],
-    "extensionsPath": "../../../../Documents/GameDevelopment/MyGame/Content/extensions",
+    "extensionsPath": "extensions",
     "folders": [
+        "Tilesets",
+        "Templates",
+        "Objects"
     ],
     "objectTypesFile": ""
 }
