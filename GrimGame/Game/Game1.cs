@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
-using MonoGame.Extended.Tiled.Serialization;
 using MonoGame.Extended.ViewportAdapters;
 
 namespace GrimGame.Game
@@ -18,12 +17,16 @@ namespace GrimGame.Game
         public SpriteBatch _spriteBatch;
         private Player _player;
 
-        public IsometricCamera _camera;
+        public OrthographicCamera _camera;
         public TiledMap _map;
         private TiledMapRenderer _mapRenderer;
         
         // TiledObjectRenderer
         private TiledObjectRenderer _tiledObjectRenderer;
+        
+        // _____ Debug _____ //
+        private bool _showDebug = false;
+        private SpriteFont debugFont;
         
         public Game1()
         {
@@ -50,11 +53,9 @@ namespace GrimGame.Game
             // Create the map renderer
             _mapRenderer = new TiledMapRenderer(GraphicsDevice, _map);
             // If you decided to use the camere, then you could also initialize it here like this
-            var viewportadapter = new BoxingViewportAdapter(Window, GraphicsDevice, 800 * 3, 600 * 3);
-            _camera = new IsometricCamera(viewportadapter, this);
-            
-            _camera.OrthographicCamera.LookAt(_map.ObjectLayers[0].Objects[0].Position);
-            
+            var viewportadapter = new BoxingViewportAdapter(Window, GraphicsDevice, 800, 600);
+            _camera = new OrthographicCamera(viewportadapter);
+
             _tiledObjectRenderer = new TiledObjectRenderer(this, _map, _spriteBatch);
             
             _player = new Player(this, Content.Load<Texture2D>("player"));
@@ -64,7 +65,7 @@ namespace GrimGame.Game
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            debugFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 
         protected override void Update(GameTime gameTime)
@@ -73,25 +74,11 @@ namespace GrimGame.Game
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.D0))
             {
-                _camera.OrthographicCamera.Move(new Vector2(0, -5));
+                _showDebug = true;
             }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                _camera.OrthographicCamera.Move(new Vector2(0, 5));
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                _camera.OrthographicCamera.Move(new Vector2(-5, 0));
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                _camera.OrthographicCamera.Move(new Vector2(5, 0));
-            }
+            
             
             _mapRenderer.Update(gameTime);
 
@@ -105,16 +92,34 @@ namespace GrimGame.Game
 
             // Transform matrix is only needed if you have a camera
             // Setting the sampler state to `new SamplerState { Filter = TextureFilter.Point }` will reduce gaps and odd artifacts when using animated tiles
-            _spriteBatch.Begin(transformMatrix: _camera.OrthographicCamera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
+            _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
 
             // Then we will render the map
-            _mapRenderer.Draw(_camera.OrthographicCamera.GetViewMatrix());
-            _player.SpawnPlayer();
+            _mapRenderer.Draw(_camera.GetViewMatrix());
+
+            // _____ PLayer Update _____ //
             _player.Update();
+            
+            // _____ Draw Objects _____ //
             _tiledObjectRenderer.DrawObjects();
 
             // End the sprite batch
             _spriteBatch.End();
+
+            #region Debugging
+            // Draws text above player, showing it's position
+            if (_showDebug)
+            {
+                _spriteBatch.Begin();
+                var textMiddlePoint = debugFont.MeasureString("Player position: " + _player.Position);
+                var textPosition = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
+                
+                _spriteBatch.DrawString(debugFont, "Player position: " + _player.Position, textPosition, Color.Red, 
+                    0, textMiddlePoint, 1.0f, SpriteEffects.None, 0.5f);
+                _spriteBatch.End();
+                
+            }
+            #endregion
 
             base.Draw(gameTime);
         }

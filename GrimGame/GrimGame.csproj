@@ -13,13 +13,37 @@
     <ItemGroup>
         <None Remove="Icon.ico" />
         <None Remove="Icon.bmp" />
+        <None Remove="Content\flooring\**" />
+        <None Remove="Content\buildings\**" />
+        <None Remove="Content\blocks\**" />
+        <None Remove="Content\ground\**" />
+        <None Remove="Content\objects\**" />
+        <None Remove="Content\plants\**" />
+        <None Remove="Content\rocks\**" />
+        <None Remove="Content\water\**" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Icon.ico" />
         <EmbeddedResource Include="Icon.bmp" />
+        <EmbeddedResource Remove="Content\flooring\**" />
+        <EmbeddedResource Remove="Content\buildings\**" />
+        <EmbeddedResource Remove="Content\blocks\**" />
+        <EmbeddedResource Remove="Content\ground\**" />
+        <EmbeddedResource Remove="Content\objects\**" />
+        <EmbeddedResource Remove="Content\plants\**" />
+        <EmbeddedResource Remove="Content\rocks\**" />
+        <EmbeddedResource Remove="Content\water\**" />
     </ItemGroup>
     <ItemGroup>
         <MonoGameContentReference Include="Content\Content.mgcb" />
+        <MonoGameContentReference Remove="Content\flooring\**" />
+        <MonoGameContentReference Remove="Content\buildings\**" />
+        <MonoGameContentReference Remove="Content\blocks\**" />
+        <MonoGameContentReference Remove="Content\ground\**" />
+        <MonoGameContentReference Remove="Content\objects\**" />
+        <MonoGameContentReference Remove="Content\plants\**" />
+        <MonoGameContentReference Remove="Content\rocks\**" />
+        <MonoGameContentReference Remove="Content\water\**" />
     </ItemGroup>
     <ItemGroup>
         <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
@@ -31,5 +55,15 @@
         <PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0" />
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Content\flooring\**" />
+      <Compile Remove="Content\buildings\**" />
+      <Compile Remove="Content\blocks\**" />
+      <Compile Remove="Content\ground\**" />
+      <Compile Remove="Content\objects\**" />
+      <Compile Remove="Content\plants\**" />
+      <Compile Remove="Content\rocks\**" />
+      <Compile Remove="Content\water\**" />
     </ItemGroup>
 </Project>

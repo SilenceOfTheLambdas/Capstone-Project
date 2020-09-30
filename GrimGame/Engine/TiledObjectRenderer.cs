@@ -31,7 +31,7 @@ namespace GrimGame.Engine
                 {
                     if (!layerObject.Type.ToLower().Equals("nodraw"))
                         _spriteBatch.Draw(_game.Content.Load<Texture2D>("Objects/" + layerObject.Name),
-                            _game._camera.TileToScreenCoords(layerObject.Position),
+                            layerObject.Position,
                             null,
                             Color.White,
                             0,

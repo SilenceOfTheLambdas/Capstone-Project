@@ -4,9 +4,7 @@
     ],
     "extensionsPath": "extensions",
     "folders": [
-        "Tilesets",
-        "Templates",
-        "Objects"
+        "Tilesets"
     ],
     "objectTypesFile": ""
 }
