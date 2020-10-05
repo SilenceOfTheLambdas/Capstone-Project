@@ -11,13 +11,11 @@ namespace GrimGame.Engine
 {
     public class TiledObjectRenderer
     {
-        private Game1 _game;
         private TiledMap _map;
         private SpriteBatch _spriteBatch;
 
-        public TiledObjectRenderer(Game1 game, TiledMap map, SpriteBatch spriteBatch)
+        public TiledObjectRenderer(TiledMap map, SpriteBatch spriteBatch)
         {
-            _game = game;
             _map = map;
             _spriteBatch = spriteBatch;
         }
@@ -30,7 +28,7 @@ namespace GrimGame.Engine
                 foreach (var layerObject in objectLayer.Objects)
                 {
                     if (!layerObject.Type.ToLower().Equals("nodraw"))
-                        _spriteBatch.Draw(_game.Content.Load<Texture2D>("Objects/" + layerObject.Name),
+                        _spriteBatch.Draw(Globals.ContentManager.Load<Texture2D>("Objects/" + layerObject.Name),
                             layerObject.Position,
                             null,
                             Color.White,

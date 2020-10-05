@@ -1,6 +1,9 @@
 # JetBrains IDE
 .idea/
 
+# VScode
+.vscode/
+
 # C# build artifacts
 bin/
 obj/

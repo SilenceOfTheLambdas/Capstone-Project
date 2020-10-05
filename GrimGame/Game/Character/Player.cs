@@ -9,7 +9,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Tiled;
 
-namespace GrimGame.Character
+namespace GrimGame.Game.Character
 {
     public class Player
     {
@@ -22,14 +22,16 @@ namespace GrimGame.Character
             set => _playerSprite = value;
         }
 
-        private Game1 _game1;
+        private MapSystem _mapSystem;
+        private OrthographicCamera _camera;
 
-        public Player(Game1 game, Texture2D playerSprite)
+        public Player(MapSystem mapSystem, OrthographicCamera camera,Texture2D playerSprite)
         {
-            _game1 = game;
+            _mapSystem = mapSystem;
+            _camera = camera;
             PlayerSprite = playerSprite;
             
-            foreach (var objectLayer in _game1._map.ObjectLayers)
+            foreach (var objectLayer in mapSystem.Map.ObjectLayers)
             {
                 foreach (var layerObject in objectLayer.Objects)
                 {
@@ -48,10 +50,7 @@ namespace GrimGame.Character
 
         public void Move()
         {
-            _game1._camera.LookAt(Position);
-            _game1._spriteBatch.Draw(_playerSprite, Position, null, Color.White, 0f, Vector2.Zero,
-                new Vector2(0.25f, 0.25f), SpriteEffects.None, 1);
-            
+            _camera.LookAt(Position);
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 Position += new Vector2(0, -1);
