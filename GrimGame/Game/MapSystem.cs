@@ -1,10 +1,14 @@
+#region Imports
+using System;
 using System.Collections.Generic;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+#endregion
 
 namespace GrimGame.Game
 {
@@ -31,19 +35,33 @@ namespace GrimGame.Game
         /// </summary>
         private List<TiledMapLayer> _layers;
 
+        private List<TiledMapLayer> _layersAbovePlayer;
+
         public Player _player;
 
         public MapSystem()
         {
-            Map = Engine.Globals.ContentManager.Load<TiledMap>("Level1");
+            Map = Globals.ContentManager.Load<TiledMap>("Level1");
             // Create the map renderer
-            MapRenderer = new TiledMapRenderer(Engine.Globals.GraphicsDevice, Map);
-            _tiledObjectRenderer = new TiledObjectRenderer(Map, Engine.Globals.SpriteBatch);
+            MapRenderer = new TiledMapRenderer(Globals.GraphicsDevice, Map);
+            _tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
             _layers = new List<TiledMapLayer>();
-            
-            foreach (var tiledMapLayer in Map.Layers)
+            _layersAbovePlayer = new List<TiledMapLayer>();
+
+            for (var i = 0; i < Map.Layers.Count; i++)
             {
-                _layers.Add(tiledMapLayer);
+                if (Map.Layers[i].Name.ToLower().Contains("aboveplayer"))
+                {
+                    _layersAbovePlayer.Add(Map.Layers[i]);
+                }
+            }
+
+            for (int i = 0; i < Map.Layers.Count; i++)
+            {
+                if (!Map.Layers[i].Name.ToLower().Contains("aboveplayer"))
+                {
+                    _layers.Add(Map.Layers[i]);
+                }
             }
         }
 
@@ -55,17 +73,32 @@ namespace GrimGame.Game
         /// <summary>
         /// Renders the map
         /// </summary>
-        public void DrawMap(Matrix viewMatrix)
+        public void DrawMap(Matrix? viewMatrix)
         {
-            foreach (var layer in _layers)
+            Globals.SpriteBatch.Begin(samplerState: new SamplerState { Filter = TextureFilter.Point });
+            for (int i = 0; i < _layers.Count; i++)
             {
-                if (layer.Name != "Player")
-                    MapRenderer.Draw(layer, viewMatrix);
+                MapRenderer.Draw(_layers[i], viewMatrix, viewMatrix);
             }
-            // player
-            Engine.Globals.SpriteBatch.Draw(_player.PlayerSprite, _player.Position, null, Color.White, 0f, Vector2.Zero,
-                new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+            // Drawing of player sprite
+            Globals.SpriteBatch.Draw(_player.PlayerSprite, _player.Position, null, Color.White, 0f, Vector2.Zero,
+                new Vector2(0.5f, 0.5f), SpriteEffects.None, 0.1f);
+            Globals.SpriteBatch.End();
+            
+            // Drawing of obscured parts of the map
+            
+            // Make new spriteBatch
+            Globals.SpriteBatch.Begin(samplerState: new SamplerState { Filter = TextureFilter.Point });
+            // South Wall layer
+            foreach (var layer in _layersAbovePlayer)
+            {
+                MapRenderer.Draw(layer, viewMatrix);
+            }
+            // End spriteBatch
+            Globals.SpriteBatch.End();
+            
             _tiledObjectRenderer.DrawObjects();
         }
+        
     }
 }

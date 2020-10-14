@@ -1,22 +1,20 @@
-﻿using System;
+﻿#region Imports
+using System;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
-using MonoGame.Extended.Tiled;
-using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.ViewportAdapters;
+#endregion
 
 namespace GrimGame.Game
 {
     public class MainGame : Microsoft.Xna.Framework.Game
     {
-        private readonly GraphicsDeviceManager _graphics;
         private Player _player;
-        public OrthographicCamera Camera;
-        
+
         // _____ Map System _____ //
         private MapSystem _mapSystem;
 
@@ -26,38 +24,36 @@ namespace GrimGame.Game
         
         public MainGame()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            var graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
             // Set the window size
-            _graphics.IsFullScreen = true;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
-            _graphics.ApplyChanges();
+            graphics.IsFullScreen = true;
+            //graphics.PreferredBackBufferWidth = 1920;
+            //graphics.PreferredBackBufferHeight = 1080;
+            graphics.ApplyChanges();
             
             // _____ Globals _____ //
-            Engine.Globals.ContentManager = this.Content;
-            Engine.Globals.GraphicsDevice = this.GraphicsDevice;
+            Globals.ContentManager = Content;
+            Globals.GraphicsDevice = GraphicsDevice;
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-            var viewportadapter = new DefaultViewportAdapter(GraphicsDevice);
-            Camera = new OrthographicCamera(viewportadapter);
+            Globals.Camera = new OrthographicCamera(GraphicsDevice);
+
             // _____ Map System _____ //
             _mapSystem = new MapSystem();
-            _player = new Player(_mapSystem, Camera,Content.Load<Texture2D>("player"));
+            _player = new Player(_mapSystem, Globals.Camera,Content.Load<Texture2D>("player"));
 
             _mapSystem._player = _player;
         }
 
         protected override void LoadContent()
         {
-            Engine.Globals.SpriteBatch = new SpriteBatch(GraphicsDevice);
-            
-            
+            Globals.SpriteBatch = new SpriteBatch(GraphicsDevice);
             _debugFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 
@@ -79,21 +75,10 @@ namespace GrimGame.Game
         protected override void Draw(GameTime gameTime)
         {
             // Clear the screen
-            GraphicsDevice.Clear(Color.White);
-
-            // Transform matrix is only needed if you have a camera
-            // Setting the sampler state to `new SamplerState { Filter = TextureFilter.Point }` will reduce gaps and odd artifacts when using animated tiles
-            Engine.Globals.SpriteBatch.Begin(transformMatrix: Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
-
-            // Then we will render the map
-            _mapSystem.DrawMap(Camera.GetViewMatrix());
-
-            // _____ PLayer Draw _____ //
-            // Engine.Globals.SpriteBatch.Draw(_player.PlayerSprite, _player.Position, null, Color.White, 0f, Vector2.Zero,
-            //     new Vector2(0.5f, 0.5f), SpriteEffects.None, 1f);
-
-            // End the sprite batch
-            Engine.Globals.SpriteBatch.End();
+            GraphicsDevice.Clear(Color.Black);
+            
+            // Then we will render the map and player
+            _mapSystem.DrawMap(Globals.Camera.GetViewMatrix());
 
             #region Debugging
             if (Keyboard.GetState().IsKeyDown(Keys.D0))

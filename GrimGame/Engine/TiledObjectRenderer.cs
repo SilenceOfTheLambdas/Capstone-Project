@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using GrimGame.Game;
+#region Imports
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Content;
 using MonoGame.Extended.Tiled;
+#endregion
 
 namespace GrimGame.Engine
 {

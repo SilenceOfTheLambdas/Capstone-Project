@@ -156,6 +156,16 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Tilesets/Building_stone_1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.5
+        },
+        "Tilesets/Building_wood_1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.75
+        },
         "Tilesets/Doors_wood.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -170,12 +180,25 @@
         },
         "Tilesets/Infernal_building_1.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 0.5,
+            "scaleInDock": 1,
             "scaleInEditor": 0.75
+        },
+        "Tilesets/Infernal_building_2.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.75,
+            "scaleInEditor": 0.5
         },
         "Tilesets/Mythos_floors1.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Tilesets/Nature_ground_and_decals.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.33
+        },
+        "Tilesets/Nature_trees.tsx": {
+            "dynamicWrapping": true
         },
         "Tilesets/Placeholder.tsx": {
             "scaleInDock": 1,
@@ -192,6 +215,11 @@
         "Tilesets/roof_brown.tsx": {
             "scaleInDock": 0.25,
             "scaleInEditor": 0.33
+        },
+        "Tilesets/spritesheet.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 0.5
         },
         "Tilesets/wall_stone.tsx": {
             "scaleInDock": 1,
@@ -218,6 +246,7 @@
             }
         }
     },
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.json)",
     "map.height": 100,
     "map.lastUsedFormat": "tmx",
     "map.layerDataFormat": null,
@@ -228,26 +257,26 @@
     "openFiles": [
     ],
     "project": "MapEditor.tiled-project",
-    "property.type": "float",
+    "property.type": "bool",
     "recentFiles": [
+        "Tilesets/Building_wood_1.tsx",
+        "Tilesets/Building_stone_1.tsx",
+        "Tilesets/Nature_ground_and_decals.tsx",
+        "Tilesets/Infernal_building_2.tsx",
         "Tilesets/Infernal_building_1.tsx",
+        "Tilesets/spritesheet.tsx",
         "Level1.tmx",
         "Tilesets/grassland_tiles.tsx",
         "untitled.tmx",
         "Test_nontile.tmx",
         "Tilesets/wall_stone.tsx",
-        "Tilesets/Doors_wood.tsx",
-        "Test_NonTile.tmx",
-        "Test.tmx",
-        "TestLevel.tmx",
-        "Level2.tmx",
-        "Level1(test).tmx"
+        "Tilesets/Doors_wood.tsx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 160,
-        "width": 64
+        "height": 352,
+        "width": 160
     },
     "tileset.transparentColor": "#ffffff",
     "tileset.type": 0,
