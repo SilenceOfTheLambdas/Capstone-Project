@@ -78,7 +78,7 @@ namespace GrimGame.Game
             Globals.SpriteBatch.Begin(samplerState: new SamplerState { Filter = TextureFilter.Point });
             for (int i = 0; i < _layers.Count; i++)
             {
-                MapRenderer.Draw(_layers[i], viewMatrix, viewMatrix);
+                MapRenderer.Draw(_layers[i], viewMatrix);
             }
             // Drawing of player sprite
             Globals.SpriteBatch.Draw(_player.PlayerSprite, _player.Position, null, Color.White, 0f, Vector2.Zero,

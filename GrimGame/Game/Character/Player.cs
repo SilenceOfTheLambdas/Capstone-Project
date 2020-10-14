@@ -7,16 +7,20 @@ using MonoGame.Extended;
 
 namespace GrimGame.Game.Character
 {
+    /// <summary>
+    /// The playable character.
+    /// </summary>
     public class Player
     {
+        /// <summary>
+        /// The world position of the player.
+        /// </summary>
         public Vector2 Position;
 
-        private Texture2D _playerSprite;
-        public Texture2D PlayerSprite
-        {
-            get => _playerSprite;
-            set => _playerSprite = value;
-        }
+        /// <summary>
+        /// The player's sprite
+        /// </summary>
+        public Texture2D PlayerSprite { get; private set; }
 
         private MapSystem _mapSystem;
         private OrthographicCamera _camera;
@@ -44,6 +48,9 @@ namespace GrimGame.Game.Character
             Move();
         }
 
+        /// <summary>
+        /// Moves the player.
+        /// </summary>
         public void Move()
         {
             _camera.LookAt(Position);

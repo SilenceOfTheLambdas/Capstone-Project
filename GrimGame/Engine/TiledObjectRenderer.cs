@@ -6,6 +6,9 @@ using MonoGame.Extended.Tiled;
 
 namespace GrimGame.Engine
 {
+    /// <summary>
+    /// Renders objects from Tiled into the game world.
+    /// </summary>
     public class TiledObjectRenderer
     {
         private TiledMap _map;
@@ -17,6 +20,9 @@ namespace GrimGame.Engine
             _spriteBatch = spriteBatch;
         }
 
+        /// <summary>
+        /// Draws the object into the game world.
+        /// </summary>
         public void DrawObjects()
         {
 
