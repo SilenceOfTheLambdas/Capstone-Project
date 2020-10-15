@@ -1,4 +1,6 @@
 #region Imports
+
+using GrimGame.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -46,6 +48,15 @@ namespace GrimGame.Game.Character
         public void Update()
         {
             Move();
+        }
+
+        public void Draw()
+        {
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
+            // Drawing of player sprite
+            Globals.SpriteBatch.Draw(PlayerSprite, Position, null, Color.White, 0f, Vector2.Zero,
+                new Vector2(0.5f, 0.5f), SpriteEffects.None, 0.1f);
+            Globals.SpriteBatch.End();
         }
 
         /// <summary>

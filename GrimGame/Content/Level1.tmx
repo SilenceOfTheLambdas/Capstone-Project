@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="27" nextobjectid="2">
+<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="30" nextobjectid="6">
  <tileset firstgid="1" source="Tilesets/Nature_ground_and_decals.tsx"/>
  <tileset firstgid="65" source="Tilesets/Nature_trees.tsx"/>
  <tileset firstgid="89" source="Tilesets/Building_wood_1.tsx"/>
@@ -9,7 +9,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3WsQ0CQRADwC+G/mukBITEItuaSf3BBS+vnwcAAHa95H/NP30PAMBv2V9d0vZ7e+7/B1boMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339jz9Xqe/D8ihLwC4kLbf23P3Gljxbb/Jb/M3buh1XECcAAA=
+   H4sIAAAAAAAAA+3WsQnDUBAD0D+Mx/L+c6RxHwK+IB3vQSq5CNjodJ9z7udHBu8DAOA9l/yv+bfnAQB4l/3VJW2/t+e+f2ALfQbAhLT93p6718AW+gyACWn7vT13r4Et9BkAE9L2e3vuXgNb6DMAJqTt9/bcvQa20GcATEjb7+25ew1soc8AmJC239tz9xrYQp8BMCFtv7fn7jWwhT4DYELafm/P3WtgC30GwIS0/d6ep9/r9P8H5NAXAExI2+/tuXsNbPFrv8ln8w+Xwsp+QJwAAA==
   </data>
  </layer>
  <layer id="10" name="Ground" width="100" height="100">
@@ -17,7 +17,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3aOw6AIBBAQfT+h7b3lwVFMDvTWJgYsw8KoqUAAAAA0GIZ/QJc0obslt2V+ezbRFtp+q5Ih2ir1qYwI+s3H83brZ3vc2S9zumLLtrPTZ975pOL3vzViLVrv9R5+/xh/nXMC8bx3SvOjPLRPM6soE6v84e9yJ9YrxBXu18i/2i1PJdz/msDAAAAAAAAAAAAAAAAAAAAAAAAAAAAgOc2qlCJ4UCcAAA=
+   H4sIAAAAAAAAA+3aOQ7AIAwEwBz//3P6XDIEAoiZhgIJRV67QGFZAAAAAMixtv4AHsmG2a2nlf6cs4lmJdOyIjlEs8rNFHqkf+cj83xb5X2u9Guf/shF9n2Tzzv1mYu8GVWL3jUvaUrfP0rUfy9wxij0K7Tjv1ecGs1H5nFqBWlq3T/MIiPRrxCXOi+RN1o553LPuzYAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+O4A2DrcTkCcAAA=
   </data>
  </layer>
  <layer id="12" name="Trees etc." width="100" height="100">
@@ -68,6 +68,24 @@
    H4sIAAAAAAAAA+3ToQEAMAjEQPafGFx9GYAXdxPEpAoAAAAA+PV1AMtcB7D4JI9P8vgkj0/y+AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACARA9QiP8TQJwAAA==
   </data>
  </layer>
+ <objectgroup id="28" name="playerspawn">
+  <object id="2" name="playerspawn" type="nodraw" x="669.697" y="766.667">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer id="27" name="Player" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+ <objectgroup id="29" name="test">
+  <object id="4" name="BehindWall" type="nodraw" x="745" y="631.5">
+   <polygon points="0,0 -65,-67 -16.5,-111 -0.5,-95"/>
+  </object>
+  <object id="5" name="FrontOfWall" type="nodraw" x="671" y="576">
+   <polygon points="0,0 -20,11 38,74.5 64.5,63.5 64.5,-33.5 2,-97.5"/>
+  </object>
+ </objectgroup>
  <layer id="15" name="Building_ground_upper(AbovePlayer)" width="100" height="100">
   <properties>
    <property name="abovePlayer" type="bool" value="true"/>
@@ -116,9 +134,4 @@
    H4sIAAAAAAAAA+3VMQ0AAAzDsPLHNHCjsG+qZCPIlwQAAAAAAAC6zXcAABX8AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgKsFTSODIUCcAAA=
   </data>
  </layer>
- <objectgroup id="5" name="Player">
-  <object id="1" name="playerspawn" type="nodraw" x="640" y="640">
-   <point/>
-  </object>
- </objectgroup>
 </map>
