@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="4">
+ <tileset firstgid="1" source="Tilesets/interiors.tsx"/>
+ <layer id="1" name="Ground" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKFr/fUHy6Hgqqmqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqv8AQQEpfw==
+  </data>
+ </layer>
+ <layer id="2" name="Floor" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1bENgDAQA8BX6ID9hwAmASYBhuAXSEkUoTvJkms3jgAA/mwpEWtmK/VOO3vufWTOUu+0c+Xed+Yp9U474xAxZeah3mnHf/TFf/TFf/TFfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABfeAHqcSw7
+  </data>
+ </layer>
+ <layer id="4" name="Wall_north" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztxrEJwDAMRFEX7rNE8Cgm+09kFYJUagWG9+BzNwbA/Z5o5lafPm+0cqtPnx19udUHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgeOwgQt
+  </data>
+ </layer>
+ <layer id="7" name="Player" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+ <objectgroup id="8" name="test">
+  <object id="2" name="abovePlayer" type="nodraw" x="224" y="384" width="256" height="29.5"/>
+  <object id="3" name="belowPlayer" type="nodraw" x="224.5" y="417" width="255" height="22.5"/>
+ </objectgroup>
+ <layer id="5" name="Wall_south(AbovePlayer)" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAIADDtH8EsdrOBpyBssAgAAAAA+Klyz63OPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHwxnYwK0Q==
+  </data>
+ </layer>
+ <objectgroup id="6" name="playerspawn">
+  <object id="1" name="playerspawn" type="nodraw" x="370.667" y="264">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
