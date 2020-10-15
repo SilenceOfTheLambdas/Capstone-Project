@@ -18,7 +18,11 @@ Getting started is pretty simple, this project was made using JetBrains Rider.
 
 ![Image showing repo import screen](https://i.gyazo.com/9173d99394999312d31b1fee3abb2e0a.png)
 
-3. **The build will fail at first.** Open a terminal window/cmd (Bottom status bar) in the projects directory, 
+3. To get the MonoGame Content Build manager installed, open a terminal and run the following command:
+
+`dotnet tool install -g dotnet-mgcb`
+
+4. **The build will fail at first.** Open a terminal window/cmd (Bottom status bar) in the projects directory, 
 and type the following commands:
 
 `dotnet restore`
