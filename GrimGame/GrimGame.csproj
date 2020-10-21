@@ -49,6 +49,8 @@
         <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Dcrew.Camera" Version="1.5.3" />
+        <PackageReference Include="MLEM.Extended" Version="4.1.0" />
         <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
         <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0" />
         <PackageReference Include="MonoGame.Extended.Graphics" Version="3.8.0" />

@@ -1,5 +1,4 @@
 #region Imports
-
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,12 +11,17 @@ namespace GrimGame.Game.Character
     /// <summary>
     /// The playable character.
     /// </summary>
-    public class Player
+    public class Player : GameObject
     {
         /// <summary>
-        /// The world position of the player.
+        /// The player's tile position.
         /// </summary>
-        public Vector2 Position;
+        public Vector2 TilePosition;
+        
+        /// <summary>
+        /// The origin point of the player's sprite.
+        /// </summary>
+        private Vector2 Origin { get; set; }
 
         /// <summary>
         /// The player's sprite
@@ -32,8 +36,14 @@ namespace GrimGame.Game.Character
             _mapSystem = mapSystem;
             _camera = camera;
             PlayerSprite = playerSprite;
+        }
+        
+        public override void Init(MainGame g)
+        {
             
-            foreach (var objectLayer in mapSystem.Map.ObjectLayers)
+            Origin = new Vector2(PlayerSprite.Width / 2, PlayerSprite.Height);
+
+            foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
             {
                 foreach (var layerObject in objectLayer.Objects)
                 {
@@ -45,16 +55,26 @@ namespace GrimGame.Game.Character
             }
         }
 
-        public void Update()
+        public override void Destroy(MainGame g)
         {
-            Move();
+            // TODO: Destroy GameObject
         }
 
-        public void Draw()
+        public override void Update(MainGame g)
+        {
+            Move();
+
+            var x = (ushort) (Position.X / 32);
+            var y = (ushort) (Position.Y / 32);
+            
+            TilePosition = new Vector2(x, y);
+        }
+
+        public override void Draw(MainGame g)
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
             // Drawing of player sprite
-            Globals.SpriteBatch.Draw(PlayerSprite, Position, null, Color.White, 0f, Vector2.Zero,
+            Globals.SpriteBatch.Draw(PlayerSprite, Position, null, Color.White, 0f, Origin, 
                 new Vector2(0.5f, 0.5f), SpriteEffects.None, 0.1f);
             Globals.SpriteBatch.End();
         }
@@ -62,7 +82,7 @@ namespace GrimGame.Game.Character
         /// <summary>
         /// Moves the player.
         /// </summary>
-        public void Move()
+        private void Move()
         {
             _camera.LookAt(Position);
             if (Keyboard.GetState().IsKeyDown(Keys.W))

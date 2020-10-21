@@ -1,11 +1,8 @@
 #region Imports
-using System;
 using System.Collections.Generic;
-using GrimGame.Engine;
+using GrimGame.Game;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 #endregion
@@ -17,6 +14,8 @@ namespace GrimGame.Engine
     /// </summary>
     public class MapSystem
     {
+        private MainGame _game;
+        
         /// <summary>
         /// The Tiled map
         /// </summary>
@@ -37,35 +36,34 @@ namespace GrimGame.Engine
         /// int: an index that defines the order on which a layer is drawn
         /// TiledMapLayer: the layer associated with that index
         /// </summary>
-        private Dictionary<int, TiledMapLayer> RenderOrder {  get;  set; }
+        private Dictionary<int, TiledMapLayer> RenderQueue {  get;  set; }
 
         private readonly int _playerIndex;
         public int currentIndex;
 
         public Player Player;
 
-        public MapSystem()
+        public MapSystem(MainGame g)
         {
+            this._game = g;
             Map = Globals.ContentManager.Load<TiledMap>("TestMap");
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
-            MapRenderer = new TiledMapRenderer(Globals.GraphicsDevice, Map);
+            MapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
             _tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
-            RenderOrder = new Dictionary<int, TiledMapLayer>();
+            RenderQueue = new Dictionary<int, TiledMapLayer>();
 
             // First add all of the layers below the player
             for (var i = 0; i < Map.Layers.Count; i++)
             {
-                RenderOrder.Add(i, Map.Layers[i]);
+                RenderQueue.Add(i, Map.Layers[i]);
             }
 
-            foreach (var (key, value) in RenderOrder)
+            foreach (var (key, value) in RenderQueue)
             {
-                if (value.Name.Equals("Player"))
-                {
-                    _playerIndex = key;
-                    currentIndex = key;
-                }
+                if (!value.Name.Equals("Player")) continue;
+                _playerIndex = key;
+                currentIndex = key;
             }
         }
 
@@ -83,16 +81,16 @@ namespace GrimGame.Engine
             // Below player
             for (var i = 0; i < _playerIndex; i++)
             {
-                MapRenderer.Draw(RenderOrder[i], viewMatrix);
+                MapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
             
             // The player
-            Player.Draw();
+            Player.Draw(_game);
             
             // Above player
-            for (var i = _playerIndex + 1; i < RenderOrder.Count; i++)
+            for (var i = _playerIndex + 1; i < RenderQueue.Count; i++)
             {
-                MapRenderer.Draw(RenderOrder[i], viewMatrix);
+                MapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
 
             // Draw any objects that are visible in-game
@@ -110,16 +108,16 @@ namespace GrimGame.Engine
             // Below player
             for (var i = 0; i < newPlayerIndex; i++)
             {
-                MapRenderer.Draw(RenderOrder[i], viewMatrix);
+                MapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
             
             // The player
-            Player.Draw();
+            Player.Draw(_game);
             
             // Above player
-            for (var i = newPlayerIndex + 1; i < RenderOrder.Count; i++)
+            for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
             {
-                MapRenderer.Draw(RenderOrder[i], viewMatrix);
+                MapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
 
             // Draw any objects that are visible in-game

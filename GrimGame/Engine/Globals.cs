@@ -1,4 +1,6 @@
 #region Imports
+
+using Dcrew.Camera;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,7 +15,7 @@ namespace GrimGame.Engine
         public static OrthographicCamera Camera;
         public static ContentManager ContentManager;
         public static SpriteBatch SpriteBatch;
-        public static GraphicsDevice GraphicsDevice;
+        public static GraphicsDeviceManager Graphics;
         /// <summary>
         /// The number of layers in the game map, not inclusive of the player layer
         /// </summary>

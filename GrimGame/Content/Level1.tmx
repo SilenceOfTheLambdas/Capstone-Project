@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="30" nextobjectid="6">
+<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="30" nextobjectid="13">
  <tileset firstgid="1" source="Tilesets/Nature_ground_and_decals.tsx"/>
  <tileset firstgid="65" source="Tilesets/Nature_trees.tsx"/>
- <tileset firstgid="89" source="Tilesets/Building_wood_1.tsx"/>
- <tileset firstgid="187" source="Tilesets/Building_stone_1.tsx"/>
+ <tileset firstgid="89" name="Building_stone_1_128x128" tilewidth="128" tileheight="128" tilecount="1" columns="1">
+  <image source="Tilesets/Source/Buidling_stone_1/128x128.png" width="132" height="132"/>
+ </tileset>
+ <tileset firstgid="90" name="Building_stone_1_160x352" tilewidth="160" tileheight="352" tilecount="2" columns="2">
+  <image source="Tilesets/Source/Buidling_stone_1/160x352.png" width="328" height="356"/>
+ </tileset>
+ <tileset firstgid="92" name="Building_stone_1_64x64" tilewidth="64" tileheight="64" tilecount="10" columns="10">
+  <image source="Tilesets/Source/Buidling_stone_1/64x64.png" width="640" height="64"/>
+ </tileset>
+ <tileset firstgid="102" name="Building_stone_1_32x96" tilewidth="32" tileheight="96" tilecount="2" columns="2">
+  <image source="Tilesets/Source/Buidling_stone_1/32x96.png" width="64" height="96"/>
+ </tileset>
+ <tileset firstgid="104" name="Building_stone_1_64x128" tilewidth="64" tileheight="128" tilecount="11" columns="11">
+  <image source="Tilesets/Source/Buidling_stone_1/64x128.png" width="704" height="128"/>
+ </tileset>
+ <tileset firstgid="115" name="Building_stone_1_64x160" tilewidth="64" tileheight="160" tilecount="17" columns="17">
+  <image source="Tilesets/Source/Buidling_stone_1/64x160.png" width="1088" height="160"/>
+ </tileset>
+ <tileset firstgid="132" name="Building_stone_1_64x96" tilewidth="64" tileheight="96" tilecount="34" columns="34">
+  <image source="Tilesets/Source/Buidling_stone_1/64x96.png" width="2176" height="96"/>
+ </tileset>
+ <tileset firstgid="166" name="Building_stone_1_96x96" tilewidth="96" tileheight="96" tilecount="4" columns="4">
+  <image source="Tilesets/Source/Buidling_stone_1/96x96.png" width="384" height="96"/>
+ </tileset>
+ <tileset firstgid="170" name="Building_stone_1_32x128" tilewidth="32" tileheight="128" tilecount="6" columns="6">
+  <image source="Tilesets/Source/Buidling_stone_1/32x128.png" width="192" height="128"/>
+ </tileset>
  <layer id="11" name="Base (Ground)" width="100" height="100">
   <properties>
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3WsQnDUBAD0D+Mx/L+c6RxHwK+IB3vQSq5CNjodJ9z7udHBu8DAOA9l/yv+bfnAQB4l/3VJW2/t+e+f2ALfQbAhLT93p6718AW+gyACWn7vT13r4Et9BkAE9L2e3vuXgNb6DMAJqTt9/bcvQa20GcATEjb7+25ew1soc8AmJC239tz9xrYQp8BMCFtv7fn7jWwhT4DYELafm/P3WtgC30GwIS0/d6ep9/r9P8H5NAXAExI2+/tuXsNbPFrv8ln8w+Xwsp+QJwAAA==
+   H4sIAAAAAAAAA+3WsQ0CQRADwC+G/mukBITEItuaSf3BBS+vnwcAAHa95H/NP30PAMBv2V9d0vZ7e+7/B1boMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339ty9BlboMwAupO339jz9Xqe/D8ihLwC4kLbf23P3Gljxbb/Jb/M3buh1XECcAAA=
   </data>
  </layer>
  <layer id="10" name="Ground" width="100" height="100">
@@ -33,7 +58,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3TQQqAMAxFwV7Tc/T+4E6kUNRFm4/MbLINeaQ1AAAAAIBcvXoBLn2Y1BlbaFJn1kKT/Z5aaLLP2xaarPe1hSbraJFDizz3Wx9NiwT+Io8WebTIo0UeLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/OAHct7ebQJwAAA==
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
   </data>
  </layer>
  <layer id="16" name="Wall_north-west_bottom" width="100" height="100">
@@ -41,7 +66,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3RsQkAIBDAwN9/ZCs7Gwcwwt0EgcwAAAAAAAC/Wa8DOLzo8KLDiw4vOrzo8KLDiw4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgtgEyGThcQJwAAA==
+   H4sIAAAAAAAAA+3TsQ0AMAzDsBze/t4tFxSwB/ICLZoBAACA/246gHXSASxf9PBFD1/08EUPXwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQN4DdUiVokCcAAA=
   </data>
  </layer>
  <layer id="21" name="Wall_north-west_upper" width="100" height="100">
@@ -49,7 +74,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3TMQ0AMAwEsfCH3C6dGgr5SDaCW64KAAAAAPjOdADtTgfQfJHDFzl8kcMXOXyRwxc5fAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7PUdBH1FAnAAA
+   H4sIAAAAAAAAA+3ToQ0AMAwEsQze7l4WXJaPZE9w5KoAANjkTAfQ7nQAzRc5fJHDFzl8kcMXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwK8HZ6LHW0CcAAA=
   </data>
  </layer>
  <layer id="17" name="Wall_north-east_bottom" width="100" height="100">
@@ -57,7 +82,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3RQQ0AIBDAsPOvmCcCEMAIrYIlmwEAAAAAAF61bgdw8KTHkx5Pejzp8aTHEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgL9sLodYwkCcAAA=
+   H4sIAAAAAAAAA+3RwQkAQAgEMeu2egu49+EiSQUDUwUAAAD/9HYAD0/yeJLHkzye5PEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4bAC1cuv2QJwAAA==
   </data>
  </layer>
  <layer id="20" name="Wall_north-east_upper" width="100" height="100">
@@ -65,11 +90,11 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3ToQEAMAjEQPafGFx9GYAXdxPEpAoAAAAA+PV1AMtcB7D4JI9P8vgkj0/y+AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACARA9QiP8TQJwAAA==
+   H4sIAAAAAAAAA+3ToQEAMAjEQDauL8t3AETlI+4miEkVAMDfSQcw3HQAQ6cDGHyyj0/28ck+PgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIe4WZbRlAnAAA
   </data>
  </layer>
  <objectgroup id="28" name="playerspawn">
-  <object id="2" name="playerspawn" type="nodraw" x="669.697" y="766.667">
+  <object id="2" name="playerspawn" type="nodraw" x="669" y="766">
    <point/>
   </object>
  </objectgroup>
@@ -79,11 +104,23 @@
   </data>
  </layer>
  <objectgroup id="29" name="test">
-  <object id="4" name="BehindWall" type="nodraw" x="745" y="631.5">
-   <polygon points="0,0 -65,-67 -16.5,-111 -0.5,-95"/>
+  <object id="6" type="nodraw" x="674" y="576">
+   <point/>
   </object>
-  <object id="5" name="FrontOfWall" type="nodraw" x="671" y="576">
-   <polygon points="0,0 -20,11 38,74.5 64.5,63.5 64.5,-33.5 2,-97.5"/>
+  <object id="7" type="nodraw" x="684" y="588.25">
+   <point/>
+  </object>
+  <object id="8" type="nodraw" x="696" y="600.25">
+   <point/>
+  </object>
+  <object id="9" type="nodraw" x="706" y="610.5">
+   <point/>
+  </object>
+  <object id="10" type="nodraw" x="723" y="627.75">
+   <point/>
+  </object>
+  <object id="11" type="nodraw" x="734.5" y="639">
+   <point/>
   </object>
  </objectgroup>
  <layer id="15" name="Building_ground_upper(AbovePlayer)" width="100" height="100">
@@ -91,7 +128,7 @@
    <property name="abovePlayer" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3RsQkAMAwDQe+/n/fJAMFtLMJdo1bwVQAAAAAAAPCX3j7ARZN9PSzvTS002aNJHk3yaJFHizxaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMBfDsrh2MRAnAAA
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
   </data>
  </layer>
  <layer id="25" name="Objects_upper(AbovePlayer)" width="100" height="100">
@@ -99,7 +136,7 @@
    <property name="abovePlayer" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3TsQ0AIAwDwSwOWR0GSJ8I7iT33zgCAAAAAAAA3pF3qzuC0u4O+Fx2B8BQvgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEDlAEx/GIBAnAAA
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
   </data>
  </layer>
  <layer id="23" name="Wall_south-east_bottom(AbovePlayer)" width="100" height="100">
@@ -107,7 +144,7 @@
    <property name="abovePlayer" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3ToQ0AMAwEsew/ckvKAkvzkewJjlwVAAAAAAAAAADscKYDaHc6gOaLHL7I4Yscvsjhixy+yOELAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg5wF1vS0LQJwAAA==
+   H4sIAAAAAAAAA+3RQQ0AAAjEMIQjnh8WOJJWwZJVAQAAAAAAX/V1AMuLHF7k8CKHFzm8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgB8GOxcyAECcAAA=
   </data>
  </layer>
  <layer id="24" name="Wall_south-east_upper(AbovePlayer)" width="100" height="100">
@@ -115,7 +152,7 @@
    <property name="abovePlayer" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3TMREAMAzEsPCH3C7dQiF/qYTAi6sAAAAAAAAA+N2dDqCd6QCaL3L4Iocvcvgihy9y+CKHLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIANHp7Pr79AnAAA
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
   </data>
  </layer>
  <layer id="26" name="Wall_south-west_bottom(AbovePlayer)" width="100" height="100">
@@ -123,7 +160,7 @@
    <property name="abovePlayer" type="bool" value="true"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3VsQkAAAgDQfef2NIBBCtBi7sJAl8kAgAAAAAAAAAAgC/yegCNJgBs8Cf/aAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwKvYbf5kCcAAA=
+   H4sIAAAAAAAAA+3RQQkAAAgAMXOb3gDiW5EtwcFFAAAAAAAAMMntABpP7vEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgG8KlzC5Q0CcAAA=
   </data>
  </layer>
  <layer id="22" name="Ornaments" width="100" height="100">
@@ -131,7 +168,7 @@
    <property name="abovePlayer" type="bool" value="false"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3VMQ0AAAzDsPLHNHCjsG+qZCPIlwQAAAAAAAC6zXcAABX8AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgKsFTSODIUCcAAA=
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
   </data>
  </layer>
 </map>

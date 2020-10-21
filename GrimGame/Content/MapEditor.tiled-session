@@ -3,14 +3,15 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Level1.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 2,
+            "scaleInEditor": 2
         },
         "/home/csmith/Documents/GameDevelopment/MyGame/Content/Level1.tmx": {
             "scale": 0.5,
@@ -102,15 +103,48 @@
             "scaleInEditor": 1
         },
         "Level1.tmx": {
-            "scale": 2,
-            "selectedLayer": 10,
+            "scale": 1.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 694.25,
-                "y": 556.5
+                "x": 855.6666666666665,
+                "y": 514
             }
         },
         "Level1.tmx#Building_stone_1": {
             "dynamicWrapping": true
+        },
+        "Level1.tmx#Building_stone_1_128x128": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Level1.tmx#Building_stone_1_160x352": {
+            "scaleInDock": 1
+        },
+        "Level1.tmx#Building_stone_1_32x128": {
+            "scaleInDock": 1
+        },
+        "Level1.tmx#Building_stone_1_32x96": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Level1.tmx#Building_stone_1_64x128": {
+            "scaleInDock": 0.75
+        },
+        "Level1.tmx#Building_stone_1_64x160": {
+            "scaleInDock": 0.75
+        },
+        "Level1.tmx#Building_stone_1_64x64": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Level1.tmx#Building_stone_1_64x96": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Level1.tmx#Building_stone_1_96x96": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         },
         "Level1.tmx#Infernus_building_1": {
             "dynamicWrapping": true
@@ -140,12 +174,15 @@
             }
         },
         "TestMap.tmx": {
-            "scale": 3,
-            "selectedLayer": 3,
+            "scale": 4,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 348.16666666666663,
-                "y": 397.3333333333333
+                "x": 323,
+                "y": 411.625
             }
+        },
+        "TestMap.tmx#furniture": {
+            "dynamicWrapping": false
         },
         "Test_Level.tmx": {
             "scale": 4,
@@ -174,7 +211,7 @@
         },
         "Tilesets/Building_stone_1.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 1,
+            "scaleInDock": 0.33,
             "scaleInEditor": 0.5
         },
         "Tilesets/Building_wood_1.tsx": {
@@ -214,7 +251,8 @@
             "scaleInEditor": 0.33
         },
         "Tilesets/Nature_trees.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         },
         "Tilesets/Placeholder.tsx": {
             "scaleInDock": 1,
@@ -230,7 +268,9 @@
             "scaleInEditor": 3
         },
         "Tilesets/interiors.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
         },
         "Tilesets/props.tsx": {
             "scaleInDock": 0.25,
@@ -279,25 +319,28 @@
     "map.tileWidth": 32,
     "map.width": 100,
     "openFiles": [
+        "Level1.tmx"
     ],
     "project": "MapEditor.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "Tilesets/interiors.tsx",
+        "Tilesets/Nature_ground_and_decals.tsx",
+        "Level1.tmx",
+        "TestMap.tmx",
+        "Tilesets/Building_stone_1.tsx",
         "Tilesets/Building_wood_1.tsx",
         "Tilesets/building_brick_2.tsx",
         "Tilesets/Building_brick_2.tsx",
-        "Tilesets/Building_stone_1.tsx",
-        "Tilesets/Nature_ground_and_decals.tsx",
         "Tilesets/Infernal_building_2.tsx",
         "Tilesets/Infernal_building_1.tsx",
         "Tilesets/spritesheet.tsx",
-        "Level1.tmx",
-        "Tilesets/grassland_tiles.tsx",
-        "untitled.tmx",
-        "Test_nontile.tmx"
+        "Tilesets/grassland_tiles.tsx"
     ],
-    "tileset.embedInMap": false,
+    "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
     "tileset.tileSize": {
         "height": 32,
         "width": 32
