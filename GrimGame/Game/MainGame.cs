@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
-using MonoGame.Extended.Tiled;
 using MonoGame.Extended.ViewportAdapters;
 
 #endregion
@@ -22,14 +21,10 @@ namespace GrimGame.Game
         private MapSystem _mapSystem;
 
         // _____ Debug _____ //
-        private bool _showDebug;
+        public bool ShowDebug;
         private SpriteFont _debugFont;
         public GrimDebugger GrimDebugger;
 
-        public MainGame()
-        {
-        }
-        
         protected override void RegisterDependencies(ContainerBuilder builder)
         {
             Globals.ContentManager = Content;
@@ -81,18 +76,6 @@ namespace GrimGame.Game
             // Clear the screen
             GraphicsDevice.Clear(Color.Black);
 
-            TiledMapTileLayer layer = _mapSystem.Map.GetLayer<TiledMapTileLayer>("Wall_south(AbovePlayer)");
-            TiledMapTile? tile = null;
-
-            ushort x = (ushort) (_player.Position.X / 32);
-            ushort y = (ushort) (_player.Position.Y / 32);
-
-            layer.TryGetTile(x, y, out tile);
-            if (tile.HasValue)
-            {
-                GrimDebugger.Log("Player collided");
-            }
-
             // Then we will render the map and player
             if (_player.Position.Y >= _mapSystem.Map.ObjectLayers[0].Objects[1].Position.Y)
             {
@@ -107,11 +90,11 @@ namespace GrimGame.Game
             #region Debugging
             if (Keyboard.GetState().IsKeyDown(Keys.D0))
             {
-                _showDebug = true;
+                ShowDebug = true;
             }
             
             // Draws text above player, showing it's position
-            if (_showDebug)
+            if (ShowDebug)
             {
                 GrimDebugger.Draw();
             }

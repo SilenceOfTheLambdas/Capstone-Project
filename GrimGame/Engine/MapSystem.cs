@@ -114,6 +114,11 @@ namespace GrimGame.Engine
             // The player
             Player.Draw(_game);
             
+            if (_game.ShowDebug)
+            {
+                _game.GrimDebugger.DrawGrid();
+            }
+            
             // Above player
             for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
             {
