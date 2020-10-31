@@ -24,6 +24,15 @@ namespace GrimGame.Game.Character
             Idle
         }
         public PlayerMovementStates PlayerMovementState = PlayerMovementStates.Idle;
+
+        public enum Direction
+        {
+            Up,
+            Left,
+            Right,
+            Down
+        }
+        public Direction PlayerDirection = Direction.Down;
         
         // _____ Transform _____ //
         /// <summary>
@@ -42,15 +51,15 @@ namespace GrimGame.Game.Character
         private readonly MapSystem _mapSystem;
         private readonly OrthographicCamera _camera;
 
-        public Player(MapSystem mapSystem, OrthographicCamera camera,Texture2D playerSprite)
+        public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
             _mapSystem = mapSystem;
             _camera = camera;
-            Sprite = playerSprite;
         }
         
         public override void Init(MainGame g)
         {
+            base.Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
 
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
@@ -64,8 +73,8 @@ namespace GrimGame.Game.Character
                 }
             }
             BoxCollider = new BoxCollider(this, 
-                new Vector2(Position.X - ((Sprite.Width / 2) / 2), Position.Y),
-                new Point(Sprite.Width / 2,  16));
+                new Vector2(Position.X, Position.Y),
+                new Point(Sprite.Width,  16));
         }
 
         public override void Update(MainGame g)
@@ -80,6 +89,9 @@ namespace GrimGame.Game.Character
             
             // _____ Update Player Position _____ //
             Move();
+            
+            // _____ Player Direction _____ //
+            UpdatePlayerDirection();
 
             CollisionDetection();
         }
@@ -117,7 +129,7 @@ namespace GrimGame.Game.Character
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
             // Drawing of player sprite
             Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin, 
-                new Vector2(0.5f, 0.5f), SpriteEffects.None, 0.1f);
+                new Vector2(1.5f, 1.5f), SpriteEffects.None, 0.1f);
             Globals.SpriteBatch.End();
         }
 
@@ -129,13 +141,14 @@ namespace GrimGame.Game.Character
             _camera.LookAt(Position);
             
             // Update the BoxCollider bounding box position
-            BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2) / 2)), 
+            BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))), 
                 (int) (Position.Y - 16)));
             
             if (PlayerMovementState != PlayerMovementStates.FrozenYNeg)
                 if (Keyboard.GetState().IsKeyDown(Keys.W))
                 {
                     PlayerMovementState = PlayerMovementStates.Walking;
+                    PlayerDirection = Direction.Up;
                     Position += new Vector2(0, -1);
                 }
 
@@ -143,6 +156,7 @@ namespace GrimGame.Game.Character
                 if (Keyboard.GetState().IsKeyDown(Keys.S))
                 {
                     PlayerMovementState = PlayerMovementStates.Walking;
+                    PlayerDirection = Direction.Down;
                     Position += new Vector2(0, 1);
                 }
 
@@ -150,6 +164,7 @@ namespace GrimGame.Game.Character
                 if (Keyboard.GetState().IsKeyDown(Keys.A))
                 {
                     PlayerMovementState = PlayerMovementStates.Walking;
+                    PlayerDirection = Direction.Left;
                     Position += new Vector2(-1, 0);
                 }
 
@@ -157,8 +172,21 @@ namespace GrimGame.Game.Character
                 if (Keyboard.GetState().IsKeyDown(Keys.D))
                 {
                     PlayerMovementState = PlayerMovementStates.Walking;
+                    PlayerDirection = Direction.Right;
                     Position += new Vector2(1, 0);
                 }
+        }
+
+        private void UpdatePlayerDirection()
+        {
+            Sprite = PlayerDirection switch
+            {
+                Direction.Down => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1"),
+                Direction.Up => Globals.ContentManager.Load<Texture2D>("Sprites/Player/up_walk1"),
+                Direction.Left => Globals.ContentManager.Load<Texture2D>("Sprites/Player/left_walk1"),
+                Direction.Right => Globals.ContentManager.Load<Texture2D>("Sprites/Player/right_walk1"),
+                _ => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1")
+            };
         }
     }
 }

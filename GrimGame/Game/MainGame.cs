@@ -43,7 +43,7 @@ namespace GrimGame.Game
 
             // _____ Map System _____ //
             _mapSystem = new MapSystem(this);
-            _player = new Player(_mapSystem, Globals.Camera,Content.Load<Texture2D>("player"));
+            _player = new Player(_mapSystem, Globals.Camera);
             _player.Init(this);
 
             _mapSystem.Player = _player;
