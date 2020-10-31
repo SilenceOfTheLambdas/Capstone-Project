@@ -1,5 +1,6 @@
 #region Imports
 
+using System.Collections.Generic;
 using Dcrew.Camera;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -11,6 +12,7 @@ namespace GrimGame.Engine
 {
     public static class Globals
     {
+        public static List<GameObject> GameObjects { get; set; }
         public static GameTime GameTime;
         public static OrthographicCamera Camera;
         public static ContentManager ContentManager;
@@ -20,5 +22,14 @@ namespace GrimGame.Engine
         /// The number of layers in the game map, not inclusive of the player layer
         /// </summary>
         public static int LayerCount;
+
+        public enum ObjectTags
+        {
+               Player,
+               MainCamera,
+               Enemy
+        }
+
+        public static ObjectTags Tags;
     }
 }

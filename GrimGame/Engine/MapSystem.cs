@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GrimGame.Game;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
+using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 #endregion
@@ -38,6 +39,13 @@ namespace GrimGame.Engine
         /// </summary>
         private Dictionary<int, TiledMapLayer> RenderQueue {  get;  set; }
 
+        /// <summary>
+        /// A dictionary storing the collision layers.
+        /// Rectangle: The collision bounds
+        /// bool: Is this collision bound below the player?
+        /// </summary>
+        public Dictionary<Rectangle, bool> CollisionObjects = new Dictionary<Rectangle, bool>();
+
         private readonly int _playerIndex;
         public int currentIndex;
 
@@ -64,6 +72,16 @@ namespace GrimGame.Engine
                 if (!value.Name.Equals("Player")) continue;
                 _playerIndex = key;
                 currentIndex = key;
+            }
+
+            foreach (var o in Map.ObjectLayers[1].Objects)
+            {
+                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), false);
+            }
+
+            foreach (var o in Map.ObjectLayers[2].Objects)
+            {
+                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), true);
             }
         }
 
@@ -116,7 +134,7 @@ namespace GrimGame.Engine
             
             if (_game.ShowDebug)
             {
-                _game.GrimDebugger.DrawGrid();
+                //_game.Debugger.DrawGrid();
             }
             
             // Above player

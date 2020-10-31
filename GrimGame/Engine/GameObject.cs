@@ -1,15 +1,40 @@
+#region Imports
+using System;
 using GrimGame.Game;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+#endregion
 
 namespace GrimGame.Engine
 {
     public abstract class GameObject
     {
         // _____ Dimensions _____ //
+        /// <summary>
+        /// The X and Y position of this game object.
+        /// </summary>
         public float X, Y;
-        public float XSpeed, YSpeed;
-        public int Width, Height;
+
+        /// <summary>
+        /// The speed this object moves in the X direction.
+        /// </summary>
+        public float XSpeed;
+        /// <summary>
+        /// The speed this object moves in the Y direction.
+        /// </summary>
+        public float YSpeed;
+        /// <summary>
+        /// The width of this game object.
+        /// </summary>
+        public int Width;
+        /// <summary>
+        /// The height of this game object.
+        /// </summary>
+        public int Height;
         public Vector2 Position { get => new Vector2(X, Y);
+            set { X = value.X; Y = value.Y; }}
+        public Vector2 Origin { get => new Vector2(X, Y);
             set { X = value.X; Y = value.Y; }}
         public Vector2 Speed { get => new Vector2(XSpeed, YSpeed);
             set { XSpeed = value.X; YSpeed = value.Y; }}
@@ -18,10 +43,37 @@ namespace GrimGame.Engine
         public Rectangle Bounds;
         
         // _____ Properties _____ //
+        /// <summary>
+        /// The name of this game object.
+        /// </summary>
+        public String Name;
+        
+        /// <summary>
+        /// Is the object enabled?
+        /// </summary>
+        public bool Enabled = true;
+        
+        /// <summary>
+        /// The ID of the object.
+        /// </summary>
         public int Id { get; }
-        public string Text, Tag;
+        
+        /// <summary>
+        /// Assign a tag to this game object.
+        /// </summary>
+        public Globals.ObjectTags Tag;
         public bool Active, Visible;
-        public bool Collision, Hover;
+
+        /// <summary>
+        /// Is this object colliding with something?
+        /// </summary>
+        public bool Collision;
+        
+        // _____ Sprite _____ //
+        /// <summary>
+        /// The sprite texture of this object
+        /// </summary>
+        public Texture2D Sprite { get; set; }
 
         public GameObject(int x = 0, int y = 0, int w = 0, int h = 0, int id = 0)
         {
@@ -37,7 +89,6 @@ namespace GrimGame.Engine
             Active = true;
             Visible = true;
             Collision = false;
-            Hover = false;
         }
 
         // _____ Abstract Methods _____ //
@@ -46,11 +97,16 @@ namespace GrimGame.Engine
         /// </summary>
         /// <param name="g">A reference to the MainGame instance</param>
         public abstract void Init(MainGame g);
+
         /// <summary>
         /// Destroy *this* game object.
         /// </summary>
         /// <param name="g">A reference to the MainGame instance</param>
-        public abstract void Destroy(MainGame g);
+        public void Destroy(MainGame g)
+        {
+            Globals.GameObjects.Remove(this);
+        }
+
         /// <summary>
         /// Anything is this function will be ran every frame.
         /// </summary>

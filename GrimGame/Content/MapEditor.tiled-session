@@ -103,11 +103,11 @@
             "scaleInEditor": 1
         },
         "Level1.tmx": {
-            "scale": 1.5,
+            "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 881,
-                "y": 444.66666666666663
+                "x": 939,
+                "y": 579
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -268,7 +268,7 @@
             "scaleInEditor": 3
         },
         "Tilesets/interiors.tsx": {
-            "dynamicWrapping": true,
+            "dynamicWrapping": false,
             "scaleInDock": 1.5,
             "scaleInEditor": 1
         },

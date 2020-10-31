@@ -6,6 +6,7 @@ using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MLEM.Extensions;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -23,7 +24,7 @@ namespace GrimGame.Game
         // _____ Debug _____ //
         public bool ShowDebug;
         private SpriteFont _debugFont;
-        public GrimDebugger GrimDebugger;
+        public GrimDebugger Debugger;
 
         protected override void RegisterDependencies(ContainerBuilder builder)
         {
@@ -47,7 +48,7 @@ namespace GrimGame.Game
 
             _mapSystem.Player = _player;
             
-            GrimDebugger = new GrimDebugger(_player, _mapSystem, _debugFont);
+            Debugger = new GrimDebugger(_player, _mapSystem, _debugFont);
         }
 
         protected override void LoadContent()
@@ -76,15 +77,20 @@ namespace GrimGame.Game
             // Clear the screen
             GraphicsDevice.Clear(Color.Black);
 
-            // Then we will render the map and player
-            if (_player.Position.Y >= _mapSystem.Map.ObjectLayers[0].Objects[1].Position.Y)
+            foreach (var rectangle in _mapSystem.CollisionObjects)
             {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                _mapSystem.currentIndex = Globals.LayerCount;
-            }
-            else
-            {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
+                if (!rectangle.Value)
+                {
+                    if (_player.BoxCollider.Bounds.Bottom >= rectangle.Key.Bottom + 5)
+                    {
+                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                        _mapSystem.currentIndex = Globals.LayerCount;
+                    }
+                    else
+                    {
+                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
+                    }   
+                }
             }
 
             #region Debugging
@@ -96,7 +102,7 @@ namespace GrimGame.Game
             // Draws text above player, showing it's position
             if (ShowDebug)
             {
-                GrimDebugger.Draw();
+                Debugger.Draw();
             }
             #endregion
 

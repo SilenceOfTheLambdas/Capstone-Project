@@ -26,7 +26,7 @@ namespace GrimGame.Game
             this._player = player;
             this._mapSystem = mapSystem;
             this._debugFont = debugFont;
-            _gridColour.A = byte.Parse("50");
+            _gridColour.A = byte.Parse("1");
         }
 
         /// <summary>
@@ -58,6 +58,9 @@ namespace GrimGame.Game
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
             Globals.SpriteBatch.DrawPoint(_mapSystem.Map.ObjectLayers[1].Objects[0].Position,Color.Green);
             Globals.SpriteBatch.End();
+
+            DrawPlayerBounds();
+            DrawCollisionObjects();
         }
 
         /// <summary>
@@ -73,6 +76,30 @@ namespace GrimGame.Game
                     Globals.SpriteBatch.DrawRectangle(new Vector2(x1, y1), new Size2(32, 32), _gridColour);
                 }
             }
+            Globals.SpriteBatch.End();
+        }
+
+        private void DrawCollisionObjects()
+        {
+            foreach (var collisionObject in _mapSystem.CollisionObjects)
+            {
+                Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
+                Globals.SpriteBatch.DrawRectangle(collisionObject.Key, Color.Gray);
+                Globals.SpriteBatch.End();
+            }
+        }
+
+        private void DrawPlayerBounds()
+        {
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
+            Globals.SpriteBatch.DrawRectangle(_player.BoxCollider.Bounds, Color.Purple);
+            Globals.SpriteBatch.End();
+        }
+
+        public static void DrawRectangle(Rectangle r, Color color)
+        {
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
+            Globals.SpriteBatch.DrawRectangle(r, color);
             Globals.SpriteBatch.End();
         }
     }
