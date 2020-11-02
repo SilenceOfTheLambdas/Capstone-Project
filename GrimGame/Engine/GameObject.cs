@@ -17,13 +17,9 @@ namespace GrimGame.Engine
         public float X, Y;
 
         /// <summary>
-        /// The speed this object moves in the X direction.
+        /// The speed this object moves.
         /// </summary>
-        public float XSpeed;
-        /// <summary>
-        /// The speed this object moves in the Y direction.
-        /// </summary>
-        public float YSpeed;
+        public float Speed;
         /// <summary>
         /// The width of this game object.
         /// </summary>
@@ -32,14 +28,28 @@ namespace GrimGame.Engine
         /// The height of this game object.
         /// </summary>
         public int Height;
+        /// <summary>
+        /// The position of this game object.
+        /// </summary>
         public Vector2 Position { get => new Vector2(X, Y);
-            set { X = value.X; Y = value.Y; }}
-        public Vector2 Origin { get => new Vector2(X, Y);
-            set { X = value.X; Y = value.Y; }}
-        public Vector2 Speed { get => new Vector2(XSpeed, YSpeed);
-            set { XSpeed = value.X; YSpeed = value.Y; }}
+            protected set { X = value.X; Y = value.Y; }}
+
+        /// <summary>
+        /// The origin point of this game object.
+        /// </summary>
+        public Vector2 Origin;
+        /// <summary>
+        /// The velocity at which this objects moves.
+        /// </summary>
+        public Vector2 Velocity;
+        /// <summary>
+        /// The size of this object.
+        /// </summary>
         public Vector2 Size { get => new Vector2(Width, Height);
             set { Width = (int)value.X; Height = (int)value.Y; }}
+        /// <summary>
+        /// The bounding box for this game object.
+        /// </summary>
         public Rectangle Bounds;
         
         // _____ Properties _____ //
@@ -128,17 +138,6 @@ namespace GrimGame.Engine
         {
             this.X = x;
             this.Y = y;
-        }
-
-        /// <summary>
-        /// Sets the speed at which this object can move.
-        /// </summary>
-        /// <param name="xs">The speed going in the x direction</param>
-        /// <param name="ys">The speed going in the y direction</param>
-        public void SetSpeed(float xs, float ys)
-        {
-            this.XSpeed = xs;
-            this.YSpeed = ys;
         }
 
         /// <summary>

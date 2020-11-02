@@ -12,6 +12,9 @@ namespace GrimGame.Engine
 {
     public static class Globals
     {
+        /// <summary>
+        /// The list of all active game objects.
+        /// </summary>
         public static List<GameObject> GameObjects { get; set; }
         public static GameTime GameTime;
         public static OrthographicCamera Camera;
@@ -29,7 +32,5 @@ namespace GrimGame.Engine
                MainCamera,
                Enemy
         }
-
-        public static ObjectTags Tags;
     }
 }

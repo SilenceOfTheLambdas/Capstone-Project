@@ -13,26 +13,22 @@ namespace GrimGame.Game.Character
     /// </summary>
     public class Player : GameObject
     {
-        public enum PlayerMovementStates
+        private enum PlayerMovementStates
         {
             Walking,
-            Running,
-            FrozenXPos,
-            FrozenXNeg,
-            FrozenYPos,
-            FrozenYNeg,
+            Running = 12,
             Idle
         }
-        public PlayerMovementStates PlayerMovementState = PlayerMovementStates.Idle;
+        private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
 
-        public enum Direction
+        private enum Direction
         {
             Up,
             Left,
             Right,
             Down
         }
-        public Direction PlayerDirection = Direction.Down;
+        private Direction _playerDirection = Direction.Down;
         
         // _____ Transform _____ //
         /// <summary>
@@ -43,11 +39,12 @@ namespace GrimGame.Game.Character
         /// <summary>
         /// The origin point of the player's sprite.
         /// </summary>
-        private new Vector2 Origin { get; set; }
+        //private new Vector2 Origin { get; set; }
 
         // _____ Properties _____ //
         public BoxCollider BoxCollider;
         
+        // _____ References _____ //
         private readonly MapSystem _mapSystem;
         private readonly OrthographicCamera _camera;
 
@@ -86,6 +83,11 @@ namespace GrimGame.Game.Character
 
             // _____ Update Box Collider _____ //
             BoxCollider.Update(g);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+                _playerMovementState = PlayerMovementStates.Running;
+            if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
+                _playerMovementState = PlayerMovementStates.Walking;
             
             // _____ Update Player Position _____ //
             Move();
@@ -93,34 +95,31 @@ namespace GrimGame.Game.Character
             // _____ Player Direction _____ //
             UpdatePlayerDirection();
 
+            // _____ Detecting Collisions _____ //
             CollisionDetection();
+
+            // _____ Update Player Position Based on velocity _____ //
+            Position += Velocity;
+            
+            // set to zero to stop moving when user stops pressing movement keys
+            Velocity = Vector2.Zero;
         }
 
+        /// <summary>
+        /// Detects collisions between the player and any collision objects.
+        /// </summary>
         private void CollisionDetection()
         {
-            foreach (var rectangle in _mapSystem.CollisionObjects)
+            foreach (var (collisionObject, _) in _mapSystem.CollisionObjects)
             {
-                if (BoxCollider.Bounds.Intersects(rectangle.Key))
-                {
-                    PlayerMovementState = PlayerMovementStates.FrozenYPos;
-                }
+                if (this.Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
+                    this.Velocity.X < 0 && IsTouchingRight(collisionObject))
+                    this.Velocity.X = 0;
 
-                if (BoxCollider.Bounds.Intersects(rectangle.Key) && Position.Y >= rectangle.Key.Bottom)
-                {
-                    PlayerMovementState = PlayerMovementStates.FrozenYNeg;
-                }
-
-                if (BoxCollider.Bounds.Intersects(rectangle.Key) && Position.X <= rectangle.Key.Left)
-                {
-                    PlayerMovementState = PlayerMovementStates.FrozenXPos;
-                }
-
-                if (BoxCollider.Bounds.Intersects(rectangle.Key) && Position.X >= rectangle.Key.Right)
-                {
-                    PlayerMovementState = PlayerMovementStates.FrozenXNeg;
-                }
-                
-//                if (BoxCollider.Bounds.Intersects(rectangle) && Position.X <= rectangle.Left && Position.)
+                    
+                if (this.Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
+                    this.Velocity.Y < 0 && IsTouchingBottom(collisionObject))
+                    this.Velocity.Y = 0;
             }
         }
 
@@ -134,7 +133,7 @@ namespace GrimGame.Game.Character
         }
 
         /// <summary>
-        /// Moves the player.
+        /// Moves the player according to it's velocity.
         /// </summary>
         private void Move()
         {
@@ -143,43 +142,42 @@ namespace GrimGame.Game.Character
             // Update the BoxCollider bounding box position
             BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))), 
                 (int) (Position.Y - 16)));
+
+            if (_playerMovementState == PlayerMovementStates.Running)
+                Speed = (float) PlayerMovementStates.Running;
             
-            if (PlayerMovementState != PlayerMovementStates.FrozenYNeg)
-                if (Keyboard.GetState().IsKeyDown(Keys.W))
-                {
-                    PlayerMovementState = PlayerMovementStates.Walking;
-                    PlayerDirection = Direction.Up;
-                    Position += new Vector2(0, -1);
-                }
-
-            if (PlayerMovementState != PlayerMovementStates.FrozenYPos)
-                if (Keyboard.GetState().IsKeyDown(Keys.S))
-                {
-                    PlayerMovementState = PlayerMovementStates.Walking;
-                    PlayerDirection = Direction.Down;
-                    Position += new Vector2(0, 1);
-                }
-
-            if (PlayerMovementState != PlayerMovementStates.FrozenXNeg)
-                if (Keyboard.GetState().IsKeyDown(Keys.A))
-                {
-                    PlayerMovementState = PlayerMovementStates.Walking;
-                    PlayerDirection = Direction.Left;
-                    Position += new Vector2(-1, 0);
-                }
-
-            if (PlayerMovementState != PlayerMovementStates.FrozenXPos)
-                if (Keyboard.GetState().IsKeyDown(Keys.D))
-                {
-                    PlayerMovementState = PlayerMovementStates.Walking;
-                    PlayerDirection = Direction.Right;
-                    Position += new Vector2(1, 0);
-                }
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            {
+                _playerMovementState = PlayerMovementStates.Walking;
+                _playerDirection = Direction.Up;
+                Velocity.Y = -Speed;
+                
+            } else if (Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                _playerMovementState = PlayerMovementStates.Walking;
+                _playerDirection = Direction.Down;
+                Velocity.Y = Speed;
+            }
+            
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                _playerMovementState = PlayerMovementStates.Walking;
+                _playerDirection = Direction.Left;
+                Velocity.X = -Speed;
+            } else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                _playerMovementState = PlayerMovementStates.Walking;
+                _playerDirection = Direction.Right;
+                Velocity.X = Speed;
+            }
         }
 
+        /// <summary>
+        /// Updates the player's sprite based on the direction they are facing.
+        /// </summary>
         private void UpdatePlayerDirection()
         {
-            Sprite = PlayerDirection switch
+            Sprite = _playerDirection switch
             {
                 Direction.Down => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1"),
                 Direction.Up => Globals.ContentManager.Load<Texture2D>("Sprites/Player/up_walk1"),
@@ -188,5 +186,64 @@ namespace GrimGame.Game.Character
                 _ => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1")
             };
         }
+
+        #region CollisionDetection
+
+        /// <summary>
+        /// Is the player touching the left of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingLeft(Rectangle collisionRectangle)
+        {
+            var playerBoxCollider = this.BoxCollider.Bounds;
+            return playerBoxCollider.Right + this.Velocity.X > collisionRectangle.Left &&
+                   playerBoxCollider.Left < collisionRectangle.Left &&
+                   playerBoxCollider.Bottom > collisionRectangle.Top &&
+                   playerBoxCollider.Top < collisionRectangle.Bottom;
+        }
+
+        /// <summary>
+        /// Is the player touching the right of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingRight(Rectangle collisionRectangle)
+        {
+            var playerBoxCollider = this.BoxCollider.Bounds;
+            return playerBoxCollider.Left + this.Velocity.X < collisionRectangle.Right &&
+                   playerBoxCollider.Right > collisionRectangle.Right &&
+                   playerBoxCollider.Bottom > collisionRectangle.Top &&
+                   playerBoxCollider.Top < collisionRectangle.Bottom;
+        }
+
+        /// <summary>
+        /// Is the player touching the Top of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingTop(Rectangle collisionRectangle)
+        {
+            var playerBoxCollider = this.BoxCollider.Bounds;
+            return playerBoxCollider.Bottom + this.Velocity.Y > collisionRectangle.Top &&
+                   playerBoxCollider.Top < collisionRectangle.Top &&
+                   playerBoxCollider.Right > collisionRectangle.Left &&
+                   playerBoxCollider.Left < collisionRectangle.Right;
+        }
+
+        /// <summary>
+        /// Is the player touching the bottom of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingBottom(Rectangle collisionRectangle)
+        {
+            var playerBoxCollider = this.BoxCollider.Bounds;
+            return playerBoxCollider.Top + this.Velocity.Y < collisionRectangle.Bottom &&
+                   playerBoxCollider.Bottom > collisionRectangle.Bottom &&
+                   playerBoxCollider.Right > collisionRectangle.Left &&
+                   playerBoxCollider.Left < collisionRectangle.Right;
+        }
+        #endregion
     }
 }

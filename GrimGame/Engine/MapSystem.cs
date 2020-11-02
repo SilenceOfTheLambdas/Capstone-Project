@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using GrimGame.Game;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
-using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 #endregion

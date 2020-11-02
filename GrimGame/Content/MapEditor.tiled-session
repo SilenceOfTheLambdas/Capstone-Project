@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Level1.tmx",
+    "activeFile": "TestMap.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -106,8 +106,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 939,
-                "y": 579
+                "x": 921,
+                "y": 725
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -174,15 +174,16 @@
             }
         },
         "TestMap.tmx": {
-            "scale": 4,
-            "selectedLayer": 5,
+            "scale": 1.5,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 323,
-                "y": 411.625
+                "x": 403,
+                "y": 314.33333333333337
             }
         },
         "TestMap.tmx#furniture": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         },
         "Test_Level.tmx": {
             "scale": 4,
@@ -319,15 +320,15 @@
     "map.tileWidth": 32,
     "map.width": 100,
     "openFiles": [
-        "Level1.tmx"
+        "TestMap.tmx"
     ],
     "project": "MapEditor.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "TestMap.tmx",
+        "Level1.tmx",
         "Tilesets/interiors.tsx",
         "Tilesets/Nature_ground_and_decals.tsx",
-        "Level1.tmx",
-        "TestMap.tmx",
         "Tilesets/Building_stone_1.tsx",
         "Tilesets/Building_wood_1.tsx",
         "Tilesets/building_brick_2.tsx",

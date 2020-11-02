@@ -43,7 +43,12 @@ namespace GrimGame.Game
 
             // _____ Map System _____ //
             _mapSystem = new MapSystem(this);
-            _player = new Player(_mapSystem, Globals.Camera);
+            _player = new Player(_mapSystem, Globals.Camera)
+            {
+                Name = "Player 1",
+                Tag = Globals.ObjectTags.Player,
+                Speed = 2f
+            };
             _player.Init(this);
 
             _mapSystem.Player = _player;
@@ -77,21 +82,22 @@ namespace GrimGame.Game
             // Clear the screen
             GraphicsDevice.Clear(Color.Black);
 
-            foreach (var rectangle in _mapSystem.CollisionObjects)
+            #region Player Layer Index
+            foreach (var (rectangle, collisionBoundBelowPlayer) in _mapSystem.CollisionObjects)
             {
-                if (!rectangle.Value)
+                if (collisionBoundBelowPlayer) continue;
+                
+                if (_player.BoxCollider.Bounds.Bottom >= rectangle.Bottom + 5)
                 {
-                    if (_player.BoxCollider.Bounds.Bottom >= rectangle.Key.Bottom + 5)
-                    {
-                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                        _mapSystem.currentIndex = Globals.LayerCount;
-                    }
-                    else
-                    {
-                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
-                    }   
+                    _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                    _mapSystem.currentIndex = Globals.LayerCount;
+                }
+                else
+                {
+                    _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
                 }
             }
+            #endregion
 
             #region Debugging
             if (Keyboard.GetState().IsKeyDown(Keys.D0))

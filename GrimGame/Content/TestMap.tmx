@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="23">
+<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="24">
  <tileset firstgid="1" source="Tilesets/interiors.tsx"/>
  <tileset firstgid="1025" source="Tilesets/Nature_ground_and_decals.tsx"/>
  <tileset firstgid="1089" name="furniture" tilewidth="32" tileheight="32" tilecount="256" columns="32">
@@ -41,12 +41,13 @@
  <objectgroup id="9" name="Collision_horizontal(AbovePlayer)">
   <object id="14" name="collision_1" type="nodraw" x="224" y="416" width="256" height="6.20833"/>
   <object id="20" type="nodraw" x="214.5" y="128" width="9.5" height="288"/>
+  <object id="23" type="nodraw" x="512" y="128" width="10" height="288"/>
  </objectgroup>
  <objectgroup id="11" name="Collision(BelowPlayer)">
   <object id="22" type="nodraw" x="224" y="160" width="288" height="5.5"/>
  </objectgroup>
  <objectgroup id="6" name="playerspawn">
-  <object id="1" name="playerspawn" type="nodraw" x="365" y="181">
+  <object id="1" name="playerspawn" type="nodraw" x="366.333" y="211">
    <point/>
   </object>
  </objectgroup>
