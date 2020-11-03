@@ -16,7 +16,7 @@ namespace GrimGame.Game.Character
         private enum PlayerMovementStates
         {
             Walking,
-            Running = 12,
+            Running,
             Idle
         }
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
@@ -35,14 +35,11 @@ namespace GrimGame.Game.Character
         /// The player's tile position.
         /// </summary>
         public Vector2 TilePosition;
-        
-        /// <summary>
-        /// The origin point of the player's sprite.
-        /// </summary>
-        //private new Vector2 Origin { get; set; }
 
         // _____ Properties _____ //
         public BoxCollider BoxCollider;
+        public float RunningSpeed;
+        private float _defaultWalkSpeed;
         
         // _____ References _____ //
         private readonly MapSystem _mapSystem;
@@ -58,6 +55,7 @@ namespace GrimGame.Game.Character
         {
             base.Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
+            _defaultWalkSpeed = Speed;
 
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
             {
@@ -86,12 +84,12 @@ namespace GrimGame.Game.Character
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Running;
-            if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
+            else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Walking;
             
             // _____ Update Player Position _____ //
             Move();
-            
+
             // _____ Player Direction _____ //
             UpdatePlayerDirection();
 
@@ -110,7 +108,7 @@ namespace GrimGame.Game.Character
         /// </summary>
         private void CollisionDetection()
         {
-            foreach (var (collisionObject, _) in _mapSystem.CollisionObjects)
+            foreach (var collisionObject in _mapSystem.CollisionObjects)
             {
                 if (this.Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
                     this.Velocity.X < 0 && IsTouchingRight(collisionObject))
@@ -143,9 +141,13 @@ namespace GrimGame.Game.Character
             BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))), 
                 (int) (Position.Y - 16)));
 
-            if (_playerMovementState == PlayerMovementStates.Running)
-                Speed = (float) PlayerMovementStates.Running;
-            
+            Speed = _playerMovementState switch
+            {
+                PlayerMovementStates.Running => RunningSpeed,
+                PlayerMovementStates.Walking => _defaultWalkSpeed,
+                _ => Speed
+            };
+
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 _playerMovementState = PlayerMovementStates.Walking;

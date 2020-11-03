@@ -14,20 +14,19 @@ namespace GrimGame.Engine
     /// </summary>
     public class MapSystem
     {
-        private MainGame _game;
-        
+        private readonly MainGame _game;
         /// <summary>
         /// The Tiled map
         /// </summary>
-        public TiledMap Map;
+        public readonly TiledMap Map;
         /// <summary>
         /// The renderer for the Tiled map
         /// </summary>
-        public TiledMapRenderer MapRenderer;
+        private readonly TiledMapRenderer _mapRenderer;
         /// <summary>
         /// Renders drawable objects onto the map
         /// </summary>
-        private TiledObjectRenderer _tiledObjectRenderer;
+        private readonly TiledObjectRenderer _tiledObjectRenderer;
 
         /// <summary>
         /// Stores a dictionary attaining to the render order of the map.
@@ -36,17 +35,18 @@ namespace GrimGame.Engine
         /// int: an index that defines the order on which a layer is drawn
         /// TiledMapLayer: the layer associated with that index
         /// </summary>
-        private Dictionary<int, TiledMapLayer> RenderQueue {  get;  set; }
+        private Dictionary<int, TiledMapLayer> RenderQueue {  get; }
 
         /// <summary>
         /// A dictionary storing the collision layers.
         /// Rectangle: The collision bounds
         /// bool: Is this collision bound below the player?
         /// </summary>
-        public Dictionary<Rectangle, bool> CollisionObjects = new Dictionary<Rectangle, bool>();
-
-        private readonly int _playerIndex;
-        public int currentIndex;
+        public readonly List<Rectangle> CollisionObjects = new List<Rectangle>();
+        
+        public readonly Dictionary<Rectangle, bool> FrontAndBackWalls = new Dictionary<Rectangle, bool>();
+        
+        public int CurrentIndex;
 
         public Player Player;
 
@@ -56,7 +56,7 @@ namespace GrimGame.Engine
             Map = Globals.ContentManager.Load<TiledMap>("TestMap");
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
-            MapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
+            _mapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
             _tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
             RenderQueue = new Dictionary<int, TiledMapLayer>();
 
@@ -69,49 +69,31 @@ namespace GrimGame.Engine
             foreach (var (key, value) in RenderQueue)
             {
                 if (!value.Name.Equals("Player")) continue;
-                _playerIndex = key;
-                currentIndex = key;
+                CurrentIndex = key;
             }
-
-            foreach (var o in Map.ObjectLayers[1].Objects)
-            {
-                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), false);
-            }
-
+            
+            // Adding collision objects
             foreach (var o in Map.ObjectLayers[2].Objects)
             {
-                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), true);
+                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height));
+            }
+            
+            // Adding front wall collision objects
+            foreach (var o in Map.ObjectLayers[1].Objects)
+            {
+                FrontAndBackWalls.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), true);
+                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height));
+            }
+            foreach (var o in Map.ObjectLayers[3].Objects)
+            {
+                FrontAndBackWalls.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height), false);
+                CollisionObjects.Add(new Rectangle((int)o.Position.X, (int)o.Position.Y, (int)o.Size.Width, (int)o.Size.Height));
             }
         }
 
         public void Update(GameTime gameTime)
         {
-            MapRenderer.Update(gameTime);
-        }
-
-        /// <summary>
-        /// Renders the map and makes sure layers are sorted correctly.
-        /// </summary>
-        /// <param name="viewMatrix">The Camera's view matrix</param>
-        public void DrawMap(Matrix viewMatrix)
-        {
-            // Below player
-            for (var i = 0; i < _playerIndex; i++)
-            {
-                MapRenderer.Draw(RenderQueue[i], viewMatrix);
-            }
-            
-            // The player
-            Player.Draw(_game);
-            
-            // Above player
-            for (var i = _playerIndex + 1; i < RenderQueue.Count; i++)
-            {
-                MapRenderer.Draw(RenderQueue[i], viewMatrix);
-            }
-
-            // Draw any objects that are visible in-game
-            _tiledObjectRenderer.DrawObjects();
+            _mapRenderer.Update(gameTime);
         }
 
         /// <summary>
@@ -121,11 +103,11 @@ namespace GrimGame.Engine
         /// <param name="newPlayerIndex">The new layer index of the player sprite.</param>
         public void DrawMap(Matrix viewMatrix, int newPlayerIndex)
         {
-            currentIndex = newPlayerIndex;
+            CurrentIndex = newPlayerIndex;
             // Below player
             for (var i = 0; i < newPlayerIndex; i++)
             {
-                MapRenderer.Draw(RenderQueue[i], viewMatrix);
+                _mapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
             
             // The player
@@ -139,7 +121,7 @@ namespace GrimGame.Engine
             // Above player
             for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
             {
-                MapRenderer.Draw(RenderQueue[i], viewMatrix);
+                _mapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
 
             // Draw any objects that are visible in-game

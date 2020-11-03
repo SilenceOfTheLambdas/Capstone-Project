@@ -1,4 +1,3 @@
-using System;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
@@ -15,7 +14,7 @@ namespace GrimGame.Game
         private readonly SpriteFont _debugFont;
 
         // _____ Output _____ //
-        private static String _outputText;
+        private static string _outputText;
         
         // _____ Properties _____ //
         private const int TextPadding = 4;
@@ -33,7 +32,7 @@ namespace GrimGame.Game
         /// Log some text into the debug menu.
         /// </summary>
         /// <param name="text">The String to output</param>
-        public static void Log(String text)
+        public static void Log(string text)
         {
             _outputText += "\n";
             _outputText += text;
@@ -43,7 +42,7 @@ namespace GrimGame.Game
         {
             _outputText = ($"Player position: {_player.Position}" + "\n" +
                            $"Player Tile Position: {_player.TilePosition}" + "\n" +
-                           $"Player Index: {_mapSystem.currentIndex}");
+                           $"Player Index: {_mapSystem.CurrentIndex}");
             
             Globals.SpriteBatch.Begin();
             var panelPosition = new Vector2(0, 0);
@@ -84,7 +83,7 @@ namespace GrimGame.Game
             foreach (var collisionObject in _mapSystem.CollisionObjects)
             {
                 Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-                Globals.SpriteBatch.DrawRectangle(collisionObject.Key, Color.Gray);
+                Globals.SpriteBatch.DrawRectangle(collisionObject, Color.Gray);
                 Globals.SpriteBatch.End();
             }
         }
