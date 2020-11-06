@@ -39,7 +39,7 @@ namespace GrimGame.Engine
         
         public override void Draw(MainGame g)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

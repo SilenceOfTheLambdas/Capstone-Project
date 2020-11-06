@@ -83,7 +83,9 @@ namespace GrimGame.Game.Character
             BoxCollider.Update(g);
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
-                _playerMovementState = PlayerMovementStates.Running;
+            {
+                _playerMovementState = PlayerMovementStates.Running;   
+            }
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Walking;
             

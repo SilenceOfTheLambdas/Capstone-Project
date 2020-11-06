@@ -36,15 +36,7 @@ namespace GrimGame.Game
 
         public void Draw(MainGame g)
         {
-            for (int i = 0; i < Count; i++)
-            {
-                var obj = Objects[i];
-
-                if (obj.Active && obj.Visible)
-                {
-                    obj.Draw(g);
-                }
-            }
+            
         }
 
         /// <summary>
@@ -55,7 +47,6 @@ namespace GrimGame.Game
         public void Add(GameObject obj, MainGame g)
         {
             Objects.Add(obj);
-            obj.Init(g);
         }
 
         /// <summary>

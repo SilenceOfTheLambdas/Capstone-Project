@@ -52,7 +52,7 @@ namespace GrimGame.Engine
 
         public MapSystem(MainGame g)
         {
-            this._game = g;
+            _game = g;
             Map = Globals.ContentManager.Load<TiledMap>("TestMap");
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
@@ -110,14 +110,10 @@ namespace GrimGame.Engine
                 _mapRenderer.Draw(RenderQueue[i], viewMatrix);
             }
             
-            // The player
-            Player.Draw(_game);
-            
-            if (_game.ShowDebug)
-            {
-                //_game.Debugger.DrawGrid();
-            }
-            
+            if (Player.Enabled)
+                // The player
+                Player.Draw(_game);
+
             // Above player
             for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
             {

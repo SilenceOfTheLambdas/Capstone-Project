@@ -15,6 +15,7 @@ namespace GrimGame.Game
 
         // _____ Output _____ //
         private static string _outputText;
+        private static string _logText;
         
         // _____ Properties _____ //
         private const int TextPadding = 4;
@@ -34,8 +35,8 @@ namespace GrimGame.Game
         /// <param name="text">The String to output</param>
         public static void Log(string text)
         {
-            _outputText += "\n";
-            _outputText += text;
+            _logText += "\n";
+            _logText += text;
         }
 
         public void Draw()
@@ -46,7 +47,7 @@ namespace GrimGame.Game
             
             Globals.SpriteBatch.Begin();
             var panelPosition = new Vector2(0, 0);
-            var textMiddlePoint = _debugFont.MeasureString(_outputText);
+            var textMiddlePoint = _debugFont.MeasureString(_outputText += _logText);
             var textPosition = new Vector2(textMiddlePoint.X + TextPadding, panelPosition.Y + (textMiddlePoint.Y + TextPadding));
                 
             Globals.SpriteBatch.Draw(Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG"), panelPosition, Color.White);

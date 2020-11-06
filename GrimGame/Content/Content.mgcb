@@ -26,12 +26,26 @@
 /processorParam:TextureFormat=Color
 /build:Debugging/DB_BG.png
 
+#begin Fonts/buttonText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/buttonText.spritefont
+
 #begin Fonts/debugFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/debugFont.spritefont
+
+#begin Fonts/pauseMenuTitle.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/pauseMenuTitle.spritefont
 
 #begin Level1.tmx
 /importer:TiledMapImporter

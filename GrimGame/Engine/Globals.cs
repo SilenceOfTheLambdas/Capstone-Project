@@ -21,6 +21,7 @@ namespace GrimGame.Engine
         public static ContentManager ContentManager;
         public static SpriteBatch SpriteBatch;
         public static GraphicsDeviceManager Graphics;
+        public static SpriteFont GuiFont;
         /// <summary>
         /// The number of layers in the game map, not inclusive of the player layer
         /// </summary>

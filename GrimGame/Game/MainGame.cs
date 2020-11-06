@@ -1,12 +1,10 @@
 ﻿#region Imports
 using System;
-using Autofac;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MLEM.Extensions;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -14,9 +12,11 @@ using MonoGame.Extended.ViewportAdapters;
 
 namespace GrimGame.Game
 {
-    public class MainGame : BaseGame
-    {
-        private Player _player;
+    public class MainGame : Microsoft.Xna.Framework.Game
+    {   
+        // _____ Screen _____ //
+        private const int Width = 1280; // Width of the window
+        private const int Height = 720; // Height of the window
 
         // _____ Map System _____ //
         private MapSystem _mapSystem;
@@ -24,21 +24,38 @@ namespace GrimGame.Game
         // _____ Debug _____ //
         public bool ShowDebug;
         private SpriteFont _debugFont;
+        
+        // _____ Objects _____ //
+        public static ObjectManager ObjectManager;
         private GrimDebugger _debugger;
+        private Player _player;
 
-        protected override void RegisterDependencies(ContainerBuilder builder)
+        private UIManager _uiManager;
+
+        public MainGame()
         {
-            Globals.ContentManager = Content;
-            Globals.Camera = new OrthographicCamera(Globals.Graphics.GraphicsDevice);
+            Globals.Graphics = new GraphicsDeviceManager(this);
+            
+            IsMouseVisible = true;
+            Content.RootDirectory = "Content";
 
-            builder.RegisterInstance(new SpriteBatch(Globals.Graphics.GraphicsDevice));
-            builder.RegisterInstance(Globals.Camera);
+            Globals.Graphics.PreferredBackBufferWidth = Width;
+            Globals.Graphics.PreferredBackBufferHeight = Height;
+            Globals.Graphics.IsFullScreen = true;
+            Globals.Graphics.ApplyChanges();
+            
+            ObjectManager = new ObjectManager();
         }
-
+        
         protected override void Initialize()
         {
             base.Initialize();
-            var viewportAdapter = new BoxingViewportAdapter(Window, Globals.Graphics.GraphicsDevice, 1280, 720);
+            
+            Globals.ContentManager = Content;
+            Globals.GameTime = new GameTime();
+            Globals.Camera = new OrthographicCamera(Globals.Graphics.GraphicsDevice);
+            Window.Title = "GrimDoom";
+            var viewportAdapter = new DefaultViewportAdapter(Globals.Graphics.GraphicsDevice);
             Globals.Camera = new OrthographicCamera(viewportAdapter);
 
             // _____ Map System _____ //
@@ -48,32 +65,39 @@ namespace GrimGame.Game
                 Name = "Player 1",
                 Tag = Globals.ObjectTags.Player,
                 Speed = 2f,
-                RunningSpeed = 3.2f
+                RunningSpeed = 3.2f,
+                Enabled = true,
+                Active = true
             };
             _player.Init(this);
 
             _mapSystem.Player = _player;
             
             _debugger = new GrimDebugger(_player, _mapSystem, _debugFont);
+            
+            _uiManager = new UIManager(this);
+            
+            // Add game objects to object list
+            ObjectManager.Add(_player, this);
         }
 
         protected override void LoadContent()
         {
             Globals.SpriteBatch = new SpriteBatch(Globals.Graphics.GraphicsDevice);
             _debugFont = Content.Load<SpriteFont>("Fonts/debugFont");
+            Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-            
             // _____ Player Update _____ //
-            _player.Update(this);
+            if (_player.Active)
+                _player.Update(this);
             
             // _____ Map Update _____ //
             _mapSystem.Update(gameTime);
+
+            _uiManager.Update();
 
             base.Update(gameTime);
         }
@@ -113,6 +137,8 @@ namespace GrimGame.Game
                 _debugger.Draw();
             }
             #endregion
+            
+            _uiManager.Draw();
 
             base.Draw(gameTime);
         }
