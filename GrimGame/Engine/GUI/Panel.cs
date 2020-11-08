@@ -53,8 +53,7 @@ namespace GrimGame.Engine.GUI
                 new Rectangle(0, 0, (int)Size.X, (int)Size.Y), BackgroundColor);
             else
             {
-                Globals.SpriteBatch.Draw(Texture, new Rectangle((int) Position.X, (int) Position.Y, 
-                    (int) Size.X, (int) Size.Y),
+                Globals.SpriteBatch.Draw(Texture, Bounds,
                     new Rectangle(0, 0, Texture.Width, Texture.Height), BackgroundColor);
             }
             Globals.SpriteBatch.End();

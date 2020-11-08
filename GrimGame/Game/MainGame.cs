@@ -15,8 +15,8 @@ namespace GrimGame.Game
     public class MainGame : Microsoft.Xna.Framework.Game
     {   
         // _____ Screen _____ //
-        private const int Width = 1280; // Width of the window
-        private const int Height = 720; // Height of the window
+        public static int Width = 1280; // Width of the window
+        public static int Height = 720; // Height of the window
 
         // _____ Map System _____ //
         private MapSystem _mapSystem;
@@ -39,9 +39,12 @@ namespace GrimGame.Game
             IsMouseVisible = true;
             Content.RootDirectory = "Content";
 
+            Globals.Graphics.BeginDraw();
             Globals.Graphics.PreferredBackBufferWidth = Width;
             Globals.Graphics.PreferredBackBufferHeight = Height;
+#if Linux
             Globals.Graphics.IsFullScreen = true;
+#endif            
             Globals.Graphics.ApplyChanges();
             
             ObjectManager = new ObjectManager();
