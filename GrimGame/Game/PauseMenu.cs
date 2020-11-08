@@ -28,29 +28,41 @@ namespace GrimGame.Game
         /// <param name="game">A reference to the main game.</param>
         public PauseMenu(MainGame game)
         {
-            _canvas = new Canvas();
             _game = game;
+            
+            // create a new canvas
+            _canvas = new Canvas();
+            
+            // Create a new panel within the canvas
             Panel panel = new Panel(new Vector2(1920 / 2 - 200,
                 1080 / 2 - 100), new Vector2(400, 200), Color.White)
             {
                 Texture = Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG")
             };
+            
+            // Pause menu title
             TextBox pauseMenuTitle = new TextBox(
                 panel.Position + new Vector2(panel.Bounds.Width / 2 - (Globals.GuiFont.MeasureString("Paused").X / 2),
                     10), 
                 new Vector2(100, 50), Color.Blue);
             pauseMenuTitle.SetText("Paused", Color.White,
                 Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
-            
-            _resumeButton = new Button("Resume", panel.Position + new Vector2(panel.Size.X / 2, panel.Size.Y / 2), 
+
+            // Resume button
+            _resumeButton = new Button("Resume", panel.Position + new Vector2(panel.Size.X / 2, panel.Size.Y / 2),
                 new Vector2(100, 40),
                 Color.AntiqueWhite, Color.Black,
-                _buttonFont);
+                _buttonFont) {ButtonHoverColor = Color.Gray, TextHoverColor = Color.White};
 
+            // Quit button
             _quitButton = new Button("Quit",
-                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y + ButtonSpace ),
-                new Vector2(100, 40), Color.Red, Color.White, _buttonFont);
-            
+                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y + ButtonSpace),
+                new Vector2(100, 40), Color.Red, Color.White, _buttonFont)
+            {
+                ButtonHoverColor = Color.DarkRed, TextHoverColor = Color.White
+            };
+
+            // Assign button event functions
             _resumeButton.Click += ResumeButtonClick;
             _quitButton.Click += QuitButtonClick;
             

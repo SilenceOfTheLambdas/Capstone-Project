@@ -8,39 +8,44 @@ namespace GrimGame.Engine.GUI.Components
 {
     public class Button : Component
     {
-        #region Fields
+        #region Appearance
 
-        public readonly string Text;
-        public Color TextColor;
-
-        private Rectangle mouseBounds;
-        
-        public bool Hovering;
-        private MouseState _currentMouseState;
-        private MouseState _lastMouseState;
-        private readonly Color _oldBackgroundColor;
+        public Color ButtonHoverColor { get; set; }
+        public Color TextHoverColor { get; set; }
+        private readonly SpriteFont _font;
+        private readonly string _text;
+        private Color _textColor;
         private readonly Color _oldTextColor;
-        public SpriteFont Font;
+        private readonly Color _oldBackgroundColor;
         
         #endregion
-
-        // _____ Properties _____ //
-        public bool Clicked { get; set; }
+        
+        private bool _hovering;
+        private MouseState _currentMouseState;
+        private MouseState _lastMouseState;
+        private Rectangle _mouseBounds;
+        
         public event EventHandler Click;
 
         /// <summary>
-        /// Create a new button component. A button is formed of a TextBox.
+        /// A button component.
         /// </summary>
+        /// <param name="text">The text to display</param>
+        /// <param name="position">The position of the button</param>
+        /// <param name="size">The width and height of the button</param>
+        /// <param name="backgroundColor">The normal background colour</param>
+        /// <param name="textColor">The normal text colour</param>
+        /// <param name="font">The SpriteFont of the text in the button</param>
         public Button(string text, Vector2 position, Vector2 size, Color backgroundColor, Color textColor, SpriteFont font)
         {
             Position = position - new Vector2(size.X / 2, size.Y / 2);
-            Text = text;
+            _text = text;
             Size = size;
             BackgroundColor = backgroundColor;
-            TextColor = textColor;
+            _textColor = textColor;
             _oldTextColor = textColor;
             _oldBackgroundColor = BackgroundColor;
-            Font = font;
+            _font = font;
             Bounds = new Rectangle(new Point((int) Position.X, (int) Position.Y), 
                 new Point((int) Size.X, (int) Size.Y));
         }
@@ -50,12 +55,9 @@ namespace GrimGame.Engine.GUI.Components
             _lastMouseState = _currentMouseState;
             _currentMouseState = Mouse.GetState();
 
-            mouseBounds = new Rectangle(_currentMouseState.Position.X, _currentMouseState.Position.Y, 1, 1);
+            _mouseBounds = new Rectangle(_currentMouseState.Position.X, _currentMouseState.Position.Y, 1, 1);
 
-            Hovering = false;
-
-            if (Bounds.Intersects(mouseBounds))
-                Hovering = true;
+            _hovering = Bounds.Intersects(_mouseBounds);
 
             if (_currentMouseState.LeftButton == ButtonState.Released &&
                 _lastMouseState.LeftButton == ButtonState.Pressed)
@@ -65,28 +67,28 @@ namespace GrimGame.Engine.GUI.Components
             
             // Keep restoring old colors, unless the button is being hovered over
             BackgroundColor = _oldBackgroundColor;
-            TextColor = _oldTextColor;
+            _textColor = _oldTextColor;
         }
 
         public override void Draw()
         {
             Globals.SpriteBatch.Begin();
-            if (Hovering)
+            if (_hovering)
             {
-                BackgroundColor = Color.Pink;
-                TextColor = Color.Blue;
+                BackgroundColor = ButtonHoverColor;
+                _textColor = TextHoverColor;
             }
             Globals.SpriteBatch.FillRectangle(Bounds, BackgroundColor);
 
-            if (!string.IsNullOrEmpty(Text))
+            if (!string.IsNullOrEmpty(_text))
             {
-                var x = (Bounds.X + (Bounds.Width / 2)) - (Globals.GuiFont.MeasureString(Text).X / 2);
-                var y = (Bounds.Y + (Bounds.Height / 2)) - (Globals.GuiFont.MeasureString(Text).Y / 2);
+                var x = (Bounds.X + (Bounds.Width / 2)) - (Globals.GuiFont.MeasureString(_text).X / 2);
+                var y = (Bounds.Y + (Bounds.Height / 2)) - (Globals.GuiFont.MeasureString(_text).Y / 2);
                 
-                Globals.SpriteBatch.DrawString(Font, Text, new Vector2(x, y), TextColor);
+                Globals.SpriteBatch.DrawString(_font, _text, new Vector2(x, y), _textColor);
             }
             Globals.SpriteBatch.DrawRectangle(Bounds, Color.Pink);
-            Globals.SpriteBatch.DrawRectangle(mouseBounds, Color.Orange);
+            Globals.SpriteBatch.DrawRectangle(_mouseBounds, Color.Orange);
             Globals.SpriteBatch.End();
         }
 

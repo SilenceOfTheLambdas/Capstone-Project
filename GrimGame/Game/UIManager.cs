@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
@@ -6,38 +7,29 @@ namespace GrimGame.Game
 {
     public class UIManager
     {
-        public PauseMenu PauseMenu;
-        private float _keyDelay = 1f;
-        private float _timePassed = 0f;
+        private PauseMenu _pauseMenu;
+        Stopwatch sw = new Stopwatch();
         
         public UIManager(MainGame game)
         {
-            PauseMenu = new PauseMenu(game);
-        }
-
-        public void InputManager()
-        {
-            _timePassed += (float) Globals.GameTime.GetElapsedSeconds();
-            
-            var pause = Keys.Escape;
-            if (Keyboard.GetState().IsKeyDown(pause))
-            {
-                PauseMenu.IsActive = !PauseMenu.IsActive;
-                _timePassed = 0f;
-            }
+            _pauseMenu = new PauseMenu(game);
+            InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);
         }
 
         public void Update()
         {
-            InputManager();
-            
-            PauseMenu.Update();
+            _pauseMenu.Update();
+        }
+
+        private void OpenPauseMenu()
+        {
+            _pauseMenu.IsActive = !_pauseMenu.IsActive;
         }
 
         public void Draw()
         {
-            if (PauseMenu.IsActive)
-                PauseMenu.Draw();
+            if (_pauseMenu.IsActive)
+                _pauseMenu.Draw();
         }
     }
 }

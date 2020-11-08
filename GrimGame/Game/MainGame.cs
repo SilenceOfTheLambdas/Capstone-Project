@@ -97,6 +97,9 @@ namespace GrimGame.Game
             // _____ Map Update _____ //
             _mapSystem.Update(gameTime);
 
+            // InputManager Update
+            InputManager.Update();
+            
             _uiManager.Update();
 
             base.Update(gameTime);
