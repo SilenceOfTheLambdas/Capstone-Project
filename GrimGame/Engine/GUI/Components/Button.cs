@@ -88,7 +88,6 @@ namespace GrimGame.Engine.GUI.Components
                 Globals.SpriteBatch.DrawString(_font, _text, new Vector2(x, y), _textColor);
             }
             Globals.SpriteBatch.DrawRectangle(Bounds, Color.Pink);
-            Globals.SpriteBatch.DrawRectangle(_mouseBounds, Color.Orange);
             Globals.SpriteBatch.End();
         }
 

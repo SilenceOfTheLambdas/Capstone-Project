@@ -2,6 +2,7 @@
 using System;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
+using GrimGame.Game.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,24 +14,13 @@ using MonoGame.Extended.ViewportAdapters;
 namespace GrimGame.Game
 {
     public class MainGame : Microsoft.Xna.Framework.Game
-    {   
+    {
         // _____ Screen _____ //
-        public static int Width = 1280; // Width of the window
-        public static int Height = 720; // Height of the window
-
-        // _____ Map System _____ //
-        private MapSystem _mapSystem;
+        public static int Width = 1920; // Width of the window
+        public static int Height = 1080; // Height of the window
 
         // _____ Debug _____ //
         public bool ShowDebug;
-        private SpriteFont _debugFont;
-        
-        // _____ Objects _____ //
-        public static ObjectManager ObjectManager;
-        private GrimDebugger _debugger;
-        private Player _player;
-
-        private UIManager _uiManager;
 
         public MainGame()
         {
@@ -46,8 +36,6 @@ namespace GrimGame.Game
             Globals.Graphics.IsFullScreen = true;
 #endif            
             Globals.Graphics.ApplyChanges();
-            
-            ObjectManager = new ObjectManager();
         }
         
         protected override void Initialize()
@@ -57,96 +45,34 @@ namespace GrimGame.Game
             Globals.ContentManager = Content;
             Globals.GameTime = new GameTime();
             Globals.Camera = new OrthographicCamera(Globals.Graphics.GraphicsDevice);
-            Window.Title = "GrimDoom";
             var viewportAdapter = new DefaultViewportAdapter(Globals.Graphics.GraphicsDevice);
             Globals.Camera = new OrthographicCamera(viewportAdapter);
 
-            // _____ Map System _____ //
-            _mapSystem = new MapSystem(this);
-            _player = new Player(_mapSystem, Globals.Camera)
-            {
-                Name = "Player 1",
-                Tag = Globals.ObjectTags.Player,
-                Speed = 2f,
-                RunningSpeed = 3.2f,
-                Enabled = true,
-                Active = true
-            };
-            _player.Init(this);
+            new Level1("Main Level", "TestMap", this);
 
-            _mapSystem.Player = _player;
-            
-            _debugger = new GrimDebugger(_player, _mapSystem, _debugFont);
-            
-            _uiManager = new UIManager(this);
-            
-            // Add game objects to object list
-            ObjectManager.Add(_player, this);
+            // Load scene
+            SceneManager.LoadScene("Main Level");
+
+            SceneManager.InitScenes();
         }
 
         protected override void LoadContent()
         {
             Globals.SpriteBatch = new SpriteBatch(Globals.Graphics.GraphicsDevice);
-            _debugFont = Content.Load<SpriteFont>("Fonts/debugFont");
+            Globals.DebugFont = Content.Load<SpriteFont>("Fonts/debugFont");
             Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 
         protected override void Update(GameTime gameTime)
         {
-            // _____ Player Update _____ //
-            if (_player.Active)
-                _player.Update(this);
-            
-            // _____ Map Update _____ //
-            _mapSystem.Update(gameTime);
-
-            // InputManager Update
-            InputManager.Update();
-            
-            _uiManager.Update();
-
             base.Update(gameTime);
+            SceneManager.UpdateScenes(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            // Clear the screen
-            GraphicsDevice.Clear(Color.Black);
-
-            #region Player Layer Index
-            foreach (var (rectangle, isBelowPlayer) in _mapSystem.FrontAndBackWalls)
-            {
-                if (isBelowPlayer)
-                {
-                    if (_player.BoxCollider.Bounds.Top >= rectangle.Bottom)
-                    {
-                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                        _mapSystem.CurrentIndex = Globals.LayerCount;
-                    }
-                    else
-                    {
-                        _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
-                    }
-                }
-            }
-            #endregion
-
-            #region Debugging
-            if (Keyboard.GetState().IsKeyDown(Keys.D0))
-            {
-                ShowDebug = true;
-            }
-            
-            // Draws text above player, showing it's position
-            if (ShowDebug)
-            {
-                _debugger.Draw();
-            }
-            #endregion
-            
-            _uiManager.Draw();
-
             base.Draw(gameTime);
+            SceneManager.DrawScenes(gameTime);
         }
     }
     public static class Program

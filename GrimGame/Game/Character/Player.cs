@@ -51,7 +51,7 @@ namespace GrimGame.Game.Character
             _camera = camera;
         }
         
-        public override void Init(MainGame g)
+        public override void Init()
         {
             base.Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
@@ -72,7 +72,7 @@ namespace GrimGame.Game.Character
                 new Point(Sprite.Width,  16));
         }
 
-        public override void Update(MainGame g)
+        public override void Update(Scene scene)
         {
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
@@ -80,7 +80,7 @@ namespace GrimGame.Game.Character
             TilePosition = new Vector2(x, y);
 
             // _____ Update Box Collider _____ //
-            BoxCollider.Update(g);
+            BoxCollider.Update(scene);
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
@@ -123,7 +123,7 @@ namespace GrimGame.Game.Character
             }
         }
 
-        public override void Draw(MainGame g)
+        public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
             // Drawing of player sprite

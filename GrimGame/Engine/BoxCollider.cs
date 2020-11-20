@@ -22,12 +22,12 @@ namespace GrimGame.Engine
             Size = size;
         }
 
-        public override void Init(MainGame g)
+        public override void Init()
         {
             Bounds = new Rectangle(new Point((int) (Origin.X), (int) Origin.Y), new Point((int)Size.X, (int)Size.Y));
         }
 
-        public override void Update(MainGame g)
+        public override void Update(Scene scene)
         {
             Bounds = new Rectangle(new Point((int) (Origin.X), (int) Origin.Y), new Point((int)Size.X, (int)Size.Y));
         }
@@ -37,7 +37,7 @@ namespace GrimGame.Engine
             Bounds.Location = position;
         }
         
-        public override void Draw(MainGame g)
+        public override void Draw()
         {
             
         }

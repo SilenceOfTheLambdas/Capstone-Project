@@ -105,28 +105,18 @@ namespace GrimGame.Engine
         /// <summary>
         /// Here is where initialisation of the object is done.
         /// </summary>
-        /// <param name="g">A reference to the MainGame instance</param>
-        public abstract void Init(MainGame g);
-
-        /// <summary>
-        /// Destroy *this* game object.
-        /// </summary>
-        /// <param name="g">A reference to the MainGame instance</param>
-        public void Destroy(MainGame g)
-        {
-            Globals.GameObjects.Remove(this);
-        }
+        public abstract void Init();
 
         /// <summary>
         /// Anything is this function will be ran every frame.
         /// </summary>
-        /// <param name="g">A reference to the MainGame instance</param>
-        public abstract void Update(MainGame g);
+        /// <param name="scene">A reference to a game scene instance</param>
+        public abstract void Update(Scene scene);
         /// <summary>
         /// Draws this object onto the screen.
         /// </summary>
         /// <param name="g">A reference to the MainGame instance</param>
-        public abstract void Draw(MainGame g);
+        public abstract void Draw();
 
         // _____ Setters _____ //
         /// <summary>

@@ -9,8 +9,8 @@ namespace GrimGame.Game
     public class GrimDebugger
     {
         // _____ References _____ //
-        private readonly Player _player;
-        private readonly MapSystem _mapSystem;
+        public Player Player;
+        public MapSystem MapSystem;
         private readonly SpriteFont _debugFont;
 
         // _____ Output _____ //
@@ -21,10 +21,8 @@ namespace GrimGame.Game
         private const int TextPadding = 4;
         private readonly Color _gridColour = Color.MonoGameOrange;
 
-        public GrimDebugger(Player player, MapSystem mapSystem,SpriteFont debugFont)
+        public GrimDebugger(SpriteFont debugFont)
         {
-            this._player = player;
-            this._mapSystem = mapSystem;
             this._debugFont = debugFont;
             _gridColour.A = byte.Parse("1");
         }
@@ -41,9 +39,9 @@ namespace GrimGame.Game
 
         public void Draw()
         {
-            _outputText = ($"Player position: {_player.Position}" + "\n" +
-                           $"Player Tile Position: {_player.TilePosition}" + "\n" +
-                           $"Player Index: {_mapSystem.CurrentIndex}");
+            _outputText = ($"Player position: {Player.Position}" + "\n" +
+                           $"Player Tile Position: {Player.TilePosition}" + "\n" +
+                           $"Player Index: {MapSystem.CurrentIndex}");
             
             Globals.SpriteBatch.Begin();
             var panelPosition = new Vector2(0, 0);
@@ -56,7 +54,7 @@ namespace GrimGame.Game
             Globals.SpriteBatch.End();
                 
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawPoint(_mapSystem.Map.ObjectLayers[1].Objects[0].Position,Color.Green);
+            Globals.SpriteBatch.DrawPoint(MapSystem.Map.ObjectLayers[1].Objects[0].Position,Color.Green);
             Globals.SpriteBatch.End();
 
             DrawPlayerBounds();
@@ -81,7 +79,7 @@ namespace GrimGame.Game
 
         private void DrawCollisionObjects()
         {
-            foreach (var collisionObject in _mapSystem.CollisionObjects)
+            foreach (var collisionObject in MapSystem.CollisionObjects)
             {
                 Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
                 Globals.SpriteBatch.DrawRectangle(collisionObject, Color.Gray);
@@ -92,7 +90,7 @@ namespace GrimGame.Game
         private void DrawPlayerBounds()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawRectangle(_player.BoxCollider.Bounds, Color.Purple);
+            Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
             Globals.SpriteBatch.End();
         }
 

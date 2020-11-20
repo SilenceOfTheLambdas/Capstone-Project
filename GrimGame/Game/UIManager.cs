@@ -7,12 +7,11 @@ namespace GrimGame.Game
 {
     public class UIManager
     {
-        private PauseMenu _pauseMenu;
-        Stopwatch sw = new Stopwatch();
+        private readonly PauseMenu _pauseMenu;
         
-        public UIManager(MainGame game)
+        public UIManager(Scene scene)
         {
-            _pauseMenu = new PauseMenu(game);
+            _pauseMenu = new PauseMenu(scene);
             InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);
         }
 

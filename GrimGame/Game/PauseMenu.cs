@@ -15,7 +15,7 @@ namespace GrimGame.Game
         private readonly Button _resumeButton;
         private readonly Button _quitButton;
         private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
-        private readonly MainGame _game;
+        private readonly Scene _scene;
 
         public bool IsActive;
         private const int ButtonSpace = 125;
@@ -26,9 +26,9 @@ namespace GrimGame.Game
         /// Creates a pause menu, displaying options: Resume and Quit.
         /// </summary>
         /// <param name="game">A reference to the main game.</param>
-        public PauseMenu(MainGame game)
+        public PauseMenu(Scene scene)
         {
-            _game = game;
+            _scene = scene;
             
             // create a new canvas
             _canvas = new Canvas();
@@ -75,7 +75,7 @@ namespace GrimGame.Game
         private void QuitButtonClick(object? sender, EventArgs e)
         {
             if (_quitButton.Bounds.Intersects(_mouseBounds))
-                _game.Exit();
+                _scene.mainGame.Exit();
         }
 
         private void ResumeButtonClick(object? sender, EventArgs e)

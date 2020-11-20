@@ -14,7 +14,6 @@ namespace GrimGame.Engine
     /// </summary>
     public class MapSystem
     {
-        private readonly MainGame _game;
         /// <summary>
         /// The Tiled map
         /// </summary>
@@ -50,10 +49,9 @@ namespace GrimGame.Engine
 
         public Player Player;
 
-        public MapSystem(MainGame g)
+        public MapSystem(string mapName)
         {
-            _game = g;
-            Map = Globals.ContentManager.Load<TiledMap>("TestMap");
+            Map = Globals.ContentManager.Load<TiledMap>(mapName);
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
             _mapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
@@ -112,7 +110,7 @@ namespace GrimGame.Engine
             
             if (Player.Enabled)
                 // The player
-                Player.Draw(_game);
+                Player.Draw();
 
             // Above player
             for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
