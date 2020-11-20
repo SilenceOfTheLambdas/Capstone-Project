@@ -7,7 +7,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 #endregion
 
-namespace GrimGame.Game.Levels
+namespace GrimGame.Game.Scenes
 {
     class Level1 : Scene
     {

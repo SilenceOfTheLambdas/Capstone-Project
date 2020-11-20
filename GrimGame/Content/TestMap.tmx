@@ -57,7 +57,7 @@
   <object id="35" type="nodraw" x="333" y="260.25" width="4.75" height="11.5"/>
  </objectgroup>
  <objectgroup id="13" name="Back_walls">
-  <object id="37" type="nodraw" x="224" y="160" width="288" height="6.5"/>
+  <object id="37" type="nodraw" x="224" y="115.333" width="288" height="51.1667"/>
  </objectgroup>
  <objectgroup id="6" name="playerspawn">
   <object id="1" name="playerspawn" type="nodraw" x="366.333" y="211">

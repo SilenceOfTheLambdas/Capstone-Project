@@ -2,7 +2,7 @@
 using System;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
-using GrimGame.Game.Levels;
+using GrimGame.Game.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
