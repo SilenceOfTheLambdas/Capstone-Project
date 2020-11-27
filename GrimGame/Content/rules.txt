@@ -1,0 +1,1 @@
+AutoMaps/Buildings_automap.tmx
