@@ -23,7 +23,7 @@ namespace GrimGame.Game
 
         public GrimDebugger(SpriteFont debugFont)
         {
-            this._debugFont = debugFont;
+            _debugFont = debugFont;
             _gridColour.A = byte.Parse("1");
         }
 
@@ -39,9 +39,9 @@ namespace GrimGame.Game
 
         public void Draw()
         {
-            _outputText = ($"Player position: {Player.Position}" + "\n" +
+            _outputText =  $"Player position: {Player.Position}" + "\n" +
                            $"Player Tile Position: {Player.TilePosition}" + "\n" +
-                           $"Player Index: {MapSystem.CurrentIndex}");
+                           $"Player Index: {MapSystem.CurrentIndex}";
             
             Globals.SpriteBatch.Begin();
             var panelPosition = new Vector2(0, 0);

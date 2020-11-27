@@ -42,11 +42,11 @@ namespace GrimGame.Game.Scenes
                 MapSystem.Player = Player;
                 #endregion
 
-                UIManager = new UIManager(this);
+                UiManager = new UIManager(this);
 
                 // Init debugger
-                grimDebugger.Player = Player;
-                grimDebugger.MapSystem = MapSystem;
+                GrimDebugger.Player = Player;
+                GrimDebugger.MapSystem = MapSystem;
             }
         }
 
@@ -59,12 +59,12 @@ namespace GrimGame.Game.Scenes
         {
             if (GetIsSceneLoaded()) {
                 if (Player.Active)
-                Player.Update(this);
+                    Player.Update(this);
 
                 MapSystem.Update(gameTime);
 
                 InputManager.Update();
-                UIManager.Update();
+                UiManager.Update();
 
                 ObjectManager.Update(this);
             }
@@ -81,7 +81,7 @@ namespace GrimGame.Game.Scenes
                 // Sort the player's index
                 PlayerLayerIndexer();
 
-                UIManager.Draw();
+                UiManager.Draw();
             }
 
             base.Draw(gameTime);

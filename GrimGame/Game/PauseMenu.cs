@@ -75,7 +75,7 @@ namespace GrimGame.Game
         private void QuitButtonClick(object? sender, EventArgs e)
         {
             if (_quitButton.Bounds.Intersects(_mouseBounds))
-                _scene.mainGame.Exit();
+                _scene.MainGame.Exit();
         }
 
         private void ResumeButtonClick(object? sender, EventArgs e)

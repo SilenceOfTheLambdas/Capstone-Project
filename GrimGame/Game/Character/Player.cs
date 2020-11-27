@@ -72,7 +72,7 @@ namespace GrimGame.Game.Character
                 new Point(Sprite.Width,  16));
         }
 
-        public override void Update(Scene scene)
+        public override void Update(Game.Scene scene)
         {
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
@@ -112,14 +112,14 @@ namespace GrimGame.Game.Character
         {
             foreach (var collisionObject in _mapSystem.CollisionObjects)
             {
-                if (this.Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
-                    this.Velocity.X < 0 && IsTouchingRight(collisionObject))
-                    this.Velocity.X = 0;
+                if (Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
+                    Velocity.X < 0 && IsTouchingRight(collisionObject))
+                    Velocity.X = 0;
 
                     
-                if (this.Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
-                    this.Velocity.Y < 0 && IsTouchingBottom(collisionObject))
-                    this.Velocity.Y = 0;
+                if (Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
+                    Velocity.Y < 0 && IsTouchingBottom(collisionObject))
+                    Velocity.Y = 0;
             }
         }
 

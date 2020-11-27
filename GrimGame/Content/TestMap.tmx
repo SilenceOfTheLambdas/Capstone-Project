@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.09.22" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="38">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="38">
  <tileset firstgid="1" source="Tilesets/interiors.tsx"/>
- <tileset firstgid="1025" source="Tilesets/Nature_ground_and_decals.tsx"/>
- <tileset firstgid="1089" name="furniture" tilewidth="32" tileheight="32" tilecount="256" columns="32">
+ <tileset firstgid="1025" name="furniture" tilewidth="32" tileheight="32" tilecount="256" columns="32">
   <image source="Tilesets/Source/furniture.png" width="1024" height="256"/>
  </tileset>
  <layer id="1" name="Ground" width="100" height="100">
@@ -17,7 +16,7 @@
  </layer>
  <layer id="4" name="Wall_north" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt0zEKwkAQBdAo6VJ4hyA2nsIU6jWsvLetl3ACaxdxG3dX8h4MM8UvBobpOoD/t4vqU/80D9W2W5cxah91SH1pvsRRjtU2XJcp6hx1TX1pvrtHMfN/nPrvOfcoY/6Pm3s0Y8zMuUcZU2bOPcrwH23xH215ZOaeP92Ct+0mLzdk5gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCmF78aCfI=
+   eJzt0zEKwkAQBdBEAhYpPINBtPAWKcT7H8HWSziBtYu4jbsreQ+GmeIXA8N0HcD/O0QNqX+ax2rbbcsUdYo6p7427+Mo12obbsscdYu6p742X9yjmOU/+uF7zj3KWP7j6B7NmDJz7lHGnJlzjzL8R1v8R1sembnnT7fgbdfn5cbMHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANT0Ajp9CPI=
   </data>
  </layer>
  <layer id="7" name="Player" width="100" height="100">
@@ -35,7 +34,7 @@
  </objectgroup>
  <layer id="5" name="Wall_south(AbovePlayer)" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt0cENRFAYhdH/CbuhEiq2VMeslGKLGjwNiJUXM+ck3/4mNwLg3arSAwD4CWsdseX2uvQSTp8mos11TeklnPr8w+ALuG1KpRf8lzFdN/vjUd903eIPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXuIA/i0Qiw==
+   eJzt0TsOQEAARdEZsf8NKLXYgUqLTWjZg7EBURmfc5LXv+SGAPBuRe4DAHxCU4bQpnVl7iccxtRhSpv1eIQ1ddi0gMvqmPvBv1TxfIMet+rj+RY9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeIkdh1EThg==
   </data>
  </layer>
  <objectgroup id="12" name="Front_walls">

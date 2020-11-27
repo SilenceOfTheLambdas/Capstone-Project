@@ -27,7 +27,7 @@ namespace GrimGame.Engine
             Bounds = new Rectangle(new Point((int) (Origin.X), (int) Origin.Y), new Point((int)Size.X, (int)Size.Y));
         }
 
-        public override void Update(Scene scene)
+        public override void Update(Game.Scene scene)
         {
             Bounds = new Rectangle(new Point((int) (Origin.X), (int) Origin.Y), new Point((int)Size.X, (int)Size.Y));
         }

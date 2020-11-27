@@ -1,11 +1,9 @@
 ﻿#region Imports
 using System;
 using GrimGame.Engine;
-using GrimGame.Game.Character;
 using GrimGame.Game.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -16,11 +14,8 @@ namespace GrimGame.Game
     public class MainGame : Microsoft.Xna.Framework.Game
     {
         // _____ Screen _____ //
-        public static int Width = 1920; // Width of the window
-        public static int Height = 1080; // Height of the window
-
-        // _____ Debug _____ //
-        public bool ShowDebug;
+        private const int Width = 1280; // Width of the viewport
+        private const int Height = 720; // Height of the viewport
 
         public MainGame()
         {

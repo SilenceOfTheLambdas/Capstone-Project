@@ -11,20 +11,18 @@ namespace GrimGame.Game
         /// <summary>
         /// List of game objects in the scene.
         /// </summary>
-        public List<GameObject> Objects = new List<GameObject>();
+        private readonly List<GameObject> _objects = new List<GameObject>();
         
         /// <summary>
         /// The number of game objects in the scene.
         /// </summary>
-        public int Count => Objects.Count;
-        
-        public ObjectManager() {}
+        private int Count => _objects.Count;
 
         public void Update(Scene scene)
         {
-            for (int i = 0; i < Count; i++)
+            for (var i = 0; i < Count; i++)
             {
-                var obj = Objects[i];
+                var obj = _objects[i];
 
                 if (obj.Active)
                 {
@@ -34,11 +32,6 @@ namespace GrimGame.Game
             }
         }
 
-        public void Draw(MainGame g)
-        {
-            
-        }
-
         /// <summary>
         /// Add a new game object to the list.
         /// </summary>
@@ -46,22 +39,21 @@ namespace GrimGame.Game
         /// <param name="g">A reference to the MainGame</param>
         public void Add(GameObject obj, MainGame g)
         {
-            Objects.Add(obj);
+            _objects.Add(obj);
         }
 
         /// <summary>
         /// Remove a GameObject from the scene and list.
         /// </summary>
         /// <param name="obj">The GameObject to remove</param>
-        /// <param name="g">A reference to the MainGame</param>
         public void Remove(GameObject obj)
         {
-            Objects.Remove(obj);
+            _objects.Remove(obj);
         }
         
         /// <summary>
         /// Clear the list of all GameObjects.
         /// </summary>
-        public void Clear() { Objects.Clear();}
+        public void Clear() { _objects.Clear();}
     }
 }

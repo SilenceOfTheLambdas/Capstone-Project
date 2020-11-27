@@ -1,10 +1,7 @@
 ﻿#region Imports
 using GrimGame.Engine;
-using GrimGame.Game;
-using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
 #endregion
 
 namespace GrimGame.Game
@@ -12,27 +9,27 @@ namespace GrimGame.Game
     public abstract class Scene
     {
         // Is this scene loaded?
-        private bool isSceneLoaded;
-        public MainGame mainGame;
+        private bool _isSceneLoaded;
+        public readonly MainGame MainGame;
 
         #region Public Variables
-        public static ObjectManager ObjectManager;
-        public int Index;
-        public string Name;
-        public bool Loaded;
-        public UIManager UIManager;
-        public GrimDebugger grimDebugger;
-        public bool ShowDebug;
+
+        protected static ObjectManager ObjectManager;
+        public readonly string Name;
+        protected UIManager UiManager;
+        protected GrimDebugger GrimDebugger;
+        private bool _showDebug;
+        
         #endregion
 
-        public Scene(string sceneName, MainGame mainGame) {
+        protected Scene(string sceneName, MainGame mainGame) {
             ObjectManager = new ObjectManager();
             Name = sceneName;
-            this.mainGame = mainGame;
+            MainGame = mainGame;
         }
 
         public virtual void Initialize() {
-            grimDebugger = new GrimDebugger(Globals.GuiFont);
+            GrimDebugger = new GrimDebugger(Globals.GuiFont);
         }
 
         public abstract void LoadContent();
@@ -40,19 +37,19 @@ namespace GrimGame.Game
         public virtual void Update(GameTime gameTime) {
             if (Keyboard.GetState().IsKeyDown(Keys.D0))
             {
-                ShowDebug = true;
+                _showDebug = true;
             }
         }
 
         public virtual void Draw(GameTime gameTime) {
             // Draws text above player, showing it's position
-            if (ShowDebug)
+            if (_showDebug)
             {
-                grimDebugger.Draw();
+                GrimDebugger.Draw();
             }
         }
 
-        public bool GetIsSceneLoaded() => isSceneLoaded;
-        public void SetIsSceneLoaded(bool answer) => isSceneLoaded = answer;
+        public bool GetIsSceneLoaded() => _isSceneLoaded;
+        public void SetIsSceneLoaded(bool answer) => _isSceneLoaded = answer;
     }
 }

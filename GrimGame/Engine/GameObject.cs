@@ -111,7 +111,7 @@ namespace GrimGame.Engine
         /// Anything is this function will be ran every frame.
         /// </summary>
         /// <param name="scene">A reference to a game scene instance</param>
-        public abstract void Update(Scene scene);
+        public abstract void Update(Game.Scene scene);
         /// <summary>
         /// Draws this object onto the screen.
         /// </summary>

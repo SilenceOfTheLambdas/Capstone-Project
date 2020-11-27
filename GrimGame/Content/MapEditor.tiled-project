@@ -1,6 +1,16 @@
 {
     "automappingRulesFile": "",
     "commands": [
+        {
+            "arguments": "",
+            "command": "C:/Users/techd/RiderProjects/ce301_smith_callum-james/GrimGame/Run.bat",
+            "enabled": true,
+            "name": "Run",
+            "saveBeforeExecute": true,
+            "shortcut": null,
+            "showOutput": true,
+            "workingDirectory": "C:/Users/techd/RiderProjects/ce301_smith_callum-james/GrimGame"
+        }
     ],
     "extensionsPath": "extensions",
     "folders": [
