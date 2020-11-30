@@ -1,4 +1,5 @@
 ﻿#region Imports
+
 using System;
 using GrimGame.Engine;
 using GrimGame.Game.Scenes;
@@ -14,13 +15,13 @@ namespace GrimGame.Game
     public class MainGame : Microsoft.Xna.Framework.Game
     {
         // _____ Screen _____ //
-        private const int Width = 1280; // Width of the viewport
+        private const int Width  = 1280; // Width of the viewport
         private const int Height = 720; // Height of the viewport
 
         public MainGame()
         {
             Globals.Graphics = new GraphicsDeviceManager(this);
-            
+
             IsMouseVisible = true;
             Content.RootDirectory = "Content";
 
@@ -29,21 +30,21 @@ namespace GrimGame.Game
             Globals.Graphics.PreferredBackBufferHeight = Height;
 #if Linux
             Globals.Graphics.IsFullScreen = true;
-#endif            
+#endif
             Globals.Graphics.ApplyChanges();
         }
-        
+
         protected override void Initialize()
         {
             base.Initialize();
-            
+
             Globals.ContentManager = Content;
             Globals.GameTime = new GameTime();
             Globals.Camera = new OrthographicCamera(Globals.Graphics.GraphicsDevice);
             var viewportAdapter = new DefaultViewportAdapter(Globals.Graphics.GraphicsDevice);
             Globals.Camera = new OrthographicCamera(viewportAdapter);
 
-            new Level1("Main Level", "TestMap", this);
+            new Level1("Main Level", "StartLevel", this);
 
             // Load scene
             SceneManager.LoadScene("Main Level");
@@ -70,6 +71,7 @@ namespace GrimGame.Game
             SceneManager.DrawScenes(gameTime);
         }
     }
+
     public static class Program
     {
         [STAThread]

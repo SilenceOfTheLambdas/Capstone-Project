@@ -9,16 +9,16 @@ namespace GrimGame.Game
     public class GrimDebugger
     {
         // _____ References _____ //
-        public Player Player;
-        public MapSystem MapSystem;
+        public           Player     Player;
+        public           MapSystem  MapSystem;
         private readonly SpriteFont _debugFont;
 
         // _____ Output _____ //
         private static string _outputText;
         private static string _logText;
-        
+
         // _____ Properties _____ //
-        private const int TextPadding = 4;
+        private const    int   TextPadding = 4;
         private readonly Color _gridColour = Color.MonoGameOrange;
 
         public GrimDebugger(SpriteFont debugFont)
@@ -39,22 +39,24 @@ namespace GrimGame.Game
 
         public void Draw()
         {
-            _outputText =  $"Player position: {Player.Position}" + "\n" +
-                           $"Player Tile Position: {Player.TilePosition}" + "\n" +
-                           $"Player Index: {MapSystem.CurrentIndex}";
-            
+            _outputText = $"Player position: {Player.Position}" + "\n" +
+                          $"Player Tile Position: {Player.TilePosition}" + "\n" +
+                          $"Player Index: {MapSystem.CurrentIndex}";
+
             Globals.SpriteBatch.Begin();
-            var panelPosition = new Vector2(0, 0);
+            var panelPosition   = new Vector2(0, 0);
             var textMiddlePoint = _debugFont.MeasureString(_outputText += _logText);
-            var textPosition = new Vector2(textMiddlePoint.X + TextPadding, panelPosition.Y + (textMiddlePoint.Y + TextPadding));
-                
-            Globals.SpriteBatch.Draw(Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG"), panelPosition, Color.White);
+            var textPosition = new Vector2(textMiddlePoint.X + TextPadding,
+                panelPosition.Y + (textMiddlePoint.Y + TextPadding));
+
+            Globals.SpriteBatch.Draw(Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG"), panelPosition,
+                Color.White);
             Globals.SpriteBatch.DrawString(_debugFont, _outputText, textPosition, Color.White,
                 0, textMiddlePoint, 1.0f, SpriteEffects.None, 0.5f);
             Globals.SpriteBatch.End();
-                
+
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawPoint(MapSystem.Map.ObjectLayers[1].Objects[0].Position,Color.Green);
+            Globals.SpriteBatch.DrawPoint(MapSystem.Map.ObjectLayers[1].Objects[0].Position, Color.Green);
             Globals.SpriteBatch.End();
 
             DrawPlayerBounds();
@@ -74,6 +76,7 @@ namespace GrimGame.Game
                     Globals.SpriteBatch.DrawRectangle(new Vector2(x1, y1), new Size2(32, 32), _gridColour);
                 }
             }
+
             Globals.SpriteBatch.End();
         }
 

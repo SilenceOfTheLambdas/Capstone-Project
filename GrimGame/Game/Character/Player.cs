@@ -1,9 +1,11 @@
 #region Imports
+
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+
 #endregion
 
 namespace GrimGame.Game.Character
@@ -19,6 +21,7 @@ namespace GrimGame.Game.Character
             Running,
             Idle
         }
+
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
 
         private enum Direction
@@ -28,8 +31,9 @@ namespace GrimGame.Game.Character
             Right,
             Down
         }
+
         private Direction _playerDirection = Direction.Down;
-        
+
         // _____ Transform _____ //
         /// <summary>
         /// The player's tile position.
@@ -37,12 +41,12 @@ namespace GrimGame.Game.Character
         public Vector2 TilePosition;
 
         // _____ Properties _____ //
-        public BoxCollider BoxCollider;
-        public float RunningSpeed;
-        private float _defaultWalkSpeed;
-        
+        public  BoxCollider BoxCollider;
+        public  float       RunningSpeed;
+        private float       _defaultWalkSpeed;
+
         // _____ References _____ //
-        private readonly MapSystem _mapSystem;
+        private readonly MapSystem          _mapSystem;
         private readonly OrthographicCamera _camera;
 
         public Player(MapSystem mapSystem, OrthographicCamera camera)
@@ -50,10 +54,10 @@ namespace GrimGame.Game.Character
             _mapSystem = mapSystem;
             _camera = camera;
         }
-        
+
         public override void Init()
         {
-            base.Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
+            Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             _defaultWalkSpeed = Speed;
 
@@ -67,16 +71,17 @@ namespace GrimGame.Game.Character
                     }
                 }
             }
-            BoxCollider = new BoxCollider(this, 
+
+            BoxCollider = new BoxCollider(this,
                 new Vector2(Position.X, Position.Y),
-                new Point(Sprite.Width,  16));
+                new Point(Sprite.Width, 16));
         }
 
-        public override void Update(Game.Scene scene)
+        public override void Update(Scene scene)
         {
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
-            
+
             TilePosition = new Vector2(x, y);
 
             // _____ Update Box Collider _____ //
@@ -84,11 +89,11 @@ namespace GrimGame.Game.Character
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
-                _playerMovementState = PlayerMovementStates.Running;   
+                _playerMovementState = PlayerMovementStates.Running;
             }
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Walking;
-            
+
             // _____ Update Player Position _____ //
             Move();
 
@@ -100,7 +105,7 @@ namespace GrimGame.Game.Character
 
             // _____ Update Player Position Based on velocity _____ //
             Position += Velocity;
-            
+
             // set to zero to stop moving when user stops pressing movement keys
             Velocity = Vector2.Zero;
         }
@@ -116,7 +121,7 @@ namespace GrimGame.Game.Character
                     Velocity.X < 0 && IsTouchingRight(collisionObject))
                     Velocity.X = 0;
 
-                    
+
                 if (Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
                     Velocity.Y < 0 && IsTouchingBottom(collisionObject))
                     Velocity.Y = 0;
@@ -125,9 +130,10 @@ namespace GrimGame.Game.Character
 
         public override void Draw()
         {
-            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(), samplerState: new SamplerState { Filter = TextureFilter.Point });
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
+                samplerState: new SamplerState {Filter = TextureFilter.Point});
             // Drawing of player sprite
-            Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin, 
+            Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin,
                 new Vector2(1.5f, 1.5f), SpriteEffects.None, 0.1f);
             Globals.SpriteBatch.End();
         }
@@ -138,9 +144,9 @@ namespace GrimGame.Game.Character
         private void Move()
         {
             _camera.LookAt(Position);
-            
+
             // Update the BoxCollider bounding box position
-            BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))), 
+            BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))),
                 (int) (Position.Y - 16)));
 
             Speed = _playerMovementState switch
@@ -155,20 +161,21 @@ namespace GrimGame.Game.Character
                 _playerMovementState = PlayerMovementStates.Walking;
                 _playerDirection = Direction.Up;
                 Velocity.Y = -Speed;
-                
-            } else if (Keyboard.GetState().IsKeyDown(Keys.S))
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 _playerMovementState = PlayerMovementStates.Walking;
                 _playerDirection = Direction.Down;
                 Velocity.Y = Speed;
             }
-            
+
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 _playerMovementState = PlayerMovementStates.Walking;
                 _playerDirection = Direction.Left;
                 Velocity.X = -Speed;
-            } else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 _playerMovementState = PlayerMovementStates.Walking;
                 _playerDirection = Direction.Right;
@@ -248,6 +255,7 @@ namespace GrimGame.Game.Character
                    playerBoxCollider.Right > collisionRectangle.Left &&
                    playerBoxCollider.Left < collisionRectangle.Right;
         }
+
         #endregion
     }
 }

@@ -1,1 +1,1 @@
-AutoMaps/Buildings_automap.tmx
+AutoMaps/rule_001.tmx

@@ -12,7 +12,7 @@ namespace GrimGame.Game
         /// List of game objects in the scene.
         /// </summary>
         private readonly List<GameObject> _objects = new List<GameObject>();
-        
+
         /// <summary>
         /// The number of game objects in the scene.
         /// </summary>
@@ -50,10 +50,13 @@ namespace GrimGame.Game
         {
             _objects.Remove(obj);
         }
-        
+
         /// <summary>
         /// Clear the list of all GameObjects.
         /// </summary>
-        public void Clear() { _objects.Clear();}
+        public void Clear()
+        {
+            _objects.Clear();
+        }
     }
 }
