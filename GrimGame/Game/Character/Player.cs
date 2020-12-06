@@ -48,6 +48,7 @@ namespace GrimGame.Game.Character
         // _____ References _____ //
         private readonly MapSystem          _mapSystem;
         private readonly OrthographicCamera _camera;
+        private const    float              PlayerScale = 1.5f;
 
         public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
@@ -60,7 +61,9 @@ namespace GrimGame.Game.Character
             Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             _defaultWalkSpeed = Speed;
-
+            Height = (int) (Sprite.Height * PlayerScale);
+            Width = (int) (Sprite.Width * PlayerScale);
+            
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
             {
                 foreach (var layerObject in objectLayer.Objects)
@@ -134,7 +137,7 @@ namespace GrimGame.Game.Character
                 samplerState: new SamplerState {Filter = TextureFilter.Point});
             // Drawing of player sprite
             Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin,
-                new Vector2(1.5f, 1.5f), SpriteEffects.None, 0.1f);
+                new Vector2(PlayerScale, PlayerScale), SpriteEffects.None, 0.1f);
             Globals.SpriteBatch.End();
         }
 

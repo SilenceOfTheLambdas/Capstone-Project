@@ -61,7 +61,8 @@ namespace GrimGame.Engine
                 CurrentIndex = key;
             }
 
-            // Adding collision objects
+            #region Adding Collision Objects
+
             foreach (var o in Map.ObjectLayers[2].Objects)
                 CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
                     (int) o.Size.Height));
@@ -89,14 +90,16 @@ namespace GrimGame.Engine
             {
                 FrontAndBackWalls.Add(
                     new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width, (int) o.Size.Height),
-                    false);
+                    true);
                 CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
                     (int) o.Size.Height));
             }
+
+            #endregion
         }
 
         /// <summary>
-        ///     Stores a dictionary attaining to the render order of the map.
+        ///     Stores a dictionary pertaining to the render order of the map.
         ///     The player will be on a layer, this index is stored in <code>playerIndex</code>.
         ///     int: an index that defines the order on which a layer is drawn
         ///     TiledMapLayer: the layer associated with that index
@@ -117,7 +120,7 @@ namespace GrimGame.Engine
         {
             CurrentIndex = newPlayerIndex;
             // Below player
-            for (var i = 0; i < newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
+            for (var i = 0; i <= newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
             if (Player.Enabled)
                 // The player

@@ -90,17 +90,16 @@ namespace GrimGame.Game.Scenes
         private void PlayerLayerIndexer() {
             foreach (var (rectangle, isBelowPlayer) in MapSystem.FrontAndBackWalls)
             {
-                if (isBelowPlayer)
+                if (!isBelowPlayer) continue;
+                if (Player.BoxCollider.Bounds.Top >= rectangle.Bottom
+                    && Player.BoxCollider.Bounds.Top <= rectangle.Bottom + Player.Height / 2)
                 {
-                    if (Player.BoxCollider.Bounds.Top >= rectangle.Bottom)
-                    {
-                        MapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                        MapSystem.CurrentIndex = Globals.LayerCount;
-                    }
-                    else
-                    {
-                        MapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
-                    }
+                    MapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                    MapSystem.CurrentIndex = Globals.LayerCount;
+                }
+                else
+                {
+                    MapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
                 }
             }
         }
