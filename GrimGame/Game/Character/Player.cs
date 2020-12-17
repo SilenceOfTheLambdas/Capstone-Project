@@ -75,8 +75,7 @@ namespace GrimGame.Game.Character
                 }
             }
 
-            BoxCollider = new BoxCollider(this,
-                new Vector2(Position.X, Position.Y),
+            BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(Sprite.Width, 16));
         }
 

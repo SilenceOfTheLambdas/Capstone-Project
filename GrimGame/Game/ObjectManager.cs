@@ -36,8 +36,7 @@ namespace GrimGame.Game
         /// Add a new game object to the list.
         /// </summary>
         /// <param name="obj">The GameObject to add</param>
-        /// <param name="g">A reference to the MainGame</param>
-        public void Add(GameObject obj, MainGame g)
+        public void Add(GameObject obj)
         {
             _objects.Add(obj);
         }

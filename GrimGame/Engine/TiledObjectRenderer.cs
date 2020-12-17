@@ -11,8 +11,8 @@ namespace GrimGame.Engine
     /// </summary>
     public class TiledObjectRenderer
     {
-        private TiledMap _map;
-        private SpriteBatch _spriteBatch;
+        private readonly TiledMap _map;
+        private readonly SpriteBatch _spriteBatch;
 
         public TiledObjectRenderer(TiledMap map, SpriteBatch spriteBatch)
         {

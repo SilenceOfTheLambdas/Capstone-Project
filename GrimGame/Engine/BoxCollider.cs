@@ -13,11 +13,9 @@ namespace GrimGame.Engine
         /// </summary>
         public bool IsTrigger = false;
         
-        private readonly GameObject GameObject;
 
-        public BoxCollider(GameObject gameObject, Vector2 origin, Point2 size)
+        public BoxCollider(Vector2 origin, Point2 size)
         {
-            this.GameObject = gameObject;
             this.Origin = origin;
             Size = size;
         }
