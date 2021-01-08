@@ -365,6 +365,9 @@
         <None Remove="Content\Tilesets\Nature Pack Vol 1\Ground Tiles and Decals\Forest_3_Tile.png" />
         <None Remove="Content\Tilesets\Nature Pack Vol 1\Ground Tiles and Decals\Grass_4_Tile.png" />
         <None Remove="Content\Tilesets\Nature Pack Vol 1\Trees\Tree_24.png" />
+        <None Update="Content\Sprites\Player\Animations\walk_down.sf">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Icon.ico" />

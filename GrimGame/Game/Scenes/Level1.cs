@@ -44,8 +44,11 @@ namespace GrimGame.Game.Scenes
                 UiManager = new UIManager(this);
 
                 // Init debugger
-                GrimDebugger.Player = _player;
-                GrimDebugger.MapSystem = _mapSystem;
+                if (Globals.DebugMode)
+                {
+                    GrimDebugger.Player = _player;
+                    GrimDebugger.MapSystem = _mapSystem;
+                }
             }
         }
 

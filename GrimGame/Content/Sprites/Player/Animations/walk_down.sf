@@ -1,0 +1,14 @@
+﻿{
+  "textureAtlas": {
+    "texture": "walk_down.png",
+    "regionWidth": 19,
+    "regionHeight": 29
+  },
+  "cycles": {
+    "walk_down": {
+      "frames": [0,1],
+      "isLooping": false,
+      "frameDuration": 0.2
+    }
+  }
+}

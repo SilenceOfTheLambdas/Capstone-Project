@@ -1,4 +1,6 @@
 ﻿#region Imports
+
+using System;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -18,8 +20,7 @@ namespace GrimGame.Game
         public readonly string Name;
         protected UIManager UiManager;
         protected GrimDebugger GrimDebugger;
-        private bool _showDebug;
-        
+
         #endregion
 
         protected Scene(string sceneName, MainGame mainGame) {
@@ -35,15 +36,12 @@ namespace GrimGame.Game
         public abstract void LoadContent();
 
         public virtual void Update(GameTime gameTime) {
-            if (Keyboard.GetState().IsKeyDown(Keys.D0))
-            {
-                _showDebug = true;
-            }
+            InputManager.AddKeyPressHandler(GrimDebugger.EnableDebugger, Keys.D0);
         }
 
         public virtual void Draw(GameTime gameTime) {
             // Draws text above player, showing it's position
-            if (_showDebug)
+            if (Globals.DebugMode)
             {
                 GrimDebugger.Draw();
             }

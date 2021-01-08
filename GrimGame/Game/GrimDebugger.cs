@@ -27,6 +27,11 @@ namespace GrimGame.Game
             _gridColour.A = byte.Parse("1");
         }
 
+        public void EnableDebugger()
+        {
+            Globals.DebugMode = !Globals.DebugMode;
+        }
+
         /// <summary>
         /// Log some text into the debug menu.
         /// </summary>

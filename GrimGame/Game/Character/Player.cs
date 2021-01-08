@@ -1,11 +1,14 @@
 #region Imports
 
+using System.Collections.Generic;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MLEM.Cameras;
 using MonoGame.Extended;
+using MonoGame.Extended.Sprites;
+using MonoGame.Extended.Content;
+using MonoGame.Extended.Serialization;
 
 #endregion
 
@@ -16,6 +19,9 @@ namespace GrimGame.Game.Character
     /// </summary>
     public class Player : GameObject
     {
+        private Dictionary<string, AnimatedSprite> _animatedSprites;
+        private Vector2                            _animationPosition;
+        
         private enum PlayerMovementStates
         {
             Walking,
@@ -78,10 +84,22 @@ namespace GrimGame.Game.Character
 
             BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(Sprite.Width, 16));
+
+            var spriteSheet = Globals.ContentManager.Load<SpriteSheet>("Sprites/Player/Animations/walk_down.sf", new JsonContentLoader());
+            var sprite      = new AnimatedSprite(spriteSheet);
+
+            sprite.Play("walk_down");
+            _animationPosition = Position;
+            _animatedSprites = new Dictionary<string, AnimatedSprite> {{"walk_down", sprite}};
         }
 
         public override void Update(Scene scene)
         {
+            _animationPosition = Position;
+            var deltaSeconds = (float) Globals.GameTime.ElapsedGameTime.TotalSeconds;
+            var walkSpeed    = deltaSeconds * 128;
+            var animation    = "walk_down";
+            
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
 
@@ -111,6 +129,10 @@ namespace GrimGame.Game.Character
 
             // set to zero to stop moving when user stops pressing movement keys
             Velocity = Vector2.Zero;
+
+            _animatedSprites[animation].Play(animation);
+            
+            _animatedSprites[animation].Update(deltaSeconds);
         }
 
         /// <summary>
@@ -134,7 +156,7 @@ namespace GrimGame.Game.Character
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
-                samplerState: new SamplerState {Filter = TextureFilter.Point});
+                samplerState: SamplerState.PointClamp);
             // Drawing of player sprite
             Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin,
                 new Vector2(PlayerScale, PlayerScale), SpriteEffects.None, 0.1f);
