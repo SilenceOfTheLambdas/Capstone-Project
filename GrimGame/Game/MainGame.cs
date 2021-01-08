@@ -5,6 +5,7 @@ using GrimGame.Engine;
 using GrimGame.Game.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLEM.Cameras;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -14,41 +15,45 @@ namespace GrimGame.Game
 {
     public class MainGame : Microsoft.Xna.Framework.Game
     {
-        // _____ Screen _____ //
-        private const int Width  = 1280; // Width of the viewport
-        private const int Height = 720; // Height of the viewport
-
         public MainGame()
         {
-            Globals.Graphics = new GraphicsDeviceManager(this);
+            var graphicsDeviceManager = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = (int) Globals.WindowSize.X,
+                PreferredBackBufferHeight = (int) Globals.WindowSize.Y
+            };
 
-            IsMouseVisible = true;
+            graphicsDeviceManager.ApplyChanges();
+
             Content.RootDirectory = "Content";
+            
+            this.Window.AllowUserResizing = false;
+            IsMouseVisible = true;
 
-            Globals.Graphics.BeginDraw();
-            Globals.Graphics.PreferredBackBufferWidth = Width;
-            Globals.Graphics.PreferredBackBufferHeight = Height;
-#if Linux
-            Globals.Graphics.IsFullScreen = true;
-#endif
-            Globals.Graphics.ApplyChanges();
+            Globals.GameWindow = this.Window;
+
+            Globals.Graphics = graphicsDeviceManager;
         }
 
         protected override void Initialize()
         {
-            base.Initialize();
-
             Globals.ContentManager = Content;
             Globals.GameTime = new GameTime();
-            Globals.Camera = new OrthographicCamera(Globals.Graphics.GraphicsDevice);
-            var viewportAdapter = new DefaultViewportAdapter(Globals.Graphics.GraphicsDevice);
-            Globals.Camera = new OrthographicCamera(viewportAdapter);
 
+            var (x, y) = Globals.VirtualSize;
+            Globals.ViewportAdapter = new BoxingViewportAdapter(this.Window, GraphicsDevice, (int) x, (int) y);
+
+            Globals.Camera = new OrthographicCamera(Globals.ViewportAdapter);
+            Globals.Camera.ZoomIn(1.2f);
+            
+            // Setup Level
             new Level1("Main Level", "StartLevel", this);
 
             // Load scene
             SceneManager.LoadScene("Main Level");
 
+            base.Initialize();
+            
             SceneManager.InitScenes();
         }
 

@@ -120,14 +120,18 @@ namespace GrimGame.Engine
         {
             CurrentIndex = newPlayerIndex;
             // Below player
-            for (var i = 0; i <= newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
+            for (var i = 0; i <= newPlayerIndex; i++)
+            {
+                _mapRenderer.Draw(RenderQueue[i], viewMatrix);
+            }
 
             if (Player.Enabled)
                 // The player
                 Player.Draw();
 
             // Above player
-            for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
+            if (newPlayerIndex < RenderQueue.Count)
+                for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
             // Draw any objects that are visible in-game
             _tiledObjectRenderer.DrawObjects();
