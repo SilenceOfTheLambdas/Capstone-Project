@@ -32,8 +32,6 @@ namespace GrimGame.Engine
         /// </summary>
         private readonly TiledObjectRenderer _tiledObjectRenderer;
 
-        public readonly Dictionary<Rectangle, bool> FrontAndBackWalls = new Dictionary<Rectangle, bool>();
-
         /// <summary>
         ///     The Tiled map
         /// </summary>
@@ -62,35 +60,10 @@ namespace GrimGame.Engine
             }
 
             #region Adding Collision Objects
-
-            foreach (var o in Map.ObjectLayers[2].Objects)
-                CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
-                    (int) o.Size.Height));
-
-            // Adding front wall collision objects
+            
+            // Add all of the collision objects to the CollisionObjects list
             foreach (var o in Map.ObjectLayers[0].Objects)
             {
-                FrontAndBackWalls.Add(
-                    new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width, (int) o.Size.Height),
-                    true);
-                CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
-                    (int) o.Size.Height));
-            }
-
-            foreach (var o in Map.ObjectLayers[3].Objects)
-            {
-                FrontAndBackWalls.Add(
-                    new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width, (int) o.Size.Height),
-                    false);
-                CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
-                    (int) o.Size.Height));
-            }
-
-            foreach (var o in Map.ObjectLayers[1].Objects)
-            {
-                FrontAndBackWalls.Add(
-                    new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width, (int) o.Size.Height),
-                    true);
                 CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
                     (int) o.Size.Height));
             }

@@ -19,7 +19,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     Is this object colliding with something?
         /// </summary>
-        public bool Collision;
+        public bool Collision = false;
 
         /// <summary>
         ///     Is the object enabled?
@@ -176,9 +176,9 @@ namespace GrimGame.Engine
         }
 
         // _____ Getters _____ //
-        public float DistanceTo(Vector2 pos)
+        public float DistanceTo(Vector2 from, Vector2 to)
         {
-            return Vector2.Distance(Position, pos);
+            return Vector2.Distance(from, to);
         }
 
         public Vector2 GetPositionCentered()

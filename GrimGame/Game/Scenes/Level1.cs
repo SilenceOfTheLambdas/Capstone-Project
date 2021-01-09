@@ -1,6 +1,7 @@
 #region Imports
 
 using System;
+using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
@@ -81,7 +82,7 @@ namespace GrimGame.Game.Scenes
                 Globals.Graphics.GraphicsDevice.Clear(Color.Black);
 
                 // Sort the player's index
-                PlayerLayerIndexer();
+                PlayerLayerIndexer();                    
 
                 UiManager.Draw();
             }
@@ -91,19 +92,24 @@ namespace GrimGame.Game.Scenes
 
         private void PlayerLayerIndexer()
         {
-            foreach (var (rectangle, isBelowPlayer) in _mapSystem.FrontAndBackWalls)
+            var bumpLayer = false;
+            foreach (var _ in MapSystem.CollisionObjects.Where(rectangle =>
+                _player.Sprite.BoxCollider.Bounds.Top >= rectangle.Bottom
+                && _player.Sprite.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
+                && _player.Sprite.BoxCollider.Bounds.Right >= rectangle.Left
+                && _player.Sprite.BoxCollider.Bounds.Left <= rectangle.Right))
             {
-                if (!isBelowPlayer) _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
-
-                if (_player.Sprite.BoxCollider.Bounds.Top >= rectangle.Bottom
-                    && _player.Sprite.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
-                    && _player.Sprite.BoxCollider.Bounds.Right >= rectangle.Left
-                    && _player.Sprite.BoxCollider.Bounds.Left <= rectangle.Right)
-                {
-                    _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 12);
-                    _mapSystem.CurrentIndex = Globals.LayerCount;
-                }
+                bumpLayer = true;
             }
+            
+            if (bumpLayer)
+            {
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                _mapSystem.CurrentIndex = Globals.LayerCount;
+                _player.Collision = true;
+            }
+            else
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
         }
     }
 }
