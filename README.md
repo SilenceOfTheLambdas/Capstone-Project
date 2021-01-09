@@ -6,8 +6,10 @@ _[Getting Started](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-jam
 --
 
 ## Build Status
-| Linux | ![.NET](https://github.com/sudo-make/Capstone-Project/workflows/.NET/badge.svg) |
+| Linux | ![.NET Linux](https://github.com/sudo-make/Capstone-Project/workflows/.NET/badge.svg) |
 | ---- | ---- |
+| Windows | ![.NET Windows](https://github.com/sudo-make/Capstone-Project/workflows/.NET%20Windows%20Latest/badge.svg) |
+
 ## Authors
 * Callum-James Smith @cs18804
 
