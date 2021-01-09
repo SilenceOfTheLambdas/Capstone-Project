@@ -2,60 +2,38 @@
 
 using System.Collections.Generic;
 using GrimGame.Engine;
+using GrimGame.Engine.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
-using MonoGame.Extended.Sprites;
-using MonoGame.Extended.Content;
-using MonoGame.Extended.Serialization;
 
 #endregion
 
 namespace GrimGame.Game.Character
 {
     /// <summary>
-    /// The playable character.
+    ///     The playable character.
     /// </summary>
     public class Player : GameObject
     {
-        private Dictionary<string, AnimatedSprite> _animatedSprites;
-        private Vector2                            _animationPosition;
-        
-        private enum PlayerMovementStates
-        {
-            Walking,
-            Running,
-            Idle
-        }
+        private const    float              PlayerScale = 1.5f;
+        private readonly OrthographicCamera _camera;
+
+        // _____ References _____ //
+        private readonly MapSystem _mapSystem;
+        private          float     _defaultWalkSpeed;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
 
-        private enum Direction
-        {
-            Up,
-            Left,
-            Right,
-            Down
-        }
-
-        private Direction _playerDirection = Direction.Down;
+        // _____ Properties _____ //
+        public float RunningSpeed;
 
         // _____ Transform _____ //
         /// <summary>
-        /// The player's tile position.
+        ///     The player's tile position.
         /// </summary>
         public Vector2 TilePosition;
-
-        // _____ Properties _____ //
-        public  BoxCollider BoxCollider;
-        public  float       RunningSpeed;
-        private float       _defaultWalkSpeed;
-
-        // _____ References _____ //
-        private readonly MapSystem          _mapSystem;
-        private readonly OrthographicCamera _camera;
-        private const    float              PlayerScale = 1.5f;
 
         public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
@@ -65,92 +43,66 @@ namespace GrimGame.Game.Character
 
         public override void Init()
         {
-            Sprite = Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1");
+            Sprite = new Sprite(new Dictionary<string, Animation>
+            {
+                {
+                    "walk_up",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 2)
+                },
+                {
+                    "walk_down",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 2)
+                },
+                {
+                    "walk_left",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 2)
+                },
+                {
+                    "walk_right",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 2)
+                }
+            })
+            {
+                Position = Position,
+                Speed = Speed,
+                Width = 19,
+                Height = 29
+            };
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             _defaultWalkSpeed = Speed;
             Height = (int) (Sprite.Height * PlayerScale);
             Width = (int) (Sprite.Width * PlayerScale);
-            
+
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
-            {
-                foreach (var layerObject in objectLayer.Objects)
-                {
-                    if (layerObject.Name.ToLower().Equals("playerspawn"))
-                    {
-                        Position = layerObject.Position;
-                    }
-                }
-            }
+            foreach (var layerObject in objectLayer.Objects)
+                if (layerObject.Name.ToLower().Equals("playerspawn"))
+                    Position = layerObject.Position;
 
-            BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
-                new Point(Sprite.Width, 16));
-
-            var spriteSheet = Globals.ContentManager.Load<SpriteSheet>("Sprites/Player/Animations/walk_down.sf", new JsonContentLoader());
-            var sprite      = new AnimatedSprite(spriteSheet);
-
-            sprite.Play("walk_down");
-            _animationPosition = Position;
-            _animatedSprites = new Dictionary<string, AnimatedSprite> {{"walk_down", sprite}};
+            // Load Sprite Animations
+            Sprite.Position = Position;
+            Sprite.Origin = Origin;
+            Sprite.Scale = new Vector2(PlayerScale, PlayerScale);
+            Sprite.Speed = Speed;
         }
 
-        public override void Update(Scene scene)
+        public override void Update(Scene scene, GameTime gameTime)
         {
-            _animationPosition = Position;
-            var deltaSeconds = (float) Globals.GameTime.ElapsedGameTime.TotalSeconds;
-            var walkSpeed    = deltaSeconds * 128;
-            var animation    = "walk_down";
-            
+            // Update Player's Position variables
+            Position = Sprite.Position;
+
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
 
             TilePosition = new Vector2(x, y);
 
-            // _____ Update Box Collider _____ //
-            BoxCollider.Update(scene);
-
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
-            {
                 _playerMovementState = PlayerMovementStates.Running;
-            }
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Walking;
 
-            // _____ Update Player Position _____ //
-            Move();
-
-            // _____ Player Direction _____ //
-            UpdatePlayerDirection();
-
-            // _____ Detecting Collisions _____ //
-            CollisionDetection();
-
-            // _____ Update Player Position Based on velocity _____ //
-            Position += Velocity;
-
-            // set to zero to stop moving when user stops pressing movement keys
-            Velocity = Vector2.Zero;
-
-            _animatedSprites[animation].Play(animation);
-            
-            _animatedSprites[animation].Update(deltaSeconds);
-        }
-
-        /// <summary>
-        /// Detects collisions between the player and any collision objects.
-        /// </summary>
-        private void CollisionDetection()
-        {
-            foreach (var collisionObject in _mapSystem.CollisionObjects)
-            {
-                if (Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
-                    Velocity.X < 0 && IsTouchingRight(collisionObject))
-                    Velocity.X = 0;
-
-
-                if (Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
-                    Velocity.Y < 0 && IsTouchingBottom(collisionObject))
-                    Velocity.Y = 0;
-            }
+            // ____ Update Sprite Animations ____ //
+            Sprite.Update(gameTime, scene);
+            _camera.LookAt(Sprite.Position);
         }
 
         public override void Draw()
@@ -158,129 +110,23 @@ namespace GrimGame.Game.Character
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
                 samplerState: SamplerState.PointClamp);
             // Drawing of player sprite
-            Globals.SpriteBatch.Draw(Sprite, Position, null, Color.White, 0f, Origin,
-                new Vector2(PlayerScale, PlayerScale), SpriteEffects.None, 0.1f);
+            Sprite.Draw();
             Globals.SpriteBatch.End();
         }
 
-        /// <summary>
-        /// Moves the player according to it's velocity.
-        /// </summary>
-        private void Move()
+        private enum PlayerMovementStates
         {
-            _camera.LookAt(Position);
-
-            // Update the BoxCollider bounding box position
-            BoxCollider.UpdatePosition(new Point((int) (Position.X - ((Sprite.Width / 2))),
-                (int) (Position.Y - 16)));
-
-            Speed = _playerMovementState switch
-            {
-                PlayerMovementStates.Running => RunningSpeed,
-                PlayerMovementStates.Walking => _defaultWalkSpeed,
-                _ => Speed
-            };
-
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
-            {
-                _playerMovementState = PlayerMovementStates.Walking;
-                _playerDirection = Direction.Up;
-                Velocity.Y = -Speed;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.S))
-            {
-                _playerMovementState = PlayerMovementStates.Walking;
-                _playerDirection = Direction.Down;
-                Velocity.Y = Speed;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                _playerMovementState = PlayerMovementStates.Walking;
-                _playerDirection = Direction.Left;
-                Velocity.X = -Speed;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-                _playerMovementState = PlayerMovementStates.Walking;
-                _playerDirection = Direction.Right;
-                Velocity.X = Speed;
-            }
+            Walking,
+            Running,
+            Idle
         }
 
-        /// <summary>
-        /// Updates the player's sprite based on the direction they are facing.
-        /// </summary>
-        private void UpdatePlayerDirection()
+        private enum Direction
         {
-            Sprite = _playerDirection switch
-            {
-                Direction.Down => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1"),
-                Direction.Up => Globals.ContentManager.Load<Texture2D>("Sprites/Player/up_walk1"),
-                Direction.Left => Globals.ContentManager.Load<Texture2D>("Sprites/Player/left_walk1"),
-                Direction.Right => Globals.ContentManager.Load<Texture2D>("Sprites/Player/right_walk1"),
-                _ => Globals.ContentManager.Load<Texture2D>("Sprites/Player/down_walk1")
-            };
+            Up,
+            Left,
+            Right,
+            Down
         }
-
-        #region CollisionDetection
-
-        /// <summary>
-        /// Is the player touching the left of this collisionRectangle.
-        /// </summary>
-        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
-        /// <returns></returns>
-        private bool IsTouchingLeft(Rectangle collisionRectangle)
-        {
-            var playerBoxCollider = this.BoxCollider.Bounds;
-            return playerBoxCollider.Right + this.Velocity.X > collisionRectangle.Left &&
-                   playerBoxCollider.Left < collisionRectangle.Left &&
-                   playerBoxCollider.Bottom > collisionRectangle.Top &&
-                   playerBoxCollider.Top < collisionRectangle.Bottom;
-        }
-
-        /// <summary>
-        /// Is the player touching the right of this collisionRectangle.
-        /// </summary>
-        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
-        /// <returns></returns>
-        private bool IsTouchingRight(Rectangle collisionRectangle)
-        {
-            var playerBoxCollider = this.BoxCollider.Bounds;
-            return playerBoxCollider.Left + this.Velocity.X < collisionRectangle.Right &&
-                   playerBoxCollider.Right > collisionRectangle.Right &&
-                   playerBoxCollider.Bottom > collisionRectangle.Top &&
-                   playerBoxCollider.Top < collisionRectangle.Bottom;
-        }
-
-        /// <summary>
-        /// Is the player touching the Top of this collisionRectangle.
-        /// </summary>
-        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
-        /// <returns></returns>
-        private bool IsTouchingTop(Rectangle collisionRectangle)
-        {
-            var playerBoxCollider = this.BoxCollider.Bounds;
-            return playerBoxCollider.Bottom + this.Velocity.Y > collisionRectangle.Top &&
-                   playerBoxCollider.Top < collisionRectangle.Top &&
-                   playerBoxCollider.Right > collisionRectangle.Left &&
-                   playerBoxCollider.Left < collisionRectangle.Right;
-        }
-
-        /// <summary>
-        /// Is the player touching the bottom of this collisionRectangle.
-        /// </summary>
-        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
-        /// <returns></returns>
-        private bool IsTouchingBottom(Rectangle collisionRectangle)
-        {
-            var playerBoxCollider = this.BoxCollider.Bounds;
-            return playerBoxCollider.Top + this.Velocity.Y < collisionRectangle.Bottom &&
-                   playerBoxCollider.Bottom > collisionRectangle.Bottom &&
-                   playerBoxCollider.Right > collisionRectangle.Left &&
-                   playerBoxCollider.Left < collisionRectangle.Right;
-        }
-
-        #endregion
     }
 }

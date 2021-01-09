@@ -8,18 +8,19 @@ namespace GrimGame.Game
 {
     public class GrimDebugger
     {
-        // _____ References _____ //
-        public           Player     Player;
-        public           MapSystem  MapSystem;
-        private readonly SpriteFont _debugFont;
+        // _____ Properties _____ //
+        private const int TextPadding = 4;
 
         // _____ Output _____ //
-        private static string _outputText;
-        private static string _logText;
+        private static   string     _outputText;
+        private static   string     _logText;
+        private readonly SpriteFont _debugFont;
+        private readonly Color      _gridColour = Color.MonoGameOrange;
 
-        // _____ Properties _____ //
-        private const    int   TextPadding = 4;
-        private readonly Color _gridColour = Color.MonoGameOrange;
+        public MapSystem MapSystem;
+
+        // _____ References _____ //
+        public Player Player;
 
         public GrimDebugger(SpriteFont debugFont)
         {
@@ -27,13 +28,13 @@ namespace GrimGame.Game
             _gridColour.A = byte.Parse("1");
         }
 
-        public void EnableDebugger()
+        public static void EnableDebugger()
         {
             Globals.DebugMode = !Globals.DebugMode;
         }
 
         /// <summary>
-        /// Log some text into the debug menu.
+        ///     Log some text into the debug menu.
         /// </summary>
         /// <param name="text">The String to output</param>
         public static void Log(string text)
@@ -69,18 +70,14 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Draws a grid over the map.
+        ///     Draws a grid over the map.
         /// </summary>
         public void DrawGrid()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            for (var x1 = 0; x1 <= (100 * 32); x1 += 32)
-            {
-                for (var y1 = 0; y1 <= 100 * 32; y1 += 32)
-                {
-                    Globals.SpriteBatch.DrawRectangle(new Vector2(x1, y1), new Size2(32, 32), _gridColour);
-                }
-            }
+            for (var x1 = 0; x1 <= 100 * 32; x1 += 32)
+            for (var y1 = 0; y1 <= 100 * 32; y1 += 32)
+                Globals.SpriteBatch.DrawRectangle(new Vector2(x1, y1), new Size2(32, 32), _gridColour);
 
             Globals.SpriteBatch.End();
         }
@@ -98,7 +95,7 @@ namespace GrimGame.Game
         private void DrawPlayerBounds()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
+            Globals.SpriteBatch.DrawRectangle(Player.Sprite.BoxCollider.Bounds, Color.Purple);
             Globals.SpriteBatch.End();
         }
 

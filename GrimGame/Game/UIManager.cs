@@ -1,14 +1,12 @@
-using System.Diagnostics;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
 
 namespace GrimGame.Game
 {
     public class UIManager
     {
         private readonly PauseMenu _pauseMenu;
-        
+
         public UIManager(Scene scene)
         {
             _pauseMenu = new PauseMenu(scene);

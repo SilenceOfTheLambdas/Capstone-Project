@@ -11,20 +11,19 @@ namespace GrimGame.Game
 {
     public class PauseMenu
     {
+        private const    int        ButtonSpace = 125;
         private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly Canvas     _canvas;
-        private readonly Button     _resumeButton;
         private readonly Button     _quitButton;
+        private readonly Button     _resumeButton;
         private readonly Scene      _scene;
-
-        private const int ButtonSpace = 125;
 
         private Rectangle _mouseBounds;
 
         public bool IsActive;
 
         /// <summary>
-        /// Creates a pause menu, displaying options: Resume and Quit.
+        ///     Creates a pause menu, displaying options: Resume and Quit.
         /// </summary>
         /// <param name="scene">The scene in which to add the pause menu</param>
         public PauseMenu(Scene scene)
@@ -43,7 +42,7 @@ namespace GrimGame.Game
 
             // Pause menu title
             TextBox pauseMenuTitle = new TextBox(
-                panel.Position + new Vector2(panel.Bounds.Width / 2 - (Globals.GuiFont.MeasureString("Paused").X / 2),
+                panel.Position + new Vector2(panel.Bounds.Width / 2 - Globals.GuiFont.MeasureString("Paused").X / 2,
                     10),
                 new Vector2(100, 50), Color.Blue);
             pauseMenuTitle.SetText("Paused", Color.White,

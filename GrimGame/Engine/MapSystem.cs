@@ -16,6 +16,13 @@ namespace GrimGame.Engine
     public class MapSystem
     {
         /// <summary>
+        ///     A dictionary storing the collision layers.
+        ///     Rectangle: The collision bounds
+        ///     bool: Is this collision bound below the player?
+        /// </summary>
+        public static readonly List<Rectangle> CollisionObjects = new List<Rectangle>();
+
+        /// <summary>
         ///     The renderer for the Tiled map
         /// </summary>
         private readonly TiledMapRenderer _mapRenderer;
@@ -24,13 +31,6 @@ namespace GrimGame.Engine
         ///     Renders drawable objects onto the map
         /// </summary>
         private readonly TiledObjectRenderer _tiledObjectRenderer;
-
-        /// <summary>
-        ///     A dictionary storing the collision layers.
-        ///     Rectangle: The collision bounds
-        ///     bool: Is this collision bound below the player?
-        /// </summary>
-        public readonly List<Rectangle> CollisionObjects = new List<Rectangle>();
 
         public readonly Dictionary<Rectangle, bool> FrontAndBackWalls = new Dictionary<Rectangle, bool>();
 
@@ -120,10 +120,7 @@ namespace GrimGame.Engine
         {
             CurrentIndex = newPlayerIndex;
             // Below player
-            for (var i = 0; i <= newPlayerIndex; i++)
-            {
-                _mapRenderer.Draw(RenderQueue[i], viewMatrix);
-            }
+            for (var i = 0; i <= newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
             if (Player.Enabled)
                 // The player
@@ -131,7 +128,8 @@ namespace GrimGame.Engine
 
             // Above player
             if (newPlayerIndex < RenderQueue.Count)
-                for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
+                for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
+                    _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
             // Draw any objects that are visible in-game
             _tiledObjectRenderer.DrawObjects();

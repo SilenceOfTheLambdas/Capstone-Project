@@ -7,7 +7,7 @@ namespace GrimGame.Engine
     public static class InputManager
     {
         private static KeyboardState _ks, _ksOld = Keyboard.GetState();
-        
+
         private static readonly Dictionary<Keys, List<Action>> OnKeyPress = new Dictionary<Keys, List<Action>>();
 
         public static void AddKeyPressHandler(Action handler, Keys key)
@@ -21,12 +21,10 @@ namespace GrimGame.Engine
         {
             _ks = Keyboard.GetState();
 
-            foreach (Keys key in Enum.GetValues(typeof(Keys))) 
-            {
+            foreach (Keys key in Enum.GetValues(typeof(Keys)))
                 if (!_ks.IsKeyDown(key) && _ksOld.IsKeyDown(key) && OnKeyPress.ContainsKey(key))
                     foreach (var handler in OnKeyPress[key])
                         handler();
-            }
 
             _ksOld = _ks;
         }

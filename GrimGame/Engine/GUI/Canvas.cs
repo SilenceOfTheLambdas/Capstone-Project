@@ -5,10 +5,11 @@ namespace GrimGame.Engine.GUI
 {
     public class Canvas
     {
-        public int LayerIndex;
         public Color BackgroundColor;
+        public int   LayerIndex;
+
         /// <summary>
-        /// A list of any panels that are attached to this canvas.
+        ///     A list of any panels that are attached to this canvas.
         /// </summary>
         public List<Panel> Panels;
 
@@ -17,25 +18,28 @@ namespace GrimGame.Engine.GUI
             Panels = new List<Panel>();
         }
 
-        public void AddPanel(Panel panel) => Panels.Add(panel);
-        public void RemovePanel(Panel panel) => Panels.Remove(panel);
+        public void AddPanel(Panel panel)
+        {
+            Panels.Add(panel);
+        }
+
+        public void RemovePanel(Panel panel)
+        {
+            Panels.Remove(panel);
+        }
 
         public void Draw()
         {
             foreach (var panel in Panels)
-            {
                 // draw every panel in this canvas
                 panel.Draw();
-            }
         }
 
         public void Update()
         {
             foreach (var panel in Panels)
-            {
                 // draw every panel in this canvas
                 panel.Update();
-            }
         }
     }
 }

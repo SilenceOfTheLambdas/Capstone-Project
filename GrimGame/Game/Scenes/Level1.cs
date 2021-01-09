@@ -1,10 +1,10 @@
 #region Imports
+
+using System;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended;
-using MonoGame.Extended.ViewportAdapters;
+
 #endregion
 
 namespace GrimGame.Game.Scenes
@@ -14,8 +14,8 @@ namespace GrimGame.Game.Scenes
         private readonly MapSystem _mapSystem;
         private          Player    _player;
 
-        public Level1(string sceneName, string mapName, MainGame mainGame) 
-        : base(sceneName, mainGame)
+        public Level1(string sceneName, string mapName, MainGame mainGame)
+            : base(sceneName, mainGame)
         {
             _mapSystem = new MapSystem(mapName);
             SceneManager.AddScene(this);
@@ -25,8 +25,10 @@ namespace GrimGame.Game.Scenes
         {
             base.Initialize();
 
-            if (GetIsSceneLoaded()) {
+            if (GetIsSceneLoaded())
+            {
                 #region Map System
+
                 _player = new Player(_mapSystem, Globals.Camera)
                 {
                     Name = "Player 1",
@@ -39,6 +41,7 @@ namespace GrimGame.Game.Scenes
                 _player.Init();
 
                 _mapSystem.Player = _player;
+
                 #endregion
 
                 UiManager = new UIManager(this);
@@ -52,23 +55,19 @@ namespace GrimGame.Game.Scenes
             }
         }
 
-        public override void LoadContent()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Update(GameTime gameTime)
         {
-            if (GetIsSceneLoaded()) {
+            if (GetIsSceneLoaded())
+            {
                 if (_player.Active)
-                    _player.Update(this);
+                    _player.Update(this, gameTime);
 
                 _mapSystem.Update(gameTime);
 
                 InputManager.Update();
                 UiManager.Update();
 
-                ObjectManager.Update(this);
+                ObjectManager.Update(this, gameTime);
             }
 
             base.Update(gameTime);
@@ -76,7 +75,8 @@ namespace GrimGame.Game.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-            if (GetIsSceneLoaded()) {
+            if (GetIsSceneLoaded())
+            {
                 // Clear the screen
                 Globals.Graphics.GraphicsDevice.Clear(Color.Black);
 
@@ -89,18 +89,16 @@ namespace GrimGame.Game.Scenes
             base.Draw(gameTime);
         }
 
-        private void PlayerLayerIndexer() {
+        private void PlayerLayerIndexer()
+        {
             foreach (var (rectangle, isBelowPlayer) in _mapSystem.FrontAndBackWalls)
             {
-                if (!isBelowPlayer)
-                {
-                    _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
-                }
-                
-                if (_player.BoxCollider.Bounds.Top >= rectangle.Bottom
-                    && _player.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
-                    && _player.BoxCollider.Bounds.Right >= rectangle.Left 
-                    && _player.BoxCollider.Bounds.Left <= rectangle.Right)
+                if (!isBelowPlayer) _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 3);
+
+                if (_player.Sprite.BoxCollider.Bounds.Top >= rectangle.Bottom
+                    && _player.Sprite.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
+                    && _player.Sprite.BoxCollider.Bounds.Right >= rectangle.Left
+                    && _player.Sprite.BoxCollider.Bounds.Left <= rectangle.Right)
                 {
                     _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 12);
                     _mapSystem.CurrentIndex = Globals.LayerCount;

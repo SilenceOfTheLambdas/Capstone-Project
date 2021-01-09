@@ -5,7 +5,6 @@ using GrimGame.Engine;
 using GrimGame.Game.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MLEM.Cameras;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -26,11 +25,11 @@ namespace GrimGame.Game
             graphicsDeviceManager.ApplyChanges();
 
             Content.RootDirectory = "Content";
-            
-            this.Window.AllowUserResizing = false;
+
+            Window.AllowUserResizing = false;
             IsMouseVisible = true;
 
-            Globals.GameWindow = this.Window;
+            Globals.GameWindow = Window;
 
             Globals.Graphics = graphicsDeviceManager;
         }
@@ -41,11 +40,11 @@ namespace GrimGame.Game
             Globals.GameTime = new GameTime();
 
             var (x, y) = Globals.VirtualSize;
-            Globals.ViewportAdapter = new BoxingViewportAdapter(this.Window, GraphicsDevice, (int) x, (int) y);
+            Globals.ViewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, (int) x, (int) y);
 
             Globals.Camera = new OrthographicCamera(Globals.ViewportAdapter);
             Globals.Camera.ZoomIn(1.2f);
-            
+
             // Setup Level
             new Level1("Main Level", "StartLevel", this);
 
@@ -53,7 +52,7 @@ namespace GrimGame.Game
             SceneManager.LoadScene("Main Level");
 
             base.Initialize();
-            
+
             SceneManager.InitScenes();
         }
 
@@ -66,14 +65,14 @@ namespace GrimGame.Game
 
         protected override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
             SceneManager.UpdateScenes(gameTime);
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            base.Draw(gameTime);
             SceneManager.DrawScenes(gameTime);
+            base.Draw(gameTime);
         }
     }
 
