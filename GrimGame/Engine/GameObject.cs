@@ -2,6 +2,7 @@
 
 using GrimGame.Game;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
@@ -9,65 +10,6 @@ namespace GrimGame.Engine
 {
     public abstract class GameObject
     {
-        public bool Active, Visible;
-
-        /// <summary>
-        ///     The bounding box for this game object.
-        /// </summary>
-        public Rectangle Bounds;
-
-        /// <summary>
-        ///     Is this object colliding with something?
-        /// </summary>
-        public bool Collision = false;
-
-        /// <summary>
-        ///     Is the object enabled?
-        /// </summary>
-        public bool Enabled = true;
-
-        /// <summary>
-        ///     The height of this game object.
-        /// </summary>
-        public int Height;
-
-        // _____ Properties _____ //
-        /// <summary>
-        ///     The name of this game object.
-        /// </summary>
-        public string Name;
-
-        /// <summary>
-        ///     The origin point of this game object.
-        /// </summary>
-        protected Vector2 Origin;
-
-        /// <summary>
-        ///     The speed this object moves.
-        /// </summary>
-        public float Speed;
-
-        /// <summary>
-        ///     Assign a tag to this game object.
-        /// </summary>
-        public Globals.ObjectTags Tag;
-
-        /// <summary>
-        ///     The velocity at which this objects moves.
-        /// </summary>
-        protected Vector2 Velocity;
-
-        /// <summary>
-        ///     The width of this game object.
-        /// </summary>
-        public int Width;
-
-        // _____ Dimensions _____ //
-        /// <summary>
-        ///     The X and Y position of this game object.
-        /// </summary>
-        public float X, Y;
-
         protected GameObject(int x = 0, int y = 0, int w = 0, int h = 0, int id = 0)
         {
             // _____ Dimensions _____ //
@@ -83,6 +25,10 @@ namespace GrimGame.Engine
             Visible = true;
             Collision = false;
         }
+
+        #region Properties
+
+        public bool Active, Visible;
 
         /// <summary>
         ///     The position of this game object.
@@ -111,17 +57,85 @@ namespace GrimGame.Engine
         }
 
         /// <summary>
+        ///     The bounding box for this game object.
+        /// </summary>
+        public Rectangle Bounds;
+
+        /// <summary>
+        ///     The origin point of this game object.
+        /// </summary>
+        protected Vector2 Origin;
+
+        /// <summary>
+        ///     The velocity at which this objects moves.
+        /// </summary>
+        protected Vector2 Velocity;
+
+        /// <summary>
+        ///     Is this object colliding with something?
+        /// </summary>
+        public bool Collision;
+
+        /// <summary>
+        ///     Is the object enabled?
+        /// </summary>
+        public bool Enabled = true;
+
+        /// <summary>
+        ///     The height of this game object.
+        /// </summary>
+        public int Height;
+
+        // _____ Properties _____ //
+        /// <summary>
+        ///     The name of this game object.
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        ///     The speed this object moves.
+        /// </summary>
+        public float Speed;
+
+        /// <summary>
+        ///     Assign a tag to this game object.
+        /// </summary>
+        public Globals.ObjectTags Tag;
+
+        /// <summary>
+        ///     The width of this game object.
+        /// </summary>
+        public int Width;
+
+        // _____ Dimensions _____ //
+
+        /// <summary>
+        ///     The X and Y position of this game object.
+        /// </summary>
+        public float X, Y;
+
+        /// <summary>
         ///     The ID of the object.
         /// </summary>
-        public int Id { get; }
+        private int Id { get; }
 
         // _____ Sprite _____ //
+
         /// <summary>
         ///     The sprite texture of this object
         /// </summary>
-        public Sprite Sprite { get; protected set; }
+        protected Sprite Sprite;
 
-        // _____ Abstract Methods _____ //
+        protected Texture2D Texture;
+
+        protected Vector2 Scale;
+
+        public BoxCollider BoxCollider;
+
+        #endregion
+
+        #region Methods
+
         /// <summary>
         ///     Here is where initialisation of the object is done.
         /// </summary>
@@ -130,15 +144,11 @@ namespace GrimGame.Engine
         /// <summary>
         ///     Anything is this function will be ran every frame.
         /// </summary>
-        /// <param name="scene">A reference to a game scene instance</param>
         /// <param name="gameTime"></param>
-        public abstract void Update(Scene scene, GameTime gameTime);
-
-        /// <summary>
-        ///     Draws this object onto the screen.
-        /// </summary>
-        /// <param name="g">A reference to the MainGame instance</param>
-        public abstract void Draw();
+        public virtual void Update(GameTime gameTime)
+        {
+            CollisionDetection();
+        }
 
         // _____ Setters _____ //
         /// <summary>
@@ -185,5 +195,99 @@ namespace GrimGame.Engine
         {
             return new Vector2(X + Width / 2, X + Height / 2);
         }
+
+        public void Destroy(GameObject gameObject)
+        {
+            SceneManager.GetActiveScene.ObjectManager.Remove(gameObject);
+        }
+
+        #endregion
+
+        #region Virtual Methods
+
+        /// <summary>
+        ///     Draws this object onto the screen.
+        /// </summary>
+        public abstract void Draw();
+
+        /// <summary>
+        ///     Detects collisions between the player and any collision objects.
+        /// </summary>
+        public virtual void CollisionDetection()
+        {
+            foreach (var collisionObject in MapSystem.CollisionObjects)
+            {
+                if (Velocity.X > 0 && IsTouchingLeft(collisionObject) ||
+                    Velocity.X < 0 && IsTouchingRight(collisionObject))
+                    Velocity.X = 0;
+
+
+                if (Velocity.Y > 0 && IsTouchingTop(collisionObject) ||
+                    Velocity.Y < 0 && IsTouchingBottom(collisionObject))
+                    Velocity.Y = 0;
+            }
+        }
+
+        #endregion
+
+        #region CollisionDetection
+
+        /// <summary>
+        ///     Is the player touching the left of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingLeft(Rectangle collisionRectangle)
+        {
+            var boxCollider = BoxCollider.Bounds;
+            return boxCollider.Right + Velocity.X > collisionRectangle.Left &&
+                   boxCollider.Left < collisionRectangle.Left &&
+                   boxCollider.Bottom > collisionRectangle.Top &&
+                   boxCollider.Top < collisionRectangle.Bottom;
+        }
+
+        /// <summary>
+        ///     Is the player touching the right of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingRight(Rectangle collisionRectangle)
+        {
+            var boxCollider = BoxCollider.Bounds;
+            return boxCollider.Left + Velocity.X < collisionRectangle.Right &&
+                   boxCollider.Right > collisionRectangle.Right &&
+                   boxCollider.Bottom > collisionRectangle.Top &&
+                   boxCollider.Top < collisionRectangle.Bottom;
+        }
+
+        /// <summary>
+        ///     Is the player touching the Top of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingTop(Rectangle collisionRectangle)
+        {
+            var boxCollider = BoxCollider.Bounds;
+            return boxCollider.Bottom + Velocity.Y > collisionRectangle.Top &&
+                   boxCollider.Top < collisionRectangle.Top &&
+                   boxCollider.Right > collisionRectangle.Left &&
+                   boxCollider.Left < collisionRectangle.Right;
+        }
+
+        /// <summary>
+        ///     Is the player touching the bottom of this collisionRectangle.
+        /// </summary>
+        /// <param name="collisionRectangle">The collisionRectangle to check against</param>
+        /// <returns></returns>
+        private bool IsTouchingBottom(Rectangle collisionRectangle)
+        {
+            var boxCollider = BoxCollider.Bounds;
+            return boxCollider.Top + Velocity.Y < collisionRectangle.Bottom &&
+                   boxCollider.Bottom > collisionRectangle.Bottom &&
+                   boxCollider.Right > collisionRectangle.Left &&
+                   boxCollider.Left < collisionRectangle.Right;
+        }
+
+        #endregion
     }
 }

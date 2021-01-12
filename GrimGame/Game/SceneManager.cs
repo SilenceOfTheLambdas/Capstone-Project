@@ -12,6 +12,11 @@ namespace GrimGame.Game
     {
         private static readonly List<Scene> Scenes = new List<Scene>();
 
+        public static Scene GetActiveScene
+        {
+            get { return Scenes.First(scene => scene.GetIsSceneLoaded()); }
+        }
+
         public static void AddScene(Scene scene)
         {
             Scenes.Add(scene);
