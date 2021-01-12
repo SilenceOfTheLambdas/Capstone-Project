@@ -60,13 +60,11 @@ namespace GrimGame.Engine
             }
 
             #region Adding Collision Objects
-            
+
             // Add all of the collision objects to the CollisionObjects list
             foreach (var o in Map.ObjectLayers[0].Objects)
-            {
                 CollisionObjects.Add(new Rectangle((int) o.Position.X, (int) o.Position.Y, (int) o.Size.Width,
                     (int) o.Size.Height));
-            }
 
             #endregion
         }

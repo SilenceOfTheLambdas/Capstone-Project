@@ -1,6 +1,5 @@
 #region Imports
 
-using System;
 using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
@@ -13,6 +12,7 @@ namespace GrimGame.Game.Scenes
     internal class Level1 : Scene
     {
         private readonly MapSystem _mapSystem;
+        private          Paladin   _paladin;
         private          Player    _player;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
@@ -41,6 +41,17 @@ namespace GrimGame.Game.Scenes
                 };
                 _player.Init();
 
+                _paladin = new Paladin(_player.Position)
+                {
+                    Name = "Paladin",
+                    Tag = Globals.ObjectTags.Enemy,
+                    Speed = 1.4f,
+                    Enabled = true,
+                    Active = true,
+                    MaxHp = 100
+                };
+                _paladin.Init();
+
                 _mapSystem.Player = _player;
 
                 #endregion
@@ -61,7 +72,8 @@ namespace GrimGame.Game.Scenes
             if (GetIsSceneLoaded())
             {
                 if (_player.Active)
-                    _player.Update(this, gameTime);
+                    _player.Update(gameTime);
+                _paladin.Update(gameTime);
 
                 _mapSystem.Update(gameTime);
 
@@ -82,7 +94,9 @@ namespace GrimGame.Game.Scenes
                 Globals.Graphics.GraphicsDevice.Clear(Color.Black);
 
                 // Sort the player's index
-                PlayerLayerIndexer();                    
+                PlayerLayerIndexer();
+
+                _paladin.Draw();
 
                 UiManager.Draw();
             }
@@ -94,14 +108,12 @@ namespace GrimGame.Game.Scenes
         {
             var bumpLayer = false;
             foreach (var _ in MapSystem.CollisionObjects.Where(rectangle =>
-                _player.Sprite.BoxCollider.Bounds.Top >= rectangle.Bottom
-                && _player.Sprite.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
-                && _player.Sprite.BoxCollider.Bounds.Right >= rectangle.Left
-                && _player.Sprite.BoxCollider.Bounds.Left <= rectangle.Right))
-            {
+                _player.BoxCollider.Bounds.Top >= rectangle.Bottom
+                && _player.BoxCollider.Bounds.Top <= rectangle.Bottom + _player.Height / 2
+                && _player.BoxCollider.Bounds.Right >= rectangle.Left
+                && _player.BoxCollider.Bounds.Left <= rectangle.Right))
                 bumpLayer = true;
-            }
-            
+
             if (bumpLayer)
             {
                 _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
@@ -109,7 +121,9 @@ namespace GrimGame.Game.Scenes
                 _player.Collision = true;
             }
             else
+            {
                 _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
+            }
         }
     }
 }

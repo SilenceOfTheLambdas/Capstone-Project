@@ -95,7 +95,7 @@ namespace GrimGame.Game
         private void DrawPlayerBounds()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawRectangle(Player.Sprite.BoxCollider.Bounds, Color.Purple);
+            Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
             Globals.SpriteBatch.End();
         }
 

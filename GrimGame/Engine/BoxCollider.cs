@@ -1,6 +1,5 @@
 #region Imports
 
-using GrimGame.Game;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
 
@@ -27,7 +26,7 @@ namespace GrimGame.Engine
             Bounds = new Rectangle(new Point((int) Origin.X, (int) Origin.Y), new Point((int) Size.X, (int) Size.Y));
         }
 
-        public override void Update(Scene scene, GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Bounds = new Rectangle(new Point((int) Origin.X, (int) Origin.Y), new Point((int) Size.X, (int) Size.Y));
         }

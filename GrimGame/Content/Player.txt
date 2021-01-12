@@ -1,0 +1,32 @@
+#
+# Sprite sheet data for MonoGame.
+#
+# To learn how to import these sprites into your MonoGame project visit:
+# https://www.codeandweb.com/texturepacker/monogame
+#
+# Sprite sheet: Player.png (456 x 32)
+# $TexturePacker:SmartUpdate:f017762fc484c02c8013c312425b10d9:68ed953e0e7b011c66e88fc6bd606c2d:a89abc5b1add9b2f3754c8ca30705e94$
+#
+
+down_stand;0;117;0;19;30;19;30;0.5;0.5
+left_stand;0;288;0;15;30;15;30;0.5;0.5
+nod/nod1;0;136;0;19;30;19;30;0.5;0.5
+nod/nod2;0;155;0;19;30;19;30;0.5;0.5
+nod/nod3;0;174;0;19;30;19;30;0.5;0.5
+pose1;0;80;0;37;30;37;30;0.5;0.5
+pose2;0;41;0;39;30;39;30;0.5;0.5
+pose3;0;0;0;41;30;41;30;0.5;0.5
+right_stand;0;303;0;15;30;15;30;0.5;0.5
+shake/shake1;0;193;0;19;30;19;30;0.5;0.5
+shake/shake2;0;212;0;19;30;19;30;0.5;0.5
+shake/shake3;0;231;0;19;30;19;30;0.5;0.5
+surprise;0;250;0;19;30;19;30;0.5;0.5
+up_stand;0;269;0;19;30;19;30;0.5;0.5
+walk_down/down_walk1;0;318;0;19;29;19;29;0.5;0.5
+walk_down/down_walk2;0;337;0;19;29;19;29;0.5;0.5
+walk_left/left_walk1;0;394;0;16;29;16;29;0.5;0.5
+walk_left/left_walk2;0;426;0;15;29;15;29;0.5;0.5
+walk_right/right_walk1;0;441;0;15;29;15;29;0.5;0.5
+walk_right/right_walk2;0;410;0;16;29;16;29;0.5;0.5
+walk_up/up_walk1;0;356;0;19;29;19;29;0.5;0.5
+walk_up/up_walk2;0;375;0;19;29;19;29;0.5;0.5

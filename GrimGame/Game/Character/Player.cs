@@ -1,6 +1,8 @@
 #region Imports
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Engine.Models;
 using Microsoft.Xna.Framework;
@@ -21,8 +23,9 @@ namespace GrimGame.Game.Character
         private readonly OrthographicCamera _camera;
 
         // _____ References _____ //
-        private readonly MapSystem _mapSystem;
-        private          float     _defaultWalkSpeed;
+        private readonly MapSystem        _mapSystem;
+        private          AnimationManager _animationManager;
+        private          float            _defaultWalkSpeed;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
 
@@ -43,6 +46,8 @@ namespace GrimGame.Game.Character
 
         public override void Init()
         {
+            Scale = new Vector2(1.2f, 1.2f);
+
             Sprite = new Sprite(new Dictionary<string, Animation>
             {
                 {
@@ -63,11 +68,10 @@ namespace GrimGame.Game.Character
                 }
             })
             {
-                Position = Position,
-                Speed = Speed,
                 Width = 19,
                 Height = 29
             };
+            Texture = Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             _defaultWalkSpeed = Speed;
             Height = (int) (Sprite.Height * PlayerScale);
@@ -78,17 +82,22 @@ namespace GrimGame.Game.Character
                 if (layerObject.Name.ToLower().Equals("playerspawn"))
                     Position = layerObject.Position;
 
-            // Load Sprite Animations
-            Sprite.Position = Position;
-            Sprite.Origin = Origin;
-            Sprite.Scale = new Vector2(PlayerScale, PlayerScale);
-            Sprite.Speed = Speed;
+
+            _animationManager = new AnimationManager(Sprite.Animations.FirstOrDefault().Value);
+
+            BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
+                new Point(19, 16));
         }
 
-        public override void Update(Scene scene, GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            // Update Player's Position variables
-            Position = Sprite.Position;
+            BoxCollider.Update(gameTime);
+
+            _animationManager.Position = Position;
+            _animationManager.Origin = Origin;
+            _animationManager.Scale = Scale;
+
+            _animationManager.Update(gameTime);
 
             var x = (ushort) (Position.X / 32);
             var y = (ushort) (Position.Y / 32);
@@ -100,18 +109,65 @@ namespace GrimGame.Game.Character
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Walking;
 
-            // ____ Update Sprite Animations ____ //
-            Sprite.Update(gameTime, scene);
-            _camera.LookAt(Sprite.Position);
+            Move();
+
+            UpdatePlayerAnimationDirections();
+
+            _camera.LookAt(Position);
+
+            base.Update(gameTime);
+
+            Position += Velocity;
+            Velocity = Vector2.Zero;
         }
 
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
                 samplerState: SamplerState.PointClamp);
-            // Drawing of player sprite
-            Sprite.Draw();
+
+            if (_animationManager != null)
+                _animationManager.Draw();
+            else throw new Exception("Sprite has no animation of texture assigned!");
+
             Globals.SpriteBatch.End();
+        }
+
+        private void Move()
+        {
+            Speed = _playerMovementState switch
+            {
+                PlayerMovementStates.Walking => _defaultWalkSpeed,
+                PlayerMovementStates.Running => RunningSpeed,
+                PlayerMovementStates.Idle => 0f,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+                Velocity.Y = -Speed;
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+                Velocity.Y = Speed;
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                Velocity.X = -Speed;
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                Velocity.X = Speed;
+
+            // _____ Detecting Collisions _____ //
+            BoxCollider.UpdatePosition(new Point((int) (Position.X - Width / 2),
+                (int) (Position.Y - 16)));
+        }
+
+        private void UpdatePlayerAnimationDirections()
+        {
+            if (Velocity.X > 0)
+                _animationManager.Play(Sprite.Animations["walk_right"]);
+            else if (Velocity.X < 0)
+                _animationManager.Play(Sprite.Animations["walk_left"]);
+            else if (Velocity.Y > 0)
+                _animationManager.Play(Sprite.Animations["walk_down"]);
+            else if (Velocity.Y < 0)
+                _animationManager.Play(Sprite.Animations["walk_up"]);
+            else _animationManager.Stop();
         }
 
         private enum PlayerMovementStates
@@ -119,14 +175,6 @@ namespace GrimGame.Game.Character
             Walking,
             Running,
             Idle
-        }
-
-        private enum Direction
-        {
-            Up,
-            Left,
-            Right,
-            Down
         }
     }
 }

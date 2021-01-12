@@ -50,10 +50,10 @@ namespace GrimGame.Game
 
         #region Public Variables
 
-        protected static ObjectManager ObjectManager;
-        public readonly  string        Name;
-        protected        UIManager     UiManager;
-        protected        GrimDebugger  GrimDebugger;
+        public          ObjectManager ObjectManager;
+        public readonly string        Name;
+        protected       UIManager     UiManager;
+        protected       GrimDebugger  GrimDebugger;
 
         #endregion
     }

@@ -28,7 +28,7 @@ namespace GrimGame.Game
                 if (obj.Active)
                 {
                     obj.SetBounds(obj.X, obj.Y, obj.Width, obj.Height);
-                    obj.Update(scene, gameTime);
+                    obj.Update(gameTime);
                 }
             }
         }
