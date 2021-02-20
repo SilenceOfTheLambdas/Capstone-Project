@@ -22,6 +22,7 @@ namespace GrimGame.Game
                 PreferredBackBufferHeight = (int) Globals.WindowSize.Y
             };
 
+            graphicsDeviceManager.IsFullScreen = true;
             graphicsDeviceManager.ApplyChanges();
 
             Content.RootDirectory = "Content";

@@ -21,6 +21,16 @@ namespace GrimGame.Game.Character
     {
         private const    float              PlayerScale = 1.5f;
         private readonly OrthographicCamera _camera;
+        private          int                _currentHp;
+
+        // ____ Health ____ //
+        public int MaxHp { get; set; }
+
+        public int CurrentHp
+        {
+            get => _currentHp;
+            set => _currentHp = Math.Clamp(value, 0, MaxHp);
+        }
 
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
@@ -52,24 +62,24 @@ namespace GrimGame.Game.Character
             {
                 {
                     "walk_up",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 6)
                 },
                 {
                     "walk_down",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 6)
                 },
                 {
                     "walk_left",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 6)
                 },
                 {
                     "walk_right",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 6)
                 }
             })
             {
-                Width = 19,
-                Height = 29
+                Width = 14,
+                Height = 33
             };
             Texture = Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
@@ -124,7 +134,7 @@ namespace GrimGame.Game.Character
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
-                samplerState: SamplerState.PointClamp);
+                samplerState: new SamplerState() {Filter = TextureFilter.Point });
 
             if (_animationManager != null)
                 _animationManager.Draw();

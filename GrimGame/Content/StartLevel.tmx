@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="32" infinite="0" nextlayerid="319" nextobjectid="56">
+<map version="1.4" tiledversion="2020.12.18" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="32" infinite="0" nextlayerid="319" nextobjectid="57">
  <properties>
   <property name="NoOverlappingRules" type="bool" value="true"/>
  </properties>
@@ -1675,8 +1675,11 @@
   <object id="22" type="nodraw" x="2880" y="1632" width="608" height="32"/>
   <object id="23" type="nodraw" x="3488" y="1664" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="2" name="Player_spawn">
+ <objectgroup id="2" name="SpawnPoints">
   <object id="1" name="playerspawn" type="nodraw" x="3126" y="1747">
+   <point/>
+  </object>
+  <object id="56" name="EnemySpawn" type="nodraw" x="3474" y="2007">
    <point/>
   </object>
  </objectgroup>

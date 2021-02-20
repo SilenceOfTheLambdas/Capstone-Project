@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
+using MonoGame.Extended.Tiled;
 using MonoGame.Extended.ViewportAdapters;
 
 #endregion
@@ -27,6 +28,7 @@ namespace GrimGame.Engine
         public static Vector2               VirtualSize = new Vector2(1920, 1080);
         public static BoxingViewportAdapter ViewportAdapter;
 
+        public static MapSystem          MapSystem;
         public static GameTime           GameTime;
         public static OrthographicCamera Camera;
         public static ContentManager     ContentManager;

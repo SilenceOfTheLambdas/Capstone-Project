@@ -56,6 +56,8 @@ namespace GrimGame.Engine
             }
         }
 
+        protected float Rotation { get; set; }
+
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>
@@ -69,7 +71,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     The velocity at which this objects moves.
         /// </summary>
-        protected Vector2 Velocity;
+        public Vector2 Velocity;
 
         /// <summary>
         ///     Is this object colliding with something?

@@ -17,6 +17,8 @@ namespace GrimGame.Engine
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; set; }
         public Vector2 Scale { get; set; }
+        
+        public float Rotation { get; set; }
 
         public void Draw()
         {
@@ -26,7 +28,7 @@ namespace GrimGame.Engine
                     0,
                     _animation.FrameWidth,
                     _animation.FrameHeight),
-                Color.White, 0f, Origin, Scale, SpriteEffects.None, 0.1f);
+                Color.White, Rotation, Origin, Scale, SpriteEffects.None, 0.1f);
         }
 
         public void Play(Animation animation)

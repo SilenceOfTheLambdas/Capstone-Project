@@ -41,7 +41,7 @@ namespace GrimGame.Game.Scenes
                 };
                 _player.Init();
 
-                _paladin = new Paladin(_player.Position)
+                _paladin = new Paladin(_mapSystem, _player)
                 {
                     Name = "Paladin",
                     Tag = Globals.ObjectTags.Enemy,

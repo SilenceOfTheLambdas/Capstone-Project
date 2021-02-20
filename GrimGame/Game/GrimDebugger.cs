@@ -39,6 +39,7 @@ namespace GrimGame.Game
         /// <param name="text">The String to output</param>
         public static void Log(string text)
         {
+            _logText = "";
             _logText += "\n";
             _logText += text;
         }
