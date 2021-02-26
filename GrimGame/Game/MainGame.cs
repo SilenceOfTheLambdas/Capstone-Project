@@ -5,6 +5,7 @@ using GrimGame.Engine;
 using GrimGame.Game.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLEM.Extensions;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -16,22 +17,11 @@ namespace GrimGame.Game
     {
         public MainGame()
         {
-            var graphicsDeviceManager = new GraphicsDeviceManager(this)
-            {
-                PreferredBackBufferWidth = (int) Globals.WindowSize.X,
-                PreferredBackBufferHeight = (int) Globals.WindowSize.Y
-            };
-
-            graphicsDeviceManager.IsFullScreen = true;
-            graphicsDeviceManager.ApplyChanges();
-
+            var graphicsDeviceManager = new GraphicsDeviceManager(this);
+            graphicsDeviceManager.IsFullScreen = false;
             Content.RootDirectory = "Content";
-
-            Window.AllowUserResizing = false;
             IsMouseVisible = true;
-
             Globals.GameWindow = Window;
-
             Globals.Graphics = graphicsDeviceManager;
         }
 
@@ -42,10 +32,22 @@ namespace GrimGame.Game
             Globals.GameTime = new GameTime();
 
             var (x, y) = Globals.VirtualSize;
-            Globals.ViewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, (int) x, (int) y);
-
+            Globals.ViewportAdapter =
+                new BoxingViewportAdapter(Window, Globals.Graphics.GraphicsDevice, (int) x, (int) y);
             Globals.Camera = new OrthographicCamera(Globals.ViewportAdapter);
             Globals.Camera.ZoomIn(1.2f);
+            Globals.Graphics.ApplyChangesSafely();
+
+            Globals.Graphics.PreferredBackBufferWidth = 1280;
+            Globals.Graphics.PreferredBackBufferHeight = 720;
+
+            Globals.Graphics.GraphicsDevice.PresentationParameters.BackBufferWidth =
+                Globals.Graphics.PreferredBackBufferWidth;
+            Globals.Graphics.GraphicsDevice.PresentationParameters.BackBufferHeight =
+                Globals.Graphics.PreferredBackBufferHeight;
+            Globals.Graphics.GraphicsDevice.Viewport = new Viewport(0, 0, Globals.Graphics.PreferredBackBufferWidth,
+                Globals.Graphics.PreferredBackBufferHeight);
+            Globals.Graphics.ApplyChangesSafely();
 
             // Setup Level
             new Level1("Main Level", "StartLevel", this);
