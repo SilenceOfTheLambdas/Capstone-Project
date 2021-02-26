@@ -45,7 +45,7 @@ namespace GrimGame.Game.Scenes
                 {
                     Name = "Paladin",
                     Tag = Globals.ObjectTags.Enemy,
-                    Speed = 1.4f,
+                    Speed = 0.2f,
                     Enabled = true,
                     Active = true,
                     MaxHp = 100

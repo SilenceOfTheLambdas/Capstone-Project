@@ -1,9 +1,7 @@
 #region Imports
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using GrimGame.Character.Enemies.AI;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
@@ -45,8 +43,6 @@ namespace GrimGame.Engine
 
         public Player Player;
 
-        public Node StartNode { get; private set; }
-
         public MapSystem(string mapName)
         {
             Map = Globals.ContentManager.Load<TiledMap>(mapName);
@@ -73,14 +69,20 @@ namespace GrimGame.Engine
                     (int) o.Size.Height));
 
             #endregion
-            
+
             // Add map system to Globals
             Globals.MapSystem = this;
 
-            StartNode = new Node()
-            {
-                
-            }
+            var mapGraph = new bool[Map.WidthInPixels, Map.HeightInPixels];
+
+            foreach (var _ in Map.TileLayers)
+                for (var x = 0; x < Map.WidthInPixels; x++)
+                {
+                    for (var y = 0; y < Map.HeightInPixels; y++)
+                    {
+                        mapGraph[x, y] = !Map.TileLayers[0].GetTile(x, y).IsBlank;
+                    }
+                }
         }
 
         /// <summary>
@@ -120,13 +122,6 @@ namespace GrimGame.Engine
             _tiledObjectRenderer.DrawObjects();
         }
 
-        public void MapToWorld(int column, int row, bool centered)
-        {
-            var screenPosition = new Vector2();
-
-            // TODO: inmap
-        }
-
         /// <summary>
         /// Gets weather the tile at a given location has a collision box above it.
         /// </summary>
@@ -136,97 +131,18 @@ namespace GrimGame.Engine
         public bool IsTileCollision(int x, int y)
         {
             if (CollisionObjects.FirstOrDefault(c =>
-                Map.GetTiles(x, y).ToList().FirstOrDefault().X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).X == x)
+                        Map.GetTiles(x, y).ToList().FirstOrDefault().X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y)
+                    .X !=
+                x) return false;
             {
-                if (CollisionObjects.FirstOrDefault(c => Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y == y)
+                if (CollisionObjects.FirstOrDefault(c =>
+                    Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y == y)
                 {
                     return true;
                 }
             }
 
             return false;
-        }
-
-        private bool InMap(int column, int row)
-        {
-            return (row >= 0 && row < Map.TileHeight
-            && column >= 0 && column < Map.TileWidth);
-        }
-    }
-
-    public class Node
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public Point Point { get; set; }
-        public List<Edge> Connections { get; set; } = new List<Edge>();
-
-        public double? MinCostToStart { get; set; }
-        public Node NearestToStart { get; set; }
-        public bool Visited { get; set; }
-        public double StraightLineDistanceToEnd { get; set; }
-
-        internal static Node GetRandom(Random rnd, string name)
-        {
-            return new Node
-            {
-                Point = new Point
-                {
-                    X = (int) rnd.NextDouble(),
-                    Y = (int) rnd.NextDouble()
-                },
-                Id = Guid.NewGuid(),
-                Name = name
-            };
-        }
-
-        internal void ConnectClosestNodes(List<Node> nodes, int branching, Random rnd, bool randomWeight)
-        {
-            var connections = new List<Edge>();
-            foreach (var node in nodes)
-            {
-                if (node.Id == this.Id)
-                    continue;
-
-                var dist = Math.Sqrt(Math.Pow(Point.X - node.Point.X, 2) + Math.Pow(Point.Y - node.Point.Y, 2));
-                connections.Add(new Edge
-                {
-                    ConnectedNode = node,
-                    Length = dist,
-                    Cost = randomWeight ? rnd.NextDouble() : dist,
-                });
-            }
-
-            connections = connections.OrderBy(x => x.Length).ToList();
-            var count = 0;
-            foreach (var cnn in connections)
-            {
-                //Connect three closes nodes that are not connected.
-                if (!Connections.Any(c => c.ConnectedNode == cnn.ConnectedNode))
-                    Connections.Add(cnn);
-                count++;
-
-                //Make it a two way connection if not already connected
-                if (!cnn.ConnectedNode.Connections.Any(cc => cc.ConnectedNode == this))
-                {
-                    var backConnection = new Edge {ConnectedNode = this, Length = cnn.Length};
-                    cnn.ConnectedNode.Connections.Add(backConnection);
-                }
-
-                if (count == branching)
-                    return;
-            }
-        }
-    }
-    
-    public class Edge {
-        public double Length { get; set; }
-        public double Cost { get; set; }
-        public Node ConnectedNode { get; set; }
-
-        public override string ToString()
-        {
-            return "-> " + ConnectedNode.ToString();
         }
     }
 }

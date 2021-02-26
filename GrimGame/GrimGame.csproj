@@ -396,14 +396,18 @@
         <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="MLEM.Extended" Version="4.2.0" />
-        <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
-        <PackageReference Include="MonoGame.Extended.Animations" Version="3.7.0" />
-        <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0" />
-        <PackageReference Include="MonoGame.Extended.Graphics" Version="3.8.0" />
-        <PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0" />
-        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
-        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+        <PackageReference Include="docfx.console" Version="2.56.6">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="MLEM.Extended" Version="4.2.0"/>
+        <PackageReference Include="MonoGame.Extended" Version="3.8.0"/>
+        <PackageReference Include="MonoGame.Extended.Animations" Version="3.7.0"/>
+        <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0"/>
+        <PackageReference Include="MonoGame.Extended.Graphics" Version="3.8.0"/>
+        <PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0"/>
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641"/>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641"/>
     </ItemGroup>
     <ItemGroup>
       <Compile Remove="Content\flooring\**" />
