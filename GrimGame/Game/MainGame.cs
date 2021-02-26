@@ -37,6 +37,7 @@ namespace GrimGame.Game
 
         protected override void Initialize()
         {
+            // Init Globals
             Globals.ContentManager = Content;
             Globals.GameTime = new GameTime();
 
@@ -67,6 +68,8 @@ namespace GrimGame.Game
         protected override void Update(GameTime gameTime)
         {
             SceneManager.UpdateScenes(gameTime);
+            // Updating Globals
+            Globals.GameTime = gameTime;
             base.Update(gameTime);
         }
 

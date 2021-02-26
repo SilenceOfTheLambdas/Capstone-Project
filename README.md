@@ -12,6 +12,3 @@ _[Getting Started](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-jam
 
 ## Authors
 * Callum-James Smith @cs18804
-
-## References
-* [Licence for TeamCity](https://1806094-capstone-project.beta.teamcity.com/acceptTermsOfServices.html?agreement=hosted&proceedUrl=%2Fprofile.html)

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using GrimGame.Engine;
-using GrimGame.Engine.AI;
-using GrimGame.Game.Character.AI;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
 
@@ -37,11 +33,11 @@ namespace GrimGame.Game.Character
 
         #endregion
 
-        /*public virtual void MoveTowards(Vector2 targetPosition, GameTime gameTime)
+        public void MoveTowards(Vector2 targetPosition, GameTime gameTime)
         {
             Position = Vector2.Lerp(Position, targetPosition, Speed * gameTime.GetElapsedSeconds());
-        }*/
-        
+        }
+
         public void Kill()
         {
             Destroy(this);
