@@ -174,7 +174,7 @@
         },
         "StartLevel.tmx": {
             "scale": 0.7489,
-            "selectedLayer": 0,
+            "selectedLayer": 10,
             "viewCenter": {
                 "x": 3173.9885164908537,
                 "y": 2066.3640005341167
@@ -213,7 +213,7 @@
             "selectedLayer": 9,
             "viewCenter": {
                 "x": 1584,
-                "y": 1599.3333333333333
+                "y": 1599
             }
         },
         "TestMap.tmx#furniture": {
@@ -380,9 +380,9 @@
     "project": "MapEditor.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "StartLevel.tmx",
         "TestMap.tmx",
         "Tilesets/decorative_trees.tsx",
-        "StartLevel.tmx",
         "rule_001.tmx",
         "AutoMaps/rule_001.tmx",
         "AutoMaps/Buildings_automap.tmx",
