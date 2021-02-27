@@ -104,7 +104,6 @@ namespace GrimGame.Game.Character
 
 
             _rootNode.Execute(gameTime);
-            
             base.Update(gameTime);
         }
 
