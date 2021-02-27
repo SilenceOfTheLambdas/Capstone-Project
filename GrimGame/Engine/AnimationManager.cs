@@ -17,7 +17,7 @@ namespace GrimGame.Engine
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; set; }
         public Vector2 Scale { get; set; }
-        
+
         public float Rotation { get; set; }
 
         public void Draw()

@@ -21,20 +21,11 @@ namespace GrimGame.Game.Character
     {
         private const    float              PlayerScale = 1.5f;
         private readonly OrthographicCamera _camera;
-        private          int                _currentHp;
-
-        // ____ Health ____ //
-        public int MaxHp { get; set; }
-
-        public int CurrentHp
-        {
-            get => _currentHp;
-            set => _currentHp = Math.Clamp(value, 0, MaxHp);
-        }
 
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
         private          AnimationManager _animationManager;
+        private          int              _currentHp;
         private          float            _defaultWalkSpeed;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
@@ -46,12 +37,20 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The player's tile position.
         /// </summary>
-        public Vector2 TilePosition;
-
+        //public Vector2 TilePosition;
         public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
             _mapSystem = mapSystem;
             _camera = camera;
+        }
+
+        // ____ Health ____ //
+        public int MaxHp { get; set; }
+
+        public int CurrentHp
+        {
+            get => _currentHp;
+            set => _currentHp = Math.Clamp(value, 0, MaxHp);
         }
 
         public override void Init()
@@ -109,11 +108,6 @@ namespace GrimGame.Game.Character
 
             _animationManager.Update(gameTime);
 
-            var x = (ushort) (Position.X / 32);
-            var y = (ushort) (Position.Y / 32);
-
-            TilePosition = new Vector2(x, y);
-
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Running;
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
@@ -134,7 +128,7 @@ namespace GrimGame.Game.Character
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
-                samplerState: new SamplerState() {Filter = TextureFilter.Point });
+                samplerState: new SamplerState {Filter = TextureFilter.Point});
 
             if (_animationManager != null)
                 _animationManager.Draw();

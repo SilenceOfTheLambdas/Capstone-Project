@@ -72,17 +72,6 @@ namespace GrimGame.Engine
 
             // Add map system to Globals
             Globals.MapSystem = this;
-
-            var mapGraph = new bool[Map.WidthInPixels, Map.HeightInPixels];
-
-            foreach (var _ in Map.TileLayers)
-                for (var x = 0; x < Map.WidthInPixels; x++)
-                {
-                    for (var y = 0; y < Map.HeightInPixels; y++)
-                    {
-                        mapGraph[x, y] = !Map.TileLayers[0].GetTile(x, y).IsBlank;
-                    }
-                }
         }
 
         /// <summary>
@@ -136,10 +125,8 @@ namespace GrimGame.Engine
                 x) return false;
             {
                 if (CollisionObjects.FirstOrDefault(c =>
-                    Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y == y)
-                {
-                    return true;
-                }
+                        Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y ==
+                    y) return true;
             }
 
             return false;

@@ -12,10 +12,10 @@ namespace GrimGame.Game.Character
 {
     public class Paladin : Enemy
     {
-        private          AnimationManager _animationManager;
         private readonly MapSystem        _mapSystem;
-        private readonly List<Vector2>    _spawnPoints;
         private readonly Player           _player;
+        private readonly List<Vector2>    _spawnPoints;
+        private          AnimationManager _animationManager;
         private          BtNode           _rootNode;
 
         public Paladin(MapSystem mapSystem, Player player)
@@ -104,6 +104,7 @@ namespace GrimGame.Game.Character
 
 
             _rootNode.Execute(gameTime);
+            
             base.Update(gameTime);
         }
 
