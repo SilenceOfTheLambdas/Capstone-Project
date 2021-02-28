@@ -173,11 +173,11 @@
             "dynamicWrapping": true
         },
         "StartLevel.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 7,
+            "scale": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 3244.6666666666665,
-                "y": 1863.6666666666665
+                "x": 3208,
+                "y": 1941.5
             }
         },
         "StartLevel.tmx#Outside_medievil": {
