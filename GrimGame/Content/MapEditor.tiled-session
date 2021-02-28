@@ -173,11 +173,11 @@
             "dynamicWrapping": true
         },
         "StartLevel.tmx": {
-            "scale": 0.7489,
-            "selectedLayer": 10,
+            "scale": 1.5,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 3173.9885164908537,
-                "y": 2066.3640005341167
+                "x": 3244.6666666666665,
+                "y": 1863.6666666666665
             }
         },
         "StartLevel.tmx#Outside_medievil": {
@@ -380,9 +380,9 @@
     "project": "MapEditor.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "StartLevel.tmx",
         "TestMap.tmx",
         "Tilesets/decorative_trees.tsx",
+        "StartLevel.tmx",
         "rule_001.tmx",
         "AutoMaps/rule_001.tmx",
         "AutoMaps/Buildings_automap.tmx",

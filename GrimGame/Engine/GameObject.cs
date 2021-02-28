@@ -63,6 +63,14 @@ namespace GrimGame.Engine
 
         protected float Rotation { get; set; }
 
+        public Vector2 direction;
+
+        public Vector2 Direction
+        {
+            get => direction;
+            set => direction = value;
+        }
+
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>

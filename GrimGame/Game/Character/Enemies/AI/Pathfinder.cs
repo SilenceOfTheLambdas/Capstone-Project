@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
 
+// _____________________________
+// Original Taken From: https://xnatd.blogspot.com/2011/06/pathfinding-tutorial-part-1.html
+// _____________________________
 namespace GrimGame.Character.Enemies.AI
 {
     /// <summary>
@@ -116,7 +119,7 @@ namespace GrimGame.Character.Enemies.AI
                     //Create a search node to represent this tile.
                     var node = new SearchNode
                     {
-                        Position = new Point(x, y), Walkable = map.GetTile("__player__", x * 32, y * 32).IsBlank
+                        Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
                     };
 
                     // Our enemies can only walk on grass tiles.
@@ -230,10 +233,10 @@ namespace GrimGame.Character.Enemies.AI
                 parentTile = parentTile.Parent;
             }
 
-            List<Vector2> finalPath = new List<Vector2>();
+            var finalPath = new List<Vector2>();
 
             // Reverse the path and transform into world space.
-            for (int i = _closedList.Count - 1; i >= 0; i--)
+            for (var i = _closedList.Count - 1; i >= 0; i--)
             {
                 finalPath.Add(new Vector2(_closedList[i].Position.X * 32,
                     _closedList[i].Position.Y * 32));
