@@ -113,13 +113,14 @@ namespace GrimGame.Character.Enemies.AI
             //For each of the tiles in our map, we
             // will create a search node for it.
             for (var x = 0; x < _levelWidth; x++)
-            for (var y = 0; y < _levelHeight; y++)
             {
-                //Create a search node to represent this tile.
-                var node = new SearchNode
+                for (var y = 0; y < _levelHeight; y++)
                 {
-                    Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
-                };
+                    //Create a search node to represent this tile.
+                    var node = new SearchNode
+                    {
+                        Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
+                    };
 
                 // Our enemies can only walk on grass tiles.
                 // TODO: Find a way to tell if a tile has a collision object on it
@@ -220,8 +221,10 @@ namespace GrimGame.Character.Enemies.AI
 
             // Reverse the path and transform into world space.
             for (var i = _closedList.Count - 1; i >= 0; i--)
+            {
                 finalPath.Add(new Vector2(_closedList[i].Position.X * 32,
                     _closedList[i].Position.Y * 32));
+            }
 
             return finalPath;
         }
