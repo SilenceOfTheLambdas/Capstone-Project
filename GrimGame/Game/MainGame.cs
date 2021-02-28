@@ -50,7 +50,7 @@ namespace GrimGame.Game
             Globals.Graphics.ApplyChangesSafely();
 
             // Setup Level
-            new Level1("Main Level", "StartLevel", this);
+            var level1 = new Level1("Main Level", "StartLevel", this);
 
             // Load scene
             SceneManager.LoadScene("Main Level");

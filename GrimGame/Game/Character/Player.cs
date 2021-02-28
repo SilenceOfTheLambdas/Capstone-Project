@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Engine.Models;
@@ -53,6 +54,7 @@ namespace GrimGame.Game.Character
             set => _currentHp = Math.Clamp(value, 0, MaxHp);
         }
 
+        [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         public override void Init()
         {
             Scale = new Vector2(1.2f, 1.2f);
@@ -137,6 +139,7 @@ namespace GrimGame.Game.Character
             Globals.SpriteBatch.End();
         }
 
+        [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         private void Move()
         {
             Speed = _playerMovementState switch

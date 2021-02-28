@@ -37,7 +37,9 @@ namespace GrimGame.Game.Scenes
                     Speed = 2f,
                     RunningSpeed = 3.2f,
                     Enabled = true,
-                    Active = true
+                    Active = true,
+                    MaxHp = 100,
+                    CurrentHp = 100
                 };
                 _player.Init();
 
@@ -56,7 +58,7 @@ namespace GrimGame.Game.Scenes
 
                 #endregion
 
-                UiManager = new UIManager(this);
+                UiManager = new UiManager(this);
 
                 // Init debugger
                 if (Globals.DebugMode)

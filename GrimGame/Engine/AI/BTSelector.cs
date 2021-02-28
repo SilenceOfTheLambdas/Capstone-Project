@@ -9,7 +9,6 @@ namespace GrimGame.Engine.AI
     public class BtSelector : BtNode
     {
         private readonly List<BtNode> _children;
-        private          int          _currentNode = 0;
 
         public BtSelector(IEnumerable<BtNode> children)
         {

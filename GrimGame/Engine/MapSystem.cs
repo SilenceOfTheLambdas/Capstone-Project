@@ -112,7 +112,7 @@ namespace GrimGame.Engine
         }
 
         /// <summary>
-        /// Gets weather the tile at a given location has a collision box above it.
+        ///     Gets weather the tile at a given location has a collision box above it.
         /// </summary>
         /// <param name="x">X position of the tile</param>
         /// <param name="y">Y position of the tile</param>

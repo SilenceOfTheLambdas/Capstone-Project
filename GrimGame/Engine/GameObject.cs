@@ -1,5 +1,6 @@
 #region Imports
 
+using System;
 using GrimGame.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -63,13 +64,7 @@ namespace GrimGame.Engine
 
         protected float Rotation { get; set; }
 
-        public Vector2 direction;
-
-        public Vector2 Direction
-        {
-            get => direction;
-            set => direction = value;
-        }
+        public Vector2 Direction { get; set; }
 
         /// <summary>
         ///     The bounding box for this game object.
@@ -214,6 +209,67 @@ namespace GrimGame.Engine
         public void Destroy(GameObject gameObject)
         {
             SceneManager.GetActiveScene.ObjectManager.Remove(gameObject);
+        }
+
+        public static float GetDistance(Vector2 pos, Vector2 target)
+        {
+            return (float) Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
+        }
+
+        public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)
+        {
+            var dist = GetDistance(pos, focus);
+
+            if (dist <= speed)
+                return focus - pos;
+            return (focus - pos) * speed / dist;
+        }
+
+        /// <summary>
+        ///     Taken from https://www.youtube.com/watch?v=yYNrmsmEcy8 |
+        ///     Rotates this object towards a given position.
+        /// </summary>
+        /// <param name="pos">From position</param>
+        /// <param name="focus">The focus position, i.e what this game object will look at</param>
+        /// <returns>A float representing the cartesian angle.</returns>
+        public static float RotateTowards(Vector2 pos, Vector2 focus)
+        {
+            float h, sineTheta;
+            var (x, y) = pos;
+            if (y - focus.Y != 0)
+            {
+                h = (float) Math.Sqrt(Math.Pow(x - focus.X, 2) + Math.Pow(y - focus.Y, 2));
+                sineTheta = Math.Abs(y - focus.Y) / h; //* ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
+            }
+            else
+            {
+                h = x - focus.X;
+                sineTheta = 0;
+            }
+
+            var angle = (float) Math.Asin(sineTheta);
+
+            // Drawing diagonial lines here.
+            //Quadrant 2
+            if (x - focus.X > 0 && y - focus.Y > 0)
+                angle = (float) (Math.PI * 3 / 2 + angle);
+            //Quadrant 3
+            else if (x - focus.X > 0 && y - focus.Y < 0)
+                angle = (float) (Math.PI * 3 / 2 - angle);
+            //Quadrant 1
+            else if (x - focus.X < 0 && y - focus.Y > 0)
+                angle = (float) (Math.PI / 2 - angle);
+            else if (x - focus.X < 0 && y - focus.Y < 0)
+                angle = (float) (Math.PI / 2 + angle);
+            else if (x - focus.X > 0 && y - focus.Y == 0)
+                angle = (float) Math.PI * 3 / 2;
+            else if (x - focus.X < 0 && y - focus.Y == 0)
+                angle = (float) Math.PI / 2;
+            else if (x - focus.X == 0 && y - focus.Y > 0)
+                angle = 0;
+            else if (x - focus.X == 0 && y - focus.Y < 0) angle = (float) Math.PI;
+
+            return angle;
         }
 
         #endregion

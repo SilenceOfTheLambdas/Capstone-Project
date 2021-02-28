@@ -11,76 +11,76 @@ using MonoGame.Extended.Tiled;
 namespace GrimGame.Character.Enemies.AI
 {
     /// <summary>
-    /// Represents one node in the search space
+    ///     Represents one node in the search space
     /// </summary>
     public class SearchNode
     {
         /// <summary>
-        /// Location on the map
-        /// </summary>
-        public Point Position;
-
-        /// <summary>
-        /// If true, this tile can be walked on.
-        /// </summary>
-        public bool Walkable;
-
-        /// <summary>
-        /// This contains references to the for nodes surrounding 
-        /// this tile (Up, Down, Left, Right).
-        /// </summary>
-        public SearchNode[] Neighbors;
-
-        /// <summary>
-        /// A reference to the node that transferred this node to
-        /// the open list. This will be used to trace our path back
-        /// from the goal node to the start node.
-        /// </summary>
-        public SearchNode Parent;
-
-        /// <summary>
-        /// Provides an easy way to check if this node
-        /// is in the open list.
-        /// </summary>
-        public bool InOpenList;
-
-        /// <summary>
-        /// Provides an easy way to check if this node
-        /// is in the closed list.
-        /// </summary>
-        public bool InClosedList;
-
-        /// <summary>
-        /// The approximate distance from the start node to the
-        /// goal node if the path goes through this node. (F)
+        ///     The approximate distance from the start node to the
+        ///     goal node if the path goes through this node. (F)
         /// </summary>
         public float DistanceToGoal;
 
         /// <summary>
-        /// Distance traveled from the spawn point. (G)
+        ///     Distance traveled from the spawn point. (G)
         /// </summary>
         public float DistanceTraveled;
+
+        /// <summary>
+        ///     Provides an easy way to check if this node
+        ///     is in the closed list.
+        /// </summary>
+        public bool InClosedList;
+
+        /// <summary>
+        ///     Provides an easy way to check if this node
+        ///     is in the open list.
+        /// </summary>
+        public bool InOpenList;
+
+        /// <summary>
+        ///     This contains references to the for nodes surrounding
+        ///     this tile (Up, Down, Left, Right).
+        /// </summary>
+        public SearchNode[] Neighbors;
+
+        /// <summary>
+        ///     A reference to the node that transferred this node to
+        ///     the open list. This will be used to trace our path back
+        ///     from the goal node to the start node.
+        /// </summary>
+        public SearchNode Parent;
+
+        /// <summary>
+        ///     Location on the map
+        /// </summary>
+        public Point Position;
+
+        /// <summary>
+        ///     If true, this tile can be walked on.
+        /// </summary>
+        public bool Walkable;
     }
 
     public class Pathfinder
     {
-        // Stores an array of the walkable search nodes.
-        private SearchNode[,] _searchNodes;
-
-        // The width of the map.
-        private readonly int _levelWidth;
+        // Holds the nodes that have already been searched.
+        private readonly List<SearchNode> _closedList = new List<SearchNode>();
 
         // The height of the map.
         private readonly int _levelHeight;
 
+        // The width of the map.
+        private readonly int _levelWidth;
+
         // Holds search nodes that are available to search.
         private readonly List<SearchNode> _openList = new List<SearchNode>();
 
-        // Holds the nodes that have already been searched.
-        private readonly List<SearchNode> _closedList = new List<SearchNode>();
+        // Stores an array of the walkable search nodes.
+        private SearchNode[,] _searchNodes;
 
         /// <summary>
-        /// Constructor.
+        ///     Constructor.
         /// </summary>
         public Pathfinder(TiledMap map)
         {
@@ -91,7 +91,7 @@ namespace GrimGame.Character.Enemies.AI
         }
 
         /// <summary>
-        /// Returns an estimate of the distance between two points. (H)
+        ///     Returns an estimate of the distance between two points. (H)
         /// </summary>
         private static float Heuristic(Point point1, Point point2)
         {
@@ -103,7 +103,7 @@ namespace GrimGame.Character.Enemies.AI
         }
 
         /// <summary>
-        /// Splits the level up into a grid of nodes.
+        ///     Splits the level up into a grid of nodes.
         /// </summary>
         /// <param name="map"></param>
         private void InitializeSearchNodes(TiledMap map)
@@ -113,117 +113,100 @@ namespace GrimGame.Character.Enemies.AI
             //For each of the tiles in our map, we
             // will create a search node for it.
             for (var x = 0; x < _levelWidth; x++)
+            for (var y = 0; y < _levelHeight; y++)
             {
-                for (var y = 0; y < _levelHeight; y++)
+                //Create a search node to represent this tile.
+                var node = new SearchNode
                 {
-                    //Create a search node to represent this tile.
-                    var node = new SearchNode
-                    {
-                        Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
-                    };
+                    Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
+                };
 
-                    // Our enemies can only walk on grass tiles.
-                    // TODO: Find a way to tell if a tile has a collision object on it
+                // Our enemies can only walk on grass tiles.
+                // TODO: Find a way to tell if a tile has a collision object on it
 
-                    // We only want to store nodes
-                    // that can be walked on.
-                    if (node.Walkable != true) continue;
+                // We only want to store nodes
+                // that can be walked on.
+                if (node.Walkable != true) continue;
 
-                    node.Neighbors = new SearchNode[4];
-                    _searchNodes[x, y] = node;
-                }
+                node.Neighbors = new SearchNode[4];
+                _searchNodes[x, y] = node;
             }
 
             // Now for each of the search nodes, we will
             // connect it to each of its neighbours.
             for (var x = 0; x < _levelWidth; x++)
+            for (var y = 0; y < _levelHeight; y++)
             {
-                for (var y = 0; y < _levelHeight; y++)
+                var node = _searchNodes[x, y];
+
+                // We only want to look at the nodes that 
+                // our enemies can walk on.
+                if (node == null || node.Walkable == false) continue;
+
+                // An array of all of the possible neighbors this 
+                // node could have. (We will ignore diagonals for now.)
+                var neighbors = new[]
                 {
-                    var node = _searchNodes[x, y];
+                    new Point(x, y - 1), // The node above the current node
+                    new Point(x, y + 1), // The node below the current node.
+                    new Point(x - 1, y), // The node left of the current node.
+                    new Point(x + 1, y) // The node right of the current node
+                };
 
-                    // We only want to look at the nodes that 
-                    // our enemies can walk on.
-                    if (node == null || node.Walkable == false)
-                    {
+                // We loop through each of the possible neighbors
+                for (var i = 0; i < neighbors.Length; i++)
+                {
+                    var position = neighbors[i];
+
+                    // We need to make sure this neighbour is part of the level.
+                    if (position.X < 0 || position.X > _levelWidth - 1 ||
+                        position.Y < 0 || position.Y > _levelHeight - 1)
                         continue;
-                    }
 
-                    // An array of all of the possible neighbors this 
-                    // node could have. (We will ignore diagonals for now.)
-                    var neighbors = new[]
-                    {
-                        new Point(x, y - 1), // The node above the current node
-                        new Point(x, y + 1), // The node below the current node.
-                        new Point(x - 1, y), // The node left of the current node.
-                        new Point(x + 1, y), // The node right of the current node
-                    };
+                    var neighbor = _searchNodes[position.X, position.Y];
 
-                    // We loop through each of the possible neighbors
-                    for (var i = 0; i < neighbors.Length; i++)
-                    {
-                        var position = neighbors[i];
+                    // We will only bother keeping a reference 
+                    // to the nodes that can be walked on.
+                    if (neighbor == null || neighbor.Walkable == false) continue;
 
-                        // We need to make sure this neighbour is part of the level.
-                        if (position.X < 0 || position.X > _levelWidth - 1 ||
-                            position.Y < 0 || position.Y > _levelHeight - 1)
-                        {
-                            continue;
-                        }
-
-                        SearchNode neighbor = _searchNodes[position.X, position.Y];
-
-                        // We will only bother keeping a reference 
-                        // to the nodes that can be walked on.
-                        if (neighbor == null || neighbor.Walkable == false)
-                        {
-                            continue;
-                        }
-
-                        // Store a reference to the neighbor.
-                        node.Neighbors[i] = neighbor;
-                    }
+                    // Store a reference to the neighbor.
+                    node.Neighbors[i] = neighbor;
                 }
             }
         }
 
         /// <summary>
-        /// Resets the state of the search nodes.
+        ///     Resets the state of the search nodes.
         /// </summary>
         private void ResetSearchNodes()
         {
             _openList.Clear();
             _closedList.Clear();
 
-            for (int x = 0; x < _levelWidth; x++)
+            for (var x = 0; x < _levelWidth; x++)
+            for (var y = 0; y < _levelHeight; y++)
             {
-                for (int y = 0; y < _levelHeight; y++)
-                {
-                    SearchNode node = _searchNodes[x, y];
+                var node = _searchNodes[x, y];
 
-                    if (node == null)
-                    {
-                        continue;
-                    }
+                if (node == null) continue;
 
-                    node.InOpenList = false;
-                    node.InClosedList = false;
+                node.InOpenList = false;
+                node.InClosedList = false;
 
-                    node.DistanceTraveled = float.MaxValue;
-                    node.DistanceToGoal = float.MaxValue;
-                }
+                node.DistanceTraveled = float.MaxValue;
+                node.DistanceToGoal = float.MaxValue;
             }
         }
 
         /// <summary>
-        /// Use the parent field of the search nodes to trace
-        /// a path from the end node to the start node.
+        ///     Use the parent field of the search nodes to trace
+        ///     a path from the end node to the start node.
         /// </summary>
         private List<Vector2> FindFinalPath(SearchNode startNode, SearchNode endNode)
         {
             _closedList.Add(endNode);
 
-            SearchNode parentTile = endNode.Parent;
+            var parentTile = endNode.Parent;
 
             // Trace back through the nodes using the parent fields
             // to find the best path.
@@ -237,16 +220,14 @@ namespace GrimGame.Character.Enemies.AI
 
             // Reverse the path and transform into world space.
             for (var i = _closedList.Count - 1; i >= 0; i--)
-            {
                 finalPath.Add(new Vector2(_closedList[i].Position.X * 32,
                     _closedList[i].Position.Y * 32));
-            }
 
             return finalPath;
         }
 
         /// <summary>
-        /// Returns the node with the smallest distance to goal.
+        ///     Returns the node with the smallest distance to goal.
         /// </summary>
         private SearchNode FindBestNode()
         {
@@ -265,15 +246,12 @@ namespace GrimGame.Character.Enemies.AI
         }
 
         /// <summary>
-        /// Finds the optimal path from one point to another.
+        ///     Finds the optimal path from one point to another.
         /// </summary>
         public List<Vector2> FindPath(Point startPoint, Point endPoint)
         {
             // Only try to find a path if the start and end points are different.
-            if (startPoint == endPoint)
-            {
-                return new List<Vector2>();
-            }
+            if (startPoint == endPoint) return new List<Vector2>();
 
             /////////////////////////////////////////////////////////////////////
             // Step 1 : Clear the Open and Closed Lists and reset each node’s F 
@@ -308,26 +286,21 @@ namespace GrimGame.Character.Enemies.AI
                 // a) : Loop through the Open List and find the node that 
                 //      has the smallest F value.
                 /////////////////////////////////////////////////////////////////
-                SearchNode currentNode = FindBestNode();
+                var currentNode = FindBestNode();
 
                 /////////////////////////////////////////////////////////////////
                 // b) : If the Open List empty or no node can be found, 
                 //      no path can be found so the algorithm terminates.
                 /////////////////////////////////////////////////////////////////
-                if (currentNode == null)
-                {
-                    break;
-                }
+                if (currentNode == null) break;
 
                 /////////////////////////////////////////////////////////////////
                 // c) : If the Active Node is the goal node, we will 
                 //      find and return the final path.
                 /////////////////////////////////////////////////////////////////
                 if (currentNode == endNode)
-                {
                     // Trace our path back to the start.
                     return FindFinalPath(startNode, endNode);
-                }
 
                 /////////////////////////////////////////////////////////////////
                 // d) : Else, for each of the Active Node’s neighbours :
@@ -338,10 +311,7 @@ namespace GrimGame.Character.Enemies.AI
                     // i) : Make sure that the neighbouring node can 
                     //      be walked across. 
                     //////////////////////////////////////////////////
-                    if (neighbor == null || neighbor.Walkable == false)
-                    {
-                        continue;
-                    }
+                    if (neighbor == null || neighbor.Walkable == false) continue;
 
                     //////////////////////////////////////////////////
                     // ii) Calculate a new G value for the neighbouring node.

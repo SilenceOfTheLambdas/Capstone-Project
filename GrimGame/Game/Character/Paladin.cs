@@ -4,7 +4,7 @@ using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Engine.AI;
 using GrimGame.Engine.Models;
-using GrimGame.Game.Character.AI;
+using GrimGame.Game.Character.AI.Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -30,12 +30,8 @@ namespace GrimGame.Game.Character
             // Set spawn position if this enemy
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
             foreach (var layerObject in objectLayer.Objects)
-            {
                 if (layerObject.Name.ToLower().Equals("enemyspawn"))
-                {
                     _spawnPoints.Add(layerObject.Position);
-                }
-            }
 
             // Set random spawn point from list
             var random = new Random(Globals.GameTime.ElapsedGameTime.Milliseconds);
@@ -85,8 +81,9 @@ namespace GrimGame.Game.Character
         private void ConstructBehaviourTree()
         {
             var chaseNode     = new ChaseNode(_player, this);
-            var chaseSequence = new BtSequencer(new List<BtNode> {chaseNode});
-            _rootNode = new BtSelector(new List<BtNode>()
+            var attackNode    = new AttackNode(_player, this);
+            var chaseSequence = new BtSequencer(new List<BtNode> {chaseNode, attackNode});
+            _rootNode = new BtSelector(new List<BtNode>
             {
                 chaseSequence
             });
@@ -110,7 +107,7 @@ namespace GrimGame.Game.Character
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
-                samplerState: new SamplerState() {Filter = TextureFilter.Point});
+                samplerState: new SamplerState {Filter = TextureFilter.Point});
             _animationManager.Draw();
             Globals.SpriteBatch.End();
         }

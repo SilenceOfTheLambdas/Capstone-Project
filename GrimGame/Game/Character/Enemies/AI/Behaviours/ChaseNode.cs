@@ -2,12 +2,12 @@ using GrimGame.Engine;
 using GrimGame.Engine.AI;
 using Microsoft.Xna.Framework;
 
-namespace GrimGame.Game.Character.AI
+namespace GrimGame.Game.Character.AI.Behaviours
 {
     public class ChaseNode : BtNode
     {
-        private readonly GameObject _target;
         private readonly Enemy      _enemy;
+        private readonly GameObject _target;
 
         public ChaseNode(GameObject target, Enemy enemy)
         {

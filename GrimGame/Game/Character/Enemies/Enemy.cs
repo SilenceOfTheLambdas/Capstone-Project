@@ -10,34 +10,14 @@ namespace GrimGame.Game.Character
     /// </summary>
     public abstract class Enemy : GameObject
     {
-        public readonly Pathfinder     PathFinder;
-        private         Queue<Vector2> _waypoints;
-        public Queue<Vector2> Waypoints { get; }
-        public float DistanceToDestination => _waypoints.Count > 0 ? Vector2.Distance(Position, _waypoints.Peek()) : 0f;
+        // Public variables
+        public readonly Pathfinder PathFinder;
+        private         int        _maxHp;
 
-        #region Properties
-
-        private int _maxHp;
-
-        /// <summary>
-        ///     The maximum amount of health points this enemy can have
-        /// </summary>
-        public int MaxHp
-        {
-            get => _maxHp;
-            set
-            {
-                _maxHp = value;
-                CurrentHp = _maxHp;
-            }
-        }
-
-        /// <summary>
-        ///     The current amount of health this Enemy has
-        /// </summary>
-        public int CurrentHp { get; set; }
-
-        #endregion
+        // Private variables
+        private Queue<Vector2> _waypoints;
+        public  int            attackDamage = 5; // The *amount* of damage this enemy inflicts
+        public  float          attackSpeed  = 1; // The timer for each enemy attack (in seconds)
 
         protected Enemy()
         {
@@ -45,7 +25,7 @@ namespace GrimGame.Game.Character
         }
 
         /// <summary>
-        /// Move this character to a given position.
+        ///     Move this character to a given position.
         /// </summary>
         /// <param name="targetPosition">The position to move towards.</param>
         public void MoveTowards(Vector2 targetPosition)
@@ -65,11 +45,8 @@ namespace GrimGame.Game.Character
                 }
                 else
                 {
-                    var waypointDirection = _waypoints.Peek() - Position;
-                    waypointDirection.Normalize();
-
-                    Velocity = Vector2.Multiply(waypointDirection, Speed);
-                    Position += Velocity;
+                    Position += RadialMovement(_waypoints.Peek(), Position, Speed);
+                    // TODO Rotation
                 }
             }
         }
@@ -78,5 +55,31 @@ namespace GrimGame.Game.Character
         {
             Destroy(this);
         }
+
+        #region Properties
+
+        public Queue<Vector2> Waypoints { get; }
+
+        /// <summary>
+        ///     The maximum amount of health points this enemy can have
+        /// </summary>
+        public int MaxHp
+        {
+            get => _maxHp;
+            set
+            {
+                _maxHp = value;
+                CurrentHp = _maxHp;
+            }
+        }
+
+        /// <summary>
+        ///     The current amount of health this Enemy has
+        /// </summary>
+        public int CurrentHp { get; set; }
+
+        public float DistanceToDestination => _waypoints.Count > 0 ? Vector2.Distance(Position, _waypoints.Peek()) : 0f;
+
+        #endregion
     }
 }
