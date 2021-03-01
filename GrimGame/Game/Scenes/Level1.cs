@@ -37,15 +37,17 @@ namespace GrimGame.Game.Scenes
                     Speed = 2f,
                     RunningSpeed = 3.2f,
                     Enabled = true,
-                    Active = true
+                    Active = true,
+                    MaxHp = 100,
+                    CurrentHp = 100
                 };
                 _player.Init();
 
-                _paladin = new Paladin(_player.Position)
+                _paladin = new Paladin(_mapSystem, _player)
                 {
                     Name = "Paladin",
                     Tag = Globals.ObjectTags.Enemy,
-                    Speed = 1.4f,
+                    Speed = 1f,
                     Enabled = true,
                     Active = true,
                     MaxHp = 100
@@ -56,7 +58,7 @@ namespace GrimGame.Game.Scenes
 
                 #endregion
 
-                UiManager = new UIManager(this);
+                UiManager = new UiManager(this);
 
                 // Init debugger
                 if (Globals.DebugMode)

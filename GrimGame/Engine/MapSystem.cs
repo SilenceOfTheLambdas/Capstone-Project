@@ -1,8 +1,10 @@
 #region Imports
 
 using System.Collections.Generic;
+using System.Linq;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
+using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 
@@ -67,6 +69,9 @@ namespace GrimGame.Engine
                     (int) o.Size.Height));
 
             #endregion
+
+            // Add map system to Globals
+            Globals.MapSystem = this;
         }
 
         /// <summary>
@@ -104,6 +109,27 @@ namespace GrimGame.Engine
 
             // Draw any objects that are visible in-game
             _tiledObjectRenderer.DrawObjects();
+        }
+
+        /// <summary>
+        ///     Gets weather the tile at a given location has a collision box above it.
+        /// </summary>
+        /// <param name="x">X position of the tile</param>
+        /// <param name="y">Y position of the tile</param>
+        /// <returns>Does this tile have a collider?</returns>
+        public bool IsTileCollision(int x, int y)
+        {
+            if (CollisionObjects.FirstOrDefault(c =>
+                        Map.GetTiles(x, y).ToList().FirstOrDefault().X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y)
+                    .X !=
+                x) return false;
+            {
+                if (CollisionObjects.FirstOrDefault(c =>
+                        Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y ==
+                    y) return true;
+            }
+
+            return false;
         }
     }
 }

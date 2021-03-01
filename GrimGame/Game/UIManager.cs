@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GrimGame.Game
 {
-    public class UIManager
+    public class UiManager
     {
         private readonly PauseMenu _pauseMenu;
 
-        public UIManager(Scene scene)
+        public UiManager(Scene scene)
         {
             _pauseMenu = new PauseMenu(scene);
             InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);

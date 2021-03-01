@@ -1,8 +1,10 @@
 #region Imports
 
+using System;
 using GrimGame.Game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLEM.Extended.Tiled;
 
 #endregion
 
@@ -36,12 +38,16 @@ namespace GrimGame.Engine
         public Vector2 Position
         {
             get => new Vector2(X, Y);
-            protected set
+            set
             {
                 X = value.X;
                 Y = value.Y;
             }
         }
+
+        public Vector2 TilePosition =>
+            new Vector2(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
+                Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).Y);
 
         /// <summary>
         ///     The size of this object.
@@ -56,6 +62,10 @@ namespace GrimGame.Engine
             }
         }
 
+        protected float Rotation { get; set; }
+
+        public Vector2 Direction { get; set; }
+
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>
@@ -69,7 +79,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     The velocity at which this objects moves.
         /// </summary>
-        protected Vector2 Velocity;
+        public Vector2 Velocity;
 
         /// <summary>
         ///     Is this object colliding with something?
@@ -201,6 +211,67 @@ namespace GrimGame.Engine
             SceneManager.GetActiveScene.ObjectManager.Remove(gameObject);
         }
 
+        public static float GetDistance(Vector2 pos, Vector2 target)
+        {
+            return (float) Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
+        }
+
+        public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)
+        {
+            var dist = GetDistance(pos, focus);
+
+            if (dist <= speed)
+                return focus - pos;
+            return (focus - pos) * speed / dist;
+        }
+
+        /// <summary>
+        ///     Taken from https://www.youtube.com/watch?v=yYNrmsmEcy8 |
+        ///     Rotates this object towards a given position.
+        /// </summary>
+        /// <param name="pos">From position</param>
+        /// <param name="focus">The focus position, i.e what this game object will look at</param>
+        /// <returns>A float representing the cartesian angle.</returns>
+        public static float RotateTowards(Vector2 pos, Vector2 focus)
+        {
+            float h, sineTheta;
+            var (x, y) = pos;
+            if (y - focus.Y != 0)
+            {
+                h = (float) Math.Sqrt(Math.Pow(x - focus.X, 2) + Math.Pow(y - focus.Y, 2));
+                sineTheta = Math.Abs(y - focus.Y) / h; //* ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
+            }
+            else
+            {
+                h = x - focus.X;
+                sineTheta = 0;
+            }
+
+            var angle = (float) Math.Asin(sineTheta);
+
+            // Drawing diagonial lines here.
+            //Quadrant 2
+            if (x - focus.X > 0 && y - focus.Y > 0)
+                angle = (float) (Math.PI * 3 / 2 + angle);
+            //Quadrant 3
+            else if (x - focus.X > 0 && y - focus.Y < 0)
+                angle = (float) (Math.PI * 3 / 2 - angle);
+            //Quadrant 1
+            else if (x - focus.X < 0 && y - focus.Y > 0)
+                angle = (float) (Math.PI / 2 - angle);
+            else if (x - focus.X < 0 && y - focus.Y < 0)
+                angle = (float) (Math.PI / 2 + angle);
+            else if (x - focus.X > 0 && y - focus.Y == 0)
+                angle = (float) Math.PI * 3 / 2;
+            else if (x - focus.X < 0 && y - focus.Y == 0)
+                angle = (float) Math.PI / 2;
+            else if (x - focus.X == 0 && y - focus.Y > 0)
+                angle = 0;
+            else if (x - focus.X == 0 && y - focus.Y < 0) angle = (float) Math.PI;
+
+            return angle;
+        }
+
         #endregion
 
         #region Virtual Methods
@@ -227,6 +298,91 @@ namespace GrimGame.Engine
                     Velocity.Y = 0;
             }
         }
+
+        // public void MoveObjectAlongPath(Enemy p, ref Stack<Node> path)
+        // {
+        //     // arbitrary - todo: fix
+        //     if (path.Count > 3)
+        //     {
+        //         Node next;
+        //         next = path.Pop();
+        //
+        //         float X = next.Position.X - p.Position.X / Node.NODE_SIZE;
+        //         float Y = (next.Position.Y - p.Position.Y / Node.NODE_SIZE);
+        //         Vector2 vel = new Vector2(X, Y);
+        //
+        //         if (!(p.Position.X <= (next.Position.X * Node.NODE_SIZE * 1.0001f) && p.Position.Y <= (next.Position.Y * Node.NODE_SIZE * 1.0001f)
+        //             && p.Position.X >= (next.Position.X * Node.NODE_SIZE * 0.9999f) && p.Position.Y >= (next.Position.Y * Node.NODE_SIZE * 0.9999f)))
+        //         {
+        //             MoveObject(p, vel);
+        //         }
+        //
+        //         p.Position = next.Position * Node.NODE_SIZE;
+        //         p.BoxCollider.Position = next.Position * Node.NODE_SIZE;
+        //
+        //         // if (vel.Y < 0)
+        //         // {
+        //         //     p.DirectionFacing = Direction.Up;
+        //         // }
+        //         // if (vel.X < 0)
+        //         // {
+        //         //     p.DirectionFacing = Direction.Left;
+        //         // }
+        //         // if (vel.Y > 0)
+        //         // {
+        //         //     p.DirectionFacing = Direction.Down;
+        //         // }
+        //         // if (vel.X > 0)
+        //         // {
+        //         //     p.DirectionFacing = Direction.Right;
+        //         // }
+        //
+        //         //Console.Write("Moving enemy to: X = {0}, Y = {1}\n", p.Position.X, p.Position.Y);
+        //         //p.Position = next.Position * 32;
+        //         //p.EnemyRect.Position = next.Position * 32;
+        //     }
+        // }
+        // public void MoveObject(Enemy p, Vector2 velocity)
+        // {
+        //     p.Position = p.Position;
+        //     p.Velocity = velocity;
+        //     double minT = TIMESTEP;
+        //     float t = TIMESTEP;
+        //     Vector2 mvA = new Vector2(0, 0);
+        //     Vector2 mvB = new Vector2(0, 0);
+        //     double ttc = 0.0;
+        //     Vector2 minMV = new Vector2(0, 0);
+        //     TCRectangle colRect = new TCRectangle();
+        //
+        //     while (t > MINESCULE_TIME)
+        //     {
+        //
+        //         minMV = new Vector2(0, 0);
+        //         minT = t;
+        //         foreach (var rect in RectangleList)
+        //         {
+        //             if (BoxToBoxCollide(p.EnemyRect, rect, t, ref mvA, ref mvB, ref ttc))
+        //             {
+        //                 if (ttc < minT)
+        //                 {
+        //                     colRect = rect;
+        //                     minT = ttc;
+        //                     minMV = mvA;
+        //                 }
+        //             }
+        //         }
+        //
+        //         minT -= MINESCULE_TIME;
+        //         if (minT < 0) minT = 0;
+        //
+        //         p.EnemyRect.Position += p.EnemyRect.Velocity * (float)minT;
+        //         p.EnemyRect.Velocity += minMV;
+        //
+        //         t -= (float)minT;
+        //     }
+        //
+        //     p.Position = p.Bounds.ToRectangleF().Position;
+        // }
 
         #endregion
 
