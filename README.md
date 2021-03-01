@@ -1,11 +1,11 @@
-# GrimDoom (working title)
-A 2D Isometric RPG game made with the power of [MonoGame](https://www.monogame.net).
+# GrimDoom
+A 2D ARPG game made with the power of [MonoGame](https://www.monogame.net).
 
-
-_[Getting Started](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-james/-/wikis/Getting-Started)_
---
+- [Wiki](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-james/-/wikis/Getting-Started)
 
 ## Build Status
+This tables shows the build status on Windows and Linux, provided by GitHub's CD feature.
+
 | Linux | ![.NET Linux](https://github.com/sudo-make/Capstone-Project/workflows/.NET/badge.svg) |
 | ---- | ---- |
 | Windows | ![.NET Windows](https://github.com/sudo-make/Capstone-Project/workflows/.NET%20Windows%20Latest/badge.svg) |
