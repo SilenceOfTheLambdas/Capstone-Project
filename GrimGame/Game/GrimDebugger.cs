@@ -39,6 +39,7 @@ namespace GrimGame.Game
         /// <param name="text">The String to output</param>
         public static void Log(string text)
         {
+            _logText = "";
             _logText += "\n";
             _logText += text;
         }
@@ -59,10 +60,6 @@ namespace GrimGame.Game
                 Color.White);
             Globals.SpriteBatch.DrawString(_debugFont, _outputText, textPosition, Color.White,
                 0, textMiddlePoint, 1.0f, SpriteEffects.None, 0.5f);
-            Globals.SpriteBatch.End();
-
-            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawPoint(MapSystem.Map.ObjectLayers[1].Objects[0].Position, Color.Green);
             Globals.SpriteBatch.End();
 
             DrawPlayerBounds();
@@ -103,6 +100,13 @@ namespace GrimGame.Game
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
             Globals.SpriteBatch.DrawRectangle(r, color);
+            Globals.SpriteBatch.End();
+        }
+
+        public static void DrawPoint(Vector2 position, Color color)
+        {
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
+            Globals.SpriteBatch.DrawPoint(position, color, 2f, 10f);
             Globals.SpriteBatch.End();
         }
     }

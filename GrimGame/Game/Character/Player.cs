@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Engine.Models;
@@ -25,6 +26,7 @@ namespace GrimGame.Game.Character
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
         private          AnimationManager _animationManager;
+        private          int              _currentHp;
         private          float            _defaultWalkSpeed;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
@@ -36,14 +38,23 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The player's tile position.
         /// </summary>
-        public Vector2 TilePosition;
-
+        //public Vector2 TilePosition;
         public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
             _mapSystem = mapSystem;
             _camera = camera;
         }
 
+        // ____ Health ____ //
+        public int MaxHp { get; set; }
+
+        public int CurrentHp
+        {
+            get => _currentHp;
+            set => _currentHp = Math.Clamp(value, 0, MaxHp);
+        }
+
+        [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         public override void Init()
         {
             Scale = new Vector2(1.2f, 1.2f);
@@ -52,24 +63,24 @@ namespace GrimGame.Game.Character
             {
                 {
                     "walk_up",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 6)
                 },
                 {
                     "walk_down",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 6)
                 },
                 {
                     "walk_left",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 6)
                 },
                 {
                     "walk_right",
-                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 2)
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 6)
                 }
             })
             {
-                Width = 19,
-                Height = 29
+                Width = 14,
+                Height = 33
             };
             Texture = Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
@@ -99,11 +110,6 @@ namespace GrimGame.Game.Character
 
             _animationManager.Update(gameTime);
 
-            var x = (ushort) (Position.X / 32);
-            var y = (ushort) (Position.Y / 32);
-
-            TilePosition = new Vector2(x, y);
-
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
                 _playerMovementState = PlayerMovementStates.Running;
             else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
@@ -124,7 +130,7 @@ namespace GrimGame.Game.Character
         public override void Draw()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
-                samplerState: SamplerState.PointClamp);
+                samplerState: new SamplerState {Filter = TextureFilter.Point});
 
             if (_animationManager != null)
                 _animationManager.Draw();
@@ -133,6 +139,7 @@ namespace GrimGame.Game.Character
             Globals.SpriteBatch.End();
         }
 
+        [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         private void Move()
         {
             Speed = _playerMovementState switch

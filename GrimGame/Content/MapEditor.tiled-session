@@ -173,11 +173,11 @@
             "dynamicWrapping": true
         },
         "StartLevel.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 9,
+            "scale": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 3369.333333333333,
-                "y": 2048
+                "x": 3208,
+                "y": 1941.5
             }
         },
         "StartLevel.tmx#Outside_medievil": {
@@ -213,7 +213,7 @@
             "selectedLayer": 9,
             "viewCenter": {
                 "x": 1584,
-                "y": 1600
+                "y": 1599
             }
         },
         "TestMap.tmx#furniture": {

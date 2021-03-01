@@ -23,10 +23,11 @@ namespace GrimGame.Engine
         // Graphics and window
         public static GraphicsDeviceManager Graphics;
         public static GameWindow            GameWindow;
-        public static Vector2               WindowSize  = new Vector2(720, 480);
+        public static Vector2               WindowSize  = new Vector2(1920, 1080);
         public static Vector2               VirtualSize = new Vector2(1920, 1080);
         public static BoxingViewportAdapter ViewportAdapter;
 
+        public static MapSystem          MapSystem;
         public static GameTime           GameTime;
         public static OrthographicCamera Camera;
         public static ContentManager     ContentManager;

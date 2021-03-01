@@ -52,7 +52,7 @@ namespace GrimGame.Game
 
         public          ObjectManager ObjectManager;
         public readonly string        Name;
-        protected       UIManager     UiManager;
+        protected       UiManager     UiManager;
         protected       GrimDebugger  GrimDebugger;
 
         #endregion
