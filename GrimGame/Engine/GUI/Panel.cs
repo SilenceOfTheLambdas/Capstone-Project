@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GrimGame.Engine.GUI.Components;
 using Microsoft.Xna.Framework;
@@ -7,6 +8,19 @@ namespace GrimGame.Engine.GUI
 {
     public class Panel
     {
+        public enum Positions
+        {
+            CenterLeft,
+            CenterMiddle,
+            CenterRight,
+            TopLeft,
+            TopMiddle,
+            TopRight,
+            BottomLeft,
+            BottomMiddle,
+            BottomRight
+        }
+
         // _____ Texture _____ //
         public Color     BackgroundColor;
         public Rectangle Bounds;
@@ -35,6 +49,33 @@ namespace GrimGame.Engine.GUI
             Panels = new List<Panel>();
             Components = new List<Component>();
             Bounds = new Rectangle(new Point((int) position.X, (int) position.Y),
+                new Point((int) size.X, (int) size.Y));
+        }
+
+        public Panel(Positions position, Vector2 size, Color backgroundColor)
+        {
+            Position = position switch
+            {
+                Positions.TopMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - (size.X / 2), 0),
+                Positions.CenterMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - (size.X / 2),
+                    Globals.Graphics.PreferredBackBufferHeight / 2 - (size.Y / 2)),
+                Positions.CenterLeft => new Vector2(0, Globals.Graphics.PreferredBackBufferHeight / 2 - (size.Y / 2)),
+                Positions.CenterRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - (size.X),
+                    Globals.Graphics.PreferredBackBufferHeight / 2 - (size.Y / 2)),
+                Positions.TopLeft => new Vector2(0, 0),
+                Positions.TopRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - (size.X), 0),
+                Positions.BottomLeft => new Vector2(0, Globals.Graphics.PreferredBackBufferHeight - (size.Y)),
+                Positions.BottomMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - (size.X / 2),
+                    Globals.Graphics.PreferredBackBufferHeight - (size.Y)),
+                Positions.BottomRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - (size.X),
+                    Globals.Graphics.PreferredBackBufferHeight - (size.Y)),
+                _ => throw new ArgumentOutOfRangeException(nameof(position), position, null)
+            };
+            Size = size;
+            BackgroundColor = backgroundColor;
+            Panels = new List<Panel>();
+            Components = new List<Component>();
+            Bounds = new Rectangle(new Point((int) Position.X, (int) Position.Y),
                 new Point((int) size.X, (int) size.Y));
         }
 
