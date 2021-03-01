@@ -34,7 +34,7 @@ namespace GrimGame.Game
             _canvas = new Canvas();
 
             // Create a new panel within the canvas
-            Panel panel = new Panel(Panel.Positions.BottomRight, new Vector2(400, 200), Color.White)
+            Panel panel = new Panel(Panel.Positions.CenterMiddle, new Vector2(400, 200), Color.White)
             {
                 Texture = Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG")
             };
