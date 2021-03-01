@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using GrimGame.Game;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
@@ -98,9 +99,7 @@ namespace GrimGame.Engine
             // Below player
             for (var i = 0; i <= newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
-            if (Player.Enabled)
-                // The player
-                Player.Draw();
+            foreach (var o in ObjectManager.Objects.Where(o => o.Active && o.Visible && o.Enabled)) o.Draw();
 
             // Above player
             if (newPlayerIndex < RenderQueue.Count)

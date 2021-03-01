@@ -20,7 +20,19 @@ namespace GrimGame.Game.Character
     /// </summary>
     public class Player : GameObject
     {
-        private const    float              PlayerScale = 1.5f;
+        public enum PlayerDirection
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+        private const float PlayerScale = 1.5f;
+
+        // _____ Attack _____ //
+        private const    int                AttackDamage = 20; // How much HP the player deals when attacking
+        private const    int                AttackRange  = 8; // How far does the attack reach?
         private readonly OrthographicCamera _camera;
 
         // _____ References _____ //
@@ -28,8 +40,14 @@ namespace GrimGame.Game.Character
         private          AnimationManager _animationManager;
         private          int              _currentHp;
         private          float            _defaultWalkSpeed;
+        private          bool             _enemyInAttackRange;
+        private          Enemy            _enemyToHit;
+
+        private PlayerDirection _playerDirection;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
+        private float                _timerForAttacks; // only used to count the number of seconds
+        public  float                AttackTimer = 1.2f; // How often the player can attack (in seconds)
 
         // _____ Properties _____ //
         public float RunningSpeed;
@@ -76,6 +94,22 @@ namespace GrimGame.Game.Character
                 {
                     "walk_right",
                     new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 6)
+                },
+                {
+                    "attack_left",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/attack_left"), 3)
+                },
+                {
+                    "attack_right",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/attack_right"), 3)
+                },
+                {
+                    "attack_up",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/attack_up"), 3)
+                },
+                {
+                    "attack_down",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/attack_down"), 3)
                 }
             })
             {
@@ -125,6 +159,16 @@ namespace GrimGame.Game.Character
 
             Position += Velocity;
             Velocity = Vector2.Zero;
+
+            _timerForAttacks += gameTime.GetElapsedSeconds();
+
+            if (_timerForAttacks >= AttackTimer)
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    _animationManager.Play(Sprite.Animations[$"attack_{_playerDirection.ToString().ToLower()}"]);
+                    Attack();
+                    _timerForAttacks -= AttackTimer;
+                }
         }
 
         public override void Draw()
@@ -167,14 +211,69 @@ namespace GrimGame.Game.Character
         private void UpdatePlayerAnimationDirections()
         {
             if (Velocity.X > 0)
+            {
                 _animationManager.Play(Sprite.Animations["walk_right"]);
+                _playerDirection = PlayerDirection.Right;
+            }
             else if (Velocity.X < 0)
+            {
                 _animationManager.Play(Sprite.Animations["walk_left"]);
+                _playerDirection = PlayerDirection.Left;
+            }
             else if (Velocity.Y > 0)
+            {
                 _animationManager.Play(Sprite.Animations["walk_down"]);
+                _playerDirection = PlayerDirection.Down;
+            }
             else if (Velocity.Y < 0)
+            {
                 _animationManager.Play(Sprite.Animations["walk_up"]);
-            else _animationManager.Stop();
+                _playerDirection = PlayerDirection.Up;
+            }
+            else
+            {
+                _animationManager.Stop();
+            }
+        }
+
+        /// <summary>
+        ///     Inflict damage upon a target
+        /// </summary>
+        private void Attack()
+        {
+            // If a player attacks, based on their direction
+            // create a box collider in-front of the player.
+            // If an enemy is within that box collider,
+            // Get the enemies data, and deal damage
+            switch (_playerDirection)
+            {
+                case PlayerDirection.Up:
+                    BoxCollider.Bounds.Inflate(0, AttackRange);
+                    break;
+                case PlayerDirection.Down:
+                    BoxCollider.Bounds.Inflate(0, AttackRange);
+                    break;
+                case PlayerDirection.Left:
+                    BoxCollider.Bounds.Inflate(AttackRange, 0);
+                    break;
+                case PlayerDirection.Right:
+                    BoxCollider.Bounds.Inflate(AttackRange, 0);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (_enemyInAttackRange) _enemyToHit.CurrentHp -= AttackDamage;
+        }
+
+        public override void OnCollisionEnter(GameObject other)
+        {
+            // Check to see if an enemy collided with us
+            if (other is Enemy enemy)
+            {
+                _enemyToHit = enemy;
+                _enemyInAttackRange = true;
+            }
         }
 
         private enum PlayerMovementStates

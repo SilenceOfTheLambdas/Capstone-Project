@@ -75,6 +75,9 @@ namespace GrimGame.Game.Character
             BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(19, 16));
 
+            // Health
+            MaxHp = 80;
+
             ConstructBehaviourTree();
         }
 
@@ -102,6 +105,11 @@ namespace GrimGame.Game.Character
 
             _rootNode.Execute(gameTime);
             base.Update(gameTime);
+
+            BoxCollider.UpdatePosition(new Point((int) (Position.X - Width / 2),
+                (int) (Position.Y - 16)));
+
+            PlayerLayerIndexer();
         }
 
         public override void Draw()
@@ -110,6 +118,29 @@ namespace GrimGame.Game.Character
                 samplerState: new SamplerState {Filter = TextureFilter.Point});
             _animationManager.Draw();
             Globals.SpriteBatch.End();
+            GrimDebugger.DrawRectangle(BoxCollider.Bounds, Color.Red);
+        }
+
+        private void PlayerLayerIndexer()
+        {
+            var bumpLayer = false;
+            foreach (var _ in MapSystem.CollisionObjects.Where(rectangle =>
+                BoxCollider.Bounds.Top >= rectangle.Bottom
+                && BoxCollider.Bounds.Top <= rectangle.Bottom + Height / 2
+                && BoxCollider.Bounds.Right >= rectangle.Left
+                && BoxCollider.Bounds.Left <= rectangle.Right))
+                bumpLayer = true;
+
+            if (bumpLayer)
+            {
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                _mapSystem.CurrentIndex = Globals.LayerCount;
+                Collision = true;
+            }
+            else
+            {
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
+            }
         }
     }
 }

@@ -158,6 +158,13 @@ namespace GrimGame.Engine
         public virtual void Update(GameTime gameTime)
         {
             CollisionDetection();
+
+            ObjectManager.Objects.ForEach(o =>
+            {
+                if (o != this)
+                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                        OnCollisionEnter(o);
+            });
         }
 
         // _____ Setters _____ //
@@ -299,90 +306,13 @@ namespace GrimGame.Engine
             }
         }
 
-        // public void MoveObjectAlongPath(Enemy p, ref Stack<Node> path)
-        // {
-        //     // arbitrary - todo: fix
-        //     if (path.Count > 3)
-        //     {
-        //         Node next;
-        //         next = path.Pop();
-        //
-        //         float X = next.Position.X - p.Position.X / Node.NODE_SIZE;
-        //         float Y = (next.Position.Y - p.Position.Y / Node.NODE_SIZE);
-        //         Vector2 vel = new Vector2(X, Y);
-        //
-        //         if (!(p.Position.X <= (next.Position.X * Node.NODE_SIZE * 1.0001f) && p.Position.Y <= (next.Position.Y * Node.NODE_SIZE * 1.0001f)
-        //             && p.Position.X >= (next.Position.X * Node.NODE_SIZE * 0.9999f) && p.Position.Y >= (next.Position.Y * Node.NODE_SIZE * 0.9999f)))
-        //         {
-        //             MoveObject(p, vel);
-        //         }
-        //
-        //         p.Position = next.Position * Node.NODE_SIZE;
-        //         p.BoxCollider.Position = next.Position * Node.NODE_SIZE;
-        //
-        //         // if (vel.Y < 0)
-        //         // {
-        //         //     p.DirectionFacing = Direction.Up;
-        //         // }
-        //         // if (vel.X < 0)
-        //         // {
-        //         //     p.DirectionFacing = Direction.Left;
-        //         // }
-        //         // if (vel.Y > 0)
-        //         // {
-        //         //     p.DirectionFacing = Direction.Down;
-        //         // }
-        //         // if (vel.X > 0)
-        //         // {
-        //         //     p.DirectionFacing = Direction.Right;
-        //         // }
-        //
-        //         //Console.Write("Moving enemy to: X = {0}, Y = {1}\n", p.Position.X, p.Position.Y);
-        //         //p.Position = next.Position * 32;
-        //         //p.EnemyRect.Position = next.Position * 32;
-        //     }
-        // }
-        // public void MoveObject(Enemy p, Vector2 velocity)
-        // {
-        //     p.Position = p.Position;
-        //     p.Velocity = velocity;
-        //     double minT = TIMESTEP;
-        //     float t = TIMESTEP;
-        //     Vector2 mvA = new Vector2(0, 0);
-        //     Vector2 mvB = new Vector2(0, 0);
-        //     double ttc = 0.0;
-        //     Vector2 minMV = new Vector2(0, 0);
-        //     TCRectangle colRect = new TCRectangle();
-        //
-        //     while (t > MINESCULE_TIME)
-        //     {
-        //
-        //         minMV = new Vector2(0, 0);
-        //         minT = t;
-        //         foreach (var rect in RectangleList)
-        //         {
-        //             if (BoxToBoxCollide(p.EnemyRect, rect, t, ref mvA, ref mvB, ref ttc))
-        //             {
-        //                 if (ttc < minT)
-        //                 {
-        //                     colRect = rect;
-        //                     minT = ttc;
-        //                     minMV = mvA;
-        //                 }
-        //             }
-        //         }
-        //
-        //         minT -= MINESCULE_TIME;
-        //         if (minT < 0) minT = 0;
-        //
-        //         p.EnemyRect.Position += p.EnemyRect.Velocity * (float)minT;
-        //         p.EnemyRect.Velocity += minMV;
-        //
-        //         t -= (float)minT;
-        //     }
-        //
-        //     p.Position = p.Bounds.ToRectangleF().Position;
-        // }
+        /// <summary>
+        ///     If an object has collided with this box collider.
+        /// </summary>
+        /// <param name="other">The object that has collided with us.</param>
+        public virtual void OnCollisionEnter(GameObject other)
+        {
+        }
 
         #endregion
 

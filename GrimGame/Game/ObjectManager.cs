@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
@@ -12,18 +13,18 @@ namespace GrimGame.Game
         /// <summary>
         ///     List of game objects in the scene.
         /// </summary>
-        private readonly List<GameObject> _objects = new List<GameObject>();
+        public static List<GameObject> Objects { get; } = new List<GameObject>();
 
         /// <summary>
         ///     The number of game objects in the scene.
         /// </summary>
-        private int Count => _objects.Count;
+        private int Count => Objects.Count;
 
         public void Update(Scene scene, GameTime gameTime)
         {
             for (var i = 0; i < Count; i++)
             {
-                var obj = _objects[i];
+                var obj = Objects[i];
 
                 if (obj.Active)
                 {
@@ -39,7 +40,7 @@ namespace GrimGame.Game
         /// <param name="obj">The GameObject to add</param>
         public void Add(GameObject obj)
         {
-            _objects.Add(obj);
+            Objects.Add(obj);
         }
 
         /// <summary>
@@ -48,7 +49,9 @@ namespace GrimGame.Game
         /// <param name="obj">The GameObject to remove</param>
         public void Remove(GameObject obj)
         {
-            _objects.Remove(obj);
+            Objects.Remove(obj);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace GrimGame.Game
         /// </summary>
         public void Clear()
         {
-            _objects.Clear();
+            Objects.Clear();
         }
     }
 }

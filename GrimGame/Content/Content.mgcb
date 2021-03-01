@@ -287,18 +287,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Paladin/up_walk2.png
 
-#begin Sprites/Player/Animations/_down attack.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/_down attack.png
-
 #begin Sprites/Player/Animations/_down idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -323,18 +311,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Animations/_pick up.png
 
-#begin Sprites/Player/Animations/_side attack.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/_side attack.png
-
 #begin Sprites/Player/Animations/_side idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -347,18 +323,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Animations/_side idle.png
 
-#begin Sprites/Player/Animations/_up attack.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/_up attack.png
-
 #begin Sprites/Player/Animations/_up idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -370,6 +334,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Animations/_up idle.png
+
+#begin Sprites/Player/Animations/attack_down.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/attack_down.png
+
+#begin Sprites/Player/Animations/attack_left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/attack_left.png
+
+#begin Sprites/Player/Animations/attack_right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/attack_right.png
+
+#begin Sprites/Player/Animations/attack_up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/attack_up.png
 
 #begin Sprites/Player/Animations/walk_down.png
 /importer:TextureImporter
@@ -873,18 +885,6 @@
 /processorParam:TextureFormat=Color
 /build:Tilesets/Anim/tree3D_ss.png
 
-#begin Tilesets/Anim/water_layerA_ef.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Tilesets/Anim/water_layerA_ef.png
-
 #begin Tilesets/Anim/water_layerA.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -897,7 +897,7 @@
 /processorParam:TextureFormat=Color
 /build:Tilesets/Anim/water_layerA.png
 
-#begin Tilesets/Anim/water_layerB_ef.png
+#begin Tilesets/Anim/water_layerA_ef.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -907,7 +907,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Tilesets/Anim/water_layerB_ef.png
+/build:Tilesets/Anim/water_layerA_ef.png
 
 #begin Tilesets/Anim/water_layerB.png
 /importer:TextureImporter
@@ -920,6 +920,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Tilesets/Anim/water_layerB.png
+
+#begin Tilesets/Anim/water_layerB_ef.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tilesets/Anim/water_layerB_ef.png
 
 #begin Tilesets/decorative.png
 /importer:TextureImporter

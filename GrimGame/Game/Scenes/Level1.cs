@@ -67,16 +67,16 @@ namespace GrimGame.Game.Scenes
                     GrimDebugger.MapSystem = _mapSystem;
                 }
             }
+
+            // Adding objects
+            ObjectManager.Add(_paladin);
+            ObjectManager.Add(_player);
         }
 
         public override void Update(GameTime gameTime)
         {
             if (GetIsSceneLoaded())
             {
-                if (_player.Active)
-                    _player.Update(gameTime);
-                _paladin.Update(gameTime);
-
                 _mapSystem.Update(gameTime);
 
                 InputManager.Update();
@@ -97,8 +97,6 @@ namespace GrimGame.Game.Scenes
 
                 // Sort the player's index
                 PlayerLayerIndexer();
-
-                _paladin.Draw();
 
                 UiManager.Draw();
             }

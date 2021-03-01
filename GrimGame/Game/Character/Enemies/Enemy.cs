@@ -51,7 +51,13 @@ namespace GrimGame.Game.Character
             }
         }
 
-        public void Kill()
+        public override void Update(GameTime gameTime)
+        {
+            if (CurrentHp <= 0)
+                Kill();
+        }
+
+        private void Kill()
         {
             Destroy(this);
         }
