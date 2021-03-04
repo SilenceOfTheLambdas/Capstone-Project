@@ -122,14 +122,11 @@ namespace GrimGame.Character.Enemies.AI
                         Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
                     };
 
-                    // Our enemies can only walk on grass tiles.
-                    // TODO: Find a way to tell if a tile has a collision object on it
-
                     // We only want to store nodes
                     // that can be walked on.
                     if (node.Walkable != true) continue;
 
-                    node.Neighbors = new SearchNode[4];
+                    node.Neighbors = new SearchNode[8];
                     _searchNodes[x, y] = node;
                 }
             }
@@ -157,6 +154,10 @@ namespace GrimGame.Character.Enemies.AI
                         new Point(x, y + 1), // The node below the current node.
                         new Point(x - 1, y), // The node left of the current node.
                         new Point(x + 1, y), // The node right of the current node
+                        new Point(x + 1, y - 1), // The top-right node
+                        new Point(x - 1, y - 1), // The top-left node
+                        new Point(x + 1, y + 1), // The bottom-right node
+                        new Point(x - 1, y + 1), // The bottom-left node
                     };
 
                     // We loop through each of the possible neighbors

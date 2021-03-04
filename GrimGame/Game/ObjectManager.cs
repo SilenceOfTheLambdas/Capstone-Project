@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
@@ -50,8 +49,6 @@ namespace GrimGame.Game
         public void Remove(GameObject obj)
         {
             Objects.Remove(obj);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
         }
 
         /// <summary>

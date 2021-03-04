@@ -15,6 +15,11 @@ namespace GrimGame.Game
         // Is this scene loaded?
         private bool _isSceneLoaded;
 
+        /// <summary>
+        /// Represents a level. A level may contain various <see cref="GameObject"/>s.
+        /// </summary>
+        /// <param name="sceneName">The name of the Scene. E.e "main", "Level1"</param>
+        /// <param name="mainGame">A reference to the main game.</param>
         protected Scene(string sceneName, MainGame mainGame)
         {
             ObjectManager = new ObjectManager();

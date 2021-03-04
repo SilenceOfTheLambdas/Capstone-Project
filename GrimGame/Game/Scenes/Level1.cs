@@ -14,6 +14,7 @@ namespace GrimGame.Game.Scenes
         private readonly MapSystem _mapSystem;
         private          Paladin   _paladin;
         private          Player    _player;
+        private          PlayerHud _playerHud;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
             : base(sceneName, mainGame)
@@ -67,10 +68,6 @@ namespace GrimGame.Game.Scenes
                     GrimDebugger.MapSystem = _mapSystem;
                 }
             }
-
-            // Adding objects
-            ObjectManager.Add(_paladin);
-            ObjectManager.Add(_player);
         }
 
         public override void Update(GameTime gameTime)

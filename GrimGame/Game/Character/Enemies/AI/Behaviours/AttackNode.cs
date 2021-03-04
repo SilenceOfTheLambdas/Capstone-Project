@@ -26,12 +26,12 @@ namespace GrimGame.Game.Character.AI.Behaviours
             if (_enemy.DistanceTo(_enemy.Position, _target.Position) <= MIN_DISTANCE_TO_TARGET)
             {
                 _elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
-                if (_elapsedTime >= _enemy.attackSpeed)
+                if (_elapsedTime >= Enemy.AttackSpeed)
                 {
                     // keep doing damage to player
-                    _target.CurrentHp -= _enemy.attackDamage;
+                    _target.CurrentHp -= Enemy.AttackDamage;
                     GrimDebugger.Log($"Done Damage: player's HP: {_target.CurrentHp}");
-                    _elapsedTime -= _enemy.attackSpeed;
+                    _elapsedTime -= Enemy.AttackSpeed;
                     return Result.Running;
                 }
             }

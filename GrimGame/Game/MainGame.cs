@@ -35,7 +35,7 @@ namespace GrimGame.Game
             Globals.ViewportAdapter =
                 new BoxingViewportAdapter(Window, Globals.Graphics.GraphicsDevice, (int) x, (int) y);
             Globals.Camera = new OrthographicCamera(Globals.ViewportAdapter);
-            Globals.Camera.ZoomIn(1.2f);
+            Globals.Camera.ZoomIn(1.6f);
             Globals.Graphics.ApplyChangesSafely();
 
             Globals.Graphics.PreferredBackBufferWidth = 1280;

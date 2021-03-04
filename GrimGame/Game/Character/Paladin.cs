@@ -12,11 +12,10 @@ namespace GrimGame.Game.Character
 {
     public class Paladin : Enemy
     {
-        private readonly MapSystem        _mapSystem;
-        private readonly Player           _player;
-        private readonly List<Vector2>    _spawnPoints;
-        private          AnimationManager _animationManager;
-        private          BtNode           _rootNode;
+        private readonly MapSystem     _mapSystem;
+        private readonly Player        _player;
+        private readonly List<Vector2> _spawnPoints;
+        private          BtNode        _rootNode;
 
         public Paladin(MapSystem mapSystem, Player player)
         {
@@ -70,7 +69,7 @@ namespace GrimGame.Game.Character
             Width = (int) (Sprite.Width * Scale.X);
             Height = (int) (Sprite.Height * Scale.Y);
 
-            _animationManager = new AnimationManager(Sprite.Animations.FirstOrDefault().Value);
+            AnimationManager = new AnimationManager(Sprite.Animations.FirstOrDefault().Value);
 
             BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(19, 16));
@@ -96,11 +95,11 @@ namespace GrimGame.Game.Character
         {
             BoxCollider.Update(gameTime);
 
-            _animationManager.Position = Position;
-            _animationManager.Origin = Origin;
-            _animationManager.Scale = Scale;
-            _animationManager.Rotation = Rotation;
-            _animationManager.Update(gameTime);
+            AnimationManager.Position = Position;
+            AnimationManager.Origin = Origin;
+            AnimationManager.Scale = Scale;
+            AnimationManager.Rotation = Rotation;
+            AnimationManager.Update(gameTime);
 
 
             _rootNode.Execute(gameTime);
@@ -116,9 +115,8 @@ namespace GrimGame.Game.Character
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix(),
                 samplerState: new SamplerState {Filter = TextureFilter.Point});
-            _animationManager.Draw();
+            AnimationManager.Draw();
             Globals.SpriteBatch.End();
-            GrimDebugger.DrawRectangle(BoxCollider.Bounds, Color.Red);
         }
 
         private void PlayerLayerIndexer()

@@ -161,9 +161,13 @@ namespace GrimGame.Engine
 
             ObjectManager.Objects.ForEach(o =>
             {
-                if (o != this)
-                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
-                        OnCollisionEnter(o);
+                if (o != this && o != null)
+                {
+                    // Check to see if this object has a box collider, and that it is enabled
+                    if (o.BoxCollider != null && (o.BoxCollider != null || o.BoxCollider.Enabled))
+                        if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                            OnCollisionEnter(o);
+                }
             });
         }
 

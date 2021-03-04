@@ -6,7 +6,8 @@
     "activeFile": "StartLevel.tmx",
     "automapping.whileDrawing": true,
     "expandedProjectPaths": [
-        "."
+        ".",
+        "Tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -126,11 +127,11 @@
             "scaleInEditor": 1
         },
         "Level1.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 3,
+            "scale": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 921,
-                "y": 725
+                "x": 1600,
+                "y": 1599.5
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -174,10 +175,10 @@
         },
         "StartLevel.tmx": {
             "scale": 1,
-            "selectedLayer": 3,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 3208,
-                "y": 1941.5
+                "x": 3200,
+                "y": 3200
             }
         },
         "StartLevel.tmx#Outside_medievil": {
@@ -213,7 +214,7 @@
             "selectedLayer": 9,
             "viewCenter": {
                 "x": 1584,
-                "y": 1599
+                "y": 1599.6666666666665
             }
         },
         "TestMap.tmx#furniture": {
@@ -302,8 +303,12 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Tilesets/decorative_props.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
         "Tilesets/decorative_trees.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "Tilesets/grassland_tiles.tsx": {
@@ -312,11 +317,15 @@
         },
         "Tilesets/interiors.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.75,
+            "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
         "Tilesets/main_houses.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 0.33
+        },
+        "Tilesets/mainlevbuild.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
         },
         "Tilesets/props.tsx": {
             "scaleInDock": 0.25,
@@ -373,25 +382,27 @@
     "map.tileWidth": 32,
     "map.width": 100,
     "openFiles": [
-        "TestMap.tmx",
         "StartLevel.tmx",
-        "Tilesets/decorative_trees.tsx"
+        "Tilesets/decorative_trees.tsx",
+        "Tilesets/mainlevbuild.tsx",
+        "Level1.tmx",
+        "Tilesets/decorative_props.tsx"
     ],
     "project": "MapEditor.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "TestMap.tmx",
+        "Tilesets/decorative_props.tsx",
+        "Level1.tmx",
+        "Tilesets/mainlevbuild.tsx",
         "Tilesets/decorative_trees.tsx",
         "StartLevel.tmx",
+        "TestMap.tmx",
         "rule_001.tmx",
         "AutoMaps/rule_001.tmx",
         "AutoMaps/Buildings_automap.tmx",
-        "Level1.tmx",
         "Tilesets/interiors.tsx",
         "Tilesets/Nature_ground_and_decals.tsx",
-        "Tilesets/Building_stone_1.tsx",
-        "Tilesets/Building_wood_1.tsx",
-        "Tilesets/building_brick_2.tsx"
+        "Tilesets/Building_stone_1.tsx"
     ],
     "tileset.embedInMap": false,
     "tileset.lastUsedFormat": "tsx",

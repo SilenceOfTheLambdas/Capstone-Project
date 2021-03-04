@@ -50,7 +50,7 @@ namespace GrimGame.Engine
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
             _mapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
-            _tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
+            //_tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
             RenderQueue = new Dictionary<int, TiledMapLayer>();
 
             // First add all of the layers below the player
@@ -107,7 +107,7 @@ namespace GrimGame.Engine
                     _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
             // Draw any objects that are visible in-game
-            _tiledObjectRenderer.DrawObjects();
+            //_tiledObjectRenderer.DrawObjects();
         }
 
         /// <summary>

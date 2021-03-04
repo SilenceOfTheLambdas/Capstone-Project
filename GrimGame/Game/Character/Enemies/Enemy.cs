@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GrimGame.Character.Enemies.AI;
 using GrimGame.Engine;
@@ -11,17 +12,19 @@ namespace GrimGame.Game.Character
     public abstract class Enemy : GameObject
     {
         // Public variables
-        public readonly Pathfinder PathFinder;
-        private         int        _maxHp;
+        protected    AnimationManager AnimationManager;
+        public const int              AttackDamage = 5; // The *amount* of damage this enemy inflicts
+        public const float            AttackSpeed  = 1; // The timer for each enemy attack (in seconds)
 
         // Private variables
-        private Queue<Vector2> _waypoints;
-        public  int            attackDamage = 5; // The *amount* of damage this enemy inflicts
-        public  float          attackSpeed  = 1; // The timer for each enemy attack (in seconds)
+        private static   Queue<Vector2> _waypoints;
+        private readonly Pathfinder     _pathFinder;
+        private          int            _maxHp;
 
         protected Enemy()
         {
-            PathFinder = new Pathfinder(Globals.MapSystem.Map);
+            _pathFinder = new Pathfinder(Globals.MapSystem.Map);
+            ObjectManager.Objects.Add(this);
         }
 
         /// <summary>
@@ -32,21 +35,44 @@ namespace GrimGame.Game.Character
         {
             // Generate the A* path
             var (x, y) = targetPosition;
-            _waypoints = new Queue<Vector2>(PathFinder.FindPath(new Point((int) Position.X / 32, (int) Position.Y / 32),
+            _waypoints = new Queue<Vector2>(_pathFinder.FindPath(
+                new Point((int) Position.X / 32, (int) Position.Y / 32),
                 new Point((int) x / 32, (int) y / 32)));
 
             // Waypoint Logic
-            if (_waypoints.Count > 0)
+            if (_waypoints.Count <= 0) return;
+
+            if (DistanceToDestination < Speed)
             {
-                if (DistanceToDestination < Speed)
+                Position = _waypoints.Peek();
+                _waypoints.Dequeue();
+            }
+            else
+            {
+                Position += RadialMovement(_waypoints.Peek(), Position, Speed);
+
+                // Update the enemies' rotation and direction
+                var direction = _waypoints.Peek() - Position;
+                direction.Normalize();
+                var rotationInRadians = (int) ((int) Math.Atan2(direction.Y,
+                    direction.X) + MathHelper.PiOver2);
+                switch (rotationInRadians)
                 {
-                    Position = _waypoints.Peek();
-                    _waypoints.Dequeue();
-                }
-                else
-                {
-                    Position += RadialMovement(_waypoints.Peek(), Position, Speed);
-                    // TODO Rotation
+                    case 0:
+                        AnimationManager.Play(Sprite.Animations["walk_up"]);
+                        break;
+                    case 1:
+                        AnimationManager.Play(Sprite.Animations["walk_right"]);
+                        break;
+                    case 2:
+                        AnimationManager.Play(Sprite.Animations["walk_down"]);
+                        break;
+                    case 3:
+                        AnimationManager.Play(Sprite.Animations["walk_left"]);
+                        break;
+                    default:
+                        AnimationManager.Stop();
+                        break;
                 }
             }
         }
@@ -63,8 +89,6 @@ namespace GrimGame.Game.Character
         }
 
         #region Properties
-
-        public Queue<Vector2> Waypoints { get; }
 
         /// <summary>
         ///     The maximum amount of health points this enemy can have

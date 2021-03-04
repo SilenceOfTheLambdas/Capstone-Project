@@ -20,7 +20,7 @@ namespace GrimGame.Game.Character
     /// </summary>
     public class Player : GameObject
     {
-        public enum PlayerDirection
+        private enum PlayerDirection
         {
             Up,
             Down,
@@ -30,10 +30,14 @@ namespace GrimGame.Game.Character
 
         private const float PlayerScale = 1.5f;
 
+        public int Score { get; private set; }
+
         // _____ Attack _____ //
         private const    int                AttackDamage = 20; // How much HP the player deals when attacking
         private const    int                AttackRange  = 8; // How far does the attack reach?
         private readonly OrthographicCamera _camera;
+        private const    float              AttackTimer = 1.2f; // How often the player can attack (in seconds)
+        private          float              _timerForAttacks; // only used to count the number of seconds
 
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
@@ -46,8 +50,6 @@ namespace GrimGame.Game.Character
         private PlayerDirection _playerDirection;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
-        private float                _timerForAttacks; // only used to count the number of seconds
-        public  float                AttackTimer = 1.2f; // How often the player can attack (in seconds)
 
         // _____ Properties _____ //
         public float RunningSpeed;
@@ -61,6 +63,8 @@ namespace GrimGame.Game.Character
         {
             _mapSystem = mapSystem;
             _camera = camera;
+            ObjectManager.Objects.Add(this);
+            Score = 0;
         }
 
         // ____ Health ____ //
@@ -263,16 +267,28 @@ namespace GrimGame.Game.Character
                     throw new ArgumentOutOfRangeException();
             }
 
-            if (_enemyInAttackRange) _enemyToHit.CurrentHp -= AttackDamage;
+            // TODO: Fix why attacking still works when enemy is dead
+            if (_enemyInAttackRange)
+            {
+                // If the enemy is within attack range, attack
+                _enemyToHit.CurrentHp -= AttackDamage;
+                if (_enemyToHit.CurrentHp <= 0)
+                    // Update player's score
+                    Score++;
+            }
         }
 
         public override void OnCollisionEnter(GameObject other)
         {
             // Check to see if an enemy collided with us
-            if (other is Enemy enemy)
+            if (other is Enemy enemy && other.Active && other.Enabled)
             {
                 _enemyToHit = enemy;
                 _enemyInAttackRange = true;
+            }
+            else
+            {
+                _enemyInAttackRange = false;
             }
         }
 
