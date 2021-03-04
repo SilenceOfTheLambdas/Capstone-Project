@@ -1,4 +1,6 @@
-# GrimDoom | 2D RPG Game Made with [MonoGame](https://www.monogame.net)
+# GrimDoom
+
+## 2D RPG Game Made with [MonoGame](https://www.monogame.net)
 
 GrimDoom is the name of my 2D action role-playing game created using MonoGame, an open-source continuation of
 Microsoft’s old XNA framework. GrimDoom is a game in which players must fight off hoards of enemies, making use of
@@ -11,3 +13,10 @@ easily add to the game.
 
 The game itself is rather simple, it’s the backend systems that have really been the focus of my development, the game
 is very easy to expand upon and add too.
+
+![Image of the game](images/game_screen1.png)
+
+## The Wiki
+
+The game wiki is hosted on GitLab, and details getting the game up and running. It also expands upon creating and adding
+your own elements to the game.
