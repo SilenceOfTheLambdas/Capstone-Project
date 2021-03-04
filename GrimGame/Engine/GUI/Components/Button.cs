@@ -6,13 +6,30 @@ using MonoGame.Extended;
 
 namespace GrimGame.Engine.GUI.Components
 {
-    public class Button : Component
+    /// <summary>
+    ///     A button is a box containing text that can have an action assigned when a player clicks it.
+    /// </summary>
+    public sealed class Button : Component
     {
+        /// <summary>
+        ///     The current <see cref="MouseState" />
+        /// </summary>
         private MouseState _currentMouseState;
 
-        private bool       _hovering;
+        /// <summary>
+        ///     Is the player hovering over this button?
+        /// </summary>
+        private bool _hovering;
+
+        /// <summary>
+        ///     The last known <see cref="MouseState" />.
+        /// </summary>
         private MouseState _lastMouseState;
-        private Rectangle  _mouseBounds;
+
+        /// <summary>
+        ///     The bounds of the mouse cursor.
+        /// </summary>
+        private Rectangle _mouseBounds;
 
         /// <summary>
         ///     A button component.
@@ -38,8 +55,14 @@ namespace GrimGame.Engine.GUI.Components
                 new Point((int) Size.X, (int) Size.Y));
         }
 
+        /// <summary>
+        ///     Called when the player clicks on this button.
+        /// </summary>
         public event EventHandler Click;
 
+        /// <summary>
+        ///     Update the mouse states, bounds, and active events when player is hovering over this button.
+        /// </summary>
         public override void Update()
         {
             _lastMouseState = _currentMouseState;
@@ -58,6 +81,9 @@ namespace GrimGame.Engine.GUI.Components
             _textColor = _oldTextColor;
         }
 
+        /// <summary>
+        ///     Draws this button.
+        /// </summary>
         public override void Draw()
         {
             Globals.SpriteBatch.Begin();
@@ -81,19 +107,42 @@ namespace GrimGame.Engine.GUI.Components
             Globals.SpriteBatch.End();
         }
 
-        public override void ReDraw()
-        {
-        }
-
         #region Appearance
 
+        /// <summary>
+        ///     The background colour of this button when hovered over.
+        /// </summary>
         public Color ButtonHoverColor { get; set; }
+
+        /// <summary>
+        ///     The text colour of this button when hovered over.
+        /// </summary>
         public Color TextHoverColor { get; set; }
+
+        /// <summary>
+        ///     The <see cref="SpriteFont" /> to use for the text of this button.
+        /// </summary>
         private readonly SpriteFont _font;
-        private readonly string     _text;
-        private          Color      _textColor;
-        private readonly Color      _oldTextColor;
-        private readonly Color      _oldBackgroundColor;
+
+        /// <summary>
+        ///     The text to display.
+        /// </summary>
+        private readonly string _text;
+
+        /// <summary>
+        ///     Current text <see cref="Color" />.
+        /// </summary>
+        private Color _textColor;
+
+        /// <summary>
+        ///     The original text <see cref="Color" />.
+        /// </summary>
+        private readonly Color _oldTextColor;
+
+        /// <summary>
+        ///     The original background <see cref="Color" />.
+        /// </summary>
+        private readonly Color _oldBackgroundColor;
 
         #endregion
     }

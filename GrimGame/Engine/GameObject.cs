@@ -3,16 +3,25 @@
 using System;
 using GrimGame.Game;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MLEM.Extended.Tiled;
 
 #endregion
 
 namespace GrimGame.Engine
 {
+    /// <summary>
+    ///     Represents all of the visible objects in the game.
+    /// </summary>
     public abstract class GameObject
     {
-        protected GameObject(int x = 0, int y = 0, int w = 0, int h = 0, int id = 0)
+        /// <summary>
+        ///     Creates a new game object.
+        /// </summary>
+        /// <param name="x">X world position.</param>
+        /// <param name="y">Y world position.</param>
+        /// <param name="w">Width</param>
+        /// <param name="h">Height</param>
+        protected GameObject(int x = 0, int y = 0, int w = 0, int h = 0)
         {
             // _____ Dimensions _____ //
             X = x;
@@ -22,7 +31,6 @@ namespace GrimGame.Engine
             Bounds = new Rectangle(x, y, Width, Height);
 
             // _____ Properties _____ //
-            Id = id;
             Active = true;
             Visible = true;
             Collision = false;
@@ -30,7 +38,15 @@ namespace GrimGame.Engine
 
         #region Properties
 
-        public bool Active, Visible;
+        /// <summary>
+        ///     Is this game actively being updated?
+        /// </summary>
+        public bool Active;
+
+        /// <summary>
+        ///     Is this game object being drawn?
+        /// </summary>
+        public bool Visible;
 
         /// <summary>
         ///     The position of this game object.
@@ -38,13 +54,16 @@ namespace GrimGame.Engine
         public Vector2 Position
         {
             get => new Vector2(X, Y);
-            set
+            protected set
             {
                 X = value.X;
                 Y = value.Y;
             }
         }
 
+        /// <summary>
+        ///     The position of this game object in 'Tile Space'.
+        /// </summary>
         public Vector2 TilePosition =>
             new Vector2(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
                 Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).Y);
@@ -62,9 +81,10 @@ namespace GrimGame.Engine
             }
         }
 
+        /// <summary>
+        ///     Represents the rotation of this game object.
+        /// </summary>
         protected float Rotation { get; set; }
-
-        public Vector2 Direction { get; set; }
 
         /// <summary>
         ///     The bounding box for this game object.
@@ -97,20 +117,11 @@ namespace GrimGame.Engine
         public int Height;
 
         // _____ Properties _____ //
-        /// <summary>
-        ///     The name of this game object.
-        /// </summary>
-        public string Name;
 
         /// <summary>
         ///     The speed this object moves.
         /// </summary>
         public float Speed;
-
-        /// <summary>
-        ///     Assign a tag to this game object.
-        /// </summary>
-        public Globals.ObjectTags Tag;
 
         /// <summary>
         ///     The width of this game object.
@@ -124,19 +135,12 @@ namespace GrimGame.Engine
         /// </summary>
         public float X, Y;
 
-        /// <summary>
-        ///     The ID of the object.
-        /// </summary>
-        private int Id { get; }
-
         // _____ Sprite _____ //
 
         /// <summary>
         ///     The sprite texture of this object
         /// </summary>
         protected Sprite Sprite;
-
-        protected Texture2D Texture;
 
         protected Vector2 Scale;
 
@@ -147,14 +151,9 @@ namespace GrimGame.Engine
         #region Methods
 
         /// <summary>
-        ///     Here is where initialisation of the object is done.
-        /// </summary>
-        public abstract void Init();
-
-        /// <summary>
         ///     Anything is this function will be ran every frame.
         /// </summary>
-        /// <param name="gameTime"></param>
+        /// <param name="gameTime">The amount of time that has passed since the last frame.</param>
         public virtual void Update(GameTime gameTime)
         {
             CollisionDetection();
@@ -162,37 +161,14 @@ namespace GrimGame.Engine
             ObjectManager.Objects.ForEach(o =>
             {
                 if (o != this && o != null)
-                {
                     // Check to see if this object has a box collider, and that it is enabled
                     if (o.BoxCollider != null && (o.BoxCollider != null || o.BoxCollider.Enabled))
                         if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
                             OnCollisionEnter(o);
-                }
             });
         }
 
         // _____ Setters _____ //
-        /// <summary>
-        ///     Set the position of this game object.
-        /// </summary>
-        /// <param name="x">The position on the x-axis</param>
-        /// <param name="y">The position on the y-axis</param>
-        public void SetPosition(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>
-        ///     Set the size of the object.
-        /// </summary>
-        /// <param name="w">The width</param>
-        /// <param name="h">The height</param>
-        public void SetSize(int w, int h)
-        {
-            Width = w;
-            Height = h;
-        }
 
         /// <summary>
         ///     Set the bounds of the object
@@ -207,27 +183,37 @@ namespace GrimGame.Engine
         }
 
         // _____ Getters _____ //
-        public float DistanceTo(Vector2 from, Vector2 to)
-        {
-            return Vector2.Distance(from, to);
-        }
 
-        public Vector2 GetPositionCentered()
-        {
-            return new Vector2(X + Width / 2, X + Height / 2);
-        }
-
-        public void Destroy(GameObject gameObject)
+        /// <summary>
+        ///     Destroy a given game object, removing it from the list of objects
+        ///     stored in <see cref="ObjectManager" />.
+        /// </summary>
+        /// <param name="gameObject">The game object to destroy</param>
+        protected static void Destroy(GameObject gameObject)
         {
             SceneManager.GetActiveScene.ObjectManager.Remove(gameObject);
         }
 
+        /// <summary>
+        ///     Gets the distance from one point to another.
+        /// </summary>
+        /// <param name="pos">The start position</param>
+        /// <param name="target">The end position</param>
+        /// <returns>The shortest distance</returns>
         public static float GetDistance(Vector2 pos, Vector2 target)
         {
             return (float) Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
         }
 
-        public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)
+        /// <summary>
+        ///     Moves an object 'smoothly'.
+        ///     Work taken from: https://www.youtube.com/watch?v=yYNrmsmEcy8
+        /// </summary>
+        /// <param name="focus">The point to move towards</param>
+        /// <param name="pos">The current position of this object</param>
+        /// <param name="speed">The speed at which to move at</param>
+        /// <returns>Direction to move towards</returns>
+        protected static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)
         {
             var dist = GetDistance(pos, focus);
 
@@ -295,7 +281,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     Detects collisions between the player and any collision objects.
         /// </summary>
-        public virtual void CollisionDetection()
+        private void CollisionDetection()
         {
             foreach (var collisionObject in MapSystem.CollisionObjects)
             {
@@ -314,7 +300,7 @@ namespace GrimGame.Engine
         ///     If an object has collided with this box collider.
         /// </summary>
         /// <param name="other">The object that has collided with us.</param>
-        public virtual void OnCollisionEnter(GameObject other)
+        protected virtual void OnCollisionEnter(GameObject other)
         {
         }
 

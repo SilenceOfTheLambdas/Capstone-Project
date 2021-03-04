@@ -18,26 +18,18 @@ namespace GrimGame.Game.Character
     /// <summary>
     ///     The playable character.
     /// </summary>
-    public class Player : GameObject
+    public sealed class Player : GameObject
     {
-        private enum PlayerDirection
-        {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-
+        /// <summary>
+        ///     The draw scale of the player.
+        /// </summary>
         private const float PlayerScale = 1.5f;
-
-        public int Score { get; private set; }
 
         // _____ Attack _____ //
         private const    int                AttackDamage = 20; // How much HP the player deals when attacking
         private const    int                AttackRange  = 8; // How far does the attack reach?
+        private const    float              AttackTimer  = 1.2f; // How often the player can attack (in seconds)
         private readonly OrthographicCamera _camera;
-        private const    float              AttackTimer = 1.2f; // How often the player can attack (in seconds)
-        private          float              _timerForAttacks; // only used to count the number of seconds
 
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
@@ -50,15 +42,16 @@ namespace GrimGame.Game.Character
         private PlayerDirection _playerDirection;
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
+        private float                _timerForAttacks; // only used to count the number of seconds
 
         // _____ Properties _____ //
         public float RunningSpeed;
 
-        // _____ Transform _____ //
         /// <summary>
-        ///     The player's tile position.
+        ///     Creates a new player.
         /// </summary>
-        //public Vector2 TilePosition;
+        /// <param name="mapSystem">The map the player will be draw to</param>
+        /// <param name="camera">A camera that will follow the player</param>
         public Player(MapSystem mapSystem, OrthographicCamera camera)
         {
             _mapSystem = mapSystem;
@@ -67,9 +60,20 @@ namespace GrimGame.Game.Character
             Score = 0;
         }
 
+        /// <summary>
+        ///     The total score the player accumulated.
+        /// </summary>
+        public int Score { get; private set; }
+
         // ____ Health ____ //
+        /// <summary>
+        ///     The maximum number of health points.
+        /// </summary>
         public int MaxHp { get; set; }
 
+        /// <summary>
+        ///     The current number of health points.
+        /// </summary>
         public int CurrentHp
         {
             get => _currentHp;
@@ -77,7 +81,7 @@ namespace GrimGame.Game.Character
         }
 
         [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
-        public override void Init()
+        public void Init()
         {
             Scale = new Vector2(1.2f, 1.2f);
 
@@ -120,7 +124,6 @@ namespace GrimGame.Game.Character
                 Width = 14,
                 Height = 33
             };
-            Texture = Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             _defaultWalkSpeed = Speed;
             Height = (int) (Sprite.Height * PlayerScale);
@@ -187,6 +190,9 @@ namespace GrimGame.Game.Character
             Globals.SpriteBatch.End();
         }
 
+        /// <summary>
+        ///     Moves the player when the player presses the movement keys.
+        /// </summary>
         [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         private void Move()
         {
@@ -212,6 +218,9 @@ namespace GrimGame.Game.Character
                 (int) (Position.Y - 16)));
         }
 
+        /// <summary>
+        ///     Updates the player's <see cref="_playerDirection" /> and animation based on their direction.
+        /// </summary>
         private void UpdatePlayerAnimationDirections()
         {
             if (Velocity.X > 0)
@@ -278,7 +287,7 @@ namespace GrimGame.Game.Character
             }
         }
 
-        public override void OnCollisionEnter(GameObject other)
+        protected override void OnCollisionEnter(GameObject other)
         {
             // Check to see if an enemy collided with us
             if (other is Enemy enemy && other.Active && other.Enabled)
@@ -292,10 +301,35 @@ namespace GrimGame.Game.Character
             }
         }
 
+        /// <summary>
+        ///     Directions the player could be facing.
+        /// </summary>
+        private enum PlayerDirection
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+        /// <summary>
+        ///     A bunch of states representing the player's movement.
+        /// </summary>
         private enum PlayerMovementStates
         {
+            /// <summary>
+            ///     Walking
+            /// </summary>
             Walking,
+
+            /// <summary>
+            ///     Running at <see cref="Player.RunningSpeed" />
+            /// </summary>
             Running,
+
+            /// <summary>
+            ///     Player is not moving.
+            /// </summary>
             Idle
         }
     }

@@ -8,6 +8,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GrimGame.Game
 {
+    /// <summary>
+    ///     A scene is an abstract representation of a game level. Every scene will be comprised of many game objects,
+    ///     along with UI, and other logic.
+    ///     <seealso cref="SceneManager" />
+    /// </summary>
     public abstract class Scene
     {
         public readonly MainGame MainGame;
@@ -16,7 +21,7 @@ namespace GrimGame.Game
         private bool _isSceneLoaded;
 
         /// <summary>
-        /// Represents a level. A level may contain various <see cref="GameObject"/>s.
+        ///     Represents a level. A level may contain various <see cref="GameObject" />s.
         /// </summary>
         /// <param name="sceneName">The name of the Scene. E.e "main", "Level1"</param>
         /// <param name="mainGame">A reference to the main game.</param>
@@ -55,7 +60,7 @@ namespace GrimGame.Game
 
         #region Public Variables
 
-        public          ObjectManager ObjectManager;
+        public readonly ObjectManager ObjectManager;
         public readonly string        Name;
         protected       UiManager     UiManager;
         protected       GrimDebugger  GrimDebugger;

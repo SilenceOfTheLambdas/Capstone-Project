@@ -8,26 +8,21 @@ using Microsoft.Xna.Framework.Graphics;
 namespace GrimGame.Game
 {
     /// <summary>
-    /// Displays basic information about the player's health and score.
+    ///     Displays basic information about the player's health and score.
     /// </summary>
     public class PlayerHud
     {
-        private readonly SpriteFont _font = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
-        private readonly Canvas     _canvas;
-        private readonly Scene      _scene;
-        private readonly Player     _player;
-
-        public  bool    IsActive = true;
-        private TextBox _hpTextBox;
-        private TextBox _scoreTextBox;
+        public const     bool    IsActive = true;
+        private readonly Canvas  _canvas;
+        private readonly TextBox _hpTextBox;
+        private readonly Player  _player;
+        private readonly TextBox _scoreTextBox;
 
         /// <summary>
-        /// Create a new instance of the player's heads-up-display.
+        ///     Create a new instance of the player's heads-up-display.
         /// </summary>
-        /// <param name="scene">The scene to add the HUD to.</param>
-        public PlayerHud(Scene scene)
+        public PlayerHud()
         {
-            _scene = scene;
             // create a new canvas
             _canvas = new Canvas();
 

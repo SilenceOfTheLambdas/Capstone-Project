@@ -1,3 +1,4 @@
+using GrimGame.Engine;
 using GrimGame.Engine.AI;
 using Microsoft.Xna.Framework;
 
@@ -8,11 +9,16 @@ namespace GrimGame.Game.Character.AI.Behaviours
     /// </summary>
     public class AttackNode : BtNode
     {
-        public const     float  MIN_DISTANCE_TO_TARGET = 32f;
+        private const    float  MinDistanceToTarget = 32f;
         private readonly Enemy  _enemy;
         private readonly Player _target;
         private          float  _elapsedTime;
 
+        /// <summary>
+        ///     Creates a new attacking behaviour.
+        /// </summary>
+        /// <param name="target">The target to attack</param>
+        /// <param name="enemy">The enemy performing the attack</param>
         public AttackNode(Player target, Enemy enemy)
         {
             _target = target;
@@ -23,7 +29,7 @@ namespace GrimGame.Game.Character.AI.Behaviours
         public override Result Execute(GameTime gameTime)
         {
             // If enemy is still within range of the player
-            if (_enemy.DistanceTo(_enemy.Position, _target.Position) <= MIN_DISTANCE_TO_TARGET)
+            if (GameObject.GetDistance(_enemy.Position, _target.Position) <= MinDistanceToTarget)
             {
                 _elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
                 if (_elapsedTime >= Enemy.AttackSpeed)
