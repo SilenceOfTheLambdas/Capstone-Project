@@ -675,12 +675,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "DinJEPQpeMa+0bGMGtjuog=="
+          "hash": "XurCQe1PPM8l9od9hz0pmA=="
         }
       },
       "is_incremental": false,

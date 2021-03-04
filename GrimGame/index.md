@@ -14,7 +14,7 @@ easily add to the game.
 The game itself is rather simple, it’s the backend systems that have really been the focus of my development, the game
 is very easy to expand upon and add too.
 
-![Image of the game](images/game_screen1.png)
+![Image of the game](GrimGame/images/game_screen1.png)
 
 ## The Wiki
 
