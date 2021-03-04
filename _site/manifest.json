@@ -1,0 +1,740 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/techd/Documents/University/Year 3/CE301 - Capstone Project/GrimGame",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Character.Enemies.AI.Pathfinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Character.Enemies.AI.Pathfinder.html",
+          "hash": "oNiEbqy3KYrIUyuB8MNzVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Character.Enemies.AI.SearchNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Character.Enemies.AI.SearchNode.html",
+          "hash": "qZnF2Wc+vlXtC7xU/UpnNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Character.Enemies.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Character.Enemies.AI.html",
+          "hash": "Topla87nKhfyhILdfYWK5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtInverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtInverter.html",
+          "hash": "6BH9gBxrFhjpNdjX88Txmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtNode.Result.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtNode.Result.html",
+          "hash": "hGhY81kYQDLgREuzaFFr/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtNode.html",
+          "hash": "KqKkPO7N8yZO6ZS0lhlxMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtRepeater.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtRepeater.html",
+          "hash": "PAp7yJMxCXMcXRTdB7X8uA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtSelector.html",
+          "hash": "OZGJRBpSxrzpsefPPPWXdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.BtSequencer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.BtSequencer.html",
+          "hash": "ufKBNjtENKB5lIDgu+HpXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AI.html",
+          "hash": "B8vh6SdqiRi4NtKPz1k5Fw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.AnimationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.AnimationManager.html",
+          "hash": "JRIqv0UskuQyu3PicM5o4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.BoxCollider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.BoxCollider.html",
+          "hash": "AJzNcNLym+aU0+vf5Ins2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Canvas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Canvas.html",
+          "hash": "YHN9r7N2xu4kYaoWs3j9JA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.Button.html",
+          "hash": "C8v/+HEWjl7jq1ISIS8LeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.Component.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.Component.html",
+          "hash": "gUt1m8UImDo0rgOwaf28tQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.TextBox.FontAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.TextBox.FontAlignment.html",
+          "hash": "my0IsjvY82NL+WwKdSgVkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.TextBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.TextBox.html",
+          "hash": "7lZzlLejAOF6yj7wou0vtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.html",
+          "hash": "W6ZDzlsYiOmt7LXaQ9XQcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Panel.Positions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Panel.Positions.html",
+          "hash": "PEvnERl0gQKejHT1mol+pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Panel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Panel.html",
+          "hash": "u29Ia2uYpJIFwsVf6i1kLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.html",
+          "hash": "kc22MoSya0eOQG+AcMu+Pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GameObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GameObject.html",
+          "hash": "V09et+ccpLnQUt5rVID3Sw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.Globals.ObjectTags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.Globals.ObjectTags.html",
+          "hash": "VoQFRprwsXmQLTyPfT3Zhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.Globals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.Globals.html",
+          "hash": "Hv1TduKAd6UTyP1begoybg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GridPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GridPoint.html",
+          "hash": "DMG3/UP1ircOogpgRzEc9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.InputManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.InputManager.html",
+          "hash": "d5+SjIomErs2vzuICL0nKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.MapSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.MapSystem.html",
+          "hash": "kOr5hX9+m64jxDAPFatcUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.Models.Animation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.Models.Animation.html",
+          "hash": "IlxD6Pd1twugkwGmcop9yg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.Models.html",
+          "hash": "lbFP63clNUQPw/9+rxVFQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.Sprite.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.Sprite.html",
+          "hash": "FrKsfIyh3SRM0440OIPEZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.TiledObjectRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.TiledObjectRenderer.html",
+          "hash": "pxYVOJVfL9YOo02uGA/nCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.html",
+          "hash": "X+/jIUTdJuSHBWuCVAW7pQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.AI.Behaviours.AttackNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.AI.Behaviours.AttackNode.html",
+          "hash": "ICRCurtk8psBhI+67r25Mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.AI.Behaviours.ChaseNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.AI.Behaviours.ChaseNode.html",
+          "hash": "IvegJ8M2Hy17ljf0jGzoKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.AI.Behaviours.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.AI.Behaviours.html",
+          "hash": "fa3o0eGe7rVfqoalmZIoMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.AI.ChaseNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.AI.ChaseNode.html",
+          "hash": "pjP+h9ePICdUTB+/2G87Vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.AI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.AI.html",
+          "hash": "+B/6SJgchaXHTs2AhQOCuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.Enemy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.Enemy.html",
+          "hash": "pXl1uHAjd3TnFPyZUuLZ2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.Paladin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.Paladin.html",
+          "hash": "Do7xDDQSVKwUI183qgzaeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.Player.html",
+          "hash": "wLwKAVmz3qgbv/J4eNd1Yg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Character.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Character.html",
+          "hash": "XNsAWPaFNNKLUZIlHAsppA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.GrimDebugger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.GrimDebugger.html",
+          "hash": "BVffktdg82gFLfkoMp8LJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.MainGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.MainGame.html",
+          "hash": "3n/EAsyU8F1lPaBcITfhaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.ObjectManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.ObjectManager.html",
+          "hash": "DSIlNIxzFbmULH9O/XdPLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.PauseMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.PauseMenu.html",
+          "hash": "y9vk44uzHUWY5hDSpPa2aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.PlayerHud.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.PlayerHud.html",
+          "hash": "+Cfh4f9B78fMZ36MBOaWFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Program.html",
+          "hash": "ulgPRbRuBmVahHlAQxqavA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Scene.html",
+          "hash": "w379/uro15PKbwHTBg1YKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.SceneManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.SceneManager.html",
+          "hash": "IHHnrEwQfqEYptXJF1PY4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.UiManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.UiManager.html",
+          "hash": "5iUaBx0fUsqyZ305D30wYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.html",
+          "hash": "BwOEWYU4SU0dcX/VZblW9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "TuWbNKbb+H7HwLzsro072Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "J1RcJ842cLJRBwYaViFgXw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "VTfnmraWSE8PHeOYWXinPA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "Tn4n5E/N612xgfBGXMJP5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because docfx version changed from 2.56.6.0 to 2.56.7.0.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "DocfxVersionChanged"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 51,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
