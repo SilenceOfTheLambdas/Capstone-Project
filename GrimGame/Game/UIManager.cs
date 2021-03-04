@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GrimGame.Game
 {
+    /// <summary>
+    ///     Manages the UI for the game.
+    /// </summary>
     public class UiManager
     {
         private readonly PauseMenu _pauseMenu;
@@ -11,7 +14,7 @@ namespace GrimGame.Game
         public UiManager(Scene scene)
         {
             _pauseMenu = new PauseMenu(scene);
-            _playerHud = new PlayerHud(scene);
+            _playerHud = new PlayerHud();
             InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);
         }
 
@@ -30,7 +33,7 @@ namespace GrimGame.Game
         {
             if (_pauseMenu.IsActive)
                 _pauseMenu.Draw();
-            if (_playerHud.IsActive)
+            if (PlayerHud.IsActive)
                 _playerHud.Draw();
         }
     }

@@ -1,43 +1,60 @@
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 
 namespace GrimGame.Engine.GUI
 {
+    /// <summary>
+    ///     A UI Canvas holds panels and renders them onto the screen.
+    ///     <see cref="Panel" />
+    /// </summary>
     public class Canvas
     {
-        public Color BackgroundColor;
-        public int   LayerIndex;
-
         /// <summary>
         ///     A list of any panels that are attached to this canvas.
         /// </summary>
-        public List<Panel> Panels;
+        private readonly List<Panel> _panels;
 
+        /// <summary>
+        ///     Create a new canvas and initialise <see cref="_panels" />
+        /// </summary>
         public Canvas()
         {
-            Panels = new List<Panel>();
+            _panels = new List<Panel>();
         }
 
+        /// <summary>
+        ///     Add a new panel to this canvas.
+        /// </summary>
+        /// <param name="panel">A panel to add</param>
         public void AddPanel(Panel panel)
         {
-            Panels.Add(panel);
+            _panels.Add(panel);
         }
 
+        /// <summary>
+        ///     Remove a panel from this canvas.
+        /// </summary>
+        /// <param name="panel">Panel to remove</param>
         public void RemovePanel(Panel panel)
         {
-            Panels.Remove(panel);
+            _panels.Remove(panel);
         }
 
+        /// <summary>
+        ///     Draws all of the panels in the <see cref="_panels" /> list.
+        /// </summary>
         public void Draw()
         {
-            foreach (var panel in Panels)
+            foreach (var panel in _panels)
                 // draw every panel in this canvas
                 panel.Draw();
         }
 
+        /// <summary>
+        ///     Update all of the <see cref="_panels" />.
+        /// </summary>
         public void Update()
         {
-            foreach (var panel in Panels)
+            foreach (var panel in _panels)
                 // draw every panel in this canvas
                 panel.Update();
         }

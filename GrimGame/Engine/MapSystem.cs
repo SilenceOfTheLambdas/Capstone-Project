@@ -31,11 +31,6 @@ namespace GrimGame.Engine
         private readonly TiledMapRenderer _mapRenderer;
 
         /// <summary>
-        ///     Renders drawable objects onto the map
-        /// </summary>
-        private readonly TiledObjectRenderer _tiledObjectRenderer;
-
-        /// <summary>
         ///     The Tiled map
         /// </summary>
         public readonly TiledMap Map;

@@ -7,25 +7,31 @@ using MonoGame.Extended;
 
 namespace GrimGame.Engine
 {
-    public class BoxCollider : GameObject
+    /// <summary>
+    ///     A box collider is used to provide collision avoidance and detection for a <see cref="GameObject" />.
+    /// </summary>
+    public sealed class BoxCollider : GameObject
     {
         /// <summary>
         ///     Does this collider trigger an event?
         /// </summary>
         public bool IsTrigger = false;
 
-
+        /// <summary>
+        ///     Creates a new box collider
+        /// </summary>
+        /// <param name="origin">The origin point</param>
+        /// <param name="size">The width and height of this box collider</param>
         public BoxCollider(Vector2 origin, Point2 size)
         {
             Origin = origin;
             Size = size;
         }
 
-        public override void Init()
-        {
-            Bounds = new Rectangle(new Point((int) Origin.X, (int) Origin.Y), new Point((int) Size.X, (int) Size.Y));
-        }
-
+        /// <summary>
+        ///     Updates the positions and size of the bounds.
+        /// </summary>
+        /// <param name="gameTime"><seealso cref="GameTime" />></param>
         public override void Update(GameTime gameTime)
         {
             Bounds = new Rectangle(new Point((int) Origin.X, (int) Origin.Y), new Point((int) Size.X, (int) Size.Y));
@@ -36,6 +42,9 @@ namespace GrimGame.Engine
             Bounds.Location = position;
         }
 
+        /// <summary>
+        ///     UNUSED
+        /// </summary>
         public override void Draw()
         {
         }

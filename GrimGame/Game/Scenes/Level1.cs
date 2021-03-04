@@ -14,7 +14,6 @@ namespace GrimGame.Game.Scenes
         private readonly MapSystem _mapSystem;
         private          Paladin   _paladin;
         private          Player    _player;
-        private          PlayerHud _playerHud;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
             : base(sceneName, mainGame)
@@ -33,8 +32,6 @@ namespace GrimGame.Game.Scenes
 
                 _player = new Player(_mapSystem, Globals.Camera)
                 {
-                    Name = "Player 1",
-                    Tag = Globals.ObjectTags.Player,
                     Speed = 2f,
                     RunningSpeed = 3.2f,
                     Enabled = true,
@@ -46,8 +43,6 @@ namespace GrimGame.Game.Scenes
 
                 _paladin = new Paladin(_mapSystem, _player)
                 {
-                    Name = "Paladin",
-                    Tag = Globals.ObjectTags.Enemy,
                     Speed = 1f,
                     Enabled = true,
                     Active = true,
@@ -79,7 +74,7 @@ namespace GrimGame.Game.Scenes
                 InputManager.Update();
                 UiManager.Update();
 
-                ObjectManager.Update(this, gameTime);
+                ObjectManager.Update(gameTime);
             }
 
             base.Update(gameTime);

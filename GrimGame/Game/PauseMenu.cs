@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GrimGame.Game
 {
+    /// <summary>
+    ///     A pause menu that gives the player options to Resume and Quit.
+    /// </summary>
     public class PauseMenu
     {
         private const    int        ButtonSpace = 125;
@@ -71,12 +74,22 @@ namespace GrimGame.Game
             _canvas.AddPanel(panel);
         }
 
+        /// <summary>
+        ///     Called when the quit button is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void QuitButtonClick(object? sender, EventArgs e)
         {
             if (_quitButton.Bounds.Intersects(_mouseBounds))
                 _scene.MainGame.Exit();
         }
 
+        /// <summary>
+        ///     Called when the Resume button is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResumeButtonClick(object? sender, EventArgs e)
         {
             if (_resumeButton.Bounds.Intersects(_mouseBounds))

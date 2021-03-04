@@ -11,15 +11,34 @@ namespace GrimGame.Game.Character
     /// </summary>
     public abstract class Enemy : GameObject
     {
-        // Public variables
-        protected    AnimationManager AnimationManager;
-        public const int              AttackDamage = 5; // The *amount* of damage this enemy inflicts
-        public const float            AttackSpeed  = 1; // The timer for each enemy attack (in seconds)
+        /// <summary>
+        ///     The amount of damage this enemy inflicts.
+        /// </summary>
+        public const int AttackDamage = 5;
+
+        /// <summary>
+        ///     The timer for each attack (in seconds)
+        /// </summary>
+        public const float AttackSpeed = 1;
 
         // Private variables
-        private static   Queue<Vector2> _waypoints;
-        private readonly Pathfinder     _pathFinder;
-        private          int            _maxHp;
+        /// <summary>
+        ///     The 'path' this enemy has to follow to get to a position. Makes use of the <see cref="Pathfinder" /> system.
+        /// </summary>
+        private static Queue<Vector2> _waypoints;
+
+        /// <summary>
+        ///     A reference to this enemy's <see cref="Pathfinder" />.
+        /// </summary>
+        private readonly Pathfinder _pathFinder;
+
+        private int _maxHp;
+
+        // Public variables
+        /// <summary>
+        ///     The animation manager for this enemy.
+        /// </summary>
+        protected AnimationManager AnimationManager;
 
         protected Enemy()
         {
@@ -83,6 +102,9 @@ namespace GrimGame.Game.Character
                 Kill();
         }
 
+        /// <summary>
+        ///     Killing this enemy will destroy the <see cref="GameObject" />.
+        /// </summary>
         private void Kill()
         {
             Destroy(this);
@@ -108,6 +130,9 @@ namespace GrimGame.Game.Character
         /// </summary>
         public int CurrentHp { get; set; }
 
+        /// <summary>
+        ///     The distance from the current position to the next point in <see cref="_waypoints" />.
+        /// </summary>
         public float DistanceToDestination => _waypoints.Count > 0 ? Vector2.Distance(Position, _waypoints.Peek()) : 0f;
 
         #endregion

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GrimGame.Game.Character
 {
-    public class Paladin : Enemy
+    public sealed class Paladin : Enemy
     {
         private readonly MapSystem     _mapSystem;
         private readonly Player        _player;
@@ -24,7 +24,7 @@ namespace GrimGame.Game.Character
             _player = player;
         }
 
-        public override void Init()
+        public void Init()
         {
             // Set spawn position if this enemy
             foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
@@ -64,7 +64,6 @@ namespace GrimGame.Game.Character
                 Width = 19,
                 Height = 29
             };
-            Texture = Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up");
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             Width = (int) (Sprite.Width * Scale.X);
             Height = (int) (Sprite.Height * Scale.Y);

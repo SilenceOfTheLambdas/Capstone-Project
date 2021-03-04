@@ -17,9 +17,9 @@ namespace GrimGame.Game
         /// <summary>
         ///     The number of game objects in the scene.
         /// </summary>
-        private int Count => Objects.Count;
+        private static int Count => Objects.Count;
 
-        public void Update(Scene scene, GameTime gameTime)
+        public static void Update(GameTime gameTime)
         {
             for (var i = 0; i < Count; i++)
             {
