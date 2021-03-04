@@ -73,7 +73,8 @@
   
   <h1 id="GrimGame_Engine_GUI_Components_TextBox" data-uid="GrimGame.Engine.GUI.Components.TextBox" class="text-break">Class TextBox
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A text box displays text.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -121,7 +122,7 @@
   <h6><strong>Assembly</strong>: GrimGame.dll</h6>
   <h5 id="GrimGame_Engine_GUI_Components_TextBox_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TextBox : Component</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TextBox : Component</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -129,7 +130,8 @@
   
   <a id="GrimGame_Engine_GUI_Components_TextBox__ctor_" data-uid="GrimGame.Engine.GUI.Components.TextBox.#ctor*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_TextBox__ctor_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_" data-uid="GrimGame.Engine.GUI.Components.TextBox.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)">TextBox(Vector2, Vector2, Color)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new text box.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -148,17 +150,20 @@
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">position</span></td>
-        <td></td>
+        <td><p>The position</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">size</span></td>
-        <td></td>
+        <td><p>The total size</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Color</span></td>
         <td><span class="parametername">backgroundColor</span></td>
-        <td></td>
+        <td><p>The background colour mask</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -166,32 +171,9 @@
   </h3>
   
   
-  <h4 id="GrimGame_Engine_GUI_Components_TextBox_Alignment" data-uid="GrimGame.Engine.GUI.Components.TextBox.Alignment">Alignment</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextBox.FontAlignment Alignment</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GrimGame.Engine.GUI.Components.TextBox.FontAlignment.html">TextBox.FontAlignment</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <h4 id="GrimGame_Engine_GUI_Components_TextBox_FontSize" data-uid="GrimGame.Engine.GUI.Components.TextBox.FontSize">FontSize</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The size of the font.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -212,88 +194,14 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <h4 id="GrimGame_Engine_GUI_Components_TextBox_Text" data-uid="GrimGame.Engine.GUI.Components.TextBox.Text">Text</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Text</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="GrimGame_Engine_GUI_Components_TextBox_TextColor" data-uid="GrimGame.Engine.GUI.Components.TextBox.TextColor">TextColor</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Color TextColor</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Color</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <a id="GrimGame_Engine_GUI_Components_TextBox_TextPadding_" data-uid="GrimGame.Engine.GUI.Components.TextBox.TextPadding*"></a>
-  <h4 id="GrimGame_Engine_GUI_Components_TextBox_TextPadding" data-uid="GrimGame.Engine.GUI.Components.TextBox.TextPadding">TextPadding</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float TextPadding { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   
   
   <a id="GrimGame_Engine_GUI_Components_TextBox_Draw_" data-uid="GrimGame.Engine.GUI.Components.TextBox.Draw*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_TextBox_Draw" data-uid="GrimGame.Engine.GUI.Components.TextBox.Draw">Draw()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Draws the text box and text within it.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -303,21 +211,10 @@
   <div><a class="xref" href="GrimGame.Engine.GUI.Components.Component.html#GrimGame_Engine_GUI_Components_Component_Draw">Component.Draw()</a></div>
   
   
-  <a id="GrimGame_Engine_GUI_Components_TextBox_ReDraw_" data-uid="GrimGame.Engine.GUI.Components.TextBox.ReDraw*"></a>
-  <h4 id="GrimGame_Engine_GUI_Components_TextBox_ReDraw" data-uid="GrimGame.Engine.GUI.Components.TextBox.ReDraw">ReDraw()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void ReDraw()</code></pre>
-  </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="GrimGame.Engine.GUI.Components.Component.html#GrimGame_Engine_GUI_Components_Component_ReDraw">Component.ReDraw()</a></div>
-  
-  
   <a id="GrimGame_Engine_GUI_Components_TextBox_SetText_" data-uid="GrimGame.Engine.GUI.Components.TextBox.SetText*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_TextBox_SetText_System_String_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Graphics_SpriteFont_GrimGame_Engine_GUI_Components_TextBox_FontAlignment_" data-uid="GrimGame.Engine.GUI.Components.TextBox.SetText(System.String,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteFont,GrimGame.Engine.GUI.Components.TextBox.FontAlignment)">SetText(String, Color, SpriteFont, TextBox.FontAlignment)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Set the text of this text box.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -336,22 +233,26 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">text</span></td>
-        <td></td>
+        <td><p>The <span class="xref">System.String</span> to display</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Color</span></td>
         <td><span class="parametername">textColor</span></td>
-        <td></td>
+        <td><p>The <span class="xref">Microsoft.Xna.Framework.Color</span> of the text</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Graphics.SpriteFont</span></td>
         <td><span class="parametername">font</span></td>
-        <td></td>
+        <td><p>The <span class="xref">Microsoft.Xna.Framework.Graphics.SpriteFont</span> of the text</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GrimGame.Engine.GUI.Components.TextBox.FontAlignment.html">TextBox.FontAlignment</a></td>
         <td><span class="parametername">alignment</span></td>
-        <td></td>
+        <td><p>Alignment</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -359,7 +260,8 @@
   
   <a id="GrimGame_Engine_GUI_Components_TextBox_Update_" data-uid="GrimGame.Engine.GUI.Components.TextBox.Update*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_TextBox_Update" data-uid="GrimGame.Engine.GUI.Components.TextBox.Update">Update()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>UNUSED</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">

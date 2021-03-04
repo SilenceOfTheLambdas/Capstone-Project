@@ -103,9 +103,6 @@
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Rotation">GameObject.Rotation</a>
     </div>
     <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Direction">GameObject.Direction</a>
-    </div>
-    <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Bounds">GameObject.Bounds</a>
     </div>
     <div>
@@ -124,13 +121,7 @@
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Height">GameObject.Height</a>
     </div>
     <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Name">GameObject.Name</a>
-    </div>
-    <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Speed">GameObject.Speed</a>
-    </div>
-    <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Tag">GameObject.Tag</a>
     </div>
     <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Width">GameObject.Width</a>
@@ -145,28 +136,13 @@
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Sprite">GameObject.Sprite</a>
     </div>
     <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Texture">GameObject.Texture</a>
-    </div>
-    <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Scale">GameObject.Scale</a>
     </div>
     <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_BoxCollider">GameObject.BoxCollider</a>
     </div>
     <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetPosition_System_Single_System_Single_">GameObject.SetPosition(Single, Single)</a>
-    </div>
-    <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetSize_System_Int32_System_Int32_">GameObject.SetSize(Int32, Int32)</a>
-    </div>
-    <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetBounds_System_Single_System_Single_System_Int32_System_Int32_">GameObject.SetBounds(Single, Single, Int32, Int32)</a>
-    </div>
-    <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_DistanceTo_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_">GameObject.DistanceTo(Vector2, Vector2)</a>
-    </div>
-    <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_GetPositionCentered">GameObject.GetPositionCentered()</a>
     </div>
     <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Destroy_GrimGame_Engine_GameObject_">GameObject.Destroy(GameObject)</a>
@@ -179,9 +155,6 @@
     </div>
     <div>
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_RotateTowards_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_">GameObject.RotateTowards(Vector2, Vector2)</a>
-    </div>
-    <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_CollisionDetection">GameObject.CollisionDetection()</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -209,7 +182,7 @@
   <h6><strong>Assembly</strong>: GrimGame.dll</h6>
   <h5 id="GrimGame_Game_Character_Player_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Player : GameObject</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class Player : GameObject</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -217,7 +190,7 @@
   
   <a id="GrimGame_Game_Character_Player__ctor_" data-uid="GrimGame.Game.Character.Player.#ctor*"></a>
   <h4 id="GrimGame_Game_Character_Player__ctor_GrimGame_Engine_MapSystem_MonoGame_Extended_OrthographicCamera_" data-uid="GrimGame.Game.Character.Player.#ctor(GrimGame.Engine.MapSystem,MonoGame.Extended.OrthographicCamera)">Player(MapSystem, OrthographicCamera)</h4>
-  <div class="markdown level1 summary"><p>The player's tile position.</p>
+  <div class="markdown level1 summary"><p>Creates a new player.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -237,12 +210,14 @@
       <tr>
         <td><a class="xref" href="GrimGame.Engine.MapSystem.html">MapSystem</a></td>
         <td><span class="parametername">mapSystem</span></td>
-        <td></td>
+        <td><p>The map the player will be draw to</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">MonoGame.Extended.OrthographicCamera</span></td>
         <td><span class="parametername">camera</span></td>
-        <td></td>
+        <td><p>A camera that will follow the player</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -278,7 +253,8 @@
   
   <a id="GrimGame_Game_Character_Player_CurrentHp_" data-uid="GrimGame.Game.Character.Player.CurrentHp*"></a>
   <h4 id="GrimGame_Game_Character_Player_CurrentHp" data-uid="GrimGame.Game.Character.Player.CurrentHp">CurrentHp</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The current number of health points.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -303,7 +279,8 @@
   
   <a id="GrimGame_Game_Character_Player_MaxHp_" data-uid="GrimGame.Game.Character.Player.MaxHp*"></a>
   <h4 id="GrimGame_Game_Character_Player_MaxHp" data-uid="GrimGame.Game.Character.Player.MaxHp">MaxHp</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The maximum number of health points.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -328,7 +305,8 @@
   
   <a id="GrimGame_Game_Character_Player_Score_" data-uid="GrimGame.Game.Character.Player.Score*"></a>
   <h4 id="GrimGame_Game_Character_Player_Score" data-uid="GrimGame.Game.Character.Player.Score">Score</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The total score the player accumulated.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -371,10 +349,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void Init()</code></pre>
+    <pre><code class="lang-csharp hljs">public void Init()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Init">GameObject.Init()</a></div>
   
   
   <a id="GrimGame_Game_Character_Player_OnCollisionEnter_" data-uid="GrimGame.Game.Character.Player.OnCollisionEnter*"></a>
@@ -383,7 +359,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnCollisionEnter(GameObject other)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void OnCollisionEnter(GameObject other)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

@@ -437,19 +437,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.BoxCollider.Draw
     nameWithType: BoxCollider.Draw
-  - uid: GrimGame.Engine.BoxCollider.Init
-    name: Init()
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Init
-    commentId: M:GrimGame.Engine.BoxCollider.Init
-    fullName: GrimGame.Engine.BoxCollider.Init()
-    nameWithType: BoxCollider.Init()
-  - uid: GrimGame.Engine.BoxCollider.Init*
-    name: Init
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Init_
-    commentId: Overload:GrimGame.Engine.BoxCollider.Init
-    isSpec: "True"
-    fullName: GrimGame.Engine.BoxCollider.Init
-    nameWithType: BoxCollider.Init
   - uid: GrimGame.Engine.BoxCollider.IsTrigger
     name: IsTrigger
     href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_IsTrigger
@@ -488,12 +475,12 @@ references:
     commentId: T:GrimGame.Engine.GameObject
     fullName: GrimGame.Engine.GameObject
     nameWithType: GameObject
-  - uid: GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-    name: GameObject(Int32, Int32, Int32, Int32, Int32)
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
-    commentId: M:GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
-    fullName: GrimGame.Engine.GameObject.GameObject(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
-    nameWithType: GameObject.GameObject(Int32, Int32, Int32, Int32, Int32)
+  - uid: GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+    name: GameObject(Int32, Int32, Int32, Int32)
+    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject__ctor_System_Int32_System_Int32_System_Int32_System_Int32_
+    commentId: M:GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+    fullName: GrimGame.Engine.GameObject.GameObject(System.Int32, System.Int32, System.Int32, System.Int32)
+    nameWithType: GameObject.GameObject(Int32, Int32, Int32, Int32)
   - uid: GrimGame.Engine.GameObject.#ctor*
     name: GameObject
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject__ctor_
@@ -525,19 +512,6 @@ references:
     commentId: F:GrimGame.Engine.GameObject.Collision
     fullName: GrimGame.Engine.GameObject.Collision
     nameWithType: GameObject.Collision
-  - uid: GrimGame.Engine.GameObject.CollisionDetection
-    name: CollisionDetection()
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_CollisionDetection
-    commentId: M:GrimGame.Engine.GameObject.CollisionDetection
-    fullName: GrimGame.Engine.GameObject.CollisionDetection()
-    nameWithType: GameObject.CollisionDetection()
-  - uid: GrimGame.Engine.GameObject.CollisionDetection*
-    name: CollisionDetection
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_CollisionDetection_
-    commentId: Overload:GrimGame.Engine.GameObject.CollisionDetection
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.CollisionDetection
-    nameWithType: GameObject.CollisionDetection
   - uid: GrimGame.Engine.GameObject.Destroy(GrimGame.Engine.GameObject)
     name: Destroy(GameObject)
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Destroy_GrimGame_Engine_GameObject_
@@ -551,32 +525,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GameObject.Destroy
     nameWithType: GameObject.Destroy
-  - uid: GrimGame.Engine.GameObject.Direction
-    name: Direction
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Direction
-    commentId: P:GrimGame.Engine.GameObject.Direction
-    fullName: GrimGame.Engine.GameObject.Direction
-    nameWithType: GameObject.Direction
-  - uid: GrimGame.Engine.GameObject.Direction*
-    name: Direction
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Direction_
-    commentId: Overload:GrimGame.Engine.GameObject.Direction
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.Direction
-    nameWithType: GameObject.Direction
-  - uid: GrimGame.Engine.GameObject.DistanceTo(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
-    name: DistanceTo(Vector2, Vector2)
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_DistanceTo_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
-    commentId: M:GrimGame.Engine.GameObject.DistanceTo(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
-    fullName: GrimGame.Engine.GameObject.DistanceTo(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
-    nameWithType: GameObject.DistanceTo(Vector2, Vector2)
-  - uid: GrimGame.Engine.GameObject.DistanceTo*
-    name: DistanceTo
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_DistanceTo_
-    commentId: Overload:GrimGame.Engine.GameObject.DistanceTo
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.DistanceTo
-    nameWithType: GameObject.DistanceTo
   - uid: GrimGame.Engine.GameObject.Draw
     name: Draw()
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Draw
@@ -609,44 +557,12 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GameObject.GetDistance
     nameWithType: GameObject.GetDistance
-  - uid: GrimGame.Engine.GameObject.GetPositionCentered
-    name: GetPositionCentered()
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_GetPositionCentered
-    commentId: M:GrimGame.Engine.GameObject.GetPositionCentered
-    fullName: GrimGame.Engine.GameObject.GetPositionCentered()
-    nameWithType: GameObject.GetPositionCentered()
-  - uid: GrimGame.Engine.GameObject.GetPositionCentered*
-    name: GetPositionCentered
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_GetPositionCentered_
-    commentId: Overload:GrimGame.Engine.GameObject.GetPositionCentered
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.GetPositionCentered
-    nameWithType: GameObject.GetPositionCentered
   - uid: GrimGame.Engine.GameObject.Height
     name: Height
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Height
     commentId: F:GrimGame.Engine.GameObject.Height
     fullName: GrimGame.Engine.GameObject.Height
     nameWithType: GameObject.Height
-  - uid: GrimGame.Engine.GameObject.Init
-    name: Init()
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Init
-    commentId: M:GrimGame.Engine.GameObject.Init
-    fullName: GrimGame.Engine.GameObject.Init()
-    nameWithType: GameObject.Init()
-  - uid: GrimGame.Engine.GameObject.Init*
-    name: Init
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Init_
-    commentId: Overload:GrimGame.Engine.GameObject.Init
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.Init
-    nameWithType: GameObject.Init
-  - uid: GrimGame.Engine.GameObject.Name
-    name: Name
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Name
-    commentId: F:GrimGame.Engine.GameObject.Name
-    fullName: GrimGame.Engine.GameObject.Name
-    nameWithType: GameObject.Name
   - uid: GrimGame.Engine.GameObject.OnCollisionEnter(GrimGame.Engine.GameObject)
     name: OnCollisionEnter(GameObject)
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_OnCollisionEnter_GrimGame_Engine_GameObject_
@@ -737,32 +653,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GameObject.SetBounds
     nameWithType: GameObject.SetBounds
-  - uid: GrimGame.Engine.GameObject.SetPosition(System.Single,System.Single)
-    name: SetPosition(Single, Single)
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetPosition_System_Single_System_Single_
-    commentId: M:GrimGame.Engine.GameObject.SetPosition(System.Single,System.Single)
-    fullName: GrimGame.Engine.GameObject.SetPosition(System.Single, System.Single)
-    nameWithType: GameObject.SetPosition(Single, Single)
-  - uid: GrimGame.Engine.GameObject.SetPosition*
-    name: SetPosition
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetPosition_
-    commentId: Overload:GrimGame.Engine.GameObject.SetPosition
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.SetPosition
-    nameWithType: GameObject.SetPosition
-  - uid: GrimGame.Engine.GameObject.SetSize(System.Int32,System.Int32)
-    name: SetSize(Int32, Int32)
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetSize_System_Int32_System_Int32_
-    commentId: M:GrimGame.Engine.GameObject.SetSize(System.Int32,System.Int32)
-    fullName: GrimGame.Engine.GameObject.SetSize(System.Int32, System.Int32)
-    nameWithType: GameObject.SetSize(Int32, Int32)
-  - uid: GrimGame.Engine.GameObject.SetSize*
-    name: SetSize
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_SetSize_
-    commentId: Overload:GrimGame.Engine.GameObject.SetSize
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.SetSize
-    nameWithType: GameObject.SetSize
   - uid: GrimGame.Engine.GameObject.Size
     name: Size
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Size
@@ -788,18 +678,6 @@ references:
     commentId: F:GrimGame.Engine.GameObject.Sprite
     fullName: GrimGame.Engine.GameObject.Sprite
     nameWithType: GameObject.Sprite
-  - uid: GrimGame.Engine.GameObject.Tag
-    name: Tag
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Tag
-    commentId: F:GrimGame.Engine.GameObject.Tag
-    fullName: GrimGame.Engine.GameObject.Tag
-    nameWithType: GameObject.Tag
-  - uid: GrimGame.Engine.GameObject.Texture
-    name: Texture
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Texture
-    commentId: F:GrimGame.Engine.GameObject.Texture
-    fullName: GrimGame.Engine.GameObject.Texture
-    nameWithType: GameObject.Texture
   - uid: GrimGame.Engine.GameObject.TilePosition
     name: TilePosition
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_TilePosition
@@ -874,43 +752,18 @@ references:
     commentId: F:GrimGame.Engine.Globals.ContentManager
     fullName: GrimGame.Engine.Globals.ContentManager
     nameWithType: Globals.ContentManager
-  - uid: GrimGame.Engine.Globals.DebugFont
-    name: DebugFont
-    href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_DebugFont
-    commentId: F:GrimGame.Engine.Globals.DebugFont
-    fullName: GrimGame.Engine.Globals.DebugFont
-    nameWithType: Globals.DebugFont
   - uid: GrimGame.Engine.Globals.DebugMode
     name: DebugMode
     href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_DebugMode
     commentId: F:GrimGame.Engine.Globals.DebugMode
     fullName: GrimGame.Engine.Globals.DebugMode
     nameWithType: Globals.DebugMode
-  - uid: GrimGame.Engine.Globals.GameObjects
-    name: GameObjects
-    href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_GameObjects
-    commentId: P:GrimGame.Engine.Globals.GameObjects
-    fullName: GrimGame.Engine.Globals.GameObjects
-    nameWithType: Globals.GameObjects
-  - uid: GrimGame.Engine.Globals.GameObjects*
-    name: GameObjects
-    href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_GameObjects_
-    commentId: Overload:GrimGame.Engine.Globals.GameObjects
-    isSpec: "True"
-    fullName: GrimGame.Engine.Globals.GameObjects
-    nameWithType: Globals.GameObjects
   - uid: GrimGame.Engine.Globals.GameTime
     name: GameTime
     href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_GameTime
     commentId: F:GrimGame.Engine.Globals.GameTime
     fullName: GrimGame.Engine.Globals.GameTime
     nameWithType: Globals.GameTime
-  - uid: GrimGame.Engine.Globals.GameWindow
-    name: GameWindow
-    href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_GameWindow
-    commentId: F:GrimGame.Engine.Globals.GameWindow
-    fullName: GrimGame.Engine.Globals.GameWindow
-    nameWithType: Globals.GameWindow
   - uid: GrimGame.Engine.Globals.Graphics
     name: Graphics
     href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_Graphics
@@ -935,30 +788,6 @@ references:
     commentId: F:GrimGame.Engine.Globals.MapSystem
     fullName: GrimGame.Engine.Globals.MapSystem
     nameWithType: Globals.MapSystem
-  - uid: GrimGame.Engine.Globals.ObjectTags
-    name: Globals.ObjectTags
-    href: api/GrimGame.Engine.Globals.ObjectTags.html
-    commentId: T:GrimGame.Engine.Globals.ObjectTags
-    fullName: GrimGame.Engine.Globals.ObjectTags
-    nameWithType: Globals.ObjectTags
-  - uid: GrimGame.Engine.Globals.ObjectTags.Enemy
-    name: Enemy
-    href: api/GrimGame.Engine.Globals.ObjectTags.html#GrimGame_Engine_Globals_ObjectTags_Enemy
-    commentId: F:GrimGame.Engine.Globals.ObjectTags.Enemy
-    fullName: GrimGame.Engine.Globals.ObjectTags.Enemy
-    nameWithType: Globals.ObjectTags.Enemy
-  - uid: GrimGame.Engine.Globals.ObjectTags.MainCamera
-    name: MainCamera
-    href: api/GrimGame.Engine.Globals.ObjectTags.html#GrimGame_Engine_Globals_ObjectTags_MainCamera
-    commentId: F:GrimGame.Engine.Globals.ObjectTags.MainCamera
-    fullName: GrimGame.Engine.Globals.ObjectTags.MainCamera
-    nameWithType: Globals.ObjectTags.MainCamera
-  - uid: GrimGame.Engine.Globals.ObjectTags.Player
-    name: Player
-    href: api/GrimGame.Engine.Globals.ObjectTags.html#GrimGame_Engine_Globals_ObjectTags_Player
-    commentId: F:GrimGame.Engine.Globals.ObjectTags.Player
-    fullName: GrimGame.Engine.Globals.ObjectTags.Player
-    nameWithType: Globals.ObjectTags.Player
   - uid: GrimGame.Engine.Globals.SpriteBatch
     name: SpriteBatch
     href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_SpriteBatch
@@ -977,55 +806,6 @@ references:
     commentId: F:GrimGame.Engine.Globals.VirtualSize
     fullName: GrimGame.Engine.Globals.VirtualSize
     nameWithType: Globals.VirtualSize
-  - uid: GrimGame.Engine.Globals.WindowSize
-    name: WindowSize
-    href: api/GrimGame.Engine.Globals.html#GrimGame_Engine_Globals_WindowSize
-    commentId: F:GrimGame.Engine.Globals.WindowSize
-    fullName: GrimGame.Engine.Globals.WindowSize
-    nameWithType: Globals.WindowSize
-  - uid: GrimGame.Engine.GridPoint
-    name: GridPoint
-    href: api/GrimGame.Engine.GridPoint.html
-    commentId: T:GrimGame.Engine.GridPoint
-    fullName: GrimGame.Engine.GridPoint
-    nameWithType: GridPoint
-  - uid: GrimGame.Engine.GridPoint.#ctor(Microsoft.Xna.Framework.Vector3)
-    name: GridPoint(Vector3)
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint__ctor_Microsoft_Xna_Framework_Vector3_
-    commentId: M:GrimGame.Engine.GridPoint.#ctor(Microsoft.Xna.Framework.Vector3)
-    fullName: GrimGame.Engine.GridPoint.GridPoint(Microsoft.Xna.Framework.Vector3)
-    nameWithType: GridPoint.GridPoint(Vector3)
-  - uid: GrimGame.Engine.GridPoint.#ctor(System.Int32,System.Int32)
-    name: GridPoint(Int32, Int32)
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint__ctor_System_Int32_System_Int32_
-    commentId: M:GrimGame.Engine.GridPoint.#ctor(System.Int32,System.Int32)
-    fullName: GrimGame.Engine.GridPoint.GridPoint(System.Int32, System.Int32)
-    nameWithType: GridPoint.GridPoint(Int32, Int32)
-  - uid: GrimGame.Engine.GridPoint.#ctor(System.Single,System.Single)
-    name: GridPoint(Single, Single)
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint__ctor_System_Single_System_Single_
-    commentId: M:GrimGame.Engine.GridPoint.#ctor(System.Single,System.Single)
-    fullName: GrimGame.Engine.GridPoint.GridPoint(System.Single, System.Single)
-    nameWithType: GridPoint.GridPoint(Single, Single)
-  - uid: GrimGame.Engine.GridPoint.#ctor*
-    name: GridPoint
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint__ctor_
-    commentId: Overload:GrimGame.Engine.GridPoint.#ctor
-    isSpec: "True"
-    fullName: GrimGame.Engine.GridPoint.GridPoint
-    nameWithType: GridPoint.GridPoint
-  - uid: GrimGame.Engine.GridPoint.X
-    name: X
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint_X
-    commentId: F:GrimGame.Engine.GridPoint.X
-    fullName: GrimGame.Engine.GridPoint.X
-    nameWithType: GridPoint.X
-  - uid: GrimGame.Engine.GridPoint.Y
-    name: Y
-    href: api/GrimGame.Engine.GridPoint.html#GrimGame_Engine_GridPoint_Y
-    commentId: F:GrimGame.Engine.GridPoint.Y
-    fullName: GrimGame.Engine.GridPoint.Y
-    nameWithType: GridPoint.Y
   - uid: GrimGame.Engine.GUI
     name: GrimGame.Engine.GUI
     href: api/GrimGame.Engine.GUI.html
@@ -1064,12 +844,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Canvas.AddPanel
     nameWithType: Canvas.AddPanel
-  - uid: GrimGame.Engine.GUI.Canvas.BackgroundColor
-    name: BackgroundColor
-    href: api/GrimGame.Engine.GUI.Canvas.html#GrimGame_Engine_GUI_Canvas_BackgroundColor
-    commentId: F:GrimGame.Engine.GUI.Canvas.BackgroundColor
-    fullName: GrimGame.Engine.GUI.Canvas.BackgroundColor
-    nameWithType: Canvas.BackgroundColor
   - uid: GrimGame.Engine.GUI.Canvas.Draw
     name: Draw()
     href: api/GrimGame.Engine.GUI.Canvas.html#GrimGame_Engine_GUI_Canvas_Draw
@@ -1083,18 +857,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Canvas.Draw
     nameWithType: Canvas.Draw
-  - uid: GrimGame.Engine.GUI.Canvas.LayerIndex
-    name: LayerIndex
-    href: api/GrimGame.Engine.GUI.Canvas.html#GrimGame_Engine_GUI_Canvas_LayerIndex
-    commentId: F:GrimGame.Engine.GUI.Canvas.LayerIndex
-    fullName: GrimGame.Engine.GUI.Canvas.LayerIndex
-    nameWithType: Canvas.LayerIndex
-  - uid: GrimGame.Engine.GUI.Canvas.Panels
-    name: Panels
-    href: api/GrimGame.Engine.GUI.Canvas.html#GrimGame_Engine_GUI_Canvas_Panels
-    commentId: F:GrimGame.Engine.GUI.Canvas.Panels
-    fullName: GrimGame.Engine.GUI.Canvas.Panels
-    nameWithType: Canvas.Panels
   - uid: GrimGame.Engine.GUI.Canvas.RemovePanel(GrimGame.Engine.GUI.Panel)
     name: RemovePanel(Panel)
     href: api/GrimGame.Engine.GUI.Canvas.html#GrimGame_Engine_GUI_Canvas_RemovePanel_GrimGame_Engine_GUI_Panel_
@@ -1178,19 +940,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.Button.Draw
     nameWithType: Button.Draw
-  - uid: GrimGame.Engine.GUI.Components.Button.ReDraw
-    name: ReDraw()
-    href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_ReDraw
-    commentId: M:GrimGame.Engine.GUI.Components.Button.ReDraw
-    fullName: GrimGame.Engine.GUI.Components.Button.ReDraw()
-    nameWithType: Button.ReDraw()
-  - uid: GrimGame.Engine.GUI.Components.Button.ReDraw*
-    name: ReDraw
-    href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_ReDraw_
-    commentId: Overload:GrimGame.Engine.GUI.Components.Button.ReDraw
-    isSpec: "True"
-    fullName: GrimGame.Engine.GUI.Components.Button.ReDraw
-    nameWithType: Button.ReDraw
   - uid: GrimGame.Engine.GUI.Components.Button.TextHoverColor
     name: TextHoverColor
     href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_TextHoverColor
@@ -1275,19 +1024,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.Component.Position
     nameWithType: Component.Position
-  - uid: GrimGame.Engine.GUI.Components.Component.ReDraw
-    name: ReDraw()
-    href: api/GrimGame.Engine.GUI.Components.Component.html#GrimGame_Engine_GUI_Components_Component_ReDraw
-    commentId: M:GrimGame.Engine.GUI.Components.Component.ReDraw
-    fullName: GrimGame.Engine.GUI.Components.Component.ReDraw()
-    nameWithType: Component.ReDraw()
-  - uid: GrimGame.Engine.GUI.Components.Component.ReDraw*
-    name: ReDraw
-    href: api/GrimGame.Engine.GUI.Components.Component.html#GrimGame_Engine_GUI_Components_Component_ReDraw_
-    commentId: Overload:GrimGame.Engine.GUI.Components.Component.ReDraw
-    isSpec: "True"
-    fullName: GrimGame.Engine.GUI.Components.Component.ReDraw
-    nameWithType: Component.ReDraw
   - uid: GrimGame.Engine.GUI.Components.Component.Size
     name: Size
     href: api/GrimGame.Engine.GUI.Components.Component.html#GrimGame_Engine_GUI_Components_Component_Size
@@ -1333,12 +1069,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.TextBox.TextBox
     nameWithType: TextBox.TextBox
-  - uid: GrimGame.Engine.GUI.Components.TextBox.Alignment
-    name: Alignment
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_Alignment
-    commentId: F:GrimGame.Engine.GUI.Components.TextBox.Alignment
-    fullName: GrimGame.Engine.GUI.Components.TextBox.Alignment
-    nameWithType: TextBox.Alignment
   - uid: GrimGame.Engine.GUI.Components.TextBox.Draw
     name: Draw()
     href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_Draw
@@ -1418,19 +1148,6 @@ references:
     commentId: F:GrimGame.Engine.GUI.Components.TextBox.FontSize
     fullName: GrimGame.Engine.GUI.Components.TextBox.FontSize
     nameWithType: TextBox.FontSize
-  - uid: GrimGame.Engine.GUI.Components.TextBox.ReDraw
-    name: ReDraw()
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_ReDraw
-    commentId: M:GrimGame.Engine.GUI.Components.TextBox.ReDraw
-    fullName: GrimGame.Engine.GUI.Components.TextBox.ReDraw()
-    nameWithType: TextBox.ReDraw()
-  - uid: GrimGame.Engine.GUI.Components.TextBox.ReDraw*
-    name: ReDraw
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_ReDraw_
-    commentId: Overload:GrimGame.Engine.GUI.Components.TextBox.ReDraw
-    isSpec: "True"
-    fullName: GrimGame.Engine.GUI.Components.TextBox.ReDraw
-    nameWithType: TextBox.ReDraw
   - uid: GrimGame.Engine.GUI.Components.TextBox.SetText(System.String,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteFont,GrimGame.Engine.GUI.Components.TextBox.FontAlignment)
     name: SetText(String, Color, SpriteFont, TextBox.FontAlignment)
     href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_SetText_System_String_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Graphics_SpriteFont_GrimGame_Engine_GUI_Components_TextBox_FontAlignment_
@@ -1444,31 +1161,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.TextBox.SetText
     nameWithType: TextBox.SetText
-  - uid: GrimGame.Engine.GUI.Components.TextBox.Text
-    name: Text
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_Text
-    commentId: F:GrimGame.Engine.GUI.Components.TextBox.Text
-    fullName: GrimGame.Engine.GUI.Components.TextBox.Text
-    nameWithType: TextBox.Text
-  - uid: GrimGame.Engine.GUI.Components.TextBox.TextColor
-    name: TextColor
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_TextColor
-    commentId: F:GrimGame.Engine.GUI.Components.TextBox.TextColor
-    fullName: GrimGame.Engine.GUI.Components.TextBox.TextColor
-    nameWithType: TextBox.TextColor
-  - uid: GrimGame.Engine.GUI.Components.TextBox.TextPadding
-    name: TextPadding
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_TextPadding
-    commentId: P:GrimGame.Engine.GUI.Components.TextBox.TextPadding
-    fullName: GrimGame.Engine.GUI.Components.TextBox.TextPadding
-    nameWithType: TextBox.TextPadding
-  - uid: GrimGame.Engine.GUI.Components.TextBox.TextPadding*
-    name: TextPadding
-    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_TextPadding_
-    commentId: Overload:GrimGame.Engine.GUI.Components.TextBox.TextPadding
-    isSpec: "True"
-    fullName: GrimGame.Engine.GUI.Components.TextBox.TextPadding
-    nameWithType: TextBox.TextPadding
   - uid: GrimGame.Engine.GUI.Components.TextBox.Update
     name: Update()
     href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_Update
@@ -1494,12 +1186,6 @@ references:
     commentId: M:GrimGame.Engine.GUI.Panel.#ctor(GrimGame.Engine.GUI.Panel.Positions,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
     fullName: GrimGame.Engine.GUI.Panel.Panel(GrimGame.Engine.GUI.Panel.Positions, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Color)
     nameWithType: Panel.Panel(Panel.Positions, Vector2, Color)
-  - uid: GrimGame.Engine.GUI.Panel.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
-    name: Panel(Vector2, Vector2, Color)
-    href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel__ctor_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_
-    commentId: M:GrimGame.Engine.GUI.Panel.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
-    fullName: GrimGame.Engine.GUI.Panel.Panel(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Color)
-    nameWithType: Panel.Panel(Vector2, Vector2, Color)
   - uid: GrimGame.Engine.GUI.Panel.#ctor*
     name: Panel
     href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel__ctor_
@@ -1533,24 +1219,12 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Panel.AddPanel
     nameWithType: Panel.AddPanel
-  - uid: GrimGame.Engine.GUI.Panel.BackgroundColor
-    name: BackgroundColor
-    href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_BackgroundColor
-    commentId: F:GrimGame.Engine.GUI.Panel.BackgroundColor
-    fullName: GrimGame.Engine.GUI.Panel.BackgroundColor
-    nameWithType: Panel.BackgroundColor
   - uid: GrimGame.Engine.GUI.Panel.Bounds
     name: Bounds
     href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_Bounds
     commentId: F:GrimGame.Engine.GUI.Panel.Bounds
     fullName: GrimGame.Engine.GUI.Panel.Bounds
     nameWithType: Panel.Bounds
-  - uid: GrimGame.Engine.GUI.Panel.Components
-    name: Components
-    href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_Components
-    commentId: F:GrimGame.Engine.GUI.Panel.Components
-    fullName: GrimGame.Engine.GUI.Panel.Components
-    nameWithType: Panel.Components
   - uid: GrimGame.Engine.GUI.Panel.Draw
     name: Draw()
     href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_Draw
@@ -1564,12 +1238,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Panel.Draw
     nameWithType: Panel.Draw
-  - uid: GrimGame.Engine.GUI.Panel.Panels
-    name: Panels
-    href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_Panels
-    commentId: F:GrimGame.Engine.GUI.Panel.Panels
-    fullName: GrimGame.Engine.GUI.Panel.Panels
-    nameWithType: Panel.Panels
   - uid: GrimGame.Engine.GUI.Panel.Position
     name: Position
     href: api/GrimGame.Engine.GUI.Panel.html#GrimGame_Engine_GUI_Panel_Position
@@ -1813,12 +1481,12 @@ references:
     commentId: T:GrimGame.Engine.Models.Animation
     fullName: GrimGame.Engine.Models.Animation
     nameWithType: Animation
-  - uid: GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Boolean)
-    name: Animation(Texture2D, Int32, Boolean)
-    href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_System_Int32_System_Boolean_
-    commentId: M:GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Boolean)
-    fullName: GrimGame.Engine.Models.Animation.Animation(Microsoft.Xna.Framework.Graphics.Texture2D, System.Int32, System.Boolean)
-    nameWithType: Animation.Animation(Texture2D, Int32, Boolean)
+  - uid: GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32)
+    name: Animation(Texture2D, Int32)
+    href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_System_Int32_
+    commentId: M:GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32)
+    fullName: GrimGame.Engine.Models.Animation.Animation(Microsoft.Xna.Framework.Graphics.Texture2D, System.Int32)
+    nameWithType: Animation.Animation(Texture2D, Int32)
   - uid: GrimGame.Engine.Models.Animation.#ctor*
     name: Animation
     href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation__ctor_
@@ -1891,19 +1559,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.Models.Animation.FrameWidth
     nameWithType: Animation.FrameWidth
-  - uid: GrimGame.Engine.Models.Animation.IsLooping
-    name: IsLooping
-    href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation_IsLooping
-    commentId: P:GrimGame.Engine.Models.Animation.IsLooping
-    fullName: GrimGame.Engine.Models.Animation.IsLooping
-    nameWithType: Animation.IsLooping
-  - uid: GrimGame.Engine.Models.Animation.IsLooping*
-    name: IsLooping
-    href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation_IsLooping_
-    commentId: Overload:GrimGame.Engine.Models.Animation.IsLooping
-    isSpec: "True"
-    fullName: GrimGame.Engine.Models.Animation.IsLooping
-    nameWithType: Animation.IsLooping
   - uid: GrimGame.Engine.Models.Animation.Texture
     name: Texture
     href: api/GrimGame.Engine.Models.Animation.html#GrimGame_Engine_Models_Animation_Texture
@@ -1971,38 +1626,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.Sprite.Width
     nameWithType: Sprite.Width
-  - uid: GrimGame.Engine.TiledObjectRenderer
-    name: TiledObjectRenderer
-    href: api/GrimGame.Engine.TiledObjectRenderer.html
-    commentId: T:GrimGame.Engine.TiledObjectRenderer
-    fullName: GrimGame.Engine.TiledObjectRenderer
-    nameWithType: TiledObjectRenderer
-  - uid: GrimGame.Engine.TiledObjectRenderer.#ctor(MonoGame.Extended.Tiled.TiledMap,Microsoft.Xna.Framework.Graphics.SpriteBatch)
-    name: TiledObjectRenderer(TiledMap, SpriteBatch)
-    href: api/GrimGame.Engine.TiledObjectRenderer.html#GrimGame_Engine_TiledObjectRenderer__ctor_MonoGame_Extended_Tiled_TiledMap_Microsoft_Xna_Framework_Graphics_SpriteBatch_
-    commentId: M:GrimGame.Engine.TiledObjectRenderer.#ctor(MonoGame.Extended.Tiled.TiledMap,Microsoft.Xna.Framework.Graphics.SpriteBatch)
-    fullName: GrimGame.Engine.TiledObjectRenderer.TiledObjectRenderer(MonoGame.Extended.Tiled.TiledMap, Microsoft.Xna.Framework.Graphics.SpriteBatch)
-    nameWithType: TiledObjectRenderer.TiledObjectRenderer(TiledMap, SpriteBatch)
-  - uid: GrimGame.Engine.TiledObjectRenderer.#ctor*
-    name: TiledObjectRenderer
-    href: api/GrimGame.Engine.TiledObjectRenderer.html#GrimGame_Engine_TiledObjectRenderer__ctor_
-    commentId: Overload:GrimGame.Engine.TiledObjectRenderer.#ctor
-    isSpec: "True"
-    fullName: GrimGame.Engine.TiledObjectRenderer.TiledObjectRenderer
-    nameWithType: TiledObjectRenderer.TiledObjectRenderer
-  - uid: GrimGame.Engine.TiledObjectRenderer.DrawObjects
-    name: DrawObjects()
-    href: api/GrimGame.Engine.TiledObjectRenderer.html#GrimGame_Engine_TiledObjectRenderer_DrawObjects
-    commentId: M:GrimGame.Engine.TiledObjectRenderer.DrawObjects
-    fullName: GrimGame.Engine.TiledObjectRenderer.DrawObjects()
-    nameWithType: TiledObjectRenderer.DrawObjects()
-  - uid: GrimGame.Engine.TiledObjectRenderer.DrawObjects*
-    name: DrawObjects
-    href: api/GrimGame.Engine.TiledObjectRenderer.html#GrimGame_Engine_TiledObjectRenderer_DrawObjects_
-    commentId: Overload:GrimGame.Engine.TiledObjectRenderer.DrawObjects
-    isSpec: "True"
-    fullName: GrimGame.Engine.TiledObjectRenderer.DrawObjects
-    nameWithType: TiledObjectRenderer.DrawObjects
   - uid: GrimGame.Game
     name: GrimGame.Game
     href: api/GrimGame.Game.html
@@ -2015,12 +1638,6 @@ references:
     commentId: N:GrimGame.Game.Character
     fullName: GrimGame.Game.Character
     nameWithType: GrimGame.Game.Character
-  - uid: GrimGame.Game.Character.AI
-    name: GrimGame.Game.Character.AI
-    href: api/GrimGame.Game.Character.AI.html
-    commentId: N:GrimGame.Game.Character.AI
-    fullName: GrimGame.Game.Character.AI
-    nameWithType: GrimGame.Game.Character.AI
   - uid: GrimGame.Game.Character.AI.Behaviours
     name: GrimGame.Game.Character.AI.Behaviours
     href: api/GrimGame.Game.Character.AI.Behaviours.html
@@ -2059,12 +1676,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.AI.Behaviours.AttackNode.Execute
     nameWithType: AttackNode.Execute
-  - uid: GrimGame.Game.Character.AI.Behaviours.AttackNode.MIN_DISTANCE_TO_TARGET
-    name: MIN_DISTANCE_TO_TARGET
-    href: api/GrimGame.Game.Character.AI.Behaviours.AttackNode.html#GrimGame_Game_Character_AI_Behaviours_AttackNode_MIN_DISTANCE_TO_TARGET
-    commentId: F:GrimGame.Game.Character.AI.Behaviours.AttackNode.MIN_DISTANCE_TO_TARGET
-    fullName: GrimGame.Game.Character.AI.Behaviours.AttackNode.MIN_DISTANCE_TO_TARGET
-    nameWithType: AttackNode.MIN_DISTANCE_TO_TARGET
   - uid: GrimGame.Game.Character.AI.Behaviours.ChaseNode
     name: ChaseNode
     href: api/GrimGame.Game.Character.AI.Behaviours.ChaseNode.html
@@ -2096,38 +1707,6 @@ references:
     commentId: Overload:GrimGame.Game.Character.AI.Behaviours.ChaseNode.Execute
     isSpec: "True"
     fullName: GrimGame.Game.Character.AI.Behaviours.ChaseNode.Execute
-    nameWithType: ChaseNode.Execute
-  - uid: GrimGame.Game.Character.AI.ChaseNode
-    name: ChaseNode
-    href: api/GrimGame.Game.Character.AI.ChaseNode.html
-    commentId: T:GrimGame.Game.Character.AI.ChaseNode
-    fullName: GrimGame.Game.Character.AI.ChaseNode
-    nameWithType: ChaseNode
-  - uid: GrimGame.Game.Character.AI.ChaseNode.#ctor(GrimGame.Engine.GameObject,GrimGame.Game.Character.Enemy)
-    name: ChaseNode(GameObject, Enemy)
-    href: api/GrimGame.Game.Character.AI.ChaseNode.html#GrimGame_Game_Character_AI_ChaseNode__ctor_GrimGame_Engine_GameObject_GrimGame_Game_Character_Enemy_
-    commentId: M:GrimGame.Game.Character.AI.ChaseNode.#ctor(GrimGame.Engine.GameObject,GrimGame.Game.Character.Enemy)
-    fullName: GrimGame.Game.Character.AI.ChaseNode.ChaseNode(GrimGame.Engine.GameObject, GrimGame.Game.Character.Enemy)
-    nameWithType: ChaseNode.ChaseNode(GameObject, Enemy)
-  - uid: GrimGame.Game.Character.AI.ChaseNode.#ctor*
-    name: ChaseNode
-    href: api/GrimGame.Game.Character.AI.ChaseNode.html#GrimGame_Game_Character_AI_ChaseNode__ctor_
-    commentId: Overload:GrimGame.Game.Character.AI.ChaseNode.#ctor
-    isSpec: "True"
-    fullName: GrimGame.Game.Character.AI.ChaseNode.ChaseNode
-    nameWithType: ChaseNode.ChaseNode
-  - uid: GrimGame.Game.Character.AI.ChaseNode.Execute(Microsoft.Xna.Framework.GameTime)
-    name: Execute(GameTime)
-    href: api/GrimGame.Game.Character.AI.ChaseNode.html#GrimGame_Game_Character_AI_ChaseNode_Execute_Microsoft_Xna_Framework_GameTime_
-    commentId: M:GrimGame.Game.Character.AI.ChaseNode.Execute(Microsoft.Xna.Framework.GameTime)
-    fullName: GrimGame.Game.Character.AI.ChaseNode.Execute(Microsoft.Xna.Framework.GameTime)
-    nameWithType: ChaseNode.Execute(GameTime)
-  - uid: GrimGame.Game.Character.AI.ChaseNode.Execute*
-    name: Execute
-    href: api/GrimGame.Game.Character.AI.ChaseNode.html#GrimGame_Game_Character_AI_ChaseNode_Execute_
-    commentId: Overload:GrimGame.Game.Character.AI.ChaseNode.Execute
-    isSpec: "True"
-    fullName: GrimGame.Game.Character.AI.ChaseNode.Execute
     nameWithType: ChaseNode.Execute
   - uid: GrimGame.Game.Character.Enemy
     name: Enemy
@@ -2643,12 +2222,12 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.ObjectManager.Remove
     nameWithType: ObjectManager.Remove
-  - uid: GrimGame.Game.ObjectManager.Update(GrimGame.Game.Scene,Microsoft.Xna.Framework.GameTime)
-    name: Update(Scene, GameTime)
-    href: api/GrimGame.Game.ObjectManager.html#GrimGame_Game_ObjectManager_Update_GrimGame_Game_Scene_Microsoft_Xna_Framework_GameTime_
-    commentId: M:GrimGame.Game.ObjectManager.Update(GrimGame.Game.Scene,Microsoft.Xna.Framework.GameTime)
-    fullName: GrimGame.Game.ObjectManager.Update(GrimGame.Game.Scene, Microsoft.Xna.Framework.GameTime)
-    nameWithType: ObjectManager.Update(Scene, GameTime)
+  - uid: GrimGame.Game.ObjectManager.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update(GameTime)
+    href: api/GrimGame.Game.ObjectManager.html#GrimGame_Game_ObjectManager_Update_Microsoft_Xna_Framework_GameTime_
+    commentId: M:GrimGame.Game.ObjectManager.Update(Microsoft.Xna.Framework.GameTime)
+    fullName: GrimGame.Game.ObjectManager.Update(Microsoft.Xna.Framework.GameTime)
+    nameWithType: ObjectManager.Update(GameTime)
   - uid: GrimGame.Game.ObjectManager.Update*
     name: Update
     href: api/GrimGame.Game.ObjectManager.html#GrimGame_Game_ObjectManager_Update_
@@ -2713,12 +2292,12 @@ references:
     commentId: T:GrimGame.Game.PlayerHud
     fullName: GrimGame.Game.PlayerHud
     nameWithType: PlayerHud
-  - uid: GrimGame.Game.PlayerHud.#ctor(GrimGame.Game.Scene)
-    name: PlayerHud(Scene)
-    href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud__ctor_GrimGame_Game_Scene_
-    commentId: M:GrimGame.Game.PlayerHud.#ctor(GrimGame.Game.Scene)
-    fullName: GrimGame.Game.PlayerHud.PlayerHud(GrimGame.Game.Scene)
-    nameWithType: PlayerHud.PlayerHud(Scene)
+  - uid: GrimGame.Game.PlayerHud.#ctor
+    name: PlayerHud()
+    href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud__ctor
+    commentId: M:GrimGame.Game.PlayerHud.#ctor
+    fullName: GrimGame.Game.PlayerHud.PlayerHud()
+    nameWithType: PlayerHud.PlayerHud()
   - uid: GrimGame.Game.PlayerHud.#ctor*
     name: PlayerHud
     href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud__ctor_

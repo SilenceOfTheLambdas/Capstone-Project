@@ -73,7 +73,8 @@
   
   <h1 id="GrimGame_Engine_GameObject" data-uid="GrimGame.Engine.GameObject" class="text-break">Class GameObject
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents all of the visible objects in the game.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -118,12 +119,13 @@
   
   
   <a id="GrimGame_Engine_GameObject__ctor_" data-uid="GrimGame.Engine.GameObject.#ctor*"></a>
-  <h4 id="GrimGame_Engine_GameObject__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">GameObject(Int32, Int32, Int32, Int32, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GrimGame_Engine_GameObject__ctor_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="GrimGame.Engine.GameObject.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">GameObject(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Creates a new game object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected GameObject(int x = 0, int y = 0, int w = 0, int h = 0, int id = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">protected GameObject(int x = 0, int y = 0, int w = 0, int h = 0)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,27 +140,26 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>X world position.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">y</span></td>
-        <td></td>
+        <td><p>Y world position.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">w</span></td>
-        <td></td>
+        <td><p>Width</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">h</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">id</span></td>
-        <td></td>
+        <td><p>Height</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -167,7 +168,8 @@
   
   
   <h4 id="GrimGame_Engine_GameObject_Active" data-uid="GrimGame.Engine.GameObject.Active">Active</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Is this game actively being updated?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -314,31 +316,6 @@
   </table>
   
   
-  <h4 id="GrimGame_Engine_GameObject_Name" data-uid="GrimGame.Engine.GameObject.Name">Name</h4>
-  <div class="markdown level1 summary"><p>The name of this game object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <h4 id="GrimGame_Engine_GameObject_Origin" data-uid="GrimGame.Engine.GameObject.Origin">Origin</h4>
   <div class="markdown level1 summary"><p>The origin point of this game object.</p>
 </div>
@@ -438,55 +415,6 @@
   </table>
   
   
-  <h4 id="GrimGame_Engine_GameObject_Tag" data-uid="GrimGame.Engine.GameObject.Tag">Tag</h4>
-  <div class="markdown level1 summary"><p>Assign a tag to this game object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Globals.ObjectTags Tag</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GrimGame.Engine.Globals.ObjectTags.html">Globals.ObjectTags</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <h4 id="GrimGame_Engine_GameObject_Texture" data-uid="GrimGame.Engine.GameObject.Texture">Texture</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Texture2D Texture</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Graphics.Texture2D</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <h4 id="GrimGame_Engine_GameObject_Velocity" data-uid="GrimGame.Engine.GameObject.Velocity">Velocity</h4>
   <div class="markdown level1 summary"><p>The velocity at which this objects moves.</p>
 </div>
@@ -513,7 +441,8 @@
   
   
   <h4 id="GrimGame_Engine_GameObject_Visible" data-uid="GrimGame.Engine.GameObject.Visible">Visible</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Is this game object being drawn?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -613,31 +542,6 @@
   </h3>
   
   
-  <a id="GrimGame_Engine_GameObject_Direction_" data-uid="GrimGame.Engine.GameObject.Direction*"></a>
-  <h4 id="GrimGame_Engine_GameObject_Direction" data-uid="GrimGame.Engine.GameObject.Direction">Direction</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 Direction { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="GrimGame_Engine_GameObject_Position_" data-uid="GrimGame.Engine.GameObject.Position*"></a>
   <h4 id="GrimGame_Engine_GameObject_Position" data-uid="GrimGame.Engine.GameObject.Position">Position</h4>
   <div class="markdown level1 summary"><p>The position of this game object.</p>
@@ -645,7 +549,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 Position { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 Position { get; protected set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -666,7 +570,8 @@
   
   <a id="GrimGame_Engine_GameObject_Rotation_" data-uid="GrimGame.Engine.GameObject.Rotation*"></a>
   <h4 id="GrimGame_Engine_GameObject_Rotation" data-uid="GrimGame.Engine.GameObject.Rotation">Rotation</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Represents the rotation of this game object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -717,7 +622,8 @@
   
   <a id="GrimGame_Engine_GameObject_TilePosition_" data-uid="GrimGame.Engine.GameObject.TilePosition*"></a>
   <h4 id="GrimGame_Engine_GameObject_TilePosition" data-uid="GrimGame.Engine.GameObject.TilePosition">TilePosition</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The position of this game object in 'Tile Space'.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -742,24 +648,15 @@
   </h3>
   
   
-  <a id="GrimGame_Engine_GameObject_CollisionDetection_" data-uid="GrimGame.Engine.GameObject.CollisionDetection*"></a>
-  <h4 id="GrimGame_Engine_GameObject_CollisionDetection" data-uid="GrimGame.Engine.GameObject.CollisionDetection">CollisionDetection()</h4>
-  <div class="markdown level1 summary"><p>Detects collisions between the player and any collision objects.</p>
+  <a id="GrimGame_Engine_GameObject_Destroy_" data-uid="GrimGame.Engine.GameObject.Destroy*"></a>
+  <h4 id="GrimGame_Engine_GameObject_Destroy_GrimGame_Engine_GameObject_" data-uid="GrimGame.Engine.GameObject.Destroy(GrimGame.Engine.GameObject)">Destroy(GameObject)</h4>
+  <div class="markdown level1 summary"><p>Destroy a given game object, removing it from the list of objects
+stored in <a class="xref" href="GrimGame.Game.ObjectManager.html">ObjectManager</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void CollisionDetection()</code></pre>
-  </div>
-  
-  
-  <a id="GrimGame_Engine_GameObject_Destroy_" data-uid="GrimGame.Engine.GameObject.Destroy*"></a>
-  <h4 id="GrimGame_Engine_GameObject_Destroy_GrimGame_Engine_GameObject_" data-uid="GrimGame.Engine.GameObject.Destroy(GrimGame.Engine.GameObject)">Destroy(GameObject)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Destroy(GameObject gameObject)</code></pre>
+    <pre><code class="lang-csharp hljs">protected static void Destroy(GameObject gameObject)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -774,54 +671,8 @@
       <tr>
         <td><a class="xref" href="GrimGame.Engine.GameObject.html">GameObject</a></td>
         <td><span class="parametername">gameObject</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="GrimGame_Engine_GameObject_DistanceTo_" data-uid="GrimGame.Engine.GameObject.DistanceTo*"></a>
-  <h4 id="GrimGame_Engine_GameObject_DistanceTo_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_" data-uid="GrimGame.Engine.GameObject.DistanceTo(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">DistanceTo(Vector2, Vector2)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float DistanceTo(Vector2 from, Vector2 to)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td><span class="parametername">from</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td><span class="parametername">to</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
+        <td><p>The game object to destroy</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -840,7 +691,8 @@
   
   <a id="GrimGame_Engine_GameObject_GetDistance_" data-uid="GrimGame.Engine.GameObject.GetDistance*"></a>
   <h4 id="GrimGame_Engine_GameObject_GetDistance_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_" data-uid="GrimGame.Engine.GameObject.GetDistance(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">GetDistance(Vector2, Vector2)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the distance from one point to another.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -859,12 +711,14 @@
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">pos</span></td>
-        <td></td>
+        <td><p>The start position</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">target</span></td>
-        <td></td>
+        <td><p>The end position</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -879,46 +733,11 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span></td>
-        <td></td>
+        <td><p>The shortest distance</p>
+</td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="GrimGame_Engine_GameObject_GetPositionCentered_" data-uid="GrimGame.Engine.GameObject.GetPositionCentered*"></a>
-  <h4 id="GrimGame_Engine_GameObject_GetPositionCentered" data-uid="GrimGame.Engine.GameObject.GetPositionCentered">GetPositionCentered()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 GetPositionCentered()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="GrimGame_Engine_GameObject_Init_" data-uid="GrimGame.Engine.GameObject.Init*"></a>
-  <h4 id="GrimGame_Engine_GameObject_Init" data-uid="GrimGame.Engine.GameObject.Init">Init()</h4>
-  <div class="markdown level1 summary"><p>Here is where initialisation of the object is done.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void Init()</code></pre>
-  </div>
   
   
   <a id="GrimGame_Engine_GameObject_OnCollisionEnter_" data-uid="GrimGame.Engine.GameObject.OnCollisionEnter*"></a>
@@ -928,7 +747,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnCollisionEnter(GameObject other)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void OnCollisionEnter(GameObject other)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -952,11 +771,13 @@
   
   <a id="GrimGame_Engine_GameObject_RadialMovement_" data-uid="GrimGame.Engine.GameObject.RadialMovement*"></a>
   <h4 id="GrimGame_Engine_GameObject_RadialMovement_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_System_Single_" data-uid="GrimGame.Engine.GameObject.RadialMovement(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Single)">RadialMovement(Vector2, Vector2, Single)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Moves an object 'smoothly'.
+Work taken from: <a href="https://www.youtube.com/watch?v=yYNrmsmEcy8">https://www.youtube.com/watch?v=yYNrmsmEcy8</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)</code></pre>
+    <pre><code class="lang-csharp hljs">protected static Vector2 RadialMovement(Vector2 focus, Vector2 pos, float speed)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -971,17 +792,20 @@
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">focus</span></td>
-        <td></td>
+        <td><p>The point to move towards</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><span class="parametername">pos</span></td>
-        <td></td>
+        <td><p>The current position of this object</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">speed</span></td>
-        <td></td>
+        <td><p>The speed at which to move at</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -996,7 +820,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td></td>
+        <td><p>Direction to move towards</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1101,76 +926,6 @@ Rotates this object towards a given position.</p>
   </table>
   
   
-  <a id="GrimGame_Engine_GameObject_SetPosition_" data-uid="GrimGame.Engine.GameObject.SetPosition*"></a>
-  <h4 id="GrimGame_Engine_GameObject_SetPosition_System_Single_System_Single_" data-uid="GrimGame.Engine.GameObject.SetPosition(System.Single,System.Single)">SetPosition(Single, Single)</h4>
-  <div class="markdown level1 summary"><p>Set the position of this game object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetPosition(float x, float y)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>The position on the x-axis</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>The position on the y-axis</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="GrimGame_Engine_GameObject_SetSize_" data-uid="GrimGame.Engine.GameObject.SetSize*"></a>
-  <h4 id="GrimGame_Engine_GameObject_SetSize_System_Int32_System_Int32_" data-uid="GrimGame.Engine.GameObject.SetSize(System.Int32,System.Int32)">SetSize(Int32, Int32)</h4>
-  <div class="markdown level1 summary"><p>Set the size of the object.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetSize(int w, int h)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">w</span></td>
-        <td><p>The width</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">h</span></td>
-        <td><p>The height</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="GrimGame_Engine_GameObject_Update_" data-uid="GrimGame.Engine.GameObject.Update*"></a>
   <h4 id="GrimGame_Engine_GameObject_Update_Microsoft_Xna_Framework_GameTime_" data-uid="GrimGame.Engine.GameObject.Update(Microsoft.Xna.Framework.GameTime)">Update(GameTime)</h4>
   <div class="markdown level1 summary"><p>Anything is this function will be ran every frame.</p>
@@ -1193,7 +948,8 @@ Rotates this object towards a given position.</p>
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.GameTime</span></td>
         <td><span class="parametername">gameTime</span></td>
-        <td></td>
+        <td><p>The amount of time that has passed since the last frame.</p>
+</td>
       </tr>
     </tbody>
   </table>

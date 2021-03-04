@@ -73,7 +73,8 @@
   
   <h1 id="GrimGame_Engine_GUI_Components_Component" data-uid="GrimGame.Engine.GUI.Components.Component" class="text-break">Class Component
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A <a class="xref" href="GrimGame.Engine.GUI.Components.Component.html">Component</a> is an item that can be displayed on a panel.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -118,11 +119,12 @@
   
   <a id="GrimGame_Engine_GUI_Components_Component_BackgroundColor_" data-uid="GrimGame.Engine.GUI.Components.Component.BackgroundColor*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_BackgroundColor" data-uid="GrimGame.Engine.GUI.Components.Component.BackgroundColor">BackgroundColor</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Background colour mask.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Color BackgroundColor { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected Color BackgroundColor { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,11 +145,12 @@
   
   <a id="GrimGame_Engine_GUI_Components_Component_Bounds_" data-uid="GrimGame.Engine.GUI.Components.Component.Bounds*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_Bounds" data-uid="GrimGame.Engine.GUI.Components.Component.Bounds">Bounds</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The <span class="xref">Microsoft.Xna.Framework.Rectangle</span> pertaining to the bounds of this component.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Rectangle Bounds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Rectangle Bounds { get; protected set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,11 +171,12 @@
   
   <a id="GrimGame_Engine_GUI_Components_Component_Position_" data-uid="GrimGame.Engine.GUI.Components.Component.Position*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_Position" data-uid="GrimGame.Engine.GUI.Components.Component.Position">Position</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The position of this component.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 Position { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">protected Vector2 Position { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,11 +197,12 @@
   
   <a id="GrimGame_Engine_GUI_Components_Component_Size_" data-uid="GrimGame.Engine.GUI.Components.Component.Size*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_Size" data-uid="GrimGame.Engine.GUI.Components.Component.Size">Size</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The size if this component.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 Size { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 Size { get; protected set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +225,8 @@
   
   <a id="GrimGame_Engine_GUI_Components_Component_Draw_" data-uid="GrimGame.Engine.GUI.Components.Component.Draw*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_Draw" data-uid="GrimGame.Engine.GUI.Components.Component.Draw">Draw()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Draws the component.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -228,19 +234,10 @@
   </div>
   
   
-  <a id="GrimGame_Engine_GUI_Components_Component_ReDraw_" data-uid="GrimGame.Engine.GUI.Components.Component.ReDraw*"></a>
-  <h4 id="GrimGame_Engine_GUI_Components_Component_ReDraw" data-uid="GrimGame.Engine.GUI.Components.Component.ReDraw">ReDraw()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void ReDraw()</code></pre>
-  </div>
-  
-  
   <a id="GrimGame_Engine_GUI_Components_Component_Update_" data-uid="GrimGame.Engine.GUI.Components.Component.Update*"></a>
   <h4 id="GrimGame_Engine_GUI_Components_Component_Update" data-uid="GrimGame.Engine.GUI.Components.Component.Update">Update()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Updates component information, this is called every frame.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">

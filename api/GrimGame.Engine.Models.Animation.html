@@ -73,7 +73,10 @@
   
   <h1 id="GrimGame_Engine_Models_Animation" data-uid="GrimGame.Engine.Models.Animation" class="text-break">Class Animation
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>An animation is a <span class="xref">Microsoft.Xna.Framework.Graphics.Texture2D</span> that holds different frames. These frames are split, and the switched
+every n frames. This provides an animation.
+<a class="xref" href="GrimGame.Engine.AnimationManager.html">AnimationManager</a></p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -115,12 +118,13 @@
   
   
   <a id="GrimGame_Engine_Models_Animation__ctor_" data-uid="GrimGame.Engine.Models.Animation.#ctor*"></a>
-  <h4 id="GrimGame_Engine_Models_Animation__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_System_Int32_System_Boolean_" data-uid="GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Boolean)">Animation(Texture2D, Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GrimGame_Engine_Models_Animation__ctor_Microsoft_Xna_Framework_Graphics_Texture2D_System_Int32_" data-uid="GrimGame.Engine.Models.Animation.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32)">Animation(Texture2D, Int32)</h4>
+  <div class="markdown level1 summary"><p>Create a new animation strip.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Animation(Texture2D texture, int frameCount, bool isLooping = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public Animation(Texture2D texture, int frameCount)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -135,17 +139,14 @@
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Graphics.Texture2D</span></td>
         <td><span class="parametername">texture</span></td>
-        <td></td>
+        <td><p>The animation strip</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">frameCount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">isLooping</span></td>
-        <td></td>
+        <td><p>The number of frames this animation has</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -155,7 +156,8 @@
   
   <a id="GrimGame_Engine_Models_Animation_CurrentFrame_" data-uid="GrimGame.Engine.Models.Animation.CurrentFrame*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_CurrentFrame" data-uid="GrimGame.Engine.Models.Animation.CurrentFrame">CurrentFrame</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The current frame of this animation.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -180,7 +182,8 @@
   
   <a id="GrimGame_Engine_Models_Animation_FrameCount_" data-uid="GrimGame.Engine.Models.Animation.FrameCount*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_FrameCount" data-uid="GrimGame.Engine.Models.Animation.FrameCount">FrameCount</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Total frame count.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -205,7 +208,8 @@
   
   <a id="GrimGame_Engine_Models_Animation_FrameHeight_" data-uid="GrimGame.Engine.Models.Animation.FrameHeight*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_FrameHeight" data-uid="GrimGame.Engine.Models.Animation.FrameHeight">FrameHeight</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The height of the frame.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -230,7 +234,8 @@
   
   <a id="GrimGame_Engine_Models_Animation_FrameSpeed_" data-uid="GrimGame.Engine.Models.Animation.FrameSpeed*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_FrameSpeed" data-uid="GrimGame.Engine.Models.Animation.FrameSpeed">FrameSpeed</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The speed that each frame is transitioned to.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -255,7 +260,8 @@
   
   <a id="GrimGame_Engine_Models_Animation_FrameWidth_" data-uid="GrimGame.Engine.Models.Animation.FrameWidth*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_FrameWidth" data-uid="GrimGame.Engine.Models.Animation.FrameWidth">FrameWidth</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Width of the frame.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -278,34 +284,10 @@
   </table>
   
   
-  <a id="GrimGame_Engine_Models_Animation_IsLooping_" data-uid="GrimGame.Engine.Models.Animation.IsLooping*"></a>
-  <h4 id="GrimGame_Engine_Models_Animation_IsLooping" data-uid="GrimGame.Engine.Models.Animation.IsLooping">IsLooping</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsLooping { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="GrimGame_Engine_Models_Animation_Texture_" data-uid="GrimGame.Engine.Models.Animation.Texture*"></a>
   <h4 id="GrimGame_Engine_Models_Animation_Texture" data-uid="GrimGame.Engine.Models.Animation.Texture">Texture</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the <span class="xref">Microsoft.Xna.Framework.Graphics.Texture2D</span> of this animation</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
