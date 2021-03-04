@@ -21,7 +21,6 @@ namespace GrimGame.Game
             graphicsDeviceManager.IsFullScreen = false;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            Globals.GameWindow = Window;
             Globals.Graphics = graphicsDeviceManager;
         }
 
@@ -63,7 +62,7 @@ namespace GrimGame.Game
         protected override void LoadContent()
         {
             Globals.SpriteBatch = new SpriteBatch(Globals.Graphics.GraphicsDevice);
-            Globals.DebugFont = Content.Load<SpriteFont>("Fonts/debugFont");
+            Content.Load<SpriteFont>("Fonts/debugFont");
             Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 

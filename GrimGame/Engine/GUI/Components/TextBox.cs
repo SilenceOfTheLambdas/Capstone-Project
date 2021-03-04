@@ -3,8 +3,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GrimGame.Engine.GUI.Components
 {
-    public class TextBox : Component
+    /// <summary>
+    ///     A text box displays text.
+    /// </summary>
+    public sealed class TextBox : Component
     {
+        /// <summary>
+        ///     A set of alignments (positions) the text within this box can be located.
+        /// </summary>
         public enum FontAlignment
         {
             LeftUpper,
@@ -18,11 +24,27 @@ namespace GrimGame.Engine.GUI.Components
             RightBottom
         }
 
-        public FontAlignment Alignment;
-        public float         FontSize;
-        public string        Text;
-        public Color         TextColor;
+        /// <summary>
+        ///     The text to display.
+        /// </summary>
+        private string _text;
 
+        /// <summary>
+        ///     The <see cref="Color" /> of the text.
+        /// </summary>
+        private Color _textColor;
+
+        /// <summary>
+        ///     The size of the font.
+        /// </summary>
+        public float FontSize;
+
+        /// <summary>
+        ///     Creates a new text box.
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="size">The total size</param>
+        /// <param name="backgroundColor">The background colour mask</param>
         public TextBox(Vector2 position, Vector2 size, Color backgroundColor)
         {
             Position = position;
@@ -33,33 +55,43 @@ namespace GrimGame.Engine.GUI.Components
                 new Point((int) size.X, (int) size.Y));
         }
 
+        /// <summary>
+        ///     The font of the text.
+        /// </summary>
         private SpriteFont Font { get; set; }
-        public float TextPadding { get; set; }
 
+        /// <summary>
+        ///     Set the text of this text box.
+        /// </summary>
+        /// <param name="text">The <see cref="string" /> to display</param>
+        /// <param name="textColor">The <see cref="Color" /> of the text</param>
+        /// <param name="font">The <see cref="SpriteFont" /> of the text</param>
+        /// <param name="alignment">Alignment</param>
         public void SetText(string text, Color textColor, SpriteFont font,
             FontAlignment alignment = FontAlignment.CenterMiddle)
         {
-            Text = text;
-            TextColor = textColor;
+            _text = text;
+            _textColor = textColor;
             Font = font;
-            Alignment = alignment;
         }
 
+        /// <summary>
+        ///     Draws the text box and text within it.
+        /// </summary>
         public override void Draw()
         {
-            var x = Bounds.X + Bounds.Width / 2 - Globals.GuiFont.MeasureString(Text).X;
-            var y = Bounds.Y + Bounds.Height / 2 - Globals.GuiFont.MeasureString(Text).Y / 2;
+            var x = Bounds.X + Bounds.Width / 2 - Globals.GuiFont.MeasureString(_text).X;
+            var y = Bounds.Y + Bounds.Height / 2 - Globals.GuiFont.MeasureString(_text).Y / 2;
 
             Globals.SpriteBatch.Begin();
-            Globals.SpriteBatch.DrawString(Font, Text, new Vector2(x, y), TextColor);
+            Globals.SpriteBatch.DrawString(Font, _text, new Vector2(x, y), _textColor);
 
             Globals.SpriteBatch.End();
         }
 
-        public override void ReDraw()
-        {
-        }
-
+        /// <summary>
+        ///     UNUSED
+        /// </summary>
         public override void Update()
         {
         }

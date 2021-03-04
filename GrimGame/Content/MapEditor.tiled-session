@@ -175,10 +175,10 @@
         },
         "StartLevel.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 3200,
-                "y": 3200
+                "x": 3215,
+                "y": 2053
             }
         },
         "StartLevel.tmx#Outside_medievil": {
@@ -391,11 +391,11 @@
     "project": "MapEditor.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "StartLevel.tmx",
         "Tilesets/decorative_props.tsx",
         "Level1.tmx",
         "Tilesets/mainlevbuild.tsx",
         "Tilesets/decorative_trees.tsx",
-        "StartLevel.tmx",
         "TestMap.tmx",
         "rule_001.tmx",
         "AutoMaps/rule_001.tmx",
