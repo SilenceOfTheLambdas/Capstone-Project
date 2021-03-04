@@ -1,7 +1,10 @@
 # GrimDoom
 A 2D ARPG game made with the power of [MonoGame](https://www.monogame.net).
 
+## Important Links
+- [Project Website](https://sudo-make.github.io/Capstone-Project/index.html)
 - [Wiki](https://cseegit.essex.ac.uk/ce301_2020/ce301_smith_callum-james/-/wikis/Getting-Started)
+- [Api Documentation](https://sudo-make.github.io/Capstone-Project/api/index.html)
 
 ## Build Status
 This tables shows the build status on Windows and Linux, provided by GitHub's CD feature.
