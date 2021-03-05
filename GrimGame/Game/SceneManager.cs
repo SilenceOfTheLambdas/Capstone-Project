@@ -57,7 +57,7 @@ namespace GrimGame.Game
 
         public static void DrawScenes(GameTime gameTime)
         {
-            foreach (var scene in Scenes.Where(scene => scene.GetIsSceneLoaded())) scene.Draw(gameTime);
+            foreach (var scene in Scenes.Where(scene => scene.GetIsSceneLoaded())) scene.Draw();
         }
     }
 }
