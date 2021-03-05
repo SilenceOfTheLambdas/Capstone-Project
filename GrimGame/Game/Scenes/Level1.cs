@@ -26,74 +26,57 @@ namespace GrimGame.Game.Scenes
         {
             base.Initialize();
 
-            if (GetIsSceneLoaded())
+            _player = new Player(_mapSystem, Globals.Camera)
             {
-                #region Map System
+                Speed = 2f,
+                RunningSpeed = 3.2f,
+                Enabled = true,
+                Active = true,
+                MaxHp = 100,
+                CurrentHp = 100
+            };
+            _player.Init();
 
-                _player = new Player(_mapSystem, Globals.Camera)
-                {
-                    Speed = 2f,
-                    RunningSpeed = 3.2f,
-                    Enabled = true,
-                    Active = true,
-                    MaxHp = 100,
-                    CurrentHp = 100
-                };
-                _player.Init();
+            _paladin = new Paladin(_mapSystem, _player)
+            {
+                Speed = 1f,
+                Enabled = true,
+                Active = true,
+                MaxHp = 100
+            };
+            _paladin.Init();
 
-                _paladin = new Paladin(_mapSystem, _player)
-                {
-                    Speed = 1f,
-                    Enabled = true,
-                    Active = true,
-                    MaxHp = 100
-                };
-                _paladin.Init();
+            _mapSystem.Player = _player;
 
-                _mapSystem.Player = _player;
+            UiManager = new UiManager(this);
 
-                #endregion
-
-                UiManager = new UiManager(this);
-
-                // Init debugger
-                if (Globals.DebugMode)
-                {
-                    GrimDebugger.Player = _player;
-                    GrimDebugger.MapSystem = _mapSystem;
-                }
+            // Init debugger
+            if (Globals.DebugMode)
+            {
+                GrimDebugger.Player = _player;
+                GrimDebugger.MapSystem = _mapSystem;
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (GetIsSceneLoaded())
-            {
-                _mapSystem.Update(gameTime);
-
-                InputManager.Update();
-                UiManager.Update();
-
-                ObjectManager.Update(gameTime);
-            }
+            _mapSystem.Update(gameTime);
+            UiManager.Update();
 
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw()
         {
-            if (GetIsSceneLoaded())
-            {
-                // Clear the screen
-                Globals.Graphics.GraphicsDevice.Clear(Color.Black);
+            // Clear the screen
+            Globals.Graphics.GraphicsDevice.Clear(Color.Black);
 
-                // Sort the player's index
-                PlayerLayerIndexer();
+            // Sort the player's index
+            PlayerLayerIndexer();
 
-                UiManager.Draw();
-            }
+            UiManager.Draw();
 
-            base.Draw(gameTime);
+            base.Draw();
         }
 
         private void PlayerLayerIndexer()

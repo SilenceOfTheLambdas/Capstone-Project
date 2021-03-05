@@ -37,12 +37,18 @@ namespace GrimGame.Game
             GrimDebugger = new GrimDebugger(Globals.GuiFont);
         }
 
+        /// <summary>
+        /// Only called when this scene is active
+        /// </summary>
+        /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
+            ObjectManager.Update(gameTime);
+            InputManager.Update();
             InputManager.AddKeyPressHandler(GrimDebugger.EnableDebugger, Keys.D0);
         }
 
-        public virtual void Draw(GameTime gameTime)
+        public virtual void Draw()
         {
             // Draws text above player, showing it's position
             if (Globals.DebugMode) GrimDebugger.Draw();
