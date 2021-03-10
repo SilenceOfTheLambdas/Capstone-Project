@@ -12,14 +12,13 @@ namespace GrimGame.Game.Scenes
     internal class Level1 : Scene
     {
         private readonly MapSystem _mapSystem;
-        private          Paladin   _paladin;
         private          Player    _player;
+        private          Paladin   _paladin;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
             : base(sceneName, mainGame)
         {
             _mapSystem = new MapSystem(mapName);
-            SceneManager.AddScene(this);
         }
 
         public override void Initialize()
@@ -37,18 +36,12 @@ namespace GrimGame.Game.Scenes
             };
             _player.Init();
 
-            _paladin = new Paladin(_mapSystem, _player)
-            {
-                Speed = 1f,
-                Enabled = true,
-                Active = true,
-                MaxHp = 100
-            };
+            _paladin = new Paladin(_mapSystem, _player) {Speed = 1f, Enabled = true, Active = true, MaxHp = 100};
             _paladin.Init();
-
             _mapSystem.Player = _player;
 
             UiManager = new UiManager(this);
+            UiManager.Init();
 
             // Init debugger
             if (Globals.DebugMode)
@@ -60,8 +53,8 @@ namespace GrimGame.Game.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            _mapSystem.Update(gameTime);
-            UiManager.Update();
+            _mapSystem?.Update(gameTime);
+            UiManager?.Update();
 
             base.Update(gameTime);
         }
@@ -74,7 +67,7 @@ namespace GrimGame.Game.Scenes
             // Sort the player's index
             PlayerLayerIndexer();
 
-            UiManager.Draw();
+            UiManager?.Draw();
 
             base.Draw();
         }
@@ -91,13 +84,13 @@ namespace GrimGame.Game.Scenes
 
             if (bumpLayer)
             {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                _mapSystem.CurrentIndex = Globals.LayerCount;
+                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                if (_mapSystem != null) _mapSystem.CurrentIndex = Globals.LayerCount;
                 _player.Collision = true;
             }
             else
             {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
+                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), 2);
             }
         }
     }

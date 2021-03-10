@@ -17,8 +17,9 @@ namespace GrimGame.Game
         private const    int        ButtonSpace = 125;
         private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly Canvas     _canvas;
-        private readonly Button     _quitButton;
+        private readonly Button     _mainMenuButton;
         private readonly Button     _resumeButton;
+        private readonly Button     _quitButton;
         private readonly Scene      _scene;
 
         private Rectangle _mouseBounds;
@@ -56,9 +57,18 @@ namespace GrimGame.Game
                 Color.AntiqueWhite, Color.Black,
                 _buttonFont) {ButtonHoverColor = Color.Gray, TextHoverColor = Color.White};
 
+            // Return to Main Menu button
+            _mainMenuButton = new Button("MainMenu",
+                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y + ButtonSpace),
+                new Vector2(100, 40), Color.Green, Color.White, _buttonFont)
+            {
+                ButtonHoverColor = Color.DarkGreen, TextHoverColor = Color.White
+            };
+
             // Quit button
             _quitButton = new Button("Quit",
-                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y + ButtonSpace),
+                panel.Position + new Vector2(panel.Size.X / 2,
+                    _mainMenuButton.Size.Y + _resumeButton.Size.Y + ButtonSpace),
                 new Vector2(100, 40), Color.Red, Color.White, _buttonFont)
             {
                 ButtonHoverColor = Color.DarkRed, TextHoverColor = Color.White
@@ -66,10 +76,12 @@ namespace GrimGame.Game
 
             // Assign button event functions
             _resumeButton.Click += ResumeButtonClick;
+            _mainMenuButton.Click += BackToMainMenuClick;
             _quitButton.Click += QuitButtonClick;
 
             panel.AddComponent(pauseMenuTitle);
             panel.AddComponent(_resumeButton);
+            panel.AddComponent(_mainMenuButton);
             panel.AddComponent(_quitButton);
             _canvas.AddPanel(panel);
         }
@@ -83,6 +95,17 @@ namespace GrimGame.Game
         {
             if (_quitButton.Bounds.Intersects(_mouseBounds))
                 _scene.MainGame.Exit();
+        }
+
+        /// <summary>
+        /// Returns the player back to the main menu scene
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackToMainMenuClick(object? sender, EventArgs e)
+        {
+            if (_mainMenuButton.Bounds.Intersects(_mouseBounds))
+                SceneManager.LoadScene("Main Menu");
         }
 
         /// <summary>

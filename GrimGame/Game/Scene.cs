@@ -18,7 +18,7 @@ namespace GrimGame.Game
         public readonly MainGame MainGame;
 
         // Is this scene loaded?
-        private bool _isSceneLoaded;
+        private bool _isSceneLoaded = false;
 
         /// <summary>
         ///     Represents a level. A level may contain various <see cref="GameObject" />s.
@@ -30,6 +30,7 @@ namespace GrimGame.Game
             ObjectManager = new ObjectManager();
             Name = sceneName;
             MainGame = mainGame;
+            SceneManager.AddScene(this);
         }
 
         public virtual void Initialize()

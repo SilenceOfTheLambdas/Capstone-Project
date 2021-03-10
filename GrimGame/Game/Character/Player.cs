@@ -56,8 +56,8 @@ namespace GrimGame.Game.Character
         {
             _mapSystem = mapSystem;
             _camera = camera;
-            ObjectManager.Objects.Add(this);
             Score = 0;
+            SceneManager.GetActiveScene.ObjectManager.Add(this);
         }
 
         /// <summary>
@@ -143,29 +143,21 @@ namespace GrimGame.Game.Character
 
         public override void Update(GameTime gameTime)
         {
-            BoxCollider.Update(gameTime);
-
             _animationManager.Position = Position;
             _animationManager.Origin = Origin;
             _animationManager.Scale = Scale;
 
             _animationManager.Update(gameTime);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
-                _playerMovementState = PlayerMovementStates.Running;
-            else if (Keyboard.GetState().IsKeyUp(Keys.LeftShift))
-                _playerMovementState = PlayerMovementStates.Walking;
+            _playerMovementState = Keyboard.GetState().IsKeyDown(Keys.LeftShift)
+                ? PlayerMovementStates.Running
+                : PlayerMovementStates.Walking;
 
             Move();
 
             UpdatePlayerAnimationDirections();
 
             _camera.LookAt(Position);
-
-            base.Update(gameTime);
-
-            Position += Velocity;
-            Velocity = Vector2.Zero;
 
             _timerForAttacks += gameTime.GetElapsedSeconds();
 
@@ -176,6 +168,12 @@ namespace GrimGame.Game.Character
                     Attack();
                     _timerForAttacks -= AttackTimer;
                 }
+
+            base.Update(gameTime);
+
+            // MUST be placed after base.update()
+            Position += Velocity;
+            Velocity = Vector2.Zero;
         }
 
         public override void Draw()
@@ -254,31 +252,38 @@ namespace GrimGame.Game.Character
         /// </summary>
         private void Attack()
         {
-            // If a player attacks, based on their direction
-            // create a box collider in-front of the player.
-            // If an enemy is within that box collider,
-            // Get the enemies data, and deal damage
-            switch (_playerDirection)
-            {
-                case PlayerDirection.Up:
-                    BoxCollider.Bounds.Inflate(0, AttackRange);
-                    break;
-                case PlayerDirection.Down:
-                    BoxCollider.Bounds.Inflate(0, AttackRange);
-                    break;
-                case PlayerDirection.Left:
-                    BoxCollider.Bounds.Inflate(AttackRange, 0);
-                    break;
-                case PlayerDirection.Right:
-                    BoxCollider.Bounds.Inflate(AttackRange, 0);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
             // TODO: Fix why attacking still works when enemy is dead
-            if (_enemyInAttackRange)
+            if (_enemyInAttackRange && SceneManager.GetActiveScene.ObjectManager.Objects.Exists(o => o is Enemy))
             {
+                // Create a new Projectile
+                var projectile = new Projectile(10f, 8) {Position = Position};
+
+                switch (_playerDirection)
+                {
+                    // If a player attacks, based on their direction
+                    // create a box collider in-front of the player.
+                    // If an enemy is within that box collider,
+                    // Get the enemies data, and deal damage
+                    case PlayerDirection.Up:
+                        //BoxCollider.Bounds.Inflate(0, AttackRange);
+                        projectile.Velocity.Y = -Speed * 4;
+                        break;
+                    case PlayerDirection.Down:
+                        //BoxCollider.Bounds.Inflate(0, AttackRange);
+                        projectile.Velocity.Y = Speed * 4;
+                        break;
+                    case PlayerDirection.Left:
+                        //BoxCollider.Bounds.Inflate(AttackRange, 0);
+                        projectile.Velocity.X = -Speed * 4;
+                        break;
+                    case PlayerDirection.Right:
+                        //BoxCollider.Bounds.Inflate(AttackRange, 0);
+                        projectile.Velocity.X = Speed * 4;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
                 // If the enemy is within attack range, attack
                 _enemyToHit.CurrentHp -= AttackDamage;
                 if (_enemyToHit.CurrentHp <= 0)
