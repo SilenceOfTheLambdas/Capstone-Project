@@ -46,9 +46,9 @@ namespace GrimGame.Game
 
         public void Draw()
         {
-            _outputText = $"Player position: {Player.Position}" + "\n" +
-                          $"Player Tile Position: {Player.TilePosition}" + "\n" +
-                          $"Player Index: {MapSystem.CurrentIndex}";
+            _outputText = $"Player position: {Player?.Position}" + "\n" +
+                          $"Player Tile Position: {Player?.TilePosition}" + "\n" +
+                          $"Player Index: {MapSystem?.CurrentIndex}";
 
             Globals.SpriteBatch.Begin();
             var panelPosition   = new Vector2(0, 0);
@@ -92,7 +92,7 @@ namespace GrimGame.Game
         private void DrawPlayerBounds()
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
-            Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
+            if (Player != null) Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
             Globals.SpriteBatch.End();
         }
 

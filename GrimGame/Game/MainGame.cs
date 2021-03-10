@@ -17,8 +17,7 @@ namespace GrimGame.Game
     {
         public MainGame()
         {
-            var graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.IsFullScreen = false;
+            var graphicsDeviceManager = new GraphicsDeviceManager(this) {IsFullScreen = false};
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             Globals.Graphics = graphicsDeviceManager;
@@ -26,6 +25,8 @@ namespace GrimGame.Game
 
         protected override void Initialize()
         {
+            base.Initialize();
+
             // Init Globals
             Globals.ContentManager = Content;
             Globals.GameTime = new GameTime();
@@ -34,7 +35,7 @@ namespace GrimGame.Game
             Globals.ViewportAdapter =
                 new BoxingViewportAdapter(Window, Globals.Graphics.GraphicsDevice, (int) x, (int) y);
             Globals.Camera = new OrthographicCamera(Globals.ViewportAdapter);
-            Globals.Camera.ZoomIn(1.6f);
+            Globals.Camera.ZoomIn(1.2f);
             Globals.Graphics.ApplyChangesSafely();
 
             Globals.Graphics.PreferredBackBufferWidth = 1280;
@@ -47,23 +48,20 @@ namespace GrimGame.Game
             Globals.Graphics.GraphicsDevice.Viewport = new Viewport(0, 0, Globals.Graphics.PreferredBackBufferWidth,
                 Globals.Graphics.PreferredBackBufferHeight);
             Globals.Graphics.ApplyChangesSafely();
+            Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
 
+            var mainMenu = new MainMenu("Main Menu", this);
             // Setup Level
             var level1 = new Level1("Main Level", "StartLevel", this);
 
             // Load scene
-            SceneManager.LoadScene("Main Level");
-
-            base.Initialize();
-
-            SceneManager.InitScenes();
+            SceneManager.LoadScene("Main Menu");
         }
 
         protected override void LoadContent()
         {
             Globals.SpriteBatch = new SpriteBatch(Globals.Graphics.GraphicsDevice);
             Content.Load<SpriteFont>("Fonts/debugFont");
-            Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
         }
 
         protected override void Update(GameTime gameTime)
@@ -76,7 +74,7 @@ namespace GrimGame.Game
 
         protected override void Draw(GameTime gameTime)
         {
-            SceneManager.DrawScenes(gameTime);
+            SceneManager.DrawScenes();
             base.Draw(gameTime);
         }
     }

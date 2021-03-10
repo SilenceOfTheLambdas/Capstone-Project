@@ -94,7 +94,8 @@ namespace GrimGame.Engine
             // Below player
             for (var i = 0; i <= newPlayerIndex; i++) _mapRenderer.Draw(RenderQueue[i], viewMatrix);
 
-            foreach (var o in ObjectManager.Objects.Where(o => o.Active && o.Visible && o.Enabled)) o.Draw();
+            foreach (var o in SceneManager.GetActiveScene.ObjectManager.Objects.Where(o =>
+                o.Active && o.Visible && o.Enabled)) o.Draw();
 
             // Above player
             if (newPlayerIndex < RenderQueue.Count)
@@ -113,10 +114,10 @@ namespace GrimGame.Engine
         /// <returns>Does this tile have a collider?</returns>
         public bool IsTileCollision(int x, int y)
         {
-            if (CollisionObjects.FirstOrDefault(c =>
+            /*if (CollisionObjects.FirstOrDefault(c =>
                         Map.GetTiles(x, y).ToList().FirstOrDefault().X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y)
                     .X !=
-                x) return false;
+                x) return false;*/
             {
                 if (CollisionObjects.FirstOrDefault(c =>
                         Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y ==

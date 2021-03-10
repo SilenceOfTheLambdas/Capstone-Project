@@ -54,7 +54,7 @@ namespace GrimGame.Engine
         public Vector2 Position
         {
             get => new Vector2(X, Y);
-            protected set
+            set
             {
                 X = value.X;
                 Y = value.Y;
@@ -158,12 +158,12 @@ namespace GrimGame.Engine
         {
             CollisionDetection();
 
-            ObjectManager.Objects.ForEach(o =>
+            SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
             {
-                if (o != this && o != null)
+                if (o != this)
                     // Check to see if this object has a box collider, and that it is enabled
-                    if (o.BoxCollider != null && (o.BoxCollider != null || o.BoxCollider.Enabled))
-                        if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                    if (o.BoxCollider != null)
+                        if (BoxCollider != null && o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
                             OnCollisionEnter(o);
             });
         }

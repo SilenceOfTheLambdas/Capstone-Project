@@ -77,6 +77,8 @@ namespace GrimGame.Game.Character
             MaxHp = 80;
 
             ConstructBehaviourTree();
+
+            SceneManager.GetActiveScene.ObjectManager.Add(this);
         }
 
         private void ConstructBehaviourTree()
@@ -92,8 +94,6 @@ namespace GrimGame.Game.Character
 
         public override void Update(GameTime gameTime)
         {
-            BoxCollider.Update(gameTime);
-
             AnimationManager.Position = Position;
             AnimationManager.Origin = Origin;
             AnimationManager.Scale = Scale;

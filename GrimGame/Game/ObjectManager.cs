@@ -12,14 +12,14 @@ namespace GrimGame.Game
         /// <summary>
         ///     List of game objects in the scene.
         /// </summary>
-        public static List<GameObject> Objects { get; } = new List<GameObject>();
+        public List<GameObject> Objects { get; } = new List<GameObject>();
 
         /// <summary>
         ///     The number of game objects in the scene.
         /// </summary>
-        private static int Count => Objects.Count;
+        private int Count => Objects.Count;
 
-        public static void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             for (var i = 0; i < Count; i++)
             {

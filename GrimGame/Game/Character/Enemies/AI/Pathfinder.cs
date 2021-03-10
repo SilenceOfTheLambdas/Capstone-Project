@@ -120,6 +120,7 @@ namespace GrimGame.Character.Enemies.AI
                 var node = new SearchNode
                 {
                     Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
+                    //Position = new Point(x, y), Walkable = !Globals.MapSystem.IsTileCollision(x, y)
                 };
 
                 // We only want to store nodes
