@@ -1642,7 +1642,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="125" name="Collision_inline">
+ <objectgroup id="125" name="Collision_inline" visible="0">
   <object id="16" type="nodraw" x="2848" y="1664" width="32" height="544"/>
   <object id="20" type="nodraw" x="3520" y="1696" width="32" height="478.667"/>
   <object id="25" type="nodraw" x="2944" y="1824" width="64" height="32"/>
@@ -1738,7 +1738,7 @@
   <object id="129" x="3197.5" y="1242.67" width="57" height="56.6666"/>
   <object id="130" x="2199.83" y="1850.33" width="36.6667" height="56.6666"/>
  </objectgroup>
- <objectgroup id="2" name="SpawnPoints">
+ <objectgroup id="2" name="SpawnPoints" visible="0">
   <object id="1" name="playerspawn" type="nodraw" x="3126" y="1747">
    <point/>
   </object>
@@ -1749,7 +1749,7 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="127" name="Interactives">
+ <objectgroup id="127" name="Interactives" visible="0">
   <object id="24" name="Open Door" type="nodraw" x="3024" y="1851">
    <properties>
     <property name="map_to_load" value="TestMap"/>

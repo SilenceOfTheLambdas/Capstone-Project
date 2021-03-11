@@ -43,14 +43,6 @@ namespace GrimGame.Game
                 Texture = Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG")
             };
 
-            // Pause menu title
-            TextBox pauseMenuTitle = new TextBox(
-                panel.Position + new Vector2(panel.Bounds.Width / 2 - Globals.GuiFont.MeasureString("Paused").X / 2,
-                    10),
-                new Vector2(100, 50), Color.Blue);
-            pauseMenuTitle.SetText("Paused", Color.White,
-                Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
-
             // Resume button
             _resumeButton = new Button("Resume", panel.Position + new Vector2(panel.Size.X / 2, panel.Size.Y / 2),
                 new Vector2(100, 40),
@@ -59,7 +51,7 @@ namespace GrimGame.Game
 
             // Return to Main Menu button
             _mainMenuButton = new Button("MainMenu",
-                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y + ButtonSpace),
+                panel.Position + new Vector2(panel.Size.X / 2, _resumeButton.Size.Y),
                 new Vector2(100, 40), Color.Green, Color.White, _buttonFont)
             {
                 ButtonHoverColor = Color.DarkGreen, TextHoverColor = Color.White
@@ -68,7 +60,7 @@ namespace GrimGame.Game
             // Quit button
             _quitButton = new Button("Quit",
                 panel.Position + new Vector2(panel.Size.X / 2,
-                    _mainMenuButton.Size.Y + _resumeButton.Size.Y + ButtonSpace),
+                    160),
                 new Vector2(100, 40), Color.Red, Color.White, _buttonFont)
             {
                 ButtonHoverColor = Color.DarkRed, TextHoverColor = Color.White
@@ -79,7 +71,6 @@ namespace GrimGame.Game
             _mainMenuButton.Click += BackToMainMenuClick;
             _quitButton.Click += QuitButtonClick;
 
-            panel.AddComponent(pauseMenuTitle);
             panel.AddComponent(_resumeButton);
             panel.AddComponent(_mainMenuButton);
             panel.AddComponent(_quitButton);
