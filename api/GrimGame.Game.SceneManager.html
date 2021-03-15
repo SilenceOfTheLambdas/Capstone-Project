@@ -73,7 +73,7 @@
   
   <h1 id="GrimGame_Game_SceneManager" data-uid="GrimGame.Game.SceneManager" class="text-break">Class SceneManager
   </h1>
-  <div class="markdown level0 summary"><p>Manages every <span class="xref">GrimGame.Game.SceneManager.Scenes</span> in the game.</p>
+  <div class="markdown level0 summary"><p>Manages every <a class="xref" href="GrimGame.Game.Scene.html">Scene</a> in the game.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -173,35 +173,20 @@
   
   
   <a id="GrimGame_Game_SceneManager_DrawScenes_" data-uid="GrimGame.Game.SceneManager.DrawScenes*"></a>
-  <h4 id="GrimGame_Game_SceneManager_DrawScenes_Microsoft_Xna_Framework_GameTime_" data-uid="GrimGame.Game.SceneManager.DrawScenes(Microsoft.Xna.Framework.GameTime)">DrawScenes(GameTime)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="GrimGame_Game_SceneManager_DrawScenes" data-uid="GrimGame.Game.SceneManager.DrawScenes">DrawScenes()</h4>
+  <div class="markdown level1 summary"><p>Draws every scene by calling it's <a class="xref" href="GrimGame.Game.Scene.html#GrimGame_Game_Scene_Draw">Draw()</a> method</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void DrawScenes(GameTime gameTime)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void DrawScenes()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.GameTime</span></td>
-        <td><span class="parametername">gameTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="GrimGame_Game_SceneManager_InitScenes_" data-uid="GrimGame.Game.SceneManager.InitScenes*"></a>
   <h4 id="GrimGame_Game_SceneManager_InitScenes" data-uid="GrimGame.Game.SceneManager.InitScenes">InitScenes()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Call <a class="xref" href="GrimGame.Game.Scene.html#GrimGame_Game_Scene_Initialize">Initialize()</a> for every scene</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -240,7 +225,8 @@
   
   <a id="GrimGame_Game_SceneManager_UpdateScenes_" data-uid="GrimGame.Game.SceneManager.UpdateScenes*"></a>
   <h4 id="GrimGame_Game_SceneManager_UpdateScenes_Microsoft_Xna_Framework_GameTime_" data-uid="GrimGame.Game.SceneManager.UpdateScenes(Microsoft.Xna.Framework.GameTime)">UpdateScenes(GameTime)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calls <a class="xref" href="GrimGame.Game.Scene.html#GrimGame_Game_Scene_Update_Microsoft_Xna_Framework_GameTime_">Update(GameTime)</a> for every scene</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -259,7 +245,8 @@
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.GameTime</span></td>
         <td><span class="parametername">gameTime</span></td>
-        <td></td>
+        <td><p>GameTime</p>
+</td>
       </tr>
     </tbody>
   </table>

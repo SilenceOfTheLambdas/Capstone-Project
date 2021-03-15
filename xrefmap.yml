@@ -424,38 +424,30 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.BoxCollider.BoxCollider
     nameWithType: BoxCollider.BoxCollider
-  - uid: GrimGame.Engine.BoxCollider.Draw
-    name: Draw()
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Draw
-    commentId: M:GrimGame.Engine.BoxCollider.Draw
-    fullName: GrimGame.Engine.BoxCollider.Draw()
-    nameWithType: BoxCollider.Draw()
-  - uid: GrimGame.Engine.BoxCollider.Draw*
-    name: Draw
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Draw_
-    commentId: Overload:GrimGame.Engine.BoxCollider.Draw
-    isSpec: "True"
-    fullName: GrimGame.Engine.BoxCollider.Draw
-    nameWithType: BoxCollider.Draw
+  - uid: GrimGame.Engine.BoxCollider.Bounds
+    name: Bounds
+    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Bounds
+    commentId: F:GrimGame.Engine.BoxCollider.Bounds
+    fullName: GrimGame.Engine.BoxCollider.Bounds
+    nameWithType: BoxCollider.Bounds
   - uid: GrimGame.Engine.BoxCollider.IsTrigger
     name: IsTrigger
     href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_IsTrigger
     commentId: F:GrimGame.Engine.BoxCollider.IsTrigger
     fullName: GrimGame.Engine.BoxCollider.IsTrigger
     nameWithType: BoxCollider.IsTrigger
-  - uid: GrimGame.Engine.BoxCollider.Update(Microsoft.Xna.Framework.GameTime)
-    name: Update(GameTime)
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Update_Microsoft_Xna_Framework_GameTime_
-    commentId: M:GrimGame.Engine.BoxCollider.Update(Microsoft.Xna.Framework.GameTime)
-    fullName: GrimGame.Engine.BoxCollider.Update(Microsoft.Xna.Framework.GameTime)
-    nameWithType: BoxCollider.Update(GameTime)
-  - uid: GrimGame.Engine.BoxCollider.Update*
-    name: Update
-    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Update_
-    commentId: Overload:GrimGame.Engine.BoxCollider.Update
-    isSpec: "True"
-    fullName: GrimGame.Engine.BoxCollider.Update
-    nameWithType: BoxCollider.Update
+  - uid: GrimGame.Engine.BoxCollider.Origin
+    name: Origin
+    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Origin
+    commentId: F:GrimGame.Engine.BoxCollider.Origin
+    fullName: GrimGame.Engine.BoxCollider.Origin
+    nameWithType: BoxCollider.Origin
+  - uid: GrimGame.Engine.BoxCollider.Size
+    name: Size
+    href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_Size
+    commentId: F:GrimGame.Engine.BoxCollider.Size
+    fullName: GrimGame.Engine.BoxCollider.Size
+    nameWithType: BoxCollider.Size
   - uid: GrimGame.Engine.BoxCollider.UpdatePosition(Microsoft.Xna.Framework.Point)
     name: UpdatePosition(Point)
     href: api/GrimGame.Engine.BoxCollider.html#GrimGame_Engine_BoxCollider_UpdatePosition_Microsoft_Xna_Framework_Point_
@@ -1797,6 +1789,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.Enemy.MoveTowards
     nameWithType: Enemy.MoveTowards
+  - uid: GrimGame.Game.Character.Enemy.OnCollisionEnter(GrimGame.Engine.GameObject)
+    name: OnCollisionEnter(GameObject)
+    href: api/GrimGame.Game.Character.Enemy.html#GrimGame_Game_Character_Enemy_OnCollisionEnter_GrimGame_Engine_GameObject_
+    commentId: M:GrimGame.Game.Character.Enemy.OnCollisionEnter(GrimGame.Engine.GameObject)
+    fullName: GrimGame.Game.Character.Enemy.OnCollisionEnter(GrimGame.Engine.GameObject)
+    nameWithType: Enemy.OnCollisionEnter(GameObject)
+  - uid: GrimGame.Game.Character.Enemy.OnCollisionEnter*
+    name: OnCollisionEnter
+    href: api/GrimGame.Game.Character.Enemy.html#GrimGame_Game_Character_Enemy_OnCollisionEnter_
+    commentId: Overload:GrimGame.Game.Character.Enemy.OnCollisionEnter
+    isSpec: "True"
+    fullName: GrimGame.Game.Character.Enemy.OnCollisionEnter
+    nameWithType: Enemy.OnCollisionEnter
   - uid: GrimGame.Game.Character.Enemy.Update(Microsoft.Xna.Framework.GameTime)
     name: Update(GameTime)
     href: api/GrimGame.Game.Character.Enemy.html#GrimGame_Game_Character_Enemy_Update_Microsoft_Xna_Framework_GameTime_
@@ -2318,6 +2323,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.PlayerHud.Draw
     nameWithType: PlayerHud.Draw
+  - uid: GrimGame.Game.PlayerHud.Init
+    name: Init()
+    href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud_Init
+    commentId: M:GrimGame.Game.PlayerHud.Init
+    fullName: GrimGame.Game.PlayerHud.Init()
+    nameWithType: PlayerHud.Init()
+  - uid: GrimGame.Game.PlayerHud.Init*
+    name: Init
+    href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud_Init_
+    commentId: Overload:GrimGame.Game.PlayerHud.Init
+    isSpec: "True"
+    fullName: GrimGame.Game.PlayerHud.Init
+    nameWithType: PlayerHud.Init
   - uid: GrimGame.Game.PlayerHud.IsActive
     name: IsActive
     href: api/GrimGame.Game.PlayerHud.html#GrimGame_Game_PlayerHud_IsActive
@@ -2343,6 +2361,64 @@ references:
     commentId: T:GrimGame.Game.Program
     fullName: GrimGame.Game.Program
     nameWithType: Program
+  - uid: GrimGame.Game.Projectile
+    name: Projectile
+    href: api/GrimGame.Game.Projectile.html
+    commentId: T:GrimGame.Game.Projectile
+    fullName: GrimGame.Game.Projectile
+    nameWithType: Projectile
+  - uid: GrimGame.Game.Projectile.#ctor(System.Single,System.Int32)
+    name: Projectile(Single, Int32)
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile__ctor_System_Single_System_Int32_
+    commentId: M:GrimGame.Game.Projectile.#ctor(System.Single,System.Int32)
+    fullName: GrimGame.Game.Projectile.Projectile(System.Single, System.Int32)
+    nameWithType: Projectile.Projectile(Single, Int32)
+  - uid: GrimGame.Game.Projectile.#ctor*
+    name: Projectile
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile__ctor_
+    commentId: Overload:GrimGame.Game.Projectile.#ctor
+    isSpec: "True"
+    fullName: GrimGame.Game.Projectile.Projectile
+    nameWithType: Projectile.Projectile
+  - uid: GrimGame.Game.Projectile.Damage
+    name: Damage
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Damage
+    commentId: P:GrimGame.Game.Projectile.Damage
+    fullName: GrimGame.Game.Projectile.Damage
+    nameWithType: Projectile.Damage
+  - uid: GrimGame.Game.Projectile.Damage*
+    name: Damage
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Damage_
+    commentId: Overload:GrimGame.Game.Projectile.Damage
+    isSpec: "True"
+    fullName: GrimGame.Game.Projectile.Damage
+    nameWithType: Projectile.Damage
+  - uid: GrimGame.Game.Projectile.Draw
+    name: Draw()
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Draw
+    commentId: M:GrimGame.Game.Projectile.Draw
+    fullName: GrimGame.Game.Projectile.Draw()
+    nameWithType: Projectile.Draw()
+  - uid: GrimGame.Game.Projectile.Draw*
+    name: Draw
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Draw_
+    commentId: Overload:GrimGame.Game.Projectile.Draw
+    isSpec: "True"
+    fullName: GrimGame.Game.Projectile.Draw
+    nameWithType: Projectile.Draw
+  - uid: GrimGame.Game.Projectile.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update(GameTime)
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Update_Microsoft_Xna_Framework_GameTime_
+    commentId: M:GrimGame.Game.Projectile.Update(Microsoft.Xna.Framework.GameTime)
+    fullName: GrimGame.Game.Projectile.Update(Microsoft.Xna.Framework.GameTime)
+    nameWithType: Projectile.Update(GameTime)
+  - uid: GrimGame.Game.Projectile.Update*
+    name: Update
+    href: api/GrimGame.Game.Projectile.html#GrimGame_Game_Projectile_Update_
+    commentId: Overload:GrimGame.Game.Projectile.Update
+    isSpec: "True"
+    fullName: GrimGame.Game.Projectile.Update
+    nameWithType: Projectile.Update
   - uid: GrimGame.Game.Scene
     name: Scene
     href: api/GrimGame.Game.Scene.html
@@ -2362,12 +2438,12 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Scene.Scene
     nameWithType: Scene.Scene
-  - uid: GrimGame.Game.Scene.Draw(Microsoft.Xna.Framework.GameTime)
-    name: Draw(GameTime)
-    href: api/GrimGame.Game.Scene.html#GrimGame_Game_Scene_Draw_Microsoft_Xna_Framework_GameTime_
-    commentId: M:GrimGame.Game.Scene.Draw(Microsoft.Xna.Framework.GameTime)
-    fullName: GrimGame.Game.Scene.Draw(Microsoft.Xna.Framework.GameTime)
-    nameWithType: Scene.Draw(GameTime)
+  - uid: GrimGame.Game.Scene.Draw
+    name: Draw()
+    href: api/GrimGame.Game.Scene.html#GrimGame_Game_Scene_Draw
+    commentId: M:GrimGame.Game.Scene.Draw
+    fullName: GrimGame.Game.Scene.Draw()
+    nameWithType: Scene.Draw()
   - uid: GrimGame.Game.Scene.Draw*
     name: Draw
     href: api/GrimGame.Game.Scene.html#GrimGame_Game_Scene_Draw_
@@ -2476,12 +2552,12 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.SceneManager.AddScene
     nameWithType: SceneManager.AddScene
-  - uid: GrimGame.Game.SceneManager.DrawScenes(Microsoft.Xna.Framework.GameTime)
-    name: DrawScenes(GameTime)
-    href: api/GrimGame.Game.SceneManager.html#GrimGame_Game_SceneManager_DrawScenes_Microsoft_Xna_Framework_GameTime_
-    commentId: M:GrimGame.Game.SceneManager.DrawScenes(Microsoft.Xna.Framework.GameTime)
-    fullName: GrimGame.Game.SceneManager.DrawScenes(Microsoft.Xna.Framework.GameTime)
-    nameWithType: SceneManager.DrawScenes(GameTime)
+  - uid: GrimGame.Game.SceneManager.DrawScenes
+    name: DrawScenes()
+    href: api/GrimGame.Game.SceneManager.html#GrimGame_Game_SceneManager_DrawScenes
+    commentId: M:GrimGame.Game.SceneManager.DrawScenes
+    fullName: GrimGame.Game.SceneManager.DrawScenes()
+    nameWithType: SceneManager.DrawScenes()
   - uid: GrimGame.Game.SceneManager.DrawScenes*
     name: DrawScenes
     href: api/GrimGame.Game.SceneManager.html#GrimGame_Game_SceneManager_DrawScenes_
@@ -2541,6 +2617,70 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.SceneManager.UpdateScenes
     nameWithType: SceneManager.UpdateScenes
+  - uid: GrimGame.Game.Scenes
+    name: GrimGame.Game.Scenes
+    href: api/GrimGame.Game.Scenes.html
+    commentId: N:GrimGame.Game.Scenes
+    fullName: GrimGame.Game.Scenes
+    nameWithType: GrimGame.Game.Scenes
+  - uid: GrimGame.Game.Scenes.MainMenu
+    name: MainMenu
+    href: api/GrimGame.Game.Scenes.MainMenu.html
+    commentId: T:GrimGame.Game.Scenes.MainMenu
+    fullName: GrimGame.Game.Scenes.MainMenu
+    nameWithType: MainMenu
+  - uid: GrimGame.Game.Scenes.MainMenu.#ctor(System.String,GrimGame.Game.MainGame)
+    name: MainMenu(String, MainGame)
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu__ctor_System_String_GrimGame_Game_MainGame_
+    commentId: M:GrimGame.Game.Scenes.MainMenu.#ctor(System.String,GrimGame.Game.MainGame)
+    fullName: GrimGame.Game.Scenes.MainMenu.MainMenu(System.String, GrimGame.Game.MainGame)
+    nameWithType: MainMenu.MainMenu(String, MainGame)
+  - uid: GrimGame.Game.Scenes.MainMenu.#ctor*
+    name: MainMenu
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu__ctor_
+    commentId: Overload:GrimGame.Game.Scenes.MainMenu.#ctor
+    isSpec: "True"
+    fullName: GrimGame.Game.Scenes.MainMenu.MainMenu
+    nameWithType: MainMenu.MainMenu
+  - uid: GrimGame.Game.Scenes.MainMenu.Draw
+    name: Draw()
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Draw
+    commentId: M:GrimGame.Game.Scenes.MainMenu.Draw
+    fullName: GrimGame.Game.Scenes.MainMenu.Draw()
+    nameWithType: MainMenu.Draw()
+  - uid: GrimGame.Game.Scenes.MainMenu.Draw*
+    name: Draw
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Draw_
+    commentId: Overload:GrimGame.Game.Scenes.MainMenu.Draw
+    isSpec: "True"
+    fullName: GrimGame.Game.Scenes.MainMenu.Draw
+    nameWithType: MainMenu.Draw
+  - uid: GrimGame.Game.Scenes.MainMenu.Initialize
+    name: Initialize()
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Initialize
+    commentId: M:GrimGame.Game.Scenes.MainMenu.Initialize
+    fullName: GrimGame.Game.Scenes.MainMenu.Initialize()
+    nameWithType: MainMenu.Initialize()
+  - uid: GrimGame.Game.Scenes.MainMenu.Initialize*
+    name: Initialize
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Initialize_
+    commentId: Overload:GrimGame.Game.Scenes.MainMenu.Initialize
+    isSpec: "True"
+    fullName: GrimGame.Game.Scenes.MainMenu.Initialize
+    nameWithType: MainMenu.Initialize
+  - uid: GrimGame.Game.Scenes.MainMenu.Update(Microsoft.Xna.Framework.GameTime)
+    name: Update(GameTime)
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Update_Microsoft_Xna_Framework_GameTime_
+    commentId: M:GrimGame.Game.Scenes.MainMenu.Update(Microsoft.Xna.Framework.GameTime)
+    fullName: GrimGame.Game.Scenes.MainMenu.Update(Microsoft.Xna.Framework.GameTime)
+    nameWithType: MainMenu.Update(GameTime)
+  - uid: GrimGame.Game.Scenes.MainMenu.Update*
+    name: Update
+    href: api/GrimGame.Game.Scenes.MainMenu.html#GrimGame_Game_Scenes_MainMenu_Update_
+    commentId: Overload:GrimGame.Game.Scenes.MainMenu.Update
+    isSpec: "True"
+    fullName: GrimGame.Game.Scenes.MainMenu.Update
+    nameWithType: MainMenu.Update
   - uid: GrimGame.Game.UiManager
     name: UiManager
     href: api/GrimGame.Game.UiManager.html
@@ -2573,6 +2713,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.UiManager.Draw
     nameWithType: UiManager.Draw
+  - uid: GrimGame.Game.UiManager.Init
+    name: Init()
+    href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_Init
+    commentId: M:GrimGame.Game.UiManager.Init
+    fullName: GrimGame.Game.UiManager.Init()
+    nameWithType: UiManager.Init()
+  - uid: GrimGame.Game.UiManager.Init*
+    name: Init
+    href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_Init_
+    commentId: Overload:GrimGame.Game.UiManager.Init
+    isSpec: "True"
+    fullName: GrimGame.Game.UiManager.Init
+    nameWithType: UiManager.Init
   - uid: GrimGame.Game.UiManager.Update
     name: Update()
     href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_Update
