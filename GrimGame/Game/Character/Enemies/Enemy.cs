@@ -43,7 +43,6 @@ namespace GrimGame.Game.Character
         protected Enemy()
         {
             _pathFinder = new Pathfinder(Globals.MapSystem.Map);
-            ObjectManager.Objects.Add(this);
         }
 
         /// <summary>
@@ -100,6 +99,15 @@ namespace GrimGame.Game.Character
         {
             if (CurrentHp <= 0)
                 Kill();
+        }
+
+        protected override void OnCollisionEnter(GameObject other)
+        {
+            if (other is Projectile projectile)
+            {
+                CurrentHp -= projectile.Damage;
+                Destroy(projectile);
+            }
         }
 
         /// <summary>

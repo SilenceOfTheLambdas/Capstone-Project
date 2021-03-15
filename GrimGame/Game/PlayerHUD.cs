@@ -14,9 +14,9 @@ namespace GrimGame.Game
     {
         public const     bool    IsActive = true;
         private readonly Canvas  _canvas;
-        private readonly TextBox _hpTextBox;
-        private readonly Player  _player;
-        private readonly TextBox _scoreTextBox;
+        private          TextBox _hpTextBox;
+        private          Player  _player;
+        private          TextBox _scoreTextBox;
 
         /// <summary>
         ///     Create a new instance of the player's heads-up-display.
@@ -25,9 +25,15 @@ namespace GrimGame.Game
         {
             // create a new canvas
             _canvas = new Canvas();
+        }
 
+        public void Init()
+        {
             // Get the first instance of player
-            _player = ObjectManager.Objects[ObjectManager.Objects.FindIndex(0, 1, o => o is Player)] as Player;
+            _player = SceneManager.GetActiveScene.ObjectManager.Objects[
+                SceneManager.GetActiveScene.ObjectManager.Objects.FindIndex(0,
+                    1,
+                    o => o is Player)] as Player;
 
             // Create a new panel within the canvas
             var hpPanel = new Panel(Panel.Positions.BottomLeft, new Vector2(200, 50), Color.White)
@@ -67,10 +73,10 @@ namespace GrimGame.Game
         public void Update()
         {
             // Update player's health value
-            _hpTextBox.SetText($"HP: {_player?.CurrentHp}", Color.White,
+            _hpTextBox?.SetText($"HP: {_player?.CurrentHp}", Color.White,
                 Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
 
-            _scoreTextBox.SetText($"Score: {_player?.Score}", Color.White,
+            _scoreTextBox?.SetText($"Score: {_player?.Score}", Color.White,
                 Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
 
             if (IsActive)

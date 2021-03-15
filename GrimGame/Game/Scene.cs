@@ -18,7 +18,7 @@ namespace GrimGame.Game
         public readonly MainGame MainGame;
 
         // Is this scene loaded?
-        private bool _isSceneLoaded;
+        private bool _isSceneLoaded = false;
 
         /// <summary>
         ///     Represents a level. A level may contain various <see cref="GameObject" />s.
@@ -30,6 +30,7 @@ namespace GrimGame.Game
             ObjectManager = new ObjectManager();
             Name = sceneName;
             MainGame = mainGame;
+            SceneManager.AddScene(this);
         }
 
         public virtual void Initialize()
@@ -37,12 +38,18 @@ namespace GrimGame.Game
             GrimDebugger = new GrimDebugger(Globals.GuiFont);
         }
 
+        /// <summary>
+        /// Only called when this scene is active
+        /// </summary>
+        /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
+            ObjectManager.Update(gameTime);
+            InputManager.Update();
             InputManager.AddKeyPressHandler(GrimDebugger.EnableDebugger, Keys.D0);
         }
 
-        public virtual void Draw(GameTime gameTime)
+        public virtual void Draw()
         {
             // Draws text above player, showing it's position
             if (Globals.DebugMode) GrimDebugger.Draw();

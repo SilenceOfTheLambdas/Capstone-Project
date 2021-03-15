@@ -12,88 +12,64 @@ namespace GrimGame.Game.Scenes
     internal class Level1 : Scene
     {
         private readonly MapSystem _mapSystem;
-        private          Paladin   _paladin;
         private          Player    _player;
+        private          Paladin   _paladin;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
             : base(sceneName, mainGame)
         {
             _mapSystem = new MapSystem(mapName);
-            SceneManager.AddScene(this);
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            if (GetIsSceneLoaded())
+            _player = new Player(_mapSystem, Globals.Camera)
             {
-                #region Map System
+                Speed = 2f,
+                RunningSpeed = 3.2f,
+                Enabled = true,
+                Active = true,
+                MaxHp = 100,
+                CurrentHp = 100
+            };
+            _player.Init();
 
-                _player = new Player(_mapSystem, Globals.Camera)
-                {
-                    Speed = 2f,
-                    RunningSpeed = 3.2f,
-                    Enabled = true,
-                    Active = true,
-                    MaxHp = 100,
-                    CurrentHp = 100
-                };
-                _player.Init();
+            _paladin = new Paladin(_mapSystem, _player) {Speed = 1f, Enabled = true, Active = true, MaxHp = 100};
+            _paladin.Init();
+            _mapSystem.Player = _player;
 
-                _paladin = new Paladin(_mapSystem, _player)
-                {
-                    Speed = 1f,
-                    Enabled = true,
-                    Active = true,
-                    MaxHp = 100
-                };
-                _paladin.Init();
+            UiManager = new UiManager(this);
+            UiManager.Init();
 
-                _mapSystem.Player = _player;
-
-                #endregion
-
-                UiManager = new UiManager(this);
-
-                // Init debugger
-                if (Globals.DebugMode)
-                {
-                    GrimDebugger.Player = _player;
-                    GrimDebugger.MapSystem = _mapSystem;
-                }
+            // Init debugger
+            if (Globals.DebugMode)
+            {
+                GrimDebugger.Player = _player;
+                GrimDebugger.MapSystem = _mapSystem;
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (GetIsSceneLoaded())
-            {
-                _mapSystem.Update(gameTime);
-
-                InputManager.Update();
-                UiManager.Update();
-
-                ObjectManager.Update(gameTime);
-            }
+            _mapSystem?.Update(gameTime);
+            UiManager?.Update();
 
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+        public override void Draw()
         {
-            if (GetIsSceneLoaded())
-            {
-                // Clear the screen
-                Globals.Graphics.GraphicsDevice.Clear(Color.Black);
+            // Clear the screen
+            Globals.Graphics.GraphicsDevice.Clear(Color.Black);
 
-                // Sort the player's index
-                PlayerLayerIndexer();
+            // Sort the player's index
+            PlayerLayerIndexer();
 
-                UiManager.Draw();
-            }
+            UiManager?.Draw();
 
-            base.Draw(gameTime);
+            base.Draw();
         }
 
         private void PlayerLayerIndexer()
@@ -108,13 +84,13 @@ namespace GrimGame.Game.Scenes
 
             if (bumpLayer)
             {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                _mapSystem.CurrentIndex = Globals.LayerCount;
+                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                if (_mapSystem != null) _mapSystem.CurrentIndex = Globals.LayerCount;
                 _player.Collision = true;
             }
             else
             {
-                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
+                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), 2);
             }
         }
     }

@@ -18,6 +18,11 @@ namespace GrimGame.Game
             InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);
         }
 
+        public void Init()
+        {
+            _playerHud.Init();
+        }
+
         public void Update()
         {
             _pauseMenu.Update();

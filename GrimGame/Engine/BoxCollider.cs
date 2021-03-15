@@ -10,12 +10,16 @@ namespace GrimGame.Engine
     /// <summary>
     ///     A box collider is used to provide collision avoidance and detection for a <see cref="GameObject" />.
     /// </summary>
-    public sealed class BoxCollider : GameObject
+    public sealed class BoxCollider
     {
         /// <summary>
         ///     Does this collider trigger an event?
         /// </summary>
         public bool IsTrigger = false;
+
+        public Vector2   Origin;
+        public Point2    Size;
+        public Rectangle Bounds;
 
         /// <summary>
         ///     Creates a new box collider
@@ -26,27 +30,13 @@ namespace GrimGame.Engine
         {
             Origin = origin;
             Size = size;
-        }
-
-        /// <summary>
-        ///     Updates the positions and size of the bounds.
-        /// </summary>
-        /// <param name="gameTime"><seealso cref="GameTime" />></param>
-        public override void Update(GameTime gameTime)
-        {
             Bounds = new Rectangle(new Point((int) Origin.X, (int) Origin.Y), new Point((int) Size.X, (int) Size.Y));
         }
 
         public void UpdatePosition(Point position)
         {
             Bounds.Location = position;
-        }
-
-        /// <summary>
-        ///     UNUSED
-        /// </summary>
-        public override void Draw()
-        {
+            var _ = new Vector2(position.X, position.Y);
         }
     }
 }

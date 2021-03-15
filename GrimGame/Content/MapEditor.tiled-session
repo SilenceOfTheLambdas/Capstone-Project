@@ -131,7 +131,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 1600,
-                "y": 1599.5
+                "y": 1461
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -175,10 +175,10 @@
         },
         "StartLevel.tmx": {
             "scale": 1,
-            "selectedLayer": 3,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 3215,
-                "y": 2053
+                "x": 3136,
+                "y": 2103
             }
         },
         "StartLevel.tmx#Outside_medievil": {
@@ -304,10 +304,12 @@
             "scaleInEditor": 1
         },
         "Tilesets/decorative_props.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
         "Tilesets/decorative_trees.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.5,
             "scaleInEditor": 1
         },
@@ -384,18 +386,17 @@
     "openFiles": [
         "StartLevel.tmx",
         "Tilesets/decorative_trees.tsx",
-        "Tilesets/mainlevbuild.tsx",
         "Level1.tmx",
         "Tilesets/decorative_props.tsx"
     ],
     "project": "MapEditor.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "StartLevel.tmx",
         "Tilesets/decorative_props.tsx",
         "Level1.tmx",
-        "Tilesets/mainlevbuild.tsx",
         "Tilesets/decorative_trees.tsx",
+        "StartLevel.tmx",
+        "Tilesets/mainlevbuild.tsx",
         "TestMap.tmx",
         "rule_001.tmx",
         "AutoMaps/rule_001.tmx",
