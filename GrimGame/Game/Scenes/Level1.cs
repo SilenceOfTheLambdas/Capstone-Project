@@ -1,9 +1,11 @@
 #region Imports
 
+using System.Collections.Generic;
 using System.Linq;
 using GrimGame.Engine;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended;
 
 #endregion
 
@@ -14,6 +16,15 @@ namespace GrimGame.Game.Scenes
         private readonly MapSystem _mapSystem;
         private          Player    _player;
         private          Paladin   _paladin;
+
+        /// <summary>
+        /// Stores a list of spawned and un-spawned enemies
+        /// </summary>
+        private List<Paladin> _enemies;
+
+        private List<Paladin> _spawnedList;
+
+        private float _spawnTimer;
 
         public Level1(string sceneName, string mapName, MainGame mainGame)
             : base(sceneName, mainGame)
@@ -35,9 +46,18 @@ namespace GrimGame.Game.Scenes
                 CurrentHp = 100
             };
             _player.Init();
+            _enemies = new List<Paladin>();
+            _spawnedList = new List<Paladin>();
 
-            _paladin = new Paladin(_mapSystem, _player) {Speed = 1f, Enabled = true, Active = true, MaxHp = 100};
-            _paladin.Init();
+            // Add 12 enemies
+            var random = new FastRandom();
+            for (var i = 0; i < 12; i++)
+            {
+                var newEnemy = new Paladin(_mapSystem, _player)
+                    {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
+                _enemies.Add(newEnemy);
+            }
+
             _mapSystem.Player = _player;
 
             UiManager = new UiManager(this);
@@ -53,10 +73,26 @@ namespace GrimGame.Game.Scenes
 
         public override void Update(GameTime gameTime)
         {
+            _spawnTimer += gameTime.GetElapsedSeconds();
+            if (_spawnTimer >= 3)
+            {
+                SpawnEnemy();
+                _spawnTimer -= 3;
+            }
+
             _mapSystem?.Update(gameTime);
             UiManager?.Update();
 
             base.Update(gameTime);
+        }
+
+        private void SpawnEnemy()
+        {
+            foreach (var enemy in _enemies.ToList())
+            {
+                enemy.Init(); // spawn it
+                _enemies.Remove(enemy); // then remove the enemy
+            }
         }
 
         public override void Draw()

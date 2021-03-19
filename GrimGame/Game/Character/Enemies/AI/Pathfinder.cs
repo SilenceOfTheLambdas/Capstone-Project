@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
@@ -93,6 +92,7 @@ namespace GrimGame.Character.Enemies.AI
 
         /// <summary>
         ///     Returns an estimate of the distance between two points. (H)
+        ///     Using Manhattan Distance
         /// </summary>
         private static float Heuristic(Point point1, Point point2)
         {
@@ -235,10 +235,13 @@ namespace GrimGame.Character.Enemies.AI
             var smallestDistanceToGoal = float.MaxValue;
 
             // Find the closest node to the goal.
-            foreach (var node in _openList.Where(node => node.DistanceToGoal < smallestDistanceToGoal))
+            foreach (var node in _openList)
             {
-                currentTile = node;
-                smallestDistanceToGoal = currentTile.DistanceToGoal;
+                if (node.DistanceToGoal < smallestDistanceToGoal)
+                {
+                    currentTile = node;
+                    smallestDistanceToGoal = currentTile.DistanceToGoal;
+                }
             }
 
             return currentTile;

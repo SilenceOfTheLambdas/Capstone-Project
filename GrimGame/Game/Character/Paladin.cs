@@ -7,6 +7,7 @@ using GrimGame.Engine.Models;
 using GrimGame.Game.Character.AI.Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLEM.Extended.Tiled;
 
 namespace GrimGame.Game.Character
 {
@@ -27,13 +28,11 @@ namespace GrimGame.Game.Character
         public void Init()
         {
             // Set spawn position if this enemy
-            foreach (var objectLayer in _mapSystem.Map.ObjectLayers)
-            foreach (var layerObject in objectLayer.Objects)
-                if (layerObject.Name.ToLower().Equals("enemyspawn"))
-                    _spawnPoints.Add(layerObject.Position);
+            foreach (var layerObject in _mapSystem.Map.GetObjects("EnemySpawn"))
+                _spawnPoints.Add(layerObject.Position);
 
             // Set random spawn point from list
-            var random = new Random(Globals.GameTime.ElapsedGameTime.Milliseconds);
+            var random = new Random();
             Position = _spawnPoints[random.Next(0, _spawnPoints.Count)];
 
             Scale = new Vector2(1.4f, 1.4f);

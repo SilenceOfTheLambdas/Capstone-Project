@@ -12,7 +12,7 @@ namespace GrimGame.Engine.GUI.Components
         /// <summary>
         ///     The position of this component.
         /// </summary>
-        protected Vector2 Position { get; set; }
+        public Vector2 Position { get; set; }
 
         /// <summary>
         ///     The size if this component.

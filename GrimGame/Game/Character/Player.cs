@@ -28,7 +28,7 @@ namespace GrimGame.Game.Character
         // _____ Attack _____ //
         private const    int                AttackDamage = 20; // How much HP the player deals when attacking
         private const    int                AttackRange  = 8; // How far does the attack reach?
-        private const    float              AttackTimer  = 1.2f; // How often the player can attack (in seconds)
+        public           float              AttackTimer  = 1.2f; // How often the player can attack (in seconds)
         private readonly OrthographicCamera _camera;
 
         // _____ References _____ //
@@ -64,6 +64,11 @@ namespace GrimGame.Game.Character
         ///     The total score the player accumulated.
         /// </summary>
         public int Score { get; private set; }
+
+        /// <summary>
+        /// The currency for buying upgrades, directly relates to <see cref="Score"/>
+        /// </summary>
+        public int Coins { get; set; }
 
         // ____ Health ____ //
         /// <summary>
@@ -139,6 +144,8 @@ namespace GrimGame.Game.Character
 
             BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(19, 16));
+
+            Coins = Score;
         }
 
         public override void Update(GameTime gameTime)
@@ -252,7 +259,6 @@ namespace GrimGame.Game.Character
         /// </summary>
         private void Attack()
         {
-            // TODO: Fix why attacking still works when enemy is dead
             if (_enemyInAttackRange && SceneManager.GetActiveScene.ObjectManager.Objects.Exists(o => o is Enemy))
             {
                 // Create a new Projectile
@@ -287,8 +293,11 @@ namespace GrimGame.Game.Character
                 // If the enemy is within attack range, attack
                 _enemyToHit.CurrentHp -= AttackDamage;
                 if (_enemyToHit.CurrentHp <= 0)
+                {
                     // Update player's score
                     Score++;
+                    Coins++;
+                }
             }
         }
 

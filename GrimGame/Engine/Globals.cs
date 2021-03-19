@@ -23,7 +23,7 @@ namespace GrimGame.Engine
         public static ContentManager     ContentManager;
         public static SpriteBatch        SpriteBatch;
         public static SpriteFont         GuiFont;
-        public static bool               DebugMode = true;
+        public static bool               DebugMode = false;
 
         /// <summary>
         ///     The number of layers in the game map, not inclusive of the player layer
