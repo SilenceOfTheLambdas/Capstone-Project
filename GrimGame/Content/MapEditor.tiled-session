@@ -131,7 +131,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 1600,
-                "y": 1461
+                "y": 1458.5
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -177,8 +177,8 @@
             "scale": 1,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 3136,
-                "y": 2103
+                "x": 3200,
+                "y": 3199.5
             }
         },
         "StartLevel.tmx#Outside_medievil": {
