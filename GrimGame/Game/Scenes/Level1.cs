@@ -15,7 +15,6 @@ namespace GrimGame.Game.Scenes
     {
         private readonly MapSystem _mapSystem;
         private          Player    _player;
-        private          Paladin   _paladin;
 
         /// <summary>
         /// Stores a list of spawned and un-spawned enemies
@@ -51,7 +50,7 @@ namespace GrimGame.Game.Scenes
 
             // Add 12 enemies
             var random = new FastRandom();
-            for (var i = 0; i < 12; i++)
+            for (var i = 0; i < 8; i++)
             {
                 var newEnemy = new Paladin(_mapSystem, _player)
                     {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
@@ -73,11 +72,24 @@ namespace GrimGame.Game.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            _spawnTimer += gameTime.GetElapsedSeconds();
-            if (_spawnTimer >= 3)
+            var updatedList = new List<Paladin>(_spawnedList);
+            // Check to see of any of the enemies have been killed
+            foreach (var paladin in _spawnedList.ToList().Where(paladin => paladin.CurrentHp <= 0))
             {
-                SpawnEnemy();
-                _spawnTimer -= 3;
+                updatedList.Remove(paladin);
+            }
+
+            _spawnedList = updatedList;
+
+            // If 3 seconds have passed, and there are less than 3 enemies spawned
+            if (_spawnedList.Count <= 3)
+            {
+                _spawnTimer += gameTime.GetElapsedSeconds();
+                if (_spawnTimer >= 3)
+                {
+                    SpawnEnemy();
+                    _spawnTimer -= 3;
+                }
             }
 
             _mapSystem?.Update(gameTime);
@@ -88,11 +100,15 @@ namespace GrimGame.Game.Scenes
 
         private void SpawnEnemy()
         {
+            var updatedList = new List<Paladin>(_enemies);
             foreach (var enemy in _enemies.ToList())
             {
                 enemy.Init(); // spawn it
-                _enemies.Remove(enemy); // then remove the enemy
+                _spawnedList.Add(enemy);
+                updatedList.Remove(enemy);
             }
+
+            _enemies = updatedList;
         }
 
         public override void Draw()

@@ -50,9 +50,12 @@ namespace GrimGame.Engine.GUI
         /// </summary>
         public void Draw()
         {
-            foreach (var panel in _panels)
-                // draw every panel in this canvas
-                panel.Draw();
+            lock (_panels)
+            {
+                foreach (var panel in _panels)
+                    // draw every panel in this canvas
+                    panel.Draw();
+            }
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace GrimGame.Game
         public readonly MainGame MainGame;
 
         // Is this scene loaded?
-        private bool _isSceneLoaded = false;
+        private bool _isSceneLoaded;
 
         /// <summary>
         ///     Represents a level. A level may contain various <see cref="GameObject" />s.

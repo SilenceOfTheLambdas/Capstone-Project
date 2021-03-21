@@ -26,8 +26,7 @@ namespace GrimGame.Game.Character
         private const float PlayerScale = 1.5f;
 
         // _____ Attack _____ //
-        private const    int                AttackDamage = 20; // How much HP the player deals when attacking
-        private const    int                AttackRange  = 8; // How far does the attack reach?
+        private const    int                AttackDamage = 40; // How much HP the player deals when attacking
         public           float              AttackTimer  = 1.2f; // How often the player can attack (in seconds)
         private readonly OrthographicCamera _camera;
 
@@ -309,10 +308,11 @@ namespace GrimGame.Game.Character
                 _enemyToHit = enemy;
                 _enemyInAttackRange = true;
             }
-            else
-            {
-                _enemyInAttackRange = false;
-            }
+        }
+
+        protected override void OnCollisionExit(GameObject gameObject)
+        {
+            _enemyInAttackRange = false;
         }
 
         /// <summary>

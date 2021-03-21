@@ -63,6 +63,12 @@ namespace GrimGame.Game
             Globals.SpriteBatch.End();
 
             DrawPlayerBounds();
+            foreach (var obj in SceneManager.GetActiveScene.ObjectManager.Objects)
+            {
+                var enemy = obj as Enemy;
+                DrawEnemyBounds(enemy);
+            }
+
             DrawCollisionObjects();
         }
 
@@ -93,6 +99,13 @@ namespace GrimGame.Game
         {
             Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
             if (Player != null) Globals.SpriteBatch.DrawRectangle(Player.BoxCollider.Bounds, Color.Purple);
+            Globals.SpriteBatch.End();
+        }
+
+        public static void DrawEnemyBounds(Enemy enemy)
+        {
+            Globals.SpriteBatch.Begin(transformMatrix: Globals.Camera.GetViewMatrix());
+            if (enemy != null) Globals.SpriteBatch.DrawRectangle(enemy.BoxCollider.Bounds, Color.Red);
             Globals.SpriteBatch.End();
         }
 

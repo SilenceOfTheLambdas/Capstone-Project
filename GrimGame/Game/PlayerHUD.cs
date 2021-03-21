@@ -92,14 +92,13 @@ namespace GrimGame.Game
             _coinTextBox?.SetText($"Coins: {_player?.Coins}", Color.White,
                 Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
 
-            if (IsActive)
-                _canvas.Update();
+
+            _canvas.Update();
         }
 
         public void Draw()
         {
-            if (IsActive)
-                _canvas.Draw();
+            _canvas.Draw();
         }
     }
 }

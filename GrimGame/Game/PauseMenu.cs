@@ -14,7 +14,6 @@ namespace GrimGame.Game
     /// </summary>
     public class PauseMenu
     {
-        private const    int        ButtonSpace = 125;
         private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly Canvas     _canvas;
         private readonly Button     _mainMenuButton;

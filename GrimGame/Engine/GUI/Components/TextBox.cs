@@ -112,6 +112,35 @@ namespace GrimGame.Engine.GUI.Components
         {
             _text = text;
             _textColor = textColor;
+            switch (alignment)
+            {
+                case FontAlignment.LeftUpper:
+                    Position = new Vector2(Bounds.Left, Bounds.Top);
+                    break;
+                case FontAlignment.LeftMiddle:
+                    Position = new Vector2(Bounds.Left, Bounds.Top + Bounds.Size.Y / 2);
+                    break;
+                case FontAlignment.LeftBottom:
+                    Position = new Vector2(Bounds.Left, Bounds.Bottom);
+                    break;
+                case FontAlignment.CenterUpper:
+                    Position = new Vector2(Bounds.Left + Bounds.Size.X / 2, Bounds.Top);
+                    break;
+                case FontAlignment.CenterMiddle:
+                    Position = new Vector2(Bounds.Left + Bounds.Size.X / 2, Bounds.Top + Bounds.Size.Y / 2);
+                    break;
+                case FontAlignment.CenterBottom:
+                    break;
+                case FontAlignment.RightUpper:
+                    break;
+                case FontAlignment.RightMiddle:
+                    break;
+                case FontAlignment.RightBottom:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignment), alignment, null);
+            }
+
             Font = font;
         }
 

@@ -69,8 +69,8 @@ namespace GrimGame.Game.Character
 
             AnimationManager = new AnimationManager(Sprite.Animations.FirstOrDefault().Value);
 
-            BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
-                new Point(19, 16));
+            BoxCollider = new BoxCollider(new Vector2(Origin.X, Origin.Y),
+                new Point(30, 30));
 
             // Health
             MaxHp = 80;

@@ -161,10 +161,25 @@ namespace GrimGame.Engine
             SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
             {
                 if (o != this)
-                    // Check to see if this object has a box collider, and that it is enabled
-                    if (o.BoxCollider != null)
-                        if (BoxCollider != null && o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                {
+                    // Check to see if this object has a box collider
+                    if (o.BoxCollider != null && BoxCollider != null)
+                    {
+                        // If we have collided with another box collider, and we are not already colliding
+                        if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                        {
                             OnCollisionEnter(o);
+                            Collision = true;
+                        }
+
+                        // if we were colliding with something
+                        if (Vector2.Distance(Position, o.Position) >= 160 && Collision)
+                        {
+                            OnCollisionExit(o);
+                            Collision = false;
+                        }
+                    }
+                }
             });
         }
 
@@ -240,13 +255,13 @@ namespace GrimGame.Engine
             }
             else
             {
-                h = x - focus.X;
+                _ = x - focus.X;
                 sineTheta = 0;
             }
 
             var angle = (float) Math.Asin(sineTheta);
 
-            // Drawing diagonial lines here.
+            // Drawing diagonal lines here.
             //Quadrant 2
             if (x - focus.X > 0 && y - focus.Y > 0)
                 angle = (float) (Math.PI * 3 / 2 + angle);
@@ -299,8 +314,16 @@ namespace GrimGame.Engine
         /// <summary>
         ///     If an object has collided with this box collider.
         /// </summary>
-        /// <param name="other">The object that has collided with us.</param>
+        /// <param name="other">The object that has collided with *this* object</param>
         protected virtual void OnCollisionEnter(GameObject other)
+        {
+        }
+
+        /// <summary>
+        /// When an object exits a collision
+        /// </summary>
+        /// <param name="gameObject">The object that has exited a collision with *this* object</param>
+        protected virtual void OnCollisionExit(GameObject gameObject)
         {
         }
 
