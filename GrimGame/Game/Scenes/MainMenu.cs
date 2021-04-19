@@ -11,16 +11,16 @@ namespace GrimGame.Game.Scenes
 {
     public class MainMenu : Scene
     {
-        private const int        ButtonSpace = 125;
-        private       SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
-        private       Canvas     _canvas;
-        private       Button     _quitButton;
-        private       Button     _playButton;
-        private       Scene      _scene;
+        private const    int        ButtonSpace = 125;
+        private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
+        private          Canvas     _canvas;
 
-        private Rectangle _mouseBounds;
+        private readonly bool _isActive = true;
 
-        private bool _isActive = true;
+        private          Rectangle _mouseBounds;
+        private          Button    _playButton;
+        private          Button    _quitButton;
+        private readonly Scene     _scene;
 
         public MainMenu(string sceneName, MainGame mainGame) : base(sceneName, mainGame)
         {
@@ -98,10 +98,7 @@ namespace GrimGame.Game.Scenes
         /// <param name="e"></param>
         private void PlayButtonClick(object? sender, EventArgs e)
         {
-            if (_playButton.Bounds.Intersects(_mouseBounds))
-            {
-                SceneManager.LoadScene("Main Level");
-            }
+            if (_playButton.Bounds.Intersects(_mouseBounds)) SceneManager.LoadScene("Main Level");
         }
 
         public override void Update(GameTime gameTime)

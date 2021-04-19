@@ -14,10 +14,10 @@ namespace GrimGame.Game
     {
         public const     bool    IsActive = true;
         private readonly Canvas  _canvas;
+        private          TextBox _coinTextBox;
         private          TextBox _hpTextBox;
         private          Player  _player;
         private          TextBox _scoreTextBox;
-        private          TextBox _coinTextBox;
 
         /// <summary>
         ///     Create a new instance of the player's heads-up-display.

@@ -7,14 +7,14 @@ namespace GrimGame.Game
 {
     public class Projectile : GameObject
     {
-        public int Damage { get; }
-
         public Projectile(float radius, int damage)
         {
             Damage = damage;
             var circle = new CircleF(Position, radius);
             BoxCollider = new BoxCollider(circle.Center, new Point2(radius * 2, radius * 2));
         }
+
+        public int Damage { get; }
 
         public override void Update(GameTime gameTime)
         {

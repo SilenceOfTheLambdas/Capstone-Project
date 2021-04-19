@@ -11,9 +11,10 @@ namespace GrimGame.Game
     /// </summary>
     public class UiManager
     {
-        private readonly PauseMenu _pauseMenu;
-        private readonly PlayerHud _playerHud;
-        private readonly Shop      _shop;
+        private static   EndGameMenu _endGameMenu;
+        private readonly PauseMenu   _pauseMenu;
+        private readonly PlayerHud   _playerHud;
+        private readonly Shop        _shop;
 
         public UiManager(Scene scene)
         {
@@ -21,6 +22,7 @@ namespace GrimGame.Game
             _playerHud = new PlayerHud();
             _shop = new Shop(SceneManager.GetActiveScene.ObjectManager.Objects.First(o => o is Player) as Player ??
                              throw new InvalidOperationException());
+            _endGameMenu = new EndGameMenu(scene);
             InputManager.AddKeyPressHandler(OpenPauseMenu, Keys.Escape);
             InputManager.AddKeyPressHandler(OpenShop, Keys.P);
         }
@@ -40,11 +42,18 @@ namespace GrimGame.Game
             _pauseMenu.Update();
             _playerHud.Update();
             _shop.Update();
+            if (_endGameMenu.IsActive)
+                _endGameMenu.Update();
         }
 
         private void OpenPauseMenu()
         {
             _pauseMenu.IsActive = !_pauseMenu.IsActive;
+        }
+
+        public static void DisplayEndScreen()
+        {
+            _endGameMenu.IsActive = true;
         }
 
         public void Draw()
@@ -55,6 +64,8 @@ namespace GrimGame.Game
                 _playerHud.Draw();
             if (_shop.IsActive)
                 _shop.Draw();
+            if (_endGameMenu.IsActive)
+                _endGameMenu.Draw();
         }
     }
 }

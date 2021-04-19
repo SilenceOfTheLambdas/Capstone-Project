@@ -12,14 +12,15 @@ namespace GrimGame.Engine
     /// </summary>
     public sealed class BoxCollider
     {
+        public Rectangle Bounds;
+
         /// <summary>
         ///     Does this collider trigger an event?
         /// </summary>
         public bool IsTrigger = false;
 
-        public Vector2   Origin;
-        public Point2    Size;
-        public Rectangle Bounds;
+        public Vector2 Origin;
+        public Point2  Size;
 
         /// <summary>
         ///     Creates a new box collider

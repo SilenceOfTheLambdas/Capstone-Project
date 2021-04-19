@@ -17,8 +17,8 @@ namespace GrimGame.Game
         private readonly SpriteFont _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly Canvas     _canvas;
         private readonly Button     _mainMenuButton;
-        private readonly Button     _resumeButton;
         private readonly Button     _quitButton;
+        private readonly Button     _resumeButton;
         private readonly Scene      _scene;
 
         private Rectangle _mouseBounds;
@@ -88,7 +88,7 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Returns the player back to the main menu scene
+        ///     Returns the player back to the main menu scene
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

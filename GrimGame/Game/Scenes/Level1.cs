@@ -14,12 +14,13 @@ namespace GrimGame.Game.Scenes
     internal class Level1 : Scene
     {
         private readonly MapSystem _mapSystem;
-        private          Player    _player;
 
         /// <summary>
-        /// Stores a list of spawned and un-spawned enemies
+        ///     Stores a list of spawned and un-spawned enemies
         /// </summary>
         private List<Paladin> _enemies;
+
+        private Player _player;
 
         private List<Paladin> _spawnedList;
 
@@ -75,9 +76,7 @@ namespace GrimGame.Game.Scenes
             var updatedList = new List<Paladin>(_spawnedList);
             // Check to see of any of the enemies have been killed
             foreach (var paladin in _spawnedList.ToList().Where(paladin => paladin.CurrentHp <= 0))
-            {
                 updatedList.Remove(paladin);
-            }
 
             _spawnedList = updatedList;
 
@@ -109,6 +108,17 @@ namespace GrimGame.Game.Scenes
             }
 
             _enemies = updatedList;
+        }
+
+        private void SpawnWaves()
+        {
+            var random = new FastRandom();
+            for (var i = 0; i < 8; i++)
+            {
+                var newEnemy = new Paladin(_mapSystem, _player)
+                    {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
+                _enemies.Add(newEnemy);
+            }
         }
 
         public override void Draw()
