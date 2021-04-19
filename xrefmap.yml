@@ -568,6 +568,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GameObject.OnCollisionEnter
     nameWithType: GameObject.OnCollisionEnter
+  - uid: GrimGame.Engine.GameObject.OnCollisionExit
+    name: OnCollisionExit()
+    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_OnCollisionExit
+    commentId: M:GrimGame.Engine.GameObject.OnCollisionExit
+    fullName: GrimGame.Engine.GameObject.OnCollisionExit()
+    nameWithType: GameObject.OnCollisionExit()
+  - uid: GrimGame.Engine.GameObject.OnCollisionExit*
+    name: OnCollisionExit
+    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_OnCollisionExit_
+    commentId: Overload:GrimGame.Engine.GameObject.OnCollisionExit
+    isSpec: "True"
+    fullName: GrimGame.Engine.GameObject.OnCollisionExit
+    nameWithType: GameObject.OnCollisionExit
   - uid: GrimGame.Engine.GameObject.Origin
     name: Origin
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Origin
@@ -600,19 +613,6 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GameObject.RadialMovement
     nameWithType: GameObject.RadialMovement
-  - uid: GrimGame.Engine.GameObject.RotateTowards(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
-    name: RotateTowards(Vector2, Vector2)
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_RotateTowards_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_
-    commentId: M:GrimGame.Engine.GameObject.RotateTowards(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)
-    fullName: GrimGame.Engine.GameObject.RotateTowards(Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Vector2)
-    nameWithType: GameObject.RotateTowards(Vector2, Vector2)
-  - uid: GrimGame.Engine.GameObject.RotateTowards*
-    name: RotateTowards
-    href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_RotateTowards_
-    commentId: Overload:GrimGame.Engine.GameObject.RotateTowards
-    isSpec: "True"
-    fullName: GrimGame.Engine.GameObject.RotateTowards
-    nameWithType: GameObject.RotateTowards
   - uid: GrimGame.Engine.GameObject.Rotation
     name: Rotation
     href: api/GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_Rotation
@@ -887,6 +887,12 @@ references:
     commentId: T:GrimGame.Engine.GUI.Components.Button
     fullName: GrimGame.Engine.GUI.Components.Button
     nameWithType: Button
+  - uid: GrimGame.Engine.GUI.Components.Button.#ctor(System.String,GrimGame.Engine.GUI.Components.Positions,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteFont)
+    name: Button(String, Positions, Vector2, Color, Color, SpriteFont)
+    href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button__ctor_System_String_GrimGame_Engine_GUI_Components_Positions_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Graphics_SpriteFont_
+    commentId: M:GrimGame.Engine.GUI.Components.Button.#ctor(System.String,GrimGame.Engine.GUI.Components.Positions,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteFont)
+    fullName: GrimGame.Engine.GUI.Components.Button.Button(System.String, GrimGame.Engine.GUI.Components.Positions, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Color, Microsoft.Xna.Framework.Color, Microsoft.Xna.Framework.Graphics.SpriteFont)
+    nameWithType: Button.Button(String, Positions, Vector2, Color, Color, SpriteFont)
   - uid: GrimGame.Engine.GUI.Components.Button.#ctor(System.String,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteFont)
     name: Button(String, Vector2, Vector2, Color, Color, SpriteFont)
     href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button__ctor_System_String_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Color_Microsoft_Xna_Framework_Graphics_SpriteFont_
@@ -900,6 +906,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.Button.Button
     nameWithType: Button.Button
+  - uid: GrimGame.Engine.GUI.Components.Button.AddPadding(Microsoft.Xna.Framework.Vector2)
+    name: AddPadding(Vector2)
+    href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_AddPadding_Microsoft_Xna_Framework_Vector2_
+    commentId: M:GrimGame.Engine.GUI.Components.Button.AddPadding(Microsoft.Xna.Framework.Vector2)
+    fullName: GrimGame.Engine.GUI.Components.Button.AddPadding(Microsoft.Xna.Framework.Vector2)
+    nameWithType: Button.AddPadding(Vector2)
+  - uid: GrimGame.Engine.GUI.Components.Button.AddPadding*
+    name: AddPadding
+    href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_AddPadding_
+    commentId: Overload:GrimGame.Engine.GUI.Components.Button.AddPadding
+    isSpec: "True"
+    fullName: GrimGame.Engine.GUI.Components.Button.AddPadding
+    nameWithType: Button.AddPadding
   - uid: GrimGame.Engine.GUI.Components.Button.ButtonHoverColor
     name: ButtonHoverColor
     href: api/GrimGame.Engine.GUI.Components.Button.html#GrimGame_Engine_GUI_Components_Button_ButtonHoverColor
@@ -1042,12 +1061,78 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.Component.Update
     nameWithType: Component.Update
+  - uid: GrimGame.Engine.GUI.Components.Positions
+    name: Positions
+    href: api/GrimGame.Engine.GUI.Components.Positions.html
+    commentId: T:GrimGame.Engine.GUI.Components.Positions
+    fullName: GrimGame.Engine.GUI.Components.Positions
+    nameWithType: Positions
+  - uid: GrimGame.Engine.GUI.Components.Positions.BottomLeft
+    name: BottomLeft
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_BottomLeft
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.BottomLeft
+    fullName: GrimGame.Engine.GUI.Components.Positions.BottomLeft
+    nameWithType: Positions.BottomLeft
+  - uid: GrimGame.Engine.GUI.Components.Positions.BottomMiddle
+    name: BottomMiddle
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_BottomMiddle
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.BottomMiddle
+    fullName: GrimGame.Engine.GUI.Components.Positions.BottomMiddle
+    nameWithType: Positions.BottomMiddle
+  - uid: GrimGame.Engine.GUI.Components.Positions.BottomRight
+    name: BottomRight
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_BottomRight
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.BottomRight
+    fullName: GrimGame.Engine.GUI.Components.Positions.BottomRight
+    nameWithType: Positions.BottomRight
+  - uid: GrimGame.Engine.GUI.Components.Positions.CenterLeft
+    name: CenterLeft
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_CenterLeft
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.CenterLeft
+    fullName: GrimGame.Engine.GUI.Components.Positions.CenterLeft
+    nameWithType: Positions.CenterLeft
+  - uid: GrimGame.Engine.GUI.Components.Positions.CenterMiddle
+    name: CenterMiddle
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_CenterMiddle
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.CenterMiddle
+    fullName: GrimGame.Engine.GUI.Components.Positions.CenterMiddle
+    nameWithType: Positions.CenterMiddle
+  - uid: GrimGame.Engine.GUI.Components.Positions.CenterRight
+    name: CenterRight
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_CenterRight
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.CenterRight
+    fullName: GrimGame.Engine.GUI.Components.Positions.CenterRight
+    nameWithType: Positions.CenterRight
+  - uid: GrimGame.Engine.GUI.Components.Positions.TopLeft
+    name: TopLeft
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_TopLeft
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.TopLeft
+    fullName: GrimGame.Engine.GUI.Components.Positions.TopLeft
+    nameWithType: Positions.TopLeft
+  - uid: GrimGame.Engine.GUI.Components.Positions.TopMiddle
+    name: TopMiddle
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_TopMiddle
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.TopMiddle
+    fullName: GrimGame.Engine.GUI.Components.Positions.TopMiddle
+    nameWithType: Positions.TopMiddle
+  - uid: GrimGame.Engine.GUI.Components.Positions.TopRight
+    name: TopRight
+    href: api/GrimGame.Engine.GUI.Components.Positions.html#GrimGame_Engine_GUI_Components_Positions_TopRight
+    commentId: F:GrimGame.Engine.GUI.Components.Positions.TopRight
+    fullName: GrimGame.Engine.GUI.Components.Positions.TopRight
+    nameWithType: Positions.TopRight
   - uid: GrimGame.Engine.GUI.Components.TextBox
     name: TextBox
     href: api/GrimGame.Engine.GUI.Components.TextBox.html
     commentId: T:GrimGame.Engine.GUI.Components.TextBox
     fullName: GrimGame.Engine.GUI.Components.TextBox
     nameWithType: TextBox
+  - uid: GrimGame.Engine.GUI.Components.TextBox.#ctor(GrimGame.Engine.GUI.Components.Positions,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
+    name: TextBox(Positions, Vector2, Color)
+    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox__ctor_GrimGame_Engine_GUI_Components_Positions_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_
+    commentId: M:GrimGame.Engine.GUI.Components.TextBox.#ctor(GrimGame.Engine.GUI.Components.Positions,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
+    fullName: GrimGame.Engine.GUI.Components.TextBox.TextBox(GrimGame.Engine.GUI.Components.Positions, Microsoft.Xna.Framework.Vector2, Microsoft.Xna.Framework.Color)
+    nameWithType: TextBox.TextBox(Positions, Vector2, Color)
   - uid: GrimGame.Engine.GUI.Components.TextBox.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)
     name: TextBox(Vector2, Vector2, Color)
     href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox__ctor_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Color_
@@ -1061,6 +1146,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Engine.GUI.Components.TextBox.TextBox
     nameWithType: TextBox.TextBox
+  - uid: GrimGame.Engine.GUI.Components.TextBox.AddText(System.String)
+    name: AddText(String)
+    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_AddText_System_String_
+    commentId: M:GrimGame.Engine.GUI.Components.TextBox.AddText(System.String)
+    fullName: GrimGame.Engine.GUI.Components.TextBox.AddText(System.String)
+    nameWithType: TextBox.AddText(String)
+  - uid: GrimGame.Engine.GUI.Components.TextBox.AddText*
+    name: AddText
+    href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_AddText_
+    commentId: Overload:GrimGame.Engine.GUI.Components.TextBox.AddText
+    isSpec: "True"
+    fullName: GrimGame.Engine.GUI.Components.TextBox.AddText
+    nameWithType: TextBox.AddText
   - uid: GrimGame.Engine.GUI.Components.TextBox.Draw
     name: Draw()
     href: api/GrimGame.Engine.GUI.Components.TextBox.html#GrimGame_Engine_GUI_Components_TextBox_Draw
@@ -1892,6 +1990,25 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.Player.Player
     nameWithType: Player.Player
+  - uid: GrimGame.Game.Character.Player.AttackTimer
+    name: AttackTimer
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_AttackTimer
+    commentId: F:GrimGame.Game.Character.Player.AttackTimer
+    fullName: GrimGame.Game.Character.Player.AttackTimer
+    nameWithType: Player.AttackTimer
+  - uid: GrimGame.Game.Character.Player.Coins
+    name: Coins
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_Coins
+    commentId: P:GrimGame.Game.Character.Player.Coins
+    fullName: GrimGame.Game.Character.Player.Coins
+    nameWithType: Player.Coins
+  - uid: GrimGame.Game.Character.Player.Coins*
+    name: Coins
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_Coins_
+    commentId: Overload:GrimGame.Game.Character.Player.Coins
+    isSpec: "True"
+    fullName: GrimGame.Game.Character.Player.Coins
+    nameWithType: Player.Coins
   - uid: GrimGame.Game.Character.Player.CurrentHp
     name: CurrentHp
     href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_CurrentHp
@@ -1931,6 +2048,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.Player.Init
     nameWithType: Player.Init
+  - uid: GrimGame.Game.Character.Player.Kill
+    name: Kill()
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_Kill
+    commentId: M:GrimGame.Game.Character.Player.Kill
+    fullName: GrimGame.Game.Character.Player.Kill()
+    nameWithType: Player.Kill()
+  - uid: GrimGame.Game.Character.Player.Kill*
+    name: Kill
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_Kill_
+    commentId: Overload:GrimGame.Game.Character.Player.Kill
+    isSpec: "True"
+    fullName: GrimGame.Game.Character.Player.Kill
+    nameWithType: Player.Kill
   - uid: GrimGame.Game.Character.Player.MaxHp
     name: MaxHp
     href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_MaxHp
@@ -1957,6 +2087,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.Player.OnCollisionEnter
     nameWithType: Player.OnCollisionEnter
+  - uid: GrimGame.Game.Character.Player.OnCollisionExit
+    name: OnCollisionExit()
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_OnCollisionExit
+    commentId: M:GrimGame.Game.Character.Player.OnCollisionExit
+    fullName: GrimGame.Game.Character.Player.OnCollisionExit()
+    nameWithType: Player.OnCollisionExit()
+  - uid: GrimGame.Game.Character.Player.OnCollisionExit*
+    name: OnCollisionExit
+    href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_OnCollisionExit_
+    commentId: Overload:GrimGame.Game.Character.Player.OnCollisionExit
+    isSpec: "True"
+    fullName: GrimGame.Game.Character.Player.OnCollisionExit
+    nameWithType: Player.OnCollisionExit
   - uid: GrimGame.Game.Character.Player.RunningSpeed
     name: RunningSpeed
     href: api/GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_RunningSpeed
@@ -1989,6 +2132,57 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Character.Player.Update
     nameWithType: Player.Update
+  - uid: GrimGame.Game.EndGameMenu
+    name: EndGameMenu
+    href: api/GrimGame.Game.EndGameMenu.html
+    commentId: T:GrimGame.Game.EndGameMenu
+    fullName: GrimGame.Game.EndGameMenu
+    nameWithType: EndGameMenu
+  - uid: GrimGame.Game.EndGameMenu.#ctor(GrimGame.Game.Scene)
+    name: EndGameMenu(Scene)
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu__ctor_GrimGame_Game_Scene_
+    commentId: M:GrimGame.Game.EndGameMenu.#ctor(GrimGame.Game.Scene)
+    fullName: GrimGame.Game.EndGameMenu.EndGameMenu(GrimGame.Game.Scene)
+    nameWithType: EndGameMenu.EndGameMenu(Scene)
+  - uid: GrimGame.Game.EndGameMenu.#ctor*
+    name: EndGameMenu
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu__ctor_
+    commentId: Overload:GrimGame.Game.EndGameMenu.#ctor
+    isSpec: "True"
+    fullName: GrimGame.Game.EndGameMenu.EndGameMenu
+    nameWithType: EndGameMenu.EndGameMenu
+  - uid: GrimGame.Game.EndGameMenu.Draw
+    name: Draw()
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu_Draw
+    commentId: M:GrimGame.Game.EndGameMenu.Draw
+    fullName: GrimGame.Game.EndGameMenu.Draw()
+    nameWithType: EndGameMenu.Draw()
+  - uid: GrimGame.Game.EndGameMenu.Draw*
+    name: Draw
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu_Draw_
+    commentId: Overload:GrimGame.Game.EndGameMenu.Draw
+    isSpec: "True"
+    fullName: GrimGame.Game.EndGameMenu.Draw
+    nameWithType: EndGameMenu.Draw
+  - uid: GrimGame.Game.EndGameMenu.IsActive
+    name: IsActive
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu_IsActive
+    commentId: F:GrimGame.Game.EndGameMenu.IsActive
+    fullName: GrimGame.Game.EndGameMenu.IsActive
+    nameWithType: EndGameMenu.IsActive
+  - uid: GrimGame.Game.EndGameMenu.Update
+    name: Update()
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu_Update
+    commentId: M:GrimGame.Game.EndGameMenu.Update
+    fullName: GrimGame.Game.EndGameMenu.Update()
+    nameWithType: EndGameMenu.Update()
+  - uid: GrimGame.Game.EndGameMenu.Update*
+    name: Update
+    href: api/GrimGame.Game.EndGameMenu.html#GrimGame_Game_EndGameMenu_Update_
+    commentId: Overload:GrimGame.Game.EndGameMenu.Update
+    isSpec: "True"
+    fullName: GrimGame.Game.EndGameMenu.Update
+    nameWithType: EndGameMenu.Update
   - uid: GrimGame.Game.GrimDebugger
     name: GrimDebugger
     href: api/GrimGame.Game.GrimDebugger.html
@@ -2021,6 +2215,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.GrimDebugger.Draw
     nameWithType: GrimDebugger.Draw
+  - uid: GrimGame.Game.GrimDebugger.DrawEnemyBounds(GrimGame.Game.Character.Enemy)
+    name: DrawEnemyBounds(Enemy)
+    href: api/GrimGame.Game.GrimDebugger.html#GrimGame_Game_GrimDebugger_DrawEnemyBounds_GrimGame_Game_Character_Enemy_
+    commentId: M:GrimGame.Game.GrimDebugger.DrawEnemyBounds(GrimGame.Game.Character.Enemy)
+    fullName: GrimGame.Game.GrimDebugger.DrawEnemyBounds(GrimGame.Game.Character.Enemy)
+    nameWithType: GrimDebugger.DrawEnemyBounds(Enemy)
+  - uid: GrimGame.Game.GrimDebugger.DrawEnemyBounds*
+    name: DrawEnemyBounds
+    href: api/GrimGame.Game.GrimDebugger.html#GrimGame_Game_GrimDebugger_DrawEnemyBounds_
+    commentId: Overload:GrimGame.Game.GrimDebugger.DrawEnemyBounds
+    isSpec: "True"
+    fullName: GrimGame.Game.GrimDebugger.DrawEnemyBounds
+    nameWithType: GrimDebugger.DrawEnemyBounds
   - uid: GrimGame.Game.GrimDebugger.DrawGrid
     name: DrawGrid()
     href: api/GrimGame.Game.GrimDebugger.html#GrimGame_Game_GrimDebugger_DrawGrid
@@ -2681,6 +2888,57 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.Scenes.MainMenu.Update
     nameWithType: MainMenu.Update
+  - uid: GrimGame.Game.Shop
+    name: Shop
+    href: api/GrimGame.Game.Shop.html
+    commentId: T:GrimGame.Game.Shop
+    fullName: GrimGame.Game.Shop
+    nameWithType: Shop
+  - uid: GrimGame.Game.Shop.#ctor(GrimGame.Game.Character.Player)
+    name: Shop(Player)
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop__ctor_GrimGame_Game_Character_Player_
+    commentId: M:GrimGame.Game.Shop.#ctor(GrimGame.Game.Character.Player)
+    fullName: GrimGame.Game.Shop.Shop(GrimGame.Game.Character.Player)
+    nameWithType: Shop.Shop(Player)
+  - uid: GrimGame.Game.Shop.#ctor*
+    name: Shop
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop__ctor_
+    commentId: Overload:GrimGame.Game.Shop.#ctor
+    isSpec: "True"
+    fullName: GrimGame.Game.Shop.Shop
+    nameWithType: Shop.Shop
+  - uid: GrimGame.Game.Shop.Draw
+    name: Draw()
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop_Draw
+    commentId: M:GrimGame.Game.Shop.Draw
+    fullName: GrimGame.Game.Shop.Draw()
+    nameWithType: Shop.Draw()
+  - uid: GrimGame.Game.Shop.Draw*
+    name: Draw
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop_Draw_
+    commentId: Overload:GrimGame.Game.Shop.Draw
+    isSpec: "True"
+    fullName: GrimGame.Game.Shop.Draw
+    nameWithType: Shop.Draw
+  - uid: GrimGame.Game.Shop.IsActive
+    name: IsActive
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop_IsActive
+    commentId: F:GrimGame.Game.Shop.IsActive
+    fullName: GrimGame.Game.Shop.IsActive
+    nameWithType: Shop.IsActive
+  - uid: GrimGame.Game.Shop.Update
+    name: Update()
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop_Update
+    commentId: M:GrimGame.Game.Shop.Update
+    fullName: GrimGame.Game.Shop.Update()
+    nameWithType: Shop.Update()
+  - uid: GrimGame.Game.Shop.Update*
+    name: Update
+    href: api/GrimGame.Game.Shop.html#GrimGame_Game_Shop_Update_
+    commentId: Overload:GrimGame.Game.Shop.Update
+    isSpec: "True"
+    fullName: GrimGame.Game.Shop.Update
+    nameWithType: Shop.Update
   - uid: GrimGame.Game.UiManager
     name: UiManager
     href: api/GrimGame.Game.UiManager.html
@@ -2700,6 +2958,19 @@ references:
     isSpec: "True"
     fullName: GrimGame.Game.UiManager.UiManager
     nameWithType: UiManager.UiManager
+  - uid: GrimGame.Game.UiManager.DisplayEndScreen
+    name: DisplayEndScreen()
+    href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_DisplayEndScreen
+    commentId: M:GrimGame.Game.UiManager.DisplayEndScreen
+    fullName: GrimGame.Game.UiManager.DisplayEndScreen()
+    nameWithType: UiManager.DisplayEndScreen()
+  - uid: GrimGame.Game.UiManager.DisplayEndScreen*
+    name: DisplayEndScreen
+    href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_DisplayEndScreen_
+    commentId: Overload:GrimGame.Game.UiManager.DisplayEndScreen
+    isSpec: "True"
+    fullName: GrimGame.Game.UiManager.DisplayEndScreen
+    nameWithType: UiManager.DisplayEndScreen
   - uid: GrimGame.Game.UiManager.Draw
     name: Draw()
     href: api/GrimGame.Game.UiManager.html#GrimGame_Game_UiManager_Draw

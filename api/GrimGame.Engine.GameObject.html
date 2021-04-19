@@ -762,11 +762,22 @@ stored in <a class="xref" href="GrimGame.Game.ObjectManager.html">ObjectManager<
       <tr>
         <td><a class="xref" href="GrimGame.Engine.GameObject.html">GameObject</a></td>
         <td><span class="parametername">other</span></td>
-        <td><p>The object that has collided with us.</p>
+        <td><p>The object that has collided with <em>this</em> object</p>
 </td>
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="GrimGame_Engine_GameObject_OnCollisionExit_" data-uid="GrimGame.Engine.GameObject.OnCollisionExit*"></a>
+  <h4 id="GrimGame_Engine_GameObject_OnCollisionExit" data-uid="GrimGame.Engine.GameObject.OnCollisionExit">OnCollisionExit()</h4>
+  <div class="markdown level1 summary"><p>When an object exits a collision</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnCollisionExit()</code></pre>
+  </div>
   
   
   <a id="GrimGame_Engine_GameObject_RadialMovement_" data-uid="GrimGame.Engine.GameObject.RadialMovement*"></a>
@@ -821,58 +832,6 @@ Work taken from: <a href="https://www.youtube.com/watch?v=yYNrmsmEcy8">https://w
       <tr>
         <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
         <td><p>Direction to move towards</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="GrimGame_Engine_GameObject_RotateTowards_" data-uid="GrimGame.Engine.GameObject.RotateTowards*"></a>
-  <h4 id="GrimGame_Engine_GameObject_RotateTowards_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_" data-uid="GrimGame.Engine.GameObject.RotateTowards(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">RotateTowards(Vector2, Vector2)</h4>
-  <div class="markdown level1 summary"><p>Taken from <a href="https://www.youtube.com/watch?v=yYNrmsmEcy8">https://www.youtube.com/watch?v=yYNrmsmEcy8</a> |
-Rotates this object towards a given position.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float RotateTowards(Vector2 pos, Vector2 focus)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td><span class="parametername">pos</span></td>
-        <td><p>From position</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Xna.Framework.Vector2</span></td>
-        <td><span class="parametername">focus</span></td>
-        <td><p>The focus position, i.e what this game object will look at</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>A float representing the cartesian angle.</p>
 </td>
       </tr>
     </tbody>

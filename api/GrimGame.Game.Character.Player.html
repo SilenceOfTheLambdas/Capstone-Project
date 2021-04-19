@@ -154,9 +154,6 @@
       <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_RadialMovement_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_System_Single_">GameObject.RadialMovement(Vector2, Vector2, Single)</a>
     </div>
     <div>
-      <a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_RotateTowards_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_">GameObject.RotateTowards(Vector2, Vector2)</a>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
@@ -225,6 +222,30 @@
   </h3>
   
   
+  <h4 id="GrimGame_Game_Character_Player_AttackTimer" data-uid="GrimGame.Game.Character.Player.AttackTimer">AttackTimer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float AttackTimer</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <h4 id="GrimGame_Game_Character_Player_RunningSpeed" data-uid="GrimGame.Game.Character.Player.RunningSpeed">RunningSpeed</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -249,6 +270,32 @@
   </table>
   <h3 id="properties">Properties
   </h3>
+  
+  
+  <a id="GrimGame_Game_Character_Player_Coins_" data-uid="GrimGame.Game.Character.Player.Coins*"></a>
+  <h4 id="GrimGame_Game_Character_Player_Coins" data-uid="GrimGame.Game.Character.Player.Coins">Coins</h4>
+  <div class="markdown level1 summary"><p>The currency for buying upgrades, directly relates to <a class="xref" href="GrimGame.Game.Character.Player.html#GrimGame_Game_Character_Player_Score">Score</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Coins { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="GrimGame_Game_Character_Player_CurrentHp_" data-uid="GrimGame.Game.Character.Player.CurrentHp*"></a>
@@ -310,7 +357,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Score { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Score { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -353,6 +400,17 @@
   </div>
   
   
+  <a id="GrimGame_Game_Character_Player_Kill_" data-uid="GrimGame.Game.Character.Player.Kill*"></a>
+  <h4 id="GrimGame_Game_Character_Player_Kill" data-uid="GrimGame.Game.Character.Player.Kill">Kill()</h4>
+  <div class="markdown level1 summary"><p>Kills the player, and ends the game.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Kill()</code></pre>
+  </div>
+  
+  
   <a id="GrimGame_Game_Character_Player_OnCollisionEnter_" data-uid="GrimGame.Game.Character.Player.OnCollisionEnter*"></a>
   <h4 id="GrimGame_Game_Character_Player_OnCollisionEnter_GrimGame_Engine_GameObject_" data-uid="GrimGame.Game.Character.Player.OnCollisionEnter(GrimGame.Engine.GameObject)">OnCollisionEnter(GameObject)</h4>
   <div class="markdown level1 summary"></div>
@@ -380,6 +438,18 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_OnCollisionEnter_GrimGame_Engine_GameObject_">GameObject.OnCollisionEnter(GameObject)</a></div>
+  
+  
+  <a id="GrimGame_Game_Character_Player_OnCollisionExit_" data-uid="GrimGame.Game.Character.Player.OnCollisionExit*"></a>
+  <h4 id="GrimGame_Game_Character_Player_OnCollisionExit" data-uid="GrimGame.Game.Character.Player.OnCollisionExit">OnCollisionExit()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnCollisionExit()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="GrimGame.Engine.GameObject.html#GrimGame_Engine_GameObject_OnCollisionExit">GameObject.OnCollisionExit()</a></div>
   
   
   <a id="GrimGame_Game_Character_Player_Update_" data-uid="GrimGame.Game.Character.Player.Update*"></a>

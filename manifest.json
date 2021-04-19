@@ -48,7 +48,7 @@
           "hash": "6BH9gBxrFhjpNdjX88Txmg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "6NgMNbL3lyYIaUbL7DC0yg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "PAp7yJMxCXMcXRTdB7X8uA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "OZGJRBpSxrzpsefPPPWXdQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "ufKBNjtENKB5lIDgu+HpXw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "e2S3JALK7ey1ZPsa8/powQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Engine.GUI.Components.Button.html",
-          "hash": "ftt1L7AAyRf7fToYt+DzFw=="
+          "hash": "j4OM/VHfBDd11FYnpf7Sqw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,7 +177,19 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Engine.GUI.Components.Component.html",
-          "hash": "ZPUgm3MpLn3b+R8HfGtKlg=="
+          "hash": "8uWTb+kWKjdDBzIcTbMVrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Engine.GUI.Components.Positions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Engine.GUI.Components.Positions.html",
+          "hash": "meKAsxjtW+xPIe8G8gejIg=="
         }
       },
       "is_incremental": true,
@@ -201,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Engine.GUI.Components.TextBox.html",
-          "hash": "hr/k2rGpUC4Qk3LrnZU7VQ=="
+          "hash": "XF99faT/D/aa4qKfqAiORg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Engine.GUI.Components.html",
-          "hash": "suzCftOjMxvsJAsVgRVLjw=="
+          "hash": "vFK6KrTEEquqRuWr0Q5Tig=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Engine.GameObject.html",
-          "hash": "6X/J4699iKw8kENvOrltOQ=="
+          "hash": "IODf5ACAyCKK8Fa/9wQIgA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -300,7 +312,7 @@
           "hash": "kOr5hX9+m64jxDAPFatcUA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -348,7 +360,7 @@
           "hash": "egX8e0Pbj3vpyTvYDsMAYw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -360,7 +372,7 @@
           "hash": "NwRQN0V2TyEIkY7H8lEmZg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -372,7 +384,7 @@
           "hash": "FkI0hoKKHn1uYCs51RLlNQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -384,7 +396,7 @@
           "hash": "Hf610zVWE5Q0bvyette6lA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -393,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.Character.Enemy.html",
-          "hash": "r9FwPk7TDCssX3FXC7cYLQ=="
+          "hash": "1XzLMzOueeRJtWFAhhYHYg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -405,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.Character.Paladin.html",
-          "hash": "A1V7kgIds0jafP2eve2iRA=="
+          "hash": "JBXnwXGtsKUHerZTCPnmGA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -417,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.Character.Player.html",
-          "hash": "q0vkLnY7jEtHMCMnimMjmQ=="
+          "hash": "afL2Oy4/CILTh9lnLTQB0Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -432,6 +444,18 @@
           "hash": "XNsAWPaFNNKLUZIlHAsppA=="
         }
       },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.EndGameMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.EndGameMenu.html",
+          "hash": "hzsLq0xK7lqw30StnoBsAQ=="
+        }
+      },
       "is_incremental": true,
       "version": ""
     },
@@ -441,10 +465,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.GrimDebugger.html",
-          "hash": "BVffktdg82gFLfkoMp8LJg=="
+          "hash": "glVXRadHhiIoYjLXfuY4rg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -456,7 +480,7 @@
           "hash": "3n/EAsyU8F1lPaBcITfhaw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -513,10 +537,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.Projectile.html",
-          "hash": "RS3gDOk1e5l9DG91Y8SuFg=="
+          "hash": "RNd4K/EOW42K2hsd8evUaw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -528,7 +552,7 @@
           "hash": "rLhrCkEA4hUp5lXj0ePx+g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -552,7 +576,7 @@
           "hash": "xsinFOXo7TQltMNQjop/aQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -564,7 +588,19 @@
           "hash": "azLbU61Sm7hyOTqhzY6MOg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GrimGame.Game.Shop.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GrimGame.Game.Shop.html",
+          "hash": "ArP5flnmHjmghHKgw7d12w=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -573,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.UiManager.html",
-          "hash": "+yntJU6bUsVwAIQQHDrE9A=="
+          "hash": "xf6ez4B3V3h7J/V3hlbUeQ=="
         }
       },
       "is_incremental": true,
@@ -585,10 +621,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GrimGame.Game.html",
-          "hash": "vXCKAfKxg7FW/mrtbVGSjA=="
+          "hash": "q7J2GA+wYL71FoT921yE9Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -597,10 +633,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "iPceYwTzA7mpTeDn17gqlg=="
+          "hash": "T+MZv2BmTwgsU4NivPZlSA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -609,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "oO+t7RPnBNZRalod2Hxr9Q=="
+          "hash": "a3m6hQzeKTT/5P+bOVde6g=="
         }
       },
       "is_incremental": false,
@@ -621,10 +657,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "VTfnmraWSE8PHeOYWXinPA=="
+          "hash": "+GUsNTd1w0ZiVYqImn9fSA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -662,7 +698,7 @@
           "hash": "XurCQe1PPM8l9od9hz0pmA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -691,13 +727,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 2
+          "skipped_file_count": 1
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 49,
-          "skipped_file_count": 49
+          "total_file_count": 52,
+          "skipped_file_count": 38
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
