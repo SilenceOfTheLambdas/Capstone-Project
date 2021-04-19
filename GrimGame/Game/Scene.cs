@@ -39,7 +39,7 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Only called when this scene is active
+        ///     Only called when this scene is active
         /// </summary>
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)

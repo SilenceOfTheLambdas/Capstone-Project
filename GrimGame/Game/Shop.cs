@@ -1,4 +1,7 @@
 ﻿#nullable enable
+
+#region Imports
+
 using System;
 using System.Collections.Generic;
 using GrimGame.Engine;
@@ -9,26 +12,29 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+#endregion
+
 namespace GrimGame.Game
 {
     public class Shop
     {
+        private readonly SpriteFont   _buttonFont = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly Canvas       _canvas;
-        private readonly Player       _player;
-        private readonly SpriteFont   _buttonFont  = Globals.ContentManager.Load<SpriteFont>("Fonts/buttonText");
         private readonly List<Button> _itemButtons = new List<Button>();
-        private          Rectangle    _mouseBounds;
-        public           bool         IsActive;
 
         /// <summary>
-        /// Represents a list of purchasable upgrades.
+        ///     Represents a list of purchasable upgrades.
         /// </summary>
         private readonly Dictionary<string, Tuple<int, float>> _items = new Dictionary<string, Tuple<int, float>>
         {
-            {"Run Speed", new Tuple<int, float>(9, 1.2f)},
-            {"Max HP", new Tuple<int, float>(13, 5)},
-            {"Attack Speed", new Tuple<int, float>(11, 0.2f)}
+            {"Run Speed", new Tuple<int, float>(3, 1.2f)},
+            {"Max HP", new Tuple<int, float>(4, 5)},
+            {"Attack Speed", new Tuple<int, float>(1, 0.2f)}
         };
+
+        private readonly Player    _player;
+        private          Rectangle _mouseBounds;
+        public           bool      IsActive;
 
         public Shop(Player player)
         {
@@ -89,40 +95,34 @@ namespace GrimGame.Game
         private void PurchaseHealthUpgrade(object? sender, EventArgs e)
         {
             if (_player.Coins >= _items["Max HP"].Item1)
-            {
                 if (_itemButtons[1].Bounds.Intersects(_mouseBounds))
                 {
                     _player.MaxHp += (int) _items["Max HP"].Item2;
                     _player.Coins -= _items["Max HP"].Item1;
                     Console.WriteLine("Purchased player HP");
                 }
-            }
         }
 
         private void PurchaseRunSpeedUpgrade(object? sender, EventArgs e)
         {
             if (_player.Coins >= _items["Run Speed"].Item1)
-            {
                 if (_itemButtons[0].Bounds.Intersects(_mouseBounds))
                 {
                     _player.RunningSpeed += _items["Run Speed"].Item2;
                     _player.Coins -= _items["Run Speed"].Item1;
                     Console.WriteLine("Purchased player Run Speed");
                 }
-            }
         }
 
         private void PurchaseAttackSpeedUpgrade(object? sender, EventArgs e)
         {
             if (_player.Coins >= _items["Attack Speed"].Item1)
-            {
                 if (_itemButtons[2].Bounds.Intersects(_mouseBounds))
                 {
                     _player.AttackTimer -= _items["Attack Speed"].Item2;
                     _player.Coins -= _items["Attack Speed"].Item1;
                     Console.WriteLine("Purchased player Attack Speed");
                 }
-            }
         }
 
         public void Draw()

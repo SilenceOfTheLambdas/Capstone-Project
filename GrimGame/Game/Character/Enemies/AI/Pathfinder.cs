@@ -120,7 +120,6 @@ namespace GrimGame.Character.Enemies.AI
                 var node = new SearchNode
                 {
                     Position = new Point(x, y), Walkable = map.GetTile("player", x, y).IsBlank
-                    //Position = new Point(x, y), Walkable = !Globals.MapSystem.IsTileCollision(x, y)
                 };
 
                 // We only want to store nodes
@@ -236,13 +235,11 @@ namespace GrimGame.Character.Enemies.AI
 
             // Find the closest node to the goal.
             foreach (var node in _openList)
-            {
                 if (node.DistanceToGoal < smallestDistanceToGoal)
                 {
                     currentTile = node;
                     smallestDistanceToGoal = currentTile.DistanceToGoal;
                 }
-            }
 
             return currentTile;
         }
@@ -289,12 +286,6 @@ namespace GrimGame.Character.Enemies.AI
                 //      has the smallest F value.
                 /////////////////////////////////////////////////////////////////
                 var currentNode = FindBestNode();
-
-                /////////////////////////////////////////////////////////////////
-                // b) : If the Open List empty or no node can be found, 
-                //      no path can be found so the algorithm terminates.
-                /////////////////////////////////////////////////////////////////
-                if (currentNode == null) break;
 
                 /////////////////////////////////////////////////////////////////
                 // c) : If the Active Node is the goal node, we will 

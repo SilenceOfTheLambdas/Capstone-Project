@@ -5,6 +5,7 @@
         <TieredCompilation>false</TieredCompilation>
         <RootNamespace>MonoGameCross-PlatformDesktopApplication</RootNamespace>
         <OutputType>WinExe</OutputType>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
