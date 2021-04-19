@@ -26,9 +26,7 @@ namespace GrimGame.Game.Character
         private const float PlayerScale = 1.5f;
 
         // _____ Attack _____ //
-        private const    int                AttackDamage = 20; // How much HP the player deals when attacking
-        private const    int                AttackRange  = 8; // How far does the attack reach?
-        private const    float              AttackTimer  = 1.2f; // How often the player can attack (in seconds)
+        private const    int                AttackDamage = 40; // How much HP the player deals when attacking
         private readonly OrthographicCamera _camera;
 
         // _____ References _____ //
@@ -43,6 +41,7 @@ namespace GrimGame.Game.Character
 
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
         private float                _timerForAttacks; // only used to count the number of seconds
+        public  float                AttackTimer = 1.2f; // How often the player can attack (in seconds)
 
         // _____ Properties _____ //
         public float RunningSpeed;
@@ -63,7 +62,12 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The total score the player accumulated.
         /// </summary>
-        public int Score { get; private set; }
+        public int Score { get; set; }
+
+        /// <summary>
+        ///     The currency for buying upgrades, directly relates to <see cref="Score" />
+        /// </summary>
+        public int Coins { get; set; }
 
         // ____ Health ____ //
         /// <summary>
@@ -139,6 +143,8 @@ namespace GrimGame.Game.Character
 
             BoxCollider = new BoxCollider(new Vector2(Position.X, Position.Y),
                 new Point(19, 16));
+
+            Coins = Score;
         }
 
         public override void Update(GameTime gameTime)
@@ -174,6 +180,9 @@ namespace GrimGame.Game.Character
             // MUST be placed after base.update()
             Position += Velocity;
             Velocity = Vector2.Zero;
+
+            if (_currentHp <= 0)
+                Kill();
         }
 
         public override void Draw()
@@ -252,12 +261,11 @@ namespace GrimGame.Game.Character
         /// </summary>
         private void Attack()
         {
-            // TODO: Fix why attacking still works when enemy is dead
-            if (_enemyInAttackRange && SceneManager.GetActiveScene.ObjectManager.Objects.Exists(o => o is Enemy))
+            if (_enemyInAttackRange)
             {
                 // Create a new Projectile
                 var projectile = new Projectile(10f, 8) {Position = Position};
-
+                Console.WriteLine("An enemy has been hit!");
                 switch (_playerDirection)
                 {
                     // If a player attacks, based on their direction
@@ -265,19 +273,15 @@ namespace GrimGame.Game.Character
                     // If an enemy is within that box collider,
                     // Get the enemies data, and deal damage
                     case PlayerDirection.Up:
-                        //BoxCollider.Bounds.Inflate(0, AttackRange);
                         projectile.Velocity.Y = -Speed * 4;
                         break;
                     case PlayerDirection.Down:
-                        //BoxCollider.Bounds.Inflate(0, AttackRange);
                         projectile.Velocity.Y = Speed * 4;
                         break;
                     case PlayerDirection.Left:
-                        //BoxCollider.Bounds.Inflate(AttackRange, 0);
                         projectile.Velocity.X = -Speed * 4;
                         break;
                     case PlayerDirection.Right:
-                        //BoxCollider.Bounds.Inflate(AttackRange, 0);
                         projectile.Velocity.X = Speed * 4;
                         break;
                     default:
@@ -287,8 +291,11 @@ namespace GrimGame.Game.Character
                 // If the enemy is within attack range, attack
                 _enemyToHit.CurrentHp -= AttackDamage;
                 if (_enemyToHit.CurrentHp <= 0)
+                {
                     // Update player's score
                     Score++;
+                    Coins++;
+                }
             }
         }
 
@@ -300,10 +307,20 @@ namespace GrimGame.Game.Character
                 _enemyToHit = enemy;
                 _enemyInAttackRange = true;
             }
-            else
-            {
-                _enemyInAttackRange = false;
-            }
+        }
+
+        protected override void OnCollisionExit()
+        {
+            _enemyInAttackRange = false;
+        }
+
+        /// <summary>
+        ///     Kills the player, and ends the game.
+        /// </summary>
+        public void Kill()
+        {
+            UiManager.DisplayEndScreen();
+            SceneManager.GetActiveScene.ObjectManager.Clear();
         }
 
         /// <summary>

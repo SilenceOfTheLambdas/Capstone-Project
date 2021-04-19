@@ -1,8 +1,22 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GrimGame.Engine.GUI.Components
 {
+    public enum Positions
+    {
+        CenterLeft,
+        CenterMiddle,
+        CenterRight,
+        TopLeft,
+        TopMiddle,
+        TopRight,
+        BottomLeft,
+        BottomMiddle,
+        BottomRight
+    }
+
     /// <summary>
     ///     A text box displays text.
     /// </summary>
@@ -55,6 +69,32 @@ namespace GrimGame.Engine.GUI.Components
                 new Point((int) size.X, (int) size.Y));
         }
 
+        public TextBox(Positions position, Vector2 size, Color backgroundColor)
+        {
+            Position = position switch
+            {
+                Positions.TopMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - size.X / 2, 0),
+                Positions.CenterMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - size.X / 2,
+                    Globals.Graphics.PreferredBackBufferHeight / 2 - size.Y / 2),
+                Positions.CenterLeft => new Vector2(0, Globals.Graphics.PreferredBackBufferHeight / 2 - size.Y / 2),
+                Positions.CenterRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - size.X,
+                    Globals.Graphics.PreferredBackBufferHeight / 2 - size.Y / 2),
+                Positions.TopLeft => new Vector2(0, 0),
+                Positions.TopRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - size.X, 0),
+                Positions.BottomLeft => new Vector2(0, Globals.Graphics.PreferredBackBufferHeight - size.Y),
+                Positions.BottomMiddle => new Vector2(Globals.Graphics.PreferredBackBufferWidth / 2 - size.X / 2,
+                    Globals.Graphics.PreferredBackBufferHeight - size.Y),
+                Positions.BottomRight => new Vector2(Globals.Graphics.PreferredBackBufferWidth - size.X,
+                    Globals.Graphics.PreferredBackBufferHeight - size.Y),
+                _ => throw new ArgumentOutOfRangeException(nameof(position), position, null)
+            };
+            Size = size;
+            BackgroundColor = backgroundColor;
+            Font = Globals.GuiFont;
+            Bounds = new Rectangle(new Point((int) Position.X, (int) Position.Y),
+                new Point((int) size.X, (int) size.Y));
+        }
+
         /// <summary>
         ///     The font of the text.
         /// </summary>
@@ -72,7 +112,41 @@ namespace GrimGame.Engine.GUI.Components
         {
             _text = text;
             _textColor = textColor;
+            switch (alignment)
+            {
+                case FontAlignment.LeftUpper:
+                    Position = new Vector2(Bounds.Left, Bounds.Top);
+                    break;
+                case FontAlignment.LeftMiddle:
+                    Position = new Vector2(Bounds.Left, Bounds.Top + Bounds.Size.Y / 2);
+                    break;
+                case FontAlignment.LeftBottom:
+                    Position = new Vector2(Bounds.Left, Bounds.Bottom);
+                    break;
+                case FontAlignment.CenterUpper:
+                    Position = new Vector2(Bounds.Left + Bounds.Size.X / 2, Bounds.Top);
+                    break;
+                case FontAlignment.CenterMiddle:
+                    Position = new Vector2(Bounds.Left + Bounds.Size.X / 2, Bounds.Top + Bounds.Size.Y / 2);
+                    break;
+                case FontAlignment.CenterBottom:
+                    break;
+                case FontAlignment.RightUpper:
+                    break;
+                case FontAlignment.RightMiddle:
+                    break;
+                case FontAlignment.RightBottom:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(alignment), alignment, null);
+            }
+
             Font = font;
+        }
+
+        public void AddText(string text)
+        {
+            _text += text;
         }
 
         /// <summary>

@@ -27,7 +27,10 @@ namespace GrimGame.Engine.GUI
         /// <param name="panel">A panel to add</param>
         public void AddPanel(Panel panel)
         {
-            _panels.Add(panel);
+            lock (_panels)
+            {
+                _panels.Add(panel);
+            }
         }
 
         /// <summary>
@@ -36,7 +39,10 @@ namespace GrimGame.Engine.GUI
         /// <param name="panel">Panel to remove</param>
         public void RemovePanel(Panel panel)
         {
-            _panels.Remove(panel);
+            lock (_panels)
+            {
+                _panels.Remove(panel);
+            }
         }
 
         /// <summary>
@@ -44,9 +50,12 @@ namespace GrimGame.Engine.GUI
         /// </summary>
         public void Draw()
         {
-            foreach (var panel in _panels)
-                // draw every panel in this canvas
-                panel.Draw();
+            lock (_panels)
+            {
+                foreach (var panel in _panels)
+                    // draw every panel in this canvas
+                    panel.Draw();
+            }
         }
 
         /// <summary>
@@ -54,9 +63,12 @@ namespace GrimGame.Engine.GUI
         /// </summary>
         public void Update()
         {
-            foreach (var panel in _panels)
-                // draw every panel in this canvas
-                panel.Update();
+            lock (_panels)
+            {
+                foreach (var panel in _panels)
+                    // draw every panel in this canvas
+                    panel.Update();
+            }
         }
     }
 }

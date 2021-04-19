@@ -161,10 +161,19 @@ namespace GrimGame.Engine
             SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
             {
                 if (o != this)
-                    // Check to see if this object has a box collider, and that it is enabled
-                    if (o.BoxCollider != null)
-                        if (BoxCollider != null && o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
-                            OnCollisionEnter(o);
+                {
+                    // If we have collided with another box collider, and we are not already colliding
+                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                    {
+                        OnCollisionEnter(o);
+                        Collision = true;
+                    }
+                    else if (Vector2.Distance(Position, o.Position) >= 160 && Collision)
+                    {
+                        OnCollisionExit();
+                        Collision = false;
+                    }
+                }
             });
         }
 
@@ -222,53 +231,6 @@ namespace GrimGame.Engine
             return (focus - pos) * speed / dist;
         }
 
-        /// <summary>
-        ///     Taken from https://www.youtube.com/watch?v=yYNrmsmEcy8 |
-        ///     Rotates this object towards a given position.
-        /// </summary>
-        /// <param name="pos">From position</param>
-        /// <param name="focus">The focus position, i.e what this game object will look at</param>
-        /// <returns>A float representing the cartesian angle.</returns>
-        public static float RotateTowards(Vector2 pos, Vector2 focus)
-        {
-            float h, sineTheta;
-            var (x, y) = pos;
-            if (y - focus.Y != 0)
-            {
-                h = (float) Math.Sqrt(Math.Pow(x - focus.X, 2) + Math.Pow(y - focus.Y, 2));
-                sineTheta = Math.Abs(y - focus.Y) / h; //* ((item.Pos.Y-focus.Y)/(Math.Abs(item.Pos.Y-focus.Y))));
-            }
-            else
-            {
-                h = x - focus.X;
-                sineTheta = 0;
-            }
-
-            var angle = (float) Math.Asin(sineTheta);
-
-            // Drawing diagonial lines here.
-            //Quadrant 2
-            if (x - focus.X > 0 && y - focus.Y > 0)
-                angle = (float) (Math.PI * 3 / 2 + angle);
-            //Quadrant 3
-            else if (x - focus.X > 0 && y - focus.Y < 0)
-                angle = (float) (Math.PI * 3 / 2 - angle);
-            //Quadrant 1
-            else if (x - focus.X < 0 && y - focus.Y > 0)
-                angle = (float) (Math.PI / 2 - angle);
-            else if (x - focus.X < 0 && y - focus.Y < 0)
-                angle = (float) (Math.PI / 2 + angle);
-            else if (x - focus.X > 0 && y - focus.Y == 0)
-                angle = (float) Math.PI * 3 / 2;
-            else if (x - focus.X < 0 && y - focus.Y == 0)
-                angle = (float) Math.PI / 2;
-            else if (x - focus.X == 0 && y - focus.Y > 0)
-                angle = 0;
-            else if (x - focus.X == 0 && y - focus.Y < 0) angle = (float) Math.PI;
-
-            return angle;
-        }
-
         #endregion
 
         #region Virtual Methods
@@ -299,8 +261,15 @@ namespace GrimGame.Engine
         /// <summary>
         ///     If an object has collided with this box collider.
         /// </summary>
-        /// <param name="other">The object that has collided with us.</param>
+        /// <param name="other">The object that has collided with *this* object</param>
         protected virtual void OnCollisionEnter(GameObject other)
+        {
+        }
+
+        /// <summary>
+        ///     When an object exits a collision
+        /// </summary>
+        protected virtual void OnCollisionExit()
         {
         }
 

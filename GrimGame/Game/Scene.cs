@@ -18,7 +18,7 @@ namespace GrimGame.Game
         public readonly MainGame MainGame;
 
         // Is this scene loaded?
-        private bool _isSceneLoaded = false;
+        private bool _isSceneLoaded;
 
         /// <summary>
         ///     Represents a level. A level may contain various <see cref="GameObject" />s.
@@ -39,7 +39,7 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Only called when this scene is active
+        ///     Only called when this scene is active
         /// </summary>
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)

@@ -50,9 +50,9 @@ namespace GrimGame.Game
             Globals.Graphics.ApplyChangesSafely();
             Globals.GuiFont = Content.Load<SpriteFont>("Fonts/debugFont");
 
-            var mainMenu = new MainMenu("Main Menu", this);
+            var _ = new MainMenu("Main Menu", this);
             // Setup Level
-            var level1 = new Level1("Main Level", "StartLevel", this);
+            var __ = new Level1("Main Level", "StartLevel", this);
 
             // Load scene
             SceneManager.LoadScene("Main Menu");

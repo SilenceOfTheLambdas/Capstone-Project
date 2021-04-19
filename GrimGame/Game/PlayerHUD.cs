@@ -14,6 +14,7 @@ namespace GrimGame.Game
     {
         public const     bool    IsActive = true;
         private readonly Canvas  _canvas;
+        private          TextBox _coinTextBox;
         private          TextBox _hpTextBox;
         private          Player  _player;
         private          TextBox _scoreTextBox;
@@ -41,7 +42,7 @@ namespace GrimGame.Game
                 Texture = Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG") // TODO: Get a better texture
             };
 
-            var scorePanel = new Panel(Panel.Positions.TopRight, new Vector2(200, 50), Color.White)
+            var scorePanel = new Panel(Panel.Positions.TopRight, new Vector2(200, 80), Color.White)
             {
                 Texture = Globals.ContentManager.Load<Texture2D>("Debugging/DB_BG")
             };
@@ -61,11 +62,20 @@ namespace GrimGame.Game
                     scorePanel.Bounds.Width / 2 - Globals.GuiFont.MeasureString(
                         // Get the first object that is the player
                         $"Score: {_player?.Score}").X / 2,
-                    10),
+                    40),
+                new Vector2(50, 20), Color.Blue);
+
+            _coinTextBox = new TextBox(
+                scorePanel.Position + new Vector2(
+                    scorePanel.Bounds.Width / 2 - Globals.GuiFont.MeasureString(
+                        // Get the first object that is the player
+                        $"Coins: {_player?.Coins}").X / 2,
+                    14),
                 new Vector2(50, 20), Color.Blue);
 
             hpPanel.AddComponent(_hpTextBox);
             scorePanel.AddComponent(_scoreTextBox);
+            scorePanel.AddComponent(_coinTextBox);
             _canvas.AddPanel(hpPanel);
             _canvas.AddPanel(scorePanel);
         }
@@ -79,14 +89,16 @@ namespace GrimGame.Game
             _scoreTextBox?.SetText($"Score: {_player?.Score}", Color.White,
                 Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
 
-            if (IsActive)
-                _canvas.Update();
+            _coinTextBox?.SetText($"Coins: {_player?.Coins}", Color.White,
+                Globals.ContentManager.Load<SpriteFont>("Fonts/pauseMenuTitle"));
+
+
+            _canvas.Update();
         }
 
         public void Draw()
         {
-            if (IsActive)
-                _canvas.Draw();
+            _canvas.Draw();
         }
     }
 }

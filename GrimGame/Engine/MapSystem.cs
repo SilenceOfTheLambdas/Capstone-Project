@@ -45,7 +45,6 @@ namespace GrimGame.Engine
             Globals.LayerCount = Map.Layers.Count - 1;
             // Create the map renderer
             _mapRenderer = new TiledMapRenderer(Globals.Graphics.GraphicsDevice, Map);
-            //_tiledObjectRenderer = new TiledObjectRenderer(Map, Globals.SpriteBatch);
             RenderQueue = new Dictionary<int, TiledMapLayer>();
 
             // First add all of the layers below the player
@@ -101,9 +100,6 @@ namespace GrimGame.Engine
             if (newPlayerIndex < RenderQueue.Count)
                 for (var i = newPlayerIndex + 1; i < RenderQueue.Count; i++)
                     _mapRenderer.Draw(RenderQueue[i], viewMatrix);
-
-            // Draw any objects that are visible in-game
-            //_tiledObjectRenderer.DrawObjects();
         }
 
         /// <summary>
@@ -114,16 +110,8 @@ namespace GrimGame.Engine
         /// <returns>Does this tile have a collider?</returns>
         public bool IsTileCollision(int x, int y)
         {
-            /*if (CollisionObjects.FirstOrDefault(c =>
-                        Map.GetTiles(x, y).ToList().FirstOrDefault().X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y)
-                    .X !=
-                x) return false;*/
-            {
-                if (CollisionObjects.FirstOrDefault(c =>
-                        Map.GetTile("Ground_1", x, y).X == c.X && Map.GetTile("Ground_1", x, y).Y == c.Y).Y ==
-                    y) return true;
-            }
-
+            if (CollisionObjects.FirstOrDefault(c => Map.GetTile("Ground_1", x, y).X == c.X
+                                                     && Map.GetTile("Ground_1", x, y).Y == c.Y).Y == y) return true;
             return false;
         }
     }

@@ -6,8 +6,8 @@
     "activeFile": "StartLevel.tmx",
     "automapping.whileDrawing": true,
     "expandedProjectPaths": [
-        ".",
-        "Tilesets"
+        "Tilesets",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -131,7 +131,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 1600,
-                "y": 1461
+                "y": 1458.5
             }
         },
         "Level1.tmx#Building_stone_1": {
@@ -174,11 +174,11 @@
             "dynamicWrapping": true
         },
         "StartLevel.tmx": {
-            "scale": 1,
-            "selectedLayer": 6,
+            "scale": 0.75,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 3136,
-                "y": 2103
+                "x": 3236,
+                "y": 2132.6666666666665
             }
         },
         "StartLevel.tmx#Outside_medievil": {

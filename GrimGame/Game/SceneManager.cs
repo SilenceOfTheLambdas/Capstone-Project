@@ -42,7 +42,6 @@ namespace GrimGame.Game
         public static void LoadScene(string name)
         {
             foreach (var scene in Scenes)
-            {
                 if (scene.Name.ToLower().Equals(name.ToLower()))
                 {
                     scene.SetIsSceneLoaded(true);
@@ -54,11 +53,10 @@ namespace GrimGame.Game
                     scene.SetIsSceneLoaded(false);
                     scene.Initialize();
                 }
-            }
         }
 
         /// <summary>
-        /// Call <see cref="Scene.Initialize()"/> for every scene
+        ///     Call <see cref="Scene.Initialize()" /> for every scene
         /// </summary>
         public static void InitScenes()
         {
@@ -66,7 +64,7 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Calls <see cref="Scene.Update(GameTime)"/> for every scene
+        ///     Calls <see cref="Scene.Update(GameTime)" /> for every scene
         /// </summary>
         /// <param name="gameTime">GameTime</param>
         public static void UpdateScenes(GameTime gameTime)
@@ -75,7 +73,7 @@ namespace GrimGame.Game
         }
 
         /// <summary>
-        /// Draws every scene by calling it's <see cref="Scene.Draw"/> method
+        ///     Draws every scene by calling it's <see cref="Scene.Draw" /> method
         /// </summary>
         public static void DrawScenes()
         {
