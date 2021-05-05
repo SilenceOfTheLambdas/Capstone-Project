@@ -42,6 +42,7 @@ namespace GrimGame.Game.Character
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
         private float                _timerForAttacks; // only used to count the number of seconds
         public  float                AttackTimer = 1.2f; // How often the player can attack (in seconds)
+        private int                  i           = 0;
 
         // _____ Properties _____ //
         public float RunningSpeed;
@@ -62,7 +63,7 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The total score the player accumulated.
         /// </summary>
-        public int Score { get; set; }
+        public int Score { get; private set; }
 
         /// <summary>
         ///     The currency for buying upgrades, directly relates to <see cref="Score" />
@@ -160,7 +161,6 @@ namespace GrimGame.Game.Character
                 : PlayerMovementStates.Walking;
 
             Move();
-
             UpdatePlayerAnimationDirections();
 
             _camera.LookAt(Position);
@@ -263,43 +263,18 @@ namespace GrimGame.Game.Character
         {
             if (_enemyInAttackRange)
             {
-                // Create a new Projectile
-                var projectile = new Projectile(10f, 8) {Position = Position};
-                Console.WriteLine("An enemy has been hit!");
-                switch (_playerDirection)
-                {
-                    // If a player attacks, based on their direction
-                    // create a box collider in-front of the player.
-                    // If an enemy is within that box collider,
-                    // Get the enemies data, and deal damage
-                    case PlayerDirection.Up:
-                        projectile.Velocity.Y = -Speed * 4;
-                        break;
-                    case PlayerDirection.Down:
-                        projectile.Velocity.Y = Speed * 4;
-                        break;
-                    case PlayerDirection.Left:
-                        projectile.Velocity.X = -Speed * 4;
-                        break;
-                    case PlayerDirection.Right:
-                        projectile.Velocity.X = Speed * 4;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
                 // If the enemy is within attack range, attack
                 _enemyToHit.CurrentHp -= AttackDamage;
                 if (_enemyToHit.CurrentHp <= 0)
                 {
                     // Update player's score
-                    Score++;
-                    Coins++;
+                    Score += 1;
+                    Coins += 1;
                 }
             }
         }
 
-        protected override void OnCollisionEnter(GameObject other)
+        public override void OnCollisionEnter(GameObject other)
         {
             // Check to see if an enemy collided with us
             if (other is Enemy enemy && other.Active && other.Enabled)
@@ -309,7 +284,7 @@ namespace GrimGame.Game.Character
             }
         }
 
-        protected override void OnCollisionExit()
+        public override void OnCollisionExit()
         {
             _enemyInAttackRange = false;
         }
@@ -317,7 +292,7 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     Kills the player, and ends the game.
         /// </summary>
-        public void Kill()
+        private void Kill()
         {
             UiManager.DisplayEndScreen();
             SceneManager.GetActiveScene.ObjectManager.Clear();

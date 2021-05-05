@@ -101,7 +101,7 @@ namespace GrimGame.Game.Character
                 Kill();
         }
 
-        protected override void OnCollisionEnter(GameObject other)
+        public override void OnCollisionEnter(GameObject other)
         {
             if (other is Projectile projectile)
             {

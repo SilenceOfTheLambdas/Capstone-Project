@@ -36,7 +36,6 @@ namespace GrimGame.Game.Character.AI.Behaviours
                 {
                     // keep doing damage to player
                     _target.CurrentHp -= Enemy.AttackDamage;
-                    GrimDebugger.Log($"Done Damage: player's HP: {_target.CurrentHp}");
                     _elapsedTime -= Enemy.AttackSpeed;
                     return Result.Running;
                 }
