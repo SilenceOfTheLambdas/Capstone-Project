@@ -6,6 +6,7 @@
         <RootNamespace>MonoGameCross-PlatformDesktopApplication</RootNamespace>
         <OutputType>WinExe</OutputType>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -400,6 +401,7 @@
         <PackageReference Include="MLEM.Extended" Version="4.2.0"/>
         <PackageReference Include="MonoGame.Extended" Version="3.8.0"/>
         <PackageReference Include="MonoGame.Extended.Animations" Version="3.7.0"/>
+        <PackageReference Include="MonoGame.Extended.Collisions" Version="3.8.0"/>
         <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0"/>
         <PackageReference Include="MonoGame.Extended.Graphics" Version="3.8.0"/>
         <PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0"/>

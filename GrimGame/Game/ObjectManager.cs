@@ -12,7 +12,7 @@ namespace GrimGame.Game
         /// <summary>
         ///     List of game objects in the scene.
         /// </summary>
-        public List<GameObject> Objects { get; } = new List<GameObject>();
+        public List<GameObject> Objects { get; } = new();
 
         /// <summary>
         ///     The number of game objects in the scene.
@@ -29,6 +29,29 @@ namespace GrimGame.Game
                 {
                     obj.SetBounds(obj.X, obj.Y, obj.Width, obj.Height);
                     obj.Update(gameTime);
+
+                    // if (Count >= 2)
+                    // {
+                    //     var nextObj = Objects[(i + 1) % Count];
+                    //     if (obj is Player player && nextObj is Enemy enemy)
+                    //     {
+                    //         Console.WriteLine($"Player colliding? {player.Collision}");
+                    //         if (player.IsColliding(ref enemy.BoxCollider.Bounds))
+                    //         {
+                    //             player.OnCollisionEnter(nextObj);
+                    //             player.Collision = true;
+                    //         
+                    //             nextObj.OnCollisionEnter(obj);
+                    //             nextObj.Collision = true;
+                    //         }
+                    //         // If the player was colliding, and now is not
+                    //         if (player.Collision && !obj.IsColliding(ref enemy.BoxCollider.Bounds))
+                    //         {
+                    //             player.OnCollisionExit();
+                    //             player.Collision = false;
+                    //         }
+                    //     }
+                    // }
                 }
             }
         }

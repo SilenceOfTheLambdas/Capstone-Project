@@ -34,6 +34,7 @@ namespace GrimGame.Game.Character
             // Set random spawn point from list
             var random = new Random();
             Position = _spawnPoints[random.Next(0, _spawnPoints.Count)];
+            _spawnPoints.Remove(Position);
 
             Scale = new Vector2(1.4f, 1.4f);
             Sprite = new Sprite(new Dictionary<string, Animation>
@@ -131,7 +132,7 @@ namespace GrimGame.Game.Character
             {
                 _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
                 _mapSystem.CurrentIndex = Globals.LayerCount;
-                Collision = true;
+                //Collision = true;
             }
             else
             {

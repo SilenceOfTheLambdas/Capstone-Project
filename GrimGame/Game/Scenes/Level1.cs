@@ -42,8 +42,8 @@ namespace GrimGame.Game.Scenes
                 RunningSpeed = 3.2f,
                 Enabled = true,
                 Active = true,
-                MaxHp = 100,
-                CurrentHp = 100
+                MaxHp = 1000,
+                CurrentHp = 1000
             };
             _player.Init();
             _enemies = new List<Paladin>();
@@ -110,17 +110,6 @@ namespace GrimGame.Game.Scenes
             _enemies = updatedList;
         }
 
-        private void SpawnWaves()
-        {
-            var random = new FastRandom();
-            for (var i = 0; i < 8; i++)
-            {
-                var newEnemy = new Paladin(_mapSystem, _player)
-                    {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
-                _enemies.Add(newEnemy);
-            }
-        }
-
         public override void Draw()
         {
             // Clear the screen
@@ -146,9 +135,9 @@ namespace GrimGame.Game.Scenes
 
             if (bumpLayer)
             {
-                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
-                if (_mapSystem != null) _mapSystem.CurrentIndex = Globals.LayerCount;
-                _player.Collision = true;
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
+                _mapSystem.CurrentIndex = Globals.LayerCount;
+                //_player.Collision = true;
             }
             else
             {

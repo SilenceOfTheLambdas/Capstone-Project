@@ -2,8 +2,10 @@
 
 using System;
 using GrimGame.Game;
+using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
+using MonoGame.Extended.Collisions;
 
 #endregion
 
@@ -36,6 +38,11 @@ namespace GrimGame.Engine
             Collision = false;
         }
 
+        public void OnCollision(CollisionEventArgs collisionInfo)
+        {
+            Console.WriteLine(collisionInfo.Other);
+        }
+
         #region Properties
 
         /// <summary>
@@ -53,7 +60,7 @@ namespace GrimGame.Engine
         /// </summary>
         public Vector2 Position
         {
-            get => new Vector2(X, Y);
+            get => new(X, Y);
             set
             {
                 X = value.X;
@@ -65,7 +72,7 @@ namespace GrimGame.Engine
         ///     The position of this game object in 'Tile Space'.
         /// </summary>
         public Vector2 TilePosition =>
-            new Vector2(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
+            new(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
                 Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).Y);
 
         /// <summary>
@@ -73,7 +80,7 @@ namespace GrimGame.Engine
         /// </summary>
         protected Vector2 Size
         {
-            get => new Vector2(Width, Height);
+            get => new(Width, Height);
             set
             {
                 Width = (int) value.X;
@@ -89,7 +96,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>
-        public Rectangle Bounds;
+        public Rectangle Bounds { get; set; }
 
         /// <summary>
         ///     The origin point of this game object.
@@ -157,24 +164,23 @@ namespace GrimGame.Engine
         public virtual void Update(GameTime gameTime)
         {
             CollisionDetection();
-
-            SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
+            var objectsList = SceneManager.GetActiveScene.ObjectManager.Objects;
+            foreach (var gameObject in objectsList)
             {
-                if (o != this)
+                if (gameObject is not Player && IsColliding(ref gameObject.BoxCollider.Bounds))
                 {
-                    // If we have collided with another box collider, and we are not already colliding
-                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
-                    {
-                        OnCollisionEnter(o);
-                        Collision = true;
-                    }
-                    else if (Vector2.Distance(Position, o.Position) >= 160 && Collision)
-                    {
-                        OnCollisionExit();
-                        Collision = false;
-                    }
+                    OnCollisionEnter(gameObject);
+                    Collision = true;
+                    break;
                 }
-            });
+
+                if (Collision && !IsColliding(ref gameObject.BoxCollider.Bounds))
+                {
+                    OnCollisionExit();
+                    Collision = false;
+                    break;
+                }
+            }
         }
 
         // _____ Setters _____ //
@@ -231,6 +237,12 @@ namespace GrimGame.Engine
             return (focus - pos) * speed / dist;
         }
 
+        private bool IsColliding(ref Rectangle other)
+        {
+            var collision = BoxCollider.Bounds.Intersects(other);
+            return collision;
+        }
+
         #endregion
 
         #region Virtual Methods
@@ -262,14 +274,14 @@ namespace GrimGame.Engine
         ///     If an object has collided with this box collider.
         /// </summary>
         /// <param name="other">The object that has collided with *this* object</param>
-        protected virtual void OnCollisionEnter(GameObject other)
+        public virtual void OnCollisionEnter(GameObject other)
         {
         }
 
         /// <summary>
         ///     When an object exits a collision
         /// </summary>
-        protected virtual void OnCollisionExit()
+        public virtual void OnCollisionExit()
         {
         }
 
