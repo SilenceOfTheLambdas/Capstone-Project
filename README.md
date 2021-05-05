@@ -5,8 +5,7 @@
 GrimDoom is a 2D action role-playing game created using [MonoGame](https://www.monogame.net/), an open-source continuation of Microsoft’s old XNA framework. GrimDoom is a game in which players must fight off hordes of enemies, making use of various weapons to achieve their goal. Everyenemy killed provides the player with some money, which they can use to buy upgrades for their weapons.
 
 ## Important Links
-
-- [Download](https://github.com/sudo-make/Capstone-Project/releases)
+- [Downloads](https://github.com/sudo-make/Capstone-Project/releases)
 - [Project Website](https://sudo-make.github.io/Capstone-Project/index.html)
 - [Api Documentation](https://sudo-make.github.io/Capstone-Project/api/index.html)
 
@@ -37,7 +36,3 @@ The wiki contains information on getting started with running the game, alongsid
 - Game Objects
   - [Using the ObjectManager](Using-the-ObjectManager)
   - [Creating and Adding new GameObjects](Adding-GameObjects)
-
-## Authors
-
-- Callum-James Smith @cs18804
