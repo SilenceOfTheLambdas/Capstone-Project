@@ -32,7 +32,6 @@ namespace GrimGame.Game.Character
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
         private          AnimationManager _animationManager;
-        private          float            _cameraMovementSpeed = 200f;
         private          int              _currentHp;
         private          float            _defaultWalkSpeed;
         private          bool             _enemyInAttackRange;
@@ -43,7 +42,6 @@ namespace GrimGame.Game.Character
         private PlayerMovementStates _playerMovementState = PlayerMovementStates.Idle;
         private float                _timerForAttacks; // only used to count the number of seconds
         public  float                AttackTimer = 1.2f; // How often the player can attack (in seconds)
-        private int                  i           = 0;
 
         // _____ Properties _____ //
         public float RunningSpeed;

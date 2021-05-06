@@ -12,7 +12,7 @@ namespace GrimGame.Game
         /// <summary>
         ///     List of game objects in the scene.
         /// </summary>
-        public List<GameObject> Objects { get; } = new();
+        public List<GameObject> Objects { get; } = new List<GameObject>();
 
         /// <summary>
         ///     The number of game objects in the scene.

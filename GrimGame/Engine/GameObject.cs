@@ -2,7 +2,6 @@
 
 using System;
 using GrimGame.Game;
-using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
 
@@ -54,8 +53,8 @@ namespace GrimGame.Engine
         /// </summary>
         public Vector2 Position
         {
-            get => new(X, Y);
-            protected set
+            get => new Vector2(X, Y);
+            set
             {
                 X = value.X;
                 Y = value.Y;
@@ -66,7 +65,7 @@ namespace GrimGame.Engine
         ///     The position of this game object in 'Tile Space'.
         /// </summary>
         public Vector2 TilePosition =>
-            new(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
+            new Vector2(Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).X,
                 Globals.MapSystem.Map.GetTile("__player__", (int) X, (int) Y).Y);
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace GrimGame.Engine
         /// </summary>
         protected Vector2 Size
         {
-            get => new(Width, Height);
+            get => new Vector2(Width, Height);
             set
             {
                 Width = (int) value.X;
@@ -90,7 +89,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>
-        public Rectangle Bounds { get; set; }
+        public Rectangle Bounds;
 
         /// <summary>
         ///     The origin point of this game object.
@@ -158,23 +157,24 @@ namespace GrimGame.Engine
         public virtual void Update(GameTime gameTime)
         {
             CollisionDetection();
-            var objectsList = SceneManager.GetActiveScene.ObjectManager.Objects;
-            foreach (var gameObject in objectsList)
-            {
-                if (gameObject is not Player && IsColliding(ref gameObject.BoxCollider.Bounds))
-                {
-                    OnCollisionEnter(gameObject);
-                    Collision = true;
-                    break;
-                }
 
-                if (Collision && !IsColliding(ref gameObject.BoxCollider.Bounds))
+            SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
+            {
+                if (o != this)
                 {
-                    OnCollisionExit();
-                    Collision = false;
-                    break;
+                    // If we have collided with another box collider, and we are not already colliding
+                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
+                    {
+                        OnCollisionEnter(o);
+                        Collision = true;
+                    }
+                    else if (Vector2.Distance(Position, o.Position) >= 160 && Collision)
+                    {
+                        OnCollisionExit();
+                        Collision = false;
+                    }
                 }
-            }
+            });
         }
 
         // _____ Setters _____ //
@@ -229,12 +229,6 @@ namespace GrimGame.Engine
             if (dist <= speed)
                 return focus - pos;
             return (focus - pos) * speed / dist;
-        }
-
-        private bool IsColliding(ref Rectangle other)
-        {
-            var collision = BoxCollider.Bounds.Intersects(other);
-            return collision;
         }
 
         #endregion
