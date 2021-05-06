@@ -6,8 +6,8 @@
     "activeFile": "StartLevel.tmx",
     "automapping.whileDrawing": true,
     "expandedProjectPaths": [
-        ".",
-        "Tilesets"
+        "Tilesets",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -174,11 +174,11 @@
             "dynamicWrapping": true
         },
         "StartLevel.tmx": {
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 3380,
-                "y": 2106
+                "x": 3646,
+                "y": 2043
             }
         },
         "StartLevel.tmx#Outside_medievil": {

@@ -32,6 +32,7 @@ namespace GrimGame.Game.Character
         // _____ References _____ //
         private readonly MapSystem        _mapSystem;
         private          AnimationManager _animationManager;
+        private          float            _cameraMovementSpeed = 200f;
         private          int              _currentHp;
         private          float            _defaultWalkSpeed;
         private          bool             _enemyInAttackRange;
@@ -160,10 +161,13 @@ namespace GrimGame.Game.Character
                 ? PlayerMovementStates.Running
                 : PlayerMovementStates.Walking;
 
-            Move();
+            Move(gameTime);
             UpdatePlayerAnimationDirections();
 
-            _camera.LookAt(Position);
+            // Move the camera's position to that of the player's, using Lerp to make it smooth like butter
+            _camera.Position = new Vector2(
+                MathHelper.Lerp(_camera.Position.X, Position.X - Globals.ViewportAdapter.VirtualWidth / 2, 0.09f),
+                MathHelper.Lerp(_camera.Position.Y, Position.Y - Globals.ViewportAdapter.VirtualHeight / 2, 0.09f));
 
             _timerForAttacks += gameTime.GetElapsedSeconds();
 
@@ -201,7 +205,7 @@ namespace GrimGame.Game.Character
         ///     Moves the player when the player presses the movement keys.
         /// </summary>
         [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
-        private void Move()
+        private void Move(GameTime gameTime)
         {
             Speed = _playerMovementState switch
             {
@@ -210,15 +214,14 @@ namespace GrimGame.Game.Character
                 PlayerMovementStates.Idle => 0f,
                 _ => throw new ArgumentOutOfRangeException()
             };
-
             if (Keyboard.GetState().IsKeyDown(Keys.W))
-                Velocity.Y = -Speed;
+                Velocity.Y = -Speed * gameTime.GetElapsedSeconds();
             if (Keyboard.GetState().IsKeyDown(Keys.S))
-                Velocity.Y = Speed;
+                Velocity.Y = Speed * gameTime.GetElapsedSeconds();
             if (Keyboard.GetState().IsKeyDown(Keys.A))
-                Velocity.X = -Speed;
+                Velocity.X = -Speed * gameTime.GetElapsedSeconds();
             if (Keyboard.GetState().IsKeyDown(Keys.D))
-                Velocity.X = Speed;
+                Velocity.X = Speed * gameTime.GetElapsedSeconds();
 
             // _____ Detecting Collisions _____ //
             BoxCollider.UpdatePosition(new Point((int) (Position.X - Width / 2),
@@ -270,6 +273,7 @@ namespace GrimGame.Game.Character
                     // Update player's score
                     Score += 1;
                     Coins += 1;
+                    CurrentHp += 2;
                 }
             }
         }

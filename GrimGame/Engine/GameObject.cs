@@ -5,7 +5,6 @@ using GrimGame.Game;
 using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
-using MonoGame.Extended.Collisions;
 
 #endregion
 
@@ -38,11 +37,6 @@ namespace GrimGame.Engine
             Collision = false;
         }
 
-        public void OnCollision(CollisionEventArgs collisionInfo)
-        {
-            Console.WriteLine(collisionInfo.Other);
-        }
-
         #region Properties
 
         /// <summary>
@@ -61,7 +55,7 @@ namespace GrimGame.Engine
         public Vector2 Position
         {
             get => new(X, Y);
-            set
+            protected set
             {
                 X = value.X;
                 Y = value.Y;

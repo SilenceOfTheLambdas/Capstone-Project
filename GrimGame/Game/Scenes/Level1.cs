@@ -38,12 +38,12 @@ namespace GrimGame.Game.Scenes
 
             _player = new Player(_mapSystem, Globals.Camera)
             {
-                Speed = 2f,
-                RunningSpeed = 3.2f,
+                Speed = 80f,
+                RunningSpeed = 90f,
                 Enabled = true,
                 Active = true,
-                MaxHp = 1000,
-                CurrentHp = 1000
+                MaxHp = 50,
+                CurrentHp = 50
             };
             _player.Init();
             _enemies = new List<Paladin>();
@@ -51,7 +51,7 @@ namespace GrimGame.Game.Scenes
 
             // Add 12 enemies
             var random = new FastRandom();
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < 9; i++)
             {
                 var newEnemy = new Paladin(_mapSystem, _player)
                     {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
@@ -91,8 +91,8 @@ namespace GrimGame.Game.Scenes
                 }
             }
 
-            _mapSystem?.Update(gameTime);
-            UiManager?.Update();
+            _mapSystem.Update(gameTime);
+            UiManager.Update();
 
             base.Update(gameTime);
         }
@@ -107,7 +107,7 @@ namespace GrimGame.Game.Scenes
                 updatedList.Remove(enemy);
             }
 
-            _enemies = updatedList;
+            //_enemies = updatedList;
         }
 
         public override void Draw()
@@ -118,7 +118,7 @@ namespace GrimGame.Game.Scenes
             // Sort the player's index
             PlayerLayerIndexer();
 
-            UiManager?.Draw();
+            UiManager.Draw();
 
             base.Draw();
         }
@@ -137,11 +137,10 @@ namespace GrimGame.Game.Scenes
             {
                 _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
                 _mapSystem.CurrentIndex = Globals.LayerCount;
-                //_player.Collision = true;
             }
             else
             {
-                _mapSystem?.DrawMap(Globals.Camera.GetViewMatrix(), 2);
+                _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), 2);
             }
         }
     }
