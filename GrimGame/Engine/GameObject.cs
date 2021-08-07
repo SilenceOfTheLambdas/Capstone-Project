@@ -161,7 +161,7 @@ namespace GrimGame.Engine
             var objectsList = SceneManager.GetActiveScene.ObjectManager.Objects;
             foreach (var gameObject in objectsList)
             {
-                if (gameObject is not Player && IsColliding(ref gameObject.BoxCollider.Bounds))
+                if (!(gameObject is Player) && IsColliding(ref gameObject.BoxCollider.Bounds))
                 {
                     OnCollisionEnter(gameObject);
                     Collision = true;
