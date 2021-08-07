@@ -287,30 +287,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Paladin/up_walk2.png
 
-#begin Sprites/Player/Animations/_pick up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/_pick up.png
-
-#begin Sprites/Player/Animations/_side idle.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/_side idle.png
-
 #begin Sprites/Player/Animations/attack_down.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -359,7 +335,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Animations/attack_up.png
 
-#begin Sprites/Player/Animations/idle_down.png
+#begin Sprites/Player/Animations/down_idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -369,9 +345,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/idle_down.png
+/build:Sprites/Player/Animations/down_idle.png
 
-#begin Sprites/Player/Animations/idle_up.png
+#begin Sprites/Player/Animations/left_idle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -381,7 +357,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Player/Animations/idle_up.png
+/build:Sprites/Player/Animations/left_idle.png
+
+#begin Sprites/Player/Animations/right_idle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/right_idle.png
+
+#begin Sprites/Player/Animations/up_idle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Animations/up_idle.png
 
 #begin Sprites/Player/Animations/walk_down.png
 /importer:TextureImporter

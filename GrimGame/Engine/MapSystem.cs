@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using GrimGame.Game;
-using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
 using MonoGame.Extended.Tiled;
@@ -36,8 +35,6 @@ namespace GrimGame.Engine
         public readonly TiledMap Map;
 
         public int CurrentIndex;
-
-        public Player Player;
 
         public MapSystem(string mapName)
         {

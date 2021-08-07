@@ -2,6 +2,7 @@
 
 using System;
 using GrimGame.Game;
+using GrimGame.Game.Character;
 using Microsoft.Xna.Framework;
 using MLEM.Extended.Tiled;
 
@@ -89,7 +90,7 @@ namespace GrimGame.Engine
         /// <summary>
         ///     The bounding box for this game object.
         /// </summary>
-        public Rectangle Bounds;
+        public Rectangle Bounds { get; set; }
 
         /// <summary>
         ///     The origin point of this game object.
@@ -157,24 +158,23 @@ namespace GrimGame.Engine
         public virtual void Update(GameTime gameTime)
         {
             CollisionDetection();
-
-            SceneManager.GetActiveScene.ObjectManager.Objects.ForEach(o =>
+            var objectsList = SceneManager.GetActiveScene.ObjectManager.Objects;
+            foreach (var gameObject in objectsList)
             {
-                if (o != this)
+                if (gameObject is not Player && IsColliding(ref gameObject.BoxCollider.Bounds))
                 {
-                    // If we have collided with another box collider, and we are not already colliding
-                    if (o.BoxCollider.Bounds.Intersects(BoxCollider.Bounds))
-                    {
-                        OnCollisionEnter(o);
-                        Collision = true;
-                    }
-                    else if (Vector2.Distance(Position, o.Position) >= 160 && Collision)
-                    {
-                        OnCollisionExit();
-                        Collision = false;
-                    }
+                    OnCollisionEnter(gameObject);
+                    Collision = true;
+                    break;
                 }
-            });
+
+                if (Collision && !IsColliding(ref gameObject.BoxCollider.Bounds))
+                {
+                    OnCollisionExit();
+                    Collision = false;
+                    break;
+                }
+            }
         }
 
         // _____ Setters _____ //
@@ -229,6 +229,12 @@ namespace GrimGame.Engine
             if (dist <= speed)
                 return focus - pos;
             return (focus - pos) * speed / dist;
+        }
+
+        private bool IsColliding(ref Rectangle other)
+        {
+            var collision = BoxCollider.Bounds.Intersects(other);
+            return collision;
         }
 
         #endregion

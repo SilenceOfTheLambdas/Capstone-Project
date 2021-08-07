@@ -18,7 +18,6 @@ namespace GrimGame.Engine
         public static BoxingViewportAdapter ViewportAdapter;
 
         public static MapSystem          MapSystem;
-        public static GameTime           GameTime;
         public static OrthographicCamera Camera;
         public static ContentManager     ContentManager;
         public static SpriteBatch        SpriteBatch;

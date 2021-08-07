@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using GrimGame.Character.Enemies.AI;
 using GrimGame.Engine;
 using Microsoft.Xna.Framework;
+using MLEM.Pathfinding;
 
 namespace GrimGame.Game.Character
 {
@@ -25,12 +25,12 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The 'path' this enemy has to follow to get to a position. Makes use of the <see cref="Pathfinder" /> system.
         /// </summary>
-        private static Queue<Vector2> _waypoints;
+        private static Stack<Point> _waypoints;
 
         /// <summary>
         ///     A reference to this enemy's <see cref="Pathfinder" />.
         /// </summary>
-        private readonly Pathfinder _pathFinder;
+        private readonly AStar2 _pathFinder;
 
         private int _maxHp;
 
@@ -42,7 +42,7 @@ namespace GrimGame.Game.Character
 
         protected Enemy()
         {
-            _pathFinder = new Pathfinder(Globals.MapSystem.Map);
+            _pathFinder = new AStar2((pos, nextPos) => { return 1f; }, true);
         }
 
         /// <summary>
@@ -53,8 +53,7 @@ namespace GrimGame.Game.Character
         {
             // Generate the A* path
             var (x, y) = targetPosition;
-            _waypoints = new Queue<Vector2>(_pathFinder.FindPath(
-                new Point((int) Position.X / 32, (int) Position.Y / 32),
+            _waypoints = new Stack<Point>(_pathFinder.FindPath(new Point((int) Position.X / 32, (int) Position.Y / 32),
                 new Point((int) x / 32, (int) y / 32)));
 
             // Waypoint Logic
@@ -62,15 +61,14 @@ namespace GrimGame.Game.Character
 
             if (DistanceToDestination < Speed)
             {
-                Position = _waypoints.Peek();
-                _waypoints.Dequeue();
+                Position = _waypoints.Pop().ToVector2();
             }
             else
             {
-                Position += RadialMovement(_waypoints.Peek(), Position, Speed);
+                Position += RadialMovement(_waypoints.Peek().ToVector2(), Position, Speed);
 
                 // Update the enemies' rotation and direction
-                var direction = _waypoints.Peek() - Position;
+                var direction = _waypoints.Peek().ToVector2() - Position;
                 direction.Normalize();
                 var rotationInRadians = (int) ((int) Math.Atan2(direction.Y,
                     direction.X) + MathHelper.PiOver2);
@@ -141,7 +139,8 @@ namespace GrimGame.Game.Character
         /// <summary>
         ///     The distance from the current position to the next point in <see cref="_waypoints" />.
         /// </summary>
-        public float DistanceToDestination => _waypoints.Count > 0 ? Vector2.Distance(Position, _waypoints.Peek()) : 0f;
+        public float DistanceToDestination =>
+            _waypoints.Count > 0 ? Vector2.Distance(Position, _waypoints.Peek().ToVector2()) : 0f;
 
         #endregion
     }

@@ -29,7 +29,6 @@ namespace GrimGame.Game
 
             // Init Globals
             Globals.ContentManager = Content;
-            Globals.GameTime = new GameTime();
 
             var (x, y) = Globals.VirtualSize;
             Globals.ViewportAdapter =
@@ -67,8 +66,6 @@ namespace GrimGame.Game
         protected override void Update(GameTime gameTime)
         {
             SceneManager.UpdateScenes(gameTime);
-            // Updating Globals
-            Globals.GameTime = gameTime;
             base.Update(gameTime);
         }
 

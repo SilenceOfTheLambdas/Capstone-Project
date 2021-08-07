@@ -46,9 +46,9 @@ namespace GrimGame.Game
 
         public void Draw()
         {
-            _outputText = $"Player position: {Player?.Position}" + "\n" +
-                          $"Player Tile Position: {Player?.TilePosition}" + "\n" +
-                          $"Player Index: {MapSystem?.CurrentIndex}";
+            _outputText = $"Player position: {Player.Position}" + "\n" +
+                          $"Player Tile Position: {Player.TilePosition}" + "\n" +
+                          $"Player Index: {MapSystem.CurrentIndex}";
 
             Globals.SpriteBatch.Begin();
             var panelPosition   = new Vector2(0, 0);

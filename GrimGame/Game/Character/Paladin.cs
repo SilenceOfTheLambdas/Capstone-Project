@@ -23,20 +23,6 @@ namespace GrimGame.Game.Character
             _mapSystem = mapSystem;
             _spawnPoints = new List<Vector2>();
             _player = player;
-        }
-
-        public void Init()
-        {
-            // Set spawn position if this enemy
-            foreach (var layerObject in _mapSystem.Map.GetObjects("EnemySpawn"))
-                _spawnPoints.Add(layerObject.Position);
-
-            // Set random spawn point from list
-            var random = new Random();
-            Position = _spawnPoints[random.Next(0, _spawnPoints.Count)];
-            _spawnPoints.Remove(Position);
-
-            Scale = new Vector2(1.4f, 1.4f);
             Sprite = new Sprite(new Dictionary<string, Animation>
             {
                 {
@@ -64,6 +50,22 @@ namespace GrimGame.Game.Character
                 Width = 19,
                 Height = 29
             };
+            AnimationManager = new AnimationManager(Sprite.Animations.FirstOrDefault().Value);
+        }
+
+        public void Init()
+        {
+            // Set spawn position if this enemy
+            foreach (var layerObject in _mapSystem.Map.GetObjects("EnemySpawn"))
+                _spawnPoints.Add(layerObject.Position);
+
+            // Set random spawn point from list
+            var random = new Random();
+            Position = _spawnPoints[random.Next(0, _spawnPoints.Count)];
+            _spawnPoints.Remove(Position);
+
+            Scale = new Vector2(1.4f, 1.4f);
+
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height);
             Width = (int) (Sprite.Width * Scale.X);
             Height = (int) (Sprite.Height * Scale.Y);
@@ -132,7 +134,6 @@ namespace GrimGame.Game.Character
             {
                 _mapSystem.DrawMap(Globals.Camera.GetViewMatrix(), Globals.LayerCount);
                 _mapSystem.CurrentIndex = Globals.LayerCount;
-                //Collision = true;
             }
             else
             {

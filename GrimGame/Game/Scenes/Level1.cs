@@ -20,7 +20,8 @@ namespace GrimGame.Game.Scenes
         /// </summary>
         private List<Paladin> _enemies;
 
-        private Player _player;
+        private Player      _player;
+        private FastRandom? _random;
 
         private List<Paladin> _spawnedList;
 
@@ -50,25 +51,20 @@ namespace GrimGame.Game.Scenes
             _spawnedList = new List<Paladin>();
 
             // Add 12 enemies
-            var random = new FastRandom();
-            for (var i = 0; i < 9; i++)
+            _random = new FastRandom();
+            for (var i = 0; i < 11; i++)
             {
                 var newEnemy = new Paladin(_mapSystem, _player)
-                    {Speed = random.NextSingle(0.2f, 1.2f), Enabled = true, Active = true, MaxHp = 100};
+                    {Speed = _random.NextSingle(0.4f, 1.6f), Enabled = true, Active = true, MaxHp = 100};
                 _enemies.Add(newEnemy);
             }
-
-            _mapSystem.Player = _player;
 
             UiManager = new UiManager(this);
             UiManager.Init();
 
             // Init debugger
-            if (Globals.DebugMode)
-            {
-                GrimDebugger.Player = _player;
-                GrimDebugger.MapSystem = _mapSystem;
-            }
+            GrimDebugger.Player = _player;
+            GrimDebugger.MapSystem = _mapSystem;
         }
 
         public override void Update(GameTime gameTime)
@@ -99,15 +95,11 @@ namespace GrimGame.Game.Scenes
 
         private void SpawnEnemy()
         {
-            var updatedList = new List<Paladin>(_enemies);
             foreach (var enemy in _enemies.ToList())
             {
                 enemy.Init(); // spawn it
                 _spawnedList.Add(enemy);
-                updatedList.Remove(enemy);
             }
-
-            //_enemies = updatedList;
         }
 
         public override void Draw()

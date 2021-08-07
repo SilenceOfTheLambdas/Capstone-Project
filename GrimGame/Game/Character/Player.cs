@@ -26,7 +26,7 @@ namespace GrimGame.Game.Character
         private const float PlayerScale = 1.5f;
 
         // _____ Attack _____ //
-        private const    int                AttackDamage = 40; // How much HP the player deals when attacking
+        private const    int                AttackDamage = 80; // How much HP the player deals when attacking
         private readonly OrthographicCamera _camera;
 
         // _____ References _____ //
@@ -96,16 +96,32 @@ namespace GrimGame.Game.Character
                     new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_up"), 6)
                 },
                 {
+                    "up_idle",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/up_idle"), 6)
+                },
+                {
                     "walk_down",
                     new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_down"), 6)
+                },
+                {
+                    "idle_down",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/down_idle"), 6)
                 },
                 {
                     "walk_left",
                     new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_left"), 6)
                 },
                 {
+                    "left_idle",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/left_idle"), 6)
+                },
+                {
                     "walk_right",
                     new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/walk_right"), 6)
+                },
+                {
+                    "right_idle",
+                    new Animation(Globals.ContentManager.Load<Texture2D>("Sprites/Player/Animations/right_idle"), 6)
                 },
                 {
                     "attack_left",
@@ -164,8 +180,8 @@ namespace GrimGame.Game.Character
 
             // Move the camera's position to that of the player's, using Lerp to make it smooth like butter
             _camera.Position = new Vector2(
-                MathHelper.Lerp(_camera.Position.X, Position.X - Globals.ViewportAdapter.VirtualWidth / 2, 0.09f),
-                MathHelper.Lerp(_camera.Position.Y, Position.Y - Globals.ViewportAdapter.VirtualHeight / 2, 0.09f));
+                MathHelper.Lerp(_camera.Position.X, Position.X - Globals.ViewportAdapter.VirtualWidth / 2, 0.07f),
+                MathHelper.Lerp(_camera.Position.Y, Position.Y - Globals.ViewportAdapter.VirtualHeight / 2, 0.07f));
 
             _timerForAttacks += gameTime.GetElapsedSeconds();
 
@@ -205,13 +221,21 @@ namespace GrimGame.Game.Character
         [SuppressMessage("ReSharper", "PossibleLossOfFraction")]
         private void Move(GameTime gameTime)
         {
-            Speed = _playerMovementState switch
+            switch (_playerMovementState)
             {
-                PlayerMovementStates.Walking => _defaultWalkSpeed,
-                PlayerMovementStates.Running => RunningSpeed,
-                PlayerMovementStates.Idle => 0f,
-                _ => throw new ArgumentOutOfRangeException()
-            };
+                case PlayerMovementStates.Walking:
+                    Speed = _defaultWalkSpeed;
+                    break;
+                case PlayerMovementStates.Running:
+                    Speed = RunningSpeed;
+                    break;
+                case PlayerMovementStates.Idle:
+                    Speed = 0f;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.W))
                 Velocity.Y = -Speed * gameTime.GetElapsedSeconds();
             if (Keyboard.GetState().IsKeyDown(Keys.S))
